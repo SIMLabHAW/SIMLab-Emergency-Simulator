@@ -1,4 +1,4 @@
-<a href="https://www.ls.haw-hamburg.de/~SIMLab/"><img src="img/ESIcon.svg" title="ESIcon" width="auto" alt="ESIcon"></a>
+<a href="https://www.ls.haw-hamburg.de/~SIMLab/"><img src="img/ESIcon.svg" title="ESIcon" width="500" alt="ESIcon"></a>
 
 # Emergency Simulator
 
@@ -77,11 +77,11 @@ Project Lead:
 
 ---
 
-## Support
+<!-- ## Support
 
 Reach out to me at one of the following places!
 
-<!-- - Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
+- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
 - Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
 - Insert more social links here. -->
 
