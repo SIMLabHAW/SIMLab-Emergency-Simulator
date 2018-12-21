@@ -1,2 +1,2 @@
-# SIMLab-Emergency-Simulator-
+# SIMLab-Emergency-Simulator
 To be done
