@@ -1,8 +1,5 @@
-<a href="https://www.ls.haw-hamburg.de/~SIMLab/"><img src="img/ESIcon.svg" title="ESIcon" width="500" alt="ESIcon"></a>
-
-# Emergency Simulator
-
-> WebApp for Emergency Training Situations
+<h2 align="center"><a href="https://www.ls.haw-hamburg.de/~SIMLab/"><img src="img/ESIcon.svg" title="ESIcon" width="250" alt="ESIcon"></a><br>VSCodeVim</h2>
+<p align="center"><strong>WebApp for Emergency Training Situations</strong></p>
 
 <!--[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()-->
 
