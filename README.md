@@ -7,7 +7,7 @@
 
 | TraineeView | TrainerView |
 | -| - |
-| ![TraineeView GIF](https://media.giphy.com/media/5bs6T48IVgi8u32C4W/giphy.gif) | TrainerView Gif |
+| ![TraineeView GIF](https://media.giphy.com/media/5bs6T48IVgi8u32C4W/giphy.gif) | ![TrainerView GIF](https://media.giphy.com/media/1NSM1TBq8nIjgbNjIQ/giphy.gif) |
 
 
 ---
