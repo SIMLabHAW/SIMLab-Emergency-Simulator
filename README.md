@@ -59,7 +59,7 @@ $ bower install
 ## Team
 
 Developers:
-- Christian Bauer (<a href="https://github.com/GitHelge" target="_blank">**GitHelge**</a>)
+- <a href="https://github.com/GitHelge" target="_blank">*Christian Bauer*</a>
 - Serena Glass
 - Christine Geßner
 - Chahinez Chaouchi
