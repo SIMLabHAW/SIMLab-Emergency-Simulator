@@ -15,8 +15,11 @@
 ## Installation
 
 - To use the Emergency Simulator, a device functioning as server and local area connection between devices is required. One possibility to build up such an environment is e.g. to use <a href="https://www.apachefriends.org/de/index.html" target="_blank">XAMPP</a> in combination with a wlan hotspot.
+  - A modern internet browser is required. (Tests where performed with *Chrome* and *Firefox*.)
+- When using XAMPP, the sourcecode needs to be placed in a subfolder preferably called **esim** 
+  in *htdocs*. 
+  - If another name like *my_name* is chosen for the folder, the web app can be accessed using ```localhost/my_name/```.
 
-- When using XAMPP, the sourcecode needs to be placed in a subfolder preferably called **esim** in *htdocs*. If another name like *my_name* is chosen for the folder, the web app can be accessed in a *modern* webbrowser using **localhost/my_name/**.
 
 <!-- 
 - All the `code` required to get started
