@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("for",["Function"],[["formatTime",,[[,,,,0,"File:js/traineeview.js:formatTime"]]]]);

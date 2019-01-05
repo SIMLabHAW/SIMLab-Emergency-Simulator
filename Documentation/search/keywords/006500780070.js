@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("exp",["Variable"],[["expectsNegativeGradient",,[[,,,,0,"File:js/measurements.js:expectsNegativeGradient"]]],["expectsPacerPeak",,[[,,,,0,"File:js/ecg-calculation.js:expectsPacerPeak"]]]]);

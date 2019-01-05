@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("sho",["Variable"],[["shouldClearGraph",,[[,,,,0,"File:js/vital-sign-graph.js:shouldClearGraph"]]],["shouldUseScaling",,[[,,,,0,"File:js/traineeview.js:shouldUseScaling"]]],["showECGPeaks",,[[,,,,0,"File:js/defi-management.js:showECGPeaks"]]]]);

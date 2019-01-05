@@ -24,35 +24,35 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 <head>
     <meta charset="utf-8">
     <title>SIMLab Emergency Simulator</title>
-    <base href="/">
+    <base href="./">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="SIMLab Emergency Simulator">
     <meta name="author" content="HAW-Hamburg">
 
-    <link href="esim/bootstrap.min.css" rel="stylesheet">
-    <link href="esim/style.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container-fluid" style="padding-top:100px">
         <div class="row d-flex justify-content-center">
             <div class="jumbotron">
-                <center><img alt="ECIcon" src="esim/img/ESIcon.svg" height="60px"></center>
+                <center><img alt="ECIcon" src="img/ESIcon.svg" height="60px"></center>
                 <h3>Welcome to the Emergency Simulator</h3>
                 <p id="waiting-text">Waiting for trainer...</p>
             </div>
         </div>
 </body>
 
-<script language="javascript" type="text/javascript" src="esim/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" type="text/javascript" src="esim/js/popper.min.js"></script>
-<script language="javascript" type="text/javascript" src="esim/js/bootstrap.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <script>
 
     function joinActiveLesson() {
-        $.post("esim/join_lesson.php",//post: request to server on applicationcontroller.php
+        $.post("join_lesson.php",//post: request to server on applicationcontroller.php
             {
                 callMethod: 'joinActiveLesson',
             }, function (data) {
@@ -60,7 +60,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 console.log("Join lesson state: " + lesson_state.active); 
                 if (lesson_state.active == "true") {
                     $('#waiting-text').html("Joining lesson!");
-                    window.location = "/esim/traineeview.html";
+                    window.location = "traineeview.html";
                 }
             });
 

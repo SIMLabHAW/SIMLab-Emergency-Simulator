@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("min",["Variable"],[["minmax",,[[,,,,0,"File:js/vital-sign-graph.js:minmax"]]]]);

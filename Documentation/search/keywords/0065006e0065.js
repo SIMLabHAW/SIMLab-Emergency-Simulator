@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("ene",["Variable","Constant","Function"],[["energy",,[[,,,,0,"File:js/pacer-management.js:energy"]]],["energyBounds",,[[,,,,1,"File:js/pacer-management.js:energyBounds"]]],["energyDown",,[[,,,,2,"File:js/pacer-management.js:energyDown"]]],["energyUp",,[[,,,,2,"File:js/pacer-management.js:energyUp"]]]]);

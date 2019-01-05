@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("the",["Variable"],[["then",,[[,,,,0,"File:js/vital-sign-graph.js:then"]]]]);

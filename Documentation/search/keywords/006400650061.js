@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("dea",["Function"],[["deactivateDefiSync",,[[,,,,0,"File:js/defi-management.js:deactivateDefiSync"]]],["deactivatePacing",,[[,,,,0,"File:js/pacer-management.js:deactivatePacing"]]]]);

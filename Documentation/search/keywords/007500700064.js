@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("upd",["Function"],[["updateScale",,[[,,,,0,"File:js/vital-sign-graph.js:updateScale"]]]]);

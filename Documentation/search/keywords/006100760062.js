@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("avb",["Variable"],[["avBlockCounter",,[[,,,,0,"File:js/ecg-calculation.js:avBlockCounter"]]]]);

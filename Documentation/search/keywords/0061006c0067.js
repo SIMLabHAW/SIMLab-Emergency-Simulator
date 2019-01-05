@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("alg",["Information"],[["Algorithm",,[[,"ECG Algorithm",,,0,"File:js/ecg-calculation.js:ECG_Algorithm"]]]]);

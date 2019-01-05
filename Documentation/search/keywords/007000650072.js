@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("per",["Function"],[["performFixedPacing",,[[,,,,0,"File:js/pacer-management.js:performFixedPacing"]]],["performShock",,[[,,,,0,"File:js/defi-management.js:performShock"]]],["performSyncShock",,[[,,,,0,"File:js/defi-management.js:performSyncShock"]]],["performUIAdaption",,[[,,,,0,"File:js/alarm-management.js:performUIAdaption"]]]]);

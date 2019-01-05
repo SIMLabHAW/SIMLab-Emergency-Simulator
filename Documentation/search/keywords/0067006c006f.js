@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("glo",["Variable"],[["globalIdleTimeCounter",,[[,,,,0,"File:js/measurements.js:globalIdleTimeCounter"]]]]);

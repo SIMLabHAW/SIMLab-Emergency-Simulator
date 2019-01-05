@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("sys",["Function"],[["SYSAlarm",,[[,,,,0,"File:js/alarm-management.js:SYSAlarm"]]]]);

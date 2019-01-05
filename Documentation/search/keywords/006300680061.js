@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("cha",["Variable","Function"],[["changeDuration",,[[,,,,0,"File:js/traineeview.js:changeDuration"]]],["changeSettingTabTo",,[[,,,,1,"File:js/traineeview.js:changeSettingTabTo"]]],["chargeValue",,[[,,,,0,"File:js/defi-management.js:chargeValue"]]]]);

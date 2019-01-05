@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("dra",["Function"],[["draw",,[[,,,,0,"File:js/vital-sign-graph.js:draw"]]],["drawECGPeak",,[[,,,,0,"File:js/vital-sign-graph.js:drawECGPeak"]]],["drawPacerPeak",,[[,,,,0,"File:js/vital-sign-graph.js:drawPacerPeak"]]]]);

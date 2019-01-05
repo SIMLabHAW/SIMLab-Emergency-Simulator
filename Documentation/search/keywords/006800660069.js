@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("hfi",["Variable"],[["hfIdleCount",,[[,,,,0,"File:js/spo2-calculation.js:hfIdleCount"]]]]);

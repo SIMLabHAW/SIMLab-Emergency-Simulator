@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tog",["Function"],[["toggleAlarmSound",,[[,,,,0,"File:js/sound-management.js:toggleAlarmSound"]]],["toggleDefiSync",,[[,,,,0,"File:js/defi-management.js:toggleDefiSync"]]],["togglePacing",,[[,,,,0,"File:js/pacer-management.js:togglePacing"]]],["togglePauseGraphs",,[[,,,,0,"File:js/traineeview.js:togglePauseGraphs"]]]]);

@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tes",["Function"],[["testMeasurementValueForAlarm",,[[,,,,0,"File:js/alarm-management.js:testMeasurementValueForAlarm"]]]]);

@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("yva",["Variable"],[["yValue",,[[,,,,0,"File:js/vital-sign-graph.js:yValue"]]]]);

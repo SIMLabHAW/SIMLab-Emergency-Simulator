@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("lat",["Variable"],[["latestReachedETCO2",,[[,,,,0,"File:js/etco2-calculation.js:latestReachedETCO2"]]],["latestReachedHR",,[[,,,,0,"File:js/ecg-calculation.js:latestReachedHR"]]],["latestReachedRR",,[[,,,,0,"File:js/etco2-calculation.js:latestReachedRR"]]],["latestReachedSpO2",,[[,,,,0,"File:js/spo2-calculation.js:latestReachedSpO2"]]]]);

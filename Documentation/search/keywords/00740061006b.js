@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tak",["Function"],[["takeScreenshot",,[[,,,,0,"File:js/traineeview.js:takeScreenshot"]]]]);

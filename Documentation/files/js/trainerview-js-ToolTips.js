@@ -1,0 +1,1 @@
+NDContentPage.OnToolTipsLoaded({2:"<div class=\"NDToolTip TVariable LJavaScript\"><div id=\"NDPrototype2\" class=\"NDPrototype NoParameterForm\"><span class=\"SHKeyword\">var</span> simConfig</div><div class=\"TTSummary\">This variable stores the most valueable data for the simulation, as it contains the currently active parameters for the:</div></div>"});

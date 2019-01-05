@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("dia",["Function"],[["DIAAlarm",,[[,,,,0,"File:js/alarm-management.js:DIAAlarm"]]]]);

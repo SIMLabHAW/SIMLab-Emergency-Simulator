@@ -48,7 +48,7 @@
 <head>
     <meta charset="utf-8">
     <title>Emergency Simulator</title>
-    <base href="/">
+    <base href="./">
 
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -61,8 +61,8 @@
     <title>Emergency Simulator - Session Printer</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="esim/bootstrap.min.css" rel="stylesheet">
-    <link href="esim/style.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
         <div class="row d-flex justify-content-center">
             <div class="jumbotron">
                 <h3>Choose Session to Print</h3>
-                <form id="lesson-form" role="lesson-form" action="esim/create_pdf.php" method="post">
+                <form id="lesson-form" role="lesson-form" action="create_pdf.php" method="post">
                     <div class="form-group">
                         <label for="trainerID">Trainer:</label>
                         <!--select id="trainerID" name="trainerID" class="custom-select" form="lesson-form" required>
@@ -104,9 +104,9 @@
     </div>
 </body>
 
-<script language="javascript" type="text/javascript" src="esim/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" type="text/javascript" src="esim/js/popper.min.js"></script>
-<script language="javascript" type="text/javascript" src="esim/js/bootstrap.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <script>
 			//post: request to server on applicationcontroller.php

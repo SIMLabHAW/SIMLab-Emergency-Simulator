@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("max",["Constant","Variable"],[["maxHFIdleCount",,[[,,,,0,"File:js/spo2-calculation.js:maxHFIdleCount"]]],["maxIdleTime",,[[,,,,1,"File:js/measurements.js:maxIdleTime"]]]]);

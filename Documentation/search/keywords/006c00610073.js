@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("las",["Variable"],[["lastDeltaX",,[[,,,,0,"File:js/spo2-calculation.js:lastDeltaX"]]],["lastPeakIndex",,[[,,,,0,"File:js/measurements.js:lastPeakIndex"]]]]);

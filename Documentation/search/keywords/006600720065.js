@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("fre",["Variable","Constant","Function"],[["frequency",,[[,,,,0,"File:js/pacer-management.js:frequency"]]],["frequencyBounds",,[[,,,,1,"File:js/pacer-management.js:frequencyBounds"]]],["frequencyUp",,[[,,,,2,"File:js/pacer-management.js:frequencyUp"]]]]);

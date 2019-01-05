@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("iso",["Variable","Function"],[["isOffsetCalculation",,[[,,,,0,"File:js/ecg-calculation.js:isOffsetCalculation"]]],["isOverMaxIdleTime",,[[,,,,1,"File:js/measurements.js:isOverMaxIdleTime"]]]]);

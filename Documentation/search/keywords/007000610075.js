@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("pau",["Function","Variable"],[["pause",,[[,,,,0,"File:js/vital-sign-graph.js:pause"]]],["pauseGraph",,[[,,,,1,"File:js/vital-sign-graph.js:pauseGraph"]]]]);

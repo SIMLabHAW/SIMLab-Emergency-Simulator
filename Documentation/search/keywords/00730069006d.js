@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("sim",["Variable"],[["simConfig",,[[,,,,0,"File:js/traineeview.js:simConfig"]]],["simTime",,[[,,,,0,"File:js/ecg-calculation.js:simTime"]]]]);

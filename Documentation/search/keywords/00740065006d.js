@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tem",["Variable"],[["tempConfig",,[[,,,,0,"File:js/traineeview.js:tempConfig"]]]]);

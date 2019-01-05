@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("gra",["Function","Variable"],[["Graph",,[[,,,,0,"File:js/vital-sign-graph.js:Graph"]]],["graphsPaused",,[[,,,,1,"File:js/traineeview.js:graphsPaused"]]]]);

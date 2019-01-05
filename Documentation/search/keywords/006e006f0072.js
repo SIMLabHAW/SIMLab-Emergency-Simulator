@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("nor",["Function"],[["normalizeY",,[[,,,,0,"File:js/vital-sign-graph.js:normalizeY"]]]]);

@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("che",["Function"],[["checkForECGPeak",,[[,,,,0,"File:js/measurements.js:checkForECGPeak"]]],["checkForIdle",,[[,,,,0,"File:js/measurements.js:checkForIdle"]]],["checkForSpo2Peak",,[[,,,,0,"File:js/measurements.js:checkForSpo2Peak"]]]]);

@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("rec",["Variable"],[["recentETCO2",,[[,,,,0,"File:js/etco2-calculation.js:recentETCO2"]]]]);

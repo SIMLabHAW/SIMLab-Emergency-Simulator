@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("isr",["Variable"],[["isRangeSliderInitilized",,[[,,,,0,"File:js/traineeview.js:isRangeSliderInitilized"]]]]);
