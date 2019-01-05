@@ -1,0 +1,271 @@
+<!doctype html>
+<!--  Copyright (C) 2018 HAW-Hamburg,
+Project lead: Prof. Dr. Boris Tolg, Prof. Dr. Stefan Oppermann,
+Development: Christian Bauer, Serena Glass, Christine Geßner, Chahinez Chaouchi.
+
+This file is part of SIMLab-Emergency-Simulator.
+
+SIMLab-Emergency-Simulator
+is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMLab-Emergency-Simulator
+is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SIMLab Emergency Simulator</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SimLab-Emergency-Simulator">
+    <meta name="author" content="HAW Hamburg">
+
+    <link href="esim/bootstrap.min.css" rel="stylesheet">
+    <link href="esim/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <div class="container-fluid" style="padding-top: 10vmin">
+
+            <div class="modal" id="nameFoundModal">
+                    <div class="modal-dialog modal-dialog-centered">
+        
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="border rounded">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Name is already chosen</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p> Name is already chosen as a ...</p>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" style="height: inherit;" data-dismiss="modal" onclick="" > OK! </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        <div class="row d-flex justify-content-center">
+            <div class="jumbotron">
+                <center><img alt="ECIcon" src="esim/img/ESIcon.svg" height="60px"></center>
+                <h3>SIMLab Emergency Simulator</h3>
+                <form role="form" action="esim/login.php" method="post">
+					<label for="inputName">Enter Name:</label>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+							<input name="username" list ="user-select" type="name" id="inputName" class="form-control" 
+                            placeholder="Name" required; onkeyup="getRole()"></input>
+							<datalist id="user-select">
+							<option></option>
+							</datalist>
+                        </div>
+                    </div>
+					
+                    <fieldset class="form-group">
+                            <label for="inputName">Role:</label>
+                        <div class="row">
+
+                            <div class="col-8">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label id ="trainerID" class="btn btn-login ">
+                                    <input class="form-check-input" type="radio" name="role" id="trainerRoleOption" value="trainer" autocomplete="off" > Trainer
+                                    </label>
+                                    <label id ="traineeID" class="btn btn-login active">
+                                    <input class="form-check-input" type="radio" name="role" id="traineeRoleOption" value="trainee" autocomplete="off" checked > Trainee
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" onclick="getRole()" class="btn btn-primary float-right">Sign in</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+<div class="modal fade" tabindex="-1" role="dialog" id="mi-modal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="confirmModalTitle" style="text-align: center">Are you sure you want to change your role?</h5>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" id="modal-btn-si">Yes</button>
+				<button type="button" class="btn btn-danger" id="modal-btn-no">No</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="alert" role="alert" id="result"></div>
+</body>
+<footer>
+
+    <div class="footer">
+        <table>
+            <tr>
+                <td style="vertical-align: top">
+                    <img alt="HAW_Marke_weiss" src="esim/img/HAW_Marke_weiss.svg" height="75px">
+                </td>
+                <td>
+                    <p>The <b>SIMLab Emergency Simulator</b> was created by <b>Christian Bauer, Serena Glass, Christine Geßner and Chahinez Chaouchi</b> in scope of the lecture 'Simulation and Virtual Reality in Medicine' at the <b>HAW Hamburg</b> by Prof. Dr. Boris Tolg and Prof. Dr. Jürgen Lorenz, supported by Prof. Dr. Stefan Oppermann</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</footer>
+
+
+<script language="javascript" type="text/javascript" src="esim/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="esim/js/popper.min.js"></script>
+<script language="javascript" type="text/javascript" src="esim/js/bootstrap.min.js"></script>
+
+<script>
+
+var users;
+
+function getAllUsers() {
+    $.post("esim/applicationcontroller.php",
+        {
+            // send parameter 'callMethod' with value 'getAllUsersJson'
+            callMethod: 'getAllUsersJson' 
+        }, function (data) {
+            if (data) {
+                users = JSON.parse(data);
+                var select = document.getElementById('user-select');
+
+                for (var user of users) {
+                    var opt = document.createElement('option');
+                    opt.value = user.name;
+                    opt.innerHTML = user.name;
+                    select.appendChild(opt);
+                }
+                getRole();
+            }else{
+                console.log("Could not retrieve users from database.");
+            }
+        });
+}
+	
+function getRole() {
+    var selectedUser = $("#inputName").val();
+    var userIsTrainer = false;
+
+    if (users == undefined) return;
+
+    for (var user of users) {
+        if (user.name == selectedUser && user.role == 'trainer'){
+            userIsTrainer = true;
+        }
+    }
+    if(userIsTrainer){
+        $("#trainerRoleOption").attr("checked", true);
+        $("#traineeRoleOption").attr("checked", false);
+        $("#trainerID").addClass('active');
+        $("#traineeID").removeClass('active');
+    }
+    else{
+        $("#traineeRoleOption").attr("checked", true);
+        $("#trainerRoleOption").attr("checked", false);
+        $("#traineeID").addClass('active');
+        $("#trainerID").removeClass('active');
+    }
+}
+
+const RoleType = {Trainer: 0, Trainee: 1};
+
+var changeRoleType;
+var wasConfirmed;
+var modalConfirm = function(callback){
+
+    wasConfirmed = false;
+    $("#confirmModalTitle").text("Are you sure you want to change your role to " + 
+    (($("#trainerRoleOption").attr("checked") == "checked") ? "Trainee" : "Trainer")  + "?");
+
+    $("#trainerID").on("click", function(){
+        if($("#trainerRoleOption").attr("checked") == "checked") return; 
+        $("#mi-modal").modal('show');
+        changeRoleType = RoleType.Trainer;
+    });
+    
+    $("#traineeID").on("click", function(){
+        if($("#traineeRoleOption").attr("checked") == "checked") return; 
+        $("#mi-modal").modal('show');
+        changeRoleType = RoleType.Trainee;
+    });
+  
+    $("#modal-btn-si").on("click", function(){
+        callback(true);
+        wasConfirmed = true;
+        $("#mi-modal").modal('hide');
+    });
+    
+    $("#modal-btn-no").on("click", function(){
+        callback(false);
+        wasConfirmed = true;
+        $("#mi-modal").modal('hide');
+    });
+
+    // Default Action if the Modal is Dismissed
+    $("#mi-modal").on("hidden.bs.modal", function () {
+        if (!wasConfirmed) callback(false);
+    });
+};
+
+modalConfirm(function(confirm) {
+    if(changeRoleType == RoleType.Trainer) {
+        if(confirm){ 
+            $("#trainerRoleOption").attr("checked", true);
+            $("#traineeRoleOption").attr("checked", false);
+            $("#trainerID").addClass('active');
+            $("#traineeID").removeClass('active');
+        } else {
+            $("#trainerRoleOption").attr("checked", false);
+            $("#traineeRoleOption").attr("checked", true);
+            $("#trainerID").removeClass('active');
+            $("#traineeID").addClass('active');
+        }
+    } else {
+        if(confirm) {
+            $("#traineeRoleOption").attr("checked", true);
+            $("#trainerRoleOption").attr("checked", false);
+            $("#traineeID").addClass('active');
+            $("#trainerID").removeClass('active');
+        } else {
+            $("#trainerRoleOption").attr("checked", true);
+            $("#traineeRoleOption").attr("checked", false);
+            $("#trainerID").addClass('active');
+            $("#traineeID").removeClass('active');
+        }
+    }
+});
+	 	
+$(document).ready(function () {
+    //...load all current values from database-->stored in initControls
+    getAllUsers();
+});
+
+</script>
+
+</html>

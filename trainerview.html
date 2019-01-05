@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<!--  Copyright (C) 2018 HAW-Hamburg,
+Project lead: Prof. Dr. Boris Tolg, Prof. Dr. Stefan Oppermann,
+Development: Christian Bauer, Serena Glass, Christine Geßner, Chahinez Chaouchi.
+
+This file is part of SIMLab-Emergency-Simulator.
+
+SIMLab-Emergency-Simulator
+is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMLab-Emergency-Simulator
+is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. -->
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SIMLab Emergency Simulator">
+    <meta name="author" content="HAW-Hamburg">
+
+    <title>SIMLab Emergency Simulator</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="ion.rangeSlider.css" rel="stylesheet">
+    <link href="ion.rangeSlider.skinHTML5.css" rel="stylesheet">
+
+</head>
+
+<body style="margin-bottom: 0px">
+    <nav class="navbar navbar-default navbar-expand-md navbar-dark bg-dark navbar-trainer" role="navigation">
+        <img alt="ECIcon" src="img/ESIcon.svg" style="height: 6vmin">
+        <a class="navbar-brand" href="#">TrainerView</a>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+            </ul>
+                <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: 0.2vmin" onclick = "openPrintPopUp()">Print Session</button>
+  
+			<form class="form-inline my-2 my-lg-0" action="create_lesson.html">
+                <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: 0.2vmin" type="submit">End Session</button>
+            </form>
+            <form class="form-inline my-2 my-lg-0" action="logout.php">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <main role="main" class="container-fluid main-container">
+        
+        <div class="modal" id="dynamicChangeModal">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <!-- Modal content-->
+                <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
+                    <div class="border border-dark rounded" style="background-color: black">
+                        <div class="modal-header" style="border-bottom: 0px; padding: 0px; text-align: center">
+                            <h5 class="modal-title" style="width: 100%" id="dynamicChangeModalTitle">HR Config</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="padding: 2.5px">
+                                <div class="col-8 col-md-8 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <label id="dynamicChangeLabel" style="color: white; text-align: center"> Manual Change Duration<br>
+                                        <input type="text" id="dynamicChangeSlider" class="js-range-slider" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-4 border border-dark rounded" style="text-align: center">
+                                    <label style="color: white">Auto Duration</label>
+                                    <div class="button-container" style="padding: 0px; text-align: center">
+                                        <label class="switch">
+                                            <input id="dynamicChangeCheckbox" type="checkbox" onchange='toggleAutoChangeDuration(this)'>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer" style="border-top: 0px; padding-top: 0px; padding-left: 1vmin; padding-right: 1vmin; padding-bottom: 1vmin">
+                            <button type="button" class="btn btn-light" style="height: inherit;" data-dismiss="modal"><img class="custom-icon" src="img/times.svg"></button>
+                            <button type="button" class="btn btn-light" style="height: inherit" onclick="saveDynamicChange()" data-dismiss="modal"><img class="custom-icon" src="img/check.svg"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="modal" id="postShockSettings">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <!-- Modal content-->
+                <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
+                    <div class="border border-dark rounded" style="background-color: black">
+                        <div class="modal-header" style="border-bottom: 0px; padding: 0px; text-align: center">
+                            <h5 class="modal-title" id="postShockSettingTitle" style="width: 100%; color: #ffffff">Post-Shock Parameters for </h5>
+                        </div>
+                        <div class="modal-body">
+							<div class="row" style="padding: 0px;  margin: 0px;">
+                                <div class="col-8 col-md-8 font-vital-signs" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="hrColor" id="heartRateLabel"> Heart Rate (bpm) </label>
+                                </div>
+                                <div class="col-4 col-md-4" style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="hrInputDefi" name="hrInputDefi" min="0" max="250" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px; margin: 0px; margin-top: 0.5vmin">
+                                <div class="col-8 col-md-8 font-vital-signs" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="spo2Color" id="spo2ParameterLabel">SpO2 (%) </label>
+                                </div>
+                                <div class="col-4 col-md-4" style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="spo2InputDefi" name="spo2InputDefi" min="0" max="100" />
+                                    </div>
+                                </div> 
+                            </div>
+							<div class="row" style="padding: 0px;  margin: 0px; margin-top: 0.5vmin">
+                                <div class="col-8 col-md-8 font-vital-signs" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="etco2" id="etco2ParameterLabel">etCO2 (mmHg) </label>
+                                </div>
+                                <div class="col-4 col-md-4"  style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="etco2InputDefi" name="etco2InputDefi" min="0" />
+                                    </div>
+                                </div>
+                            </div>
+							<div class="row" style="padding: 0px; margin: 0px; margin-top: 0.5vmin">
+                                <div class="col-8 col-md-8 font-vital-signs" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="resp-rate" id="rfParameterLabel">Resp. Rate (bpm) </label>
+                                </div>
+								<div class="col-4 col-md-4"  style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="rrInputDefi" name="rrInputDefi" min="0" />
+                                    </div>
+                                </div>
+                            </div>
+							<div class="row" style="padding: 0px; margin: 0px; margin-top: 0.5vmin">
+                                <div class="col-8 col-md-8 font-vital-signs" style="padding: 0px">
+                                    <label class="nibpColor" style="line-height: 2.7vmin">Syst. NIBP (mmHg)</label>
+                                </div>
+                                <div class="col-4 col-md-4" style="padding: 0px;">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="sysInputDefi" name="sysInputDefi" min="0" />
+                                    </div>
+                                </div>
+                            </div>
+							<div class="row" style="padding: 0px; margin: 0px; margin-top: 0.5vmin">
+								<div class="col-8 col-md-8 font-vital-signs" style="padding: 0px">
+									<label class="nibpColor" style="line-height: 2.7vmin">Dias. NIBP (mmHg) </label>
+								</div>
+								<div class="col-4 col-md-4"  style="padding: 0px">
+									<div class="input-group-append">
+										<input type="number" class="form-control custom-input" id="diaInputDefi" name="diaInputDefi" min="0" />
+									</div>
+                                </div>
+                            </div>
+						</div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer" style="border-top: 0px; padding-top: 0px; padding-left: 1vmin; padding-right: 1vmin; 			padding-bottom: 1vmin">
+                            <button type="button" class="btn btn-light" style="height: inherit;" data-dismiss="modal"><img class="custom-icon" src="img/times.svg"></button>
+                            <button type="button" class="btn btn-light" style="height: inherit" onclick="saveAllPostShock()" data-dismiss="modal"><img class="custom-icon" src="img/check.svg"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px">
+                <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin; margin-bottom: 0px">
+                    <div class="row" style="padding: 0.5vmin; margin: 0px">
+                        
+                        <div class="col-1 col-md-1" style="padding: 0px">
+                            <div class="font-vital-signs" style="text-align: center; font-size: 4vmin; line-height: 7vmin; font-family: monospace" id="timerDiv">0:00</div>
+                        </div>
+                        <div class="col-4 col-md-4">
+                            <button id="start_timer" class="btn btn-warning btn-md custom-button" onclick="toggleTimer()"><b>START TIMER</b></button>
+                            <button id="stop_timer"class=" btn btn-warning btn-md custom-button" onclick="resetTimer()" ><b>RESET TIMER</b></button>
+                        </div>
+
+                        <!-- Dropdown (WORK IN PROGRESS) -->
+
+                        <div class="col-2 col-md-2">
+                            <div class="dropdown" id="testDropdown">
+                                <button class="btn btn-light dropdown-toggle custom-button" type="button" id="dropdownMenuButton" data-toggle="dropdown"> Case Settings</button>
+                                <div class="dropdown-menu">
+                                    <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin; margin-bottom: 0px">
+                                        <!-- CPR Dropdown Item -->
+
+                                        <!-- <div class="dropdown-item">
+                                            <div class="container" style="padding: 0px">
+                                                <div class="row" style="margin: 0px">
+                                                    <div class="col-6 noPad">
+                                                        <label class="switch">
+                                                            <input id="cprCheckbox" type="checkbox" onchange='handleChangeCPR(this)'>
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-6 noPad" style="text-align:center">
+                                                        <label>CPR</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                        <!-- RespRatio Dropdown Item -->
+
+                                        <div class="dropdown-item">
+                                            <div class="container" style="padding: 0px">
+
+                                                <div class="col-12 noPad" >
+                                                    <label style="margin-bottom: 0px">Resp Ratio</label>
+                                                </div>
+                                                <div class="col-12 noPad">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" id="normRespRatio" name="respRadio" onchange="handleChangeRespRatio(RespRatio.Normal)" checked>Normal ~(1:2)
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" id="hypoRespRatio" onchange="handleChangeRespRatio(RespRatio.HyperVent)" name="respRadio">Hyper ~(1:1)
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" id="hyperRespRatio" onchange="handleChangeRespRatio(RespRatio.HypoVent)" name="respRadio">Hypo ~(1:4)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-5 col-md-5" style="padding: 0px; margin: 0px">
+                            <div class="row" style="margin: 0px; padding: 0px">
+                                <div class="col-3 col-md-3 align-self-center" style="padding: 0px; text-align: center">
+                                    <label class="font-vital-signs">Pathology</label>
+                                </div>
+                                <div class="col-4 col-md-4" style="padding: 0px;  padding-right: 0.5vmin">
+                                    <select id="pathology-select" class="custom-select" onchange="handleSelectPathology()"></select>
+                                </div>
+                                <div class="col-4 col-md-4" style="padding: 0px">
+                                    <button type="button" class="btn btn-primary btn-md btn-block custom-button" onclick="saveAll()"> OK </button>
+                                </div>
+                                <div class="col-1 col-md-1" style="padding: 0px; padding-left: 0.5vmin; padding-bottom: 0.5vmin">
+                                        <button type="button" class="btn btn-light custom-button" data-toggle="modal" data-target="#dynamicChangeModal" style="padding: 0px; width: inherit;" onclick="getDynamicChange()">
+                                        <img class="custom-inner-icon" src="img/cog.svg"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px">
+                <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin; margin-bottom: 0px">
+                    <div class="row" style="padding: 0.5vmin; margin: 0px">
+                        <!--extra column for buttons-->
+                        <div class="col-1 col-md-1 button-container" style="padding: 0px; text-align: center">
+                            <!-- Rounded switch ECG-->
+                            <label class="switch">
+                                <input id="ecg-checkbox" type="checkbox" onchange='handleChangeECG(this);'>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        
+
+                        <!-- ECG Canvas -->
+
+                        <div class="col-6 col-md-6 trainer-sign-chart-container" id="frontend-signal">
+                            <div class="row"  style="height: inherit">
+                                <div class="col-1 noPad">
+                                    <label class="hrColor" id="ecgGraphLabel" style="white-space: nowrap">ECG II</label> 
+                                </div>
+                                <div class="col-11 noLPad" style="height: inherit">
+                                    <canvas id="ecgCanvas" onclick="ecgGraph.changeTimeScale()"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Heartrate/ECG Options -->
+
+                        <div class="col-5 col-md-5" style="padding: 0px">
+
+                            <!-- Heartrate Options -->
+
+                            <div class="row" style="padding: 0px; margin: 0px;">
+                                <div class="col-5 col-md-5 font-vital-signs align-self-center" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="hrColor" id="heartRateLabel"> Heart Rate (bpm) </label>
+                                </div>
+                                <div class="col-2 col-md-2 align-self-center" style="padding: 0px; text-align: center; line-height: 3.5vmin">
+                                    <label id="hrLabel" class="hrColor size">100</label>
+                                </div>
+
+                                <div class="col-3 col-md-3" style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="hrInput" name="hrInput" min="0" max="250" />
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2 align-self-end" style="padding: 0px; text-align: center; color: white">
+                                    <label>CPR</label>
+                                </div>
+                            </div>
+
+                            <!-- Pacer Threshold Level Setting -->
+
+                            <div class="row" style="margin: 0px; margin-top: 0.5vmin; padding: 0px">
+                                <div class="col-7 col-md-7 font-vital-signs align-self-center" style="padding: 0px; margin: 0px">
+                                    <label class="hrColor" id="pacerEnergyThresholdLabel" style="line-height: 2.7vmin">Pacer Energy Threshold (mA):</label>
+                                </div>
+                                <div class="col-3 col-md-3" style="padding: 0px">
+                                    <select id="pacerThresholdEnergySelect" class="custom-select" onchange="pacerThresholdChanged()">
+                                    </select>
+                                </div>
+                                <div class="col-2 col-md-2" style="padding: 0px; text-align: center">
+                                    <label class="switch">
+                                        <input id="cprCheckbox" type="checkbox" onchange='handleChangeCPR(this)'>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px">
+                <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin; margin-bottom: 0px">
+                    <div class="row" style="padding: 0.5vmin; margin: 0px">
+                        <div class="col-1 col-md-1 button-container" style="padding: 0px; text-align: center">
+                            <label class="switch">
+                                <input id="spo2-checkbox" type="checkbox" onchange='handleChangeSpO2(this)'>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+
+                        <!-- SPO2 Canvas -->
+
+                        <div class="col-6 col-md-6 trainer-sign-chart-container" id="frontend-signal">
+                            <div class="row" style="height: inherit">
+                                <div class="col-1 noPad" style="height: inherit">
+                                    <label class="spo2Color" id="spo2GraphLabel">SpO2</label>
+                                </div>
+                                <div class="col-11 noLPad" style="height: inherit">
+                                    <canvas id="spo2Canvas" onclick="spo2Graph.changeTimeScale()"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <!-- SPO2 Options -->
+
+                        <div class="col-5 col-md-5" style="padding: 0px">
+                            <div class="row" style="padding: 0px; margin: 0px">
+                                <div class="col-5 col-md-5 font-vital-signs align-self-center" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="spo2Color" id="spo2ParameterLabel">SpO2 (%) </label>
+                                </div>
+                                <div class="col-2 col-md-2 align-self-center" style="padding: 0px; text-align: center; line-height: 3.5vmin">
+                                    <label id="spo2Label" class="spo2Color size">100</label>
+                                </div>
+
+                                <div class="col-5 col-md-5" style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="spo2Input" name="spo2Input" min="0" max="100" />
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px">
+                <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin">
+                    <div class="row" style="padding: 0.5vmin; margin: 0px">
+                        <!--extra column for buttons-->
+                        <div class="col-1 col-md-1 button-container" style="padding: 0px; text-align: center">
+                            <!-- Rounded switch ETCO2-->
+                            <label class="switch">
+                                <input id="etco2-checkbox" type="checkbox" onchange='handleChangeEtCO2(this)'>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <!-- ETCO2 Canvas -->
+
+                        <div class="col-6 col-md-6 trainer-sign-chart-container" id="frontend-signal">
+                            <div class="row" style="height: inherit">
+                                <div class="col-1 noPad" style="height: inherit">
+                                    <label class="etco2" id="etco2GraphLabel">etCO2</label>
+                                </div>
+                                <div class="col-11 noLPad" style="height: inherit">
+                                    <canvas id="etco2Canvas" onclick="etco2Graph.changeTimeScale()"></canvas>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="col-5 col-md-5" style="padding: 0px">
+                            <div class="row" style="padding: 0px; margin: 0px">
+                                <div class="col-5 col-md-5 font-vital-signs align-self-center" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="etco2" id="etco2ParameterLabel">etCO2 (mmHg) </label>
+                                </div>
+                                <div class="col-2 col-md-2 align-self-center"  style="padding: 0px; text-align: center; line-height: 3.5vmin">
+                                    <label id="etco2Label" class="etco2 size">100</label>
+                                </div>
+
+                                <div class="col-3 col-md-3"  style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="etco2Input" name="etco2Input" min="0" />
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2 align-self-end" style="padding: 0px; text-align: center; color: white">
+                                    <label>COPD</label>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="padding: 0px; margin: 0px; margin-top: 0.5vmin">
+                                <div class="col-5 col-md-5 font-vital-signs align-self-center" style="padding: 0px; line-height: 3.5vmin">
+                                    <label class="resp-rate" id="rfParameterLabel">Resp. Rate (bpm) </label>
+                                </div>
+                                <div class="col-2 col-md-2 align-self-center"  style="padding: 0px; text-align: center; line-height: 3.5vmin">
+                                    <label id="rrLabel" class="resp-rate size">100</label>
+                                </div>
+
+                                <div class="col-3 col-md-3"  style="padding: 0px">
+                                    <div class="input-group-append">
+                                        <input type="number" class="form-control custom-input" id="rrInput" name="rrInput" min="0" />
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2" style="padding: 0px; text-align: center">
+                                    <label class="switch">
+                                        <input id="copdCheckbox" type="checkbox" onchange='handleChangeCOPD(this)'>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-6 col-md-6" style="padding: 0px; margin: 0px">
+                <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px; padding-bottom: 0.1vmin">
+                    <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin; margin-top: 0px">
+                        <!--Comment field-->
+                        <div class="row" style="padding: 0.5vmin; margin: 0px">
+                            <div id="message-frame" class="form-group" style="margin-bottom: 0px; width: 100%; padding-left: 2vmin">
+                                <div id=messages class="messages-container" style="padding: 0px; height: 20vmin; width: inherit">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 0px; margin: 0px">
+                            <div class="col-12 col-md-12" style="padding: 0px">
+                                <div class="row" style="padding: 0.5vmin; margin: 0px">
+                                    <div class="col-10 col-md-10" style="padding: 0.5vmin; margin: 0px">
+                                        <input type="text" class="form-control custom-input" placeholder="Input Comment" id="message" name="message" />
+                                    </div>
+                                    <div class="col-2 col-md-2" style="padding: 0.5vmin; margin: 0px">
+                                        <button type="submit" class="btn btn-primary btn-md custom-button" onclick="addComment(document.getElementById('message').value)">
+                                        Submit</button>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-6" style="padding: 0px">
+                <div class="row" style="margin: 0px">
+                    <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px">
+                        <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin; margin-bottom: 0px; margin-top: 0px">
+                            <div class="row" style="padding: 0.5vmin; margin: 0px; height: 16vmin">
+                                <div class="col-2 col-md-2" style="padding: 0px; text-align: center">
+                                    <label class="switch">
+                                        <input id="nipb-checkbox" type="checkbox" onchange='handleChangeNipb(this)'>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-10 col-md-10" style="padding: 0px;">
+                                    <div class="row" style="padding: 0px; margin: 0px">
+                                        <div class="col-5 col-md-5 font-vital-signs align-self-center" style="padding: 0px">
+                                            <label class="nibpColor" id="sysNIBPLabel" style="line-height: 2.7vmin">Syst. NIBP (mmHg)</label>
+                                        </div>
+                                        <div class="col-2 col-md-2 align-self-center"  style="padding: 0px; text-align: center; line-height: 3.5vmin">
+                                            <label id="sysLabel" class="nibpColor size">100</label>
+                                        </div>
+
+                                        <div class="col-5 col-md-5" style="padding: 0px;">
+                                            <div class="input-group-append">
+                                                <input type="number" class="form-control custom-input" id="sysInput" name="sysInput" min="0" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 0px; margin: 0px; margin-top: 0.5vmin">
+                                        <div class="col-5 col-md-5 font-vital-signs align-self-center" style="padding: 0px">
+                                            <label class="nibpColor" id="diaNIBPLabel"  style="line-height: 2.7vmin">Dias. NIBP (mmHg) </label>
+                                        </div>
+                                        <div class="col-2 col-md-2 align-self-center"  style="padding: 0px; text-align: center; line-height: 3.5vmin">
+                                            <label id="diaLabel" class="nibpColor size">100</label>
+                                        </div>
+
+                                        <div class="col-5 col-md-5"  style="padding: 0px">
+                                            <div class="input-group-append">
+                                                <input type="number" class="form-control custom-input" id="diaInput" name="diaInput" min="0" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Defibrillator Settings Border -->
+
+                <div class="row" style="margin: 0px">
+                    <div class="col-12 col-md-12" style="background-color: #343a40; padding: 0px">
+                        <div class="border border-dark rounded" style="background-color: black; margin: 0.5vmin;">
+
+                            <!-- Defibrillator Settings -->
+
+                            <div class="row" style="padding: 0.5vmin; margin: 0px; height: 15vmin">
+                                <div class="col-12 col-md-12" style="padding: 0px; margin: 0px">
+
+                                    <!-- Post-Shock Pathology Input -->
+
+                                    <div class="row" style="margin: 0px; padding: 0px">
+                                        <div class="col-7 col-md-7 align-self-center" style="padding: 0px; margin: 0px">
+                                            <label class="font-vital-signs">Select Post-Shock Pathology</label>
+                                        </div>
+                                        <div class="col-4 col-md-4" style="padding: 0px">
+                                            <select id="defiPathologySelect" class="custom-select" onchange="handleSelectPathologyDefi()">
+                                            </select>
+											
+                                        </div>
+										<div class="col-1 col-md-1" style="padding: 0px; padding-left: 0.5vmin; padding-bottom: 0.5vmin">
+												<button type="button" class="btn btn-light custom-button" data-toggle="modal" style="padding: 0px; width: inherit;" data-target="#postShockSettings" onclick="showPostShockModal()">
+												<img class="custom-inner-icon" src="img/cog.svg"></button>
+										</div>
+                                    </div>
+
+                                    <!-- Minimum Energy Requirement Input -->
+
+                                    <div class="row" style="margin: 0px; padding: 0px">
+                                        <div class="col-7 col-md-7 align-self-center" style="padding: 0px; margin: 0px">
+                                            <label class="font-vital-signs">Defi Energy Threshold (J):</label>
+                                        </div>
+                                        <div class="col-5 col-md-5" style="padding: 0px">
+                                            <select id="defiThresholdEnergySelect" class="custom-select" onchange="defiThresholdChanged()">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </div>
+
+    </main>
+    <!--/.container-->
+
+    <script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="js/ecg-calculation.js"></script>
+    <script language="javascript" type="text/javascript" src="js/spo2-calculation.js"></script>
+    <script language="javascript" type="text/javascript" src="js/etco2-calculation.js"></script>
+    <script language="javascript" type="text/javascript" src="js/cpr-management.js"></script>
+
+    <script language="javascript" type="text/javascript" src="js/vital-sign-graph.js"></script>
+    <script language="javascript" type="text/javascript" src="application.js"></script>
+    <script language="javascript" type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="js/trainerview.js"></script>
+</body>
+
+</html>

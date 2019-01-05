@@ -1,0 +1,74 @@
+<!doctype html>
+<!--  Copyright (C) 2018 HAW-Hamburg,
+Project lead: Prof. Dr. Boris Tolg, Prof. Dr. Stefan Oppermann,
+Development: Christian Bauer, Serena Glass, Christine Geßner, Chahinez Chaouchi.
+
+This file is part of SIMLab-Emergency-Simulator.
+
+SIMLab-Emergency-Simulator
+is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMLab-Emergency-Simulator
+is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SIMLab Emergency Simulator</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SIMLab Emergency Simulator">
+    <meta name="author" content="HAW-Hamburg">
+
+    <link href="esim/bootstrap.min.css" rel="stylesheet">
+    <link href="esim/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid" style="padding-top:100px">
+        <div class="row d-flex justify-content-center">
+            <div class="jumbotron">
+                <center><img alt="ECIcon" src="esim/img/ESIcon.svg" height="60px"></center>
+                <h3>Welcome to the Emergency Simulator</h3>
+                <p id="waiting-text">Waiting for trainer...</p>
+            </div>
+        </div>
+</body>
+
+<script language="javascript" type="text/javascript" src="esim/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="esim/js/popper.min.js"></script>
+<script language="javascript" type="text/javascript" src="esim/js/bootstrap.min.js"></script>
+
+<script>
+
+    function joinActiveLesson() {
+        $.post("esim/join_lesson.php",//post: request to server on applicationcontroller.php
+            {
+                callMethod: 'joinActiveLesson',
+            }, function (data) {
+                var lesson_state = JSON.parse(data);
+                console.log("Join lesson state: " + lesson_state.active); 
+                if (lesson_state.active == "true") {
+                    $('#waiting-text').html("Joining lesson!");
+                    window.location = "/esim/traineeview.html";
+                }
+            });
+
+    }
+    $(document).ready(function () {
+        setInterval(function () { joinActiveLesson(); }, 3000);
+    });
+
+</script>
+
+</html>

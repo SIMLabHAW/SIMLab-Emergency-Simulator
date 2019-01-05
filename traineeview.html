@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!--  Copyright (C) 2018 HAW-Hamburg,
+Project lead: Prof. Dr. Boris Tolg, Prof. Dr. Stefan Oppermann,
+Development: Christian Bauer, Serena Glass, Christine Geßner, Chahinez Chaouchi.
+
+This file is part of SIMLab-Emergency-Simulator.
+
+SIMLab-Emergency-Simulator
+is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMLab-Emergency-Simulator
+is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. -->
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SIMLab Emergency Simulator">
+    <meta name="author" content="HAW-Hamburg">
+
+    <title>SIMLab Emergency Simulator</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="ion.rangeSlider.css" rel="stylesheet">
+    <link href="ion.rangeSlider.skinHTML5.css" rel="stylesheet">
+</head>
+
+<body class="body-trainee">
+    
+    <nav class="navbar navbar-default navbar-expand-md navbar-dark bg-dark navbar-trainee" role="navigation">
+        <img alt="ECIcon" src="img/ESIcon.svg" style="height: 6vmin">
+        <a class="navbar-brand" href="#">TraineeView</a>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <button id="fullscreenButton"class="btn btn-outline-success my-2 my-sm-0" onclick="toggleFullScreen()">Full Screen</button>
+            </form> -->
+
+			<form class="form-inline my-2 my-lg-0" action="logout.php">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+
+        </div>
+    </nav>
+
+    <main role="main" class="container-fluid main-container">
+        
+        <div class="row">
+            <div class="col-12 col-md-8 powerButton">
+
+                <div class="row">
+                    <div class="col-1 noRPad">
+                        <p class="sign-caption hrColor" style="white-space: nowrap">ECG II</p>
+                    </div>
+
+                    <!-- ECG Label & Canvas -->
+
+                    <div class="col-11 noLPad hrColor sign-chart-container" id="frontend-signal">
+                        <canvas onclick="ecgGraph.changeTimeScale()" id="ecgCanvas"></canvas>
+                    </div>
+
+                    <!-- SPO2 Label & Canvas -->
+
+                    <div class="col-1 noRPad">
+                        <p class="sign-caption spo2Color">SpO2 </p>
+                    </div>
+
+                    <div class="col-11 noLPad spo2Color sign-chart-container">
+                        <canvas onclick="spo2Graph.changeTimeScale()" id="spo2Canvas"></canvas>
+                    </div>
+
+                    <!-- ETCO2 Label & Canvas -->
+
+                    <div class="col-1 noRPad">
+                        <p class="etco2">etCO2 </p>
+                    </div>
+                    <div class="col-11 noLPad sign-chart-container">
+                        <canvas onclick="etco2Graph.changeTimeScale()" id="etco2Canvas"></canvas>
+                    </div>
+
+                    <!-- NIBP Labels -->
+
+                    <div class="col-12 bloodpressure" style="padding-top: 1vmin; padding-bottom: 1vmin" id="bloodpressure">
+                        <div class="row">
+                            <div id="nibpBorderDiv" class="col-md-4 offset-md-8">
+                                <p class="sign-caption" style="text-align: left"> NIBP mmHg</p>
+                                <label id="sysLabel" class="sign-values-nibp" for="systolisch">-</label>
+                                <span class="sign-values-nibp">/</span>
+                                <label id="diaLabel" class="sign-values-nibp" for="diastolisch">-</label><br>
+                                <div class="row">
+                                    <label id="nibpCountdownLabel" class="col-6 sign-values-nibp" style="font-size: 2vmin; text-align: left"></label>
+                                    <label id="madLabel" class="col-6 sign-values-nibp" style="font-size: 4vmin" for="mad">(-)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-6 col-md-2 powerButton" id="sidebar">
+                <div id="ecgBorderDiv" class="sign-detail hrColor">
+                    <p class="sign-caption" id="hrCaptionLabel">HR
+                        <br> bpm</p>
+                    <label id="hrLabel" class="sign-values">-</label>
+                </div>
+
+                <div id="spo2BorderDiv" class="sign-detail spo2Color">
+                    <p class="sign-caption"> SpO2
+                        <br> %</p>
+                    <label id="spo2Label" class="sign-values">-</label>
+                </div>
+                <div id="etco2BorderDiv" class="sign-detail etco2-value">
+                    <div id="etco2">
+                        <p class="sign-caption"> etCO2
+                            <br> mmHg</p>
+                        <label id="etco2Label" class="sign-values" for="etco2">-</label>
+                    </div>
+                </div>
+                <div id="rrBorderDiv" class="sign-detail rr-value resp-rate">
+                    <div class="row">
+                        <div class="col-1 col-md-3">
+                            <p class="sign-caption">Resp </p>
+                        </div>
+                        <div class="col-2 col-md-9">
+                            <label id="rrLabel" style="text-align: right; line-height: 5vmin; font-size: 5vmin; font-weight: bold" for="RR">-</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Elements -->
+            <div class="col-6 col-md-2 powerButton" style="background-color: #343a40" id="sidebar">
+
+
+                <!-- Defibrillator Elements -->
+
+                <div class="border border-dark rounded" style="background-color: black; margin-left: 0.5vmin; margin-right : 0.5vmin; margin-top : 0.5vmin">
+
+
+                    <!-- Defibrillator Charge Energy Configuration -->
+
+                    <div class="row" style="padding-left: 1vmin; padding-right: 1vmin; margin-top: 1vmin; margin-left: 0px; margin-right: 0px">
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="defiManagement.defiEnergyDown()">
+                                <img class="custom-icon" src="img/minus.svg">
+                            </button>
+                        </div>
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <p id="defiChargeLabel" class="up-down-label">150<br>J</p>
+                        </div>
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="defiManagement.defiEnergyUp()">
+                                <img class="custom-icon" src="img/plus.svg">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Defibrillator Charge Button -->
+
+                    <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px">
+                        <button id="charge" style="width: inherit; margin-top: 0px; height: 8vmin" class="btn btn-warning btn-md " onclick="defiManagement.defiCharge()"><b>CHARGE</b></button>
+                    </div>
+
+                    <!-- Defibrillator Shock Button -->
+
+                    <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px">
+                        <button type="button" id="defiShockButton" style="width: inherit; padding: 0px; margin-top: 1vmin; margin-bottom: 1vmin; height: 8vmin" class="btn btn-danger btn-md" value="Shock" onclick="defiManagement.defiShock()" disabled>
+                            <img class="custom-icon" src="img/bolt.svg" />
+                        </button>
+                    </div>
+
+                    <!-- Defibrillator Synchronize Button -->
+
+                    <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px">
+                        <button id="defiSyncButton" style="width: inherit; margin-top: 0px; height: 8vmin; margin-bottom: 1vmin;" class="btn btn-light btn-md" onclick="defiManagement.toggleDefiSync()"><b>SYNC</b></button>
+                        </button>
+                    </div>
+
+                </div>
+                
+
+                <!-- Pacer Placeholder -->
+
+                <div class="border border-dark rounded" style="background-color: black; margin-left: 0.5vmin; margin-right : 0.5vmin; margin-top: 2vmin">
+
+
+                    <!-- Pacer Activation Button -->
+
+                    <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px; margin-top: 1vmin">
+                        <button id="pacerButton" style="width: inherit; margin-top: 0px; height: 8vmin" class="btn btn-light btn-md " onclick="pacerManagement.togglePacing()"><b>PACER</b></button>
+                    </div>
+
+                    
+                    <!-- Pacer Threshold Label -->
+
+                    <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px; margin-top: 1vmin">
+                        <p class="sign-caption" style="text-align: center; margin-top: 1vmin; color: white" for="Test"><b>Energy</b></p>
+                    </div>
+
+
+                    <!-- Pacer Energy Configuration -->
+
+                    <div class="row" style="padding-left: 1vmin; padding-right: 1vmin; margin-top: 1vmin; margin-left: 0px; margin-right: 0px; margin-bottom: 0px">
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.energyDown()">
+                                <img class="custom-icon" src="img/minus.svg">
+                            </button>
+                        </div>
+
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <p id="pacerEnergyLabel" class="up-down-label">10<br>mA</p>
+                        </div>
+
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.energyUp()">
+                                <img class="custom-icon" src="img/plus.svg">
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- Pacer Frequency Label -->
+
+                    <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px; margin-top: 1vmin">
+                        <p class="sign-caption" style="text-align: center; margin-top: 1vmin; color: white" for="Test"><b>Frequency</b></p>
+                    </div>
+
+                    <!-- Pacer Frequency Configuration -->
+
+                    <div class="row" style="padding-left: 1vmin; padding-right: 1vmin; margin-top: 0vmin; margin-left: 0px; margin-right: 0px">
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.frequencyDown()">
+                                <img class="custom-icon" src="img/minus.svg">
+                            </button>
+                        </div>
+
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <p id="pacerFrequencyLabel" class="up-down-label">60<br>bpm</p>
+                        </div>
+
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.frequencyUp()">
+                                <img class="custom-icon" src="img/plus.svg">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row bottom-feature-row" style="background-color: #343a40">
+
+            <div class="col-1 col-md-1 bottom-bar" style="padding-left: 0.5vmin">
+                <div class="border border-dark rounded" style="background-color: black; margin-top: 0.5vmin; margin-bottom: 0.5vmin; height: 11vmin; width: inherit; padding: 0px 0.5vmin;">
+                    <button id="powerOffButton" type="button" class="btn btn-light" style="margin-top: 1vmin; padding: 0px; height: 9vmin; width: inherit;" onclick="screenOnOff()">
+                        <img id="powerOffImage" class="custom-icon" src="img/power-off.svg">
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-4 col-md-2 bottom-bar powerButton" style="padding-left: 0.5vmin">
+                <div class="border border-dark rounded" style="background-color: black; margin-top : 0.5vmin; margin-bottom : 0.5vmin; height: 11vmin">
+                    <div class="font-vital-signs" style="text-align: center; height: 100%; line-height: 10vh; font-size: 6vmin; font-family: monospace" id="timerDiv"></div>
+                </div>
+            </div>
+
+
+            <div class="col-4 col-md-2 bottom-bar powerButton">
+                <div class="border border-dark rounded" style="background-color: black; margin-top : 0.5vmin; height: 11vmin">
+                    
+                    <!-- <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px;">
+                        <p class="sign-caption" style="text-align: center; margin-top: 0vmin; color: white" for="Test"><b>Alarm Vol</b></p>
+                    </div> -->
+
+                    <div class="row" style="padding: 0vmin; margin: 1vmin">
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.alarmVolumeDown()">
+                                <img class="custom-icon" src="img/volume-down.svg">
+                            </button>
+                        </div>
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <p id="alarmVolumeLabel" class="up-down-label">80<br>%</p>
+                        </div>
+                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.alarmVolumeUp()">
+                                <img class="custom-icon" src="img/volume-up.svg">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3 col-md-3 bottom-bar powerButton">
+                <div class="border border-dark rounded" style="background-color: black; margin-top : 0.5vmin; height: 11vmin">
+                    <div class="row" style="padding: 1vmin; margin: 0px">
+                        <div class="col-3 col-md-3" style="padding: 0px; margin-right: 1vmin">
+                            <button id="toggleGraphPauseButton" type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="togglePauseGraphs()">
+                                <img id="snowflakeIcon" class="custom-icon" src="img/snowflake.svg">
+                            </button>
+                        </div>
+						 <div class="col-3 col-md-3" style="padding: 0px; margin-right: 1vmin">
+                            <button type="button" class="btn btn-light" style="padding: 1vmin; height: 9vmin; width: inherit" onclick="takeScreenshot()">
+                                <img class="custom-icon" src="img/camera.svg">
+                            </button>
+                        </div>
+						<div class="col-3 col-md-3" style="padding: 0px; margin-right: 1vmin">
+                             <button type="button" class="btn btn-light" style="height: 9vmin;  padding: 0.5vmin; width: inherit" data-toggle="modal" data-target="#nibpHistoryModal">
+							 <img class="custom-icon" src="img/history.svg">
+							 </button>
+							 
+                        </div>
+                        <!--p class="font-vital-signs" style="text-align: center; height: 9vh; line-height: 10vh">Placeholder</p-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 col-md-2 bottom-bar powerButton" style="padding-right: 0.5vmin">
+                <div class="border border-dark rounded" style="background-color: black; margin-top: 0.5vmin; height: 11vmin; padding-right: 1.5vmin">
+                    <div class="row" style="margin: 0px">
+                        <div class="col-6 col-md-6 bottom-bar">
+                            <button id="dropdownToggle" type="button" class="btn btn-light" data-toggle="dropdown" style="margin: 1vmin; white-space: normal; height: 9vmin; padding: 0px; width: inherit" onclick="stopNIBPInterval()">
+                                <img id="toggleRepeatNIBP" class="custom-icon" style="margin: 0px" src="img/retweet.svg"><br>
+                                <b>NIBP</b>
+                            </button>
+                            <div id="dropDownModalID" class="dropdown-menu" style="background-color: #343a40; margin-bottom: 2vmin; padding: 0.5vmin; min-width: 35vmin; margin-right: 35vmin">
+                                <div class="border border-dark rounded" style="background-color: black">
+                                    <div class="row" style="padding: 0px; margin: 0px">
+                                        <div class="col-4 col-md-4" style="padding-left: 1vmin; padding-right: 0.5vmin; padding-top: 1vmin; padding-bottom: 1vmin">
+                                            <button type="button" class="btn btn-light" style="height: 9vmin; padding: 0.5vmin; width: inherit" onclick="getNIBP(5)"><b>5 min</b></button>
+                                        </div>
+                                        <div class="col-4 col-md-4" style="padding-left: 0.5vmin; padding-right: 0.5vmin; padding-bottom: 1vmin; padding-top: 1vmin">
+                                            <button type="button" class="btn btn-light" style="height: 9vmin;  padding: 0.5vmin; width: inherit" onclick="getNIBP(2)"><b>2 min</b></button>
+                                        </div>
+                                        <div class="col-4 col-md-4" style="padding-left: 0.5vmin; padding-right: 1vmin; padding-bottom: 1vmin; padding-top: 1vmin">
+                                            <button type="button" class="btn btn-light" style="height: 9vmin;  padding: 0.5vmin; width: inherit" onclick="getNIBP(1)"><b>1 min</b></button>
+                                        </div>
+										
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6 bottom-bar">
+                            <button id="singleNIBPButton" type="button" class="btn btn-light" style="margin: 1vmin; width: inherit; height: 9vmin; padding: 0px" onclick="getNIBP()"><b>NIBP</b></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 col-md-2 bottom-bar powerButton" style="padding-right: 0.5vmin">
+                <div class="border border-dark rounded" style="background-color: black; margin-top: 0.5vmin; height: 11vmin; padding-right: 1.5vmin">
+                    <div class="row" style="margin: 0px">
+                        <div class="col-6 col-md-6 bottom-bar">
+                            <button id="alarmMuteButton" class="btn btn-light" style="padding: 0; margin: 1vmin; height: 9vmin; width: inherit; white-space: normal; padding: 0px" onclick="toggleAlarmSound()">
+                                <img id="toggleAlarmSoundIcon" class="custom-icon" style="margin: 0px" src="img/bell-slash.svg">
+                                <div id="alarmMuteTimer"></div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-6 bottom-bar">
+                            <button type="button" class="btn btn-light" style="margin: 1vmin; height: 9vmin; width: inherit" data-toggle="modal" data-target="#settingsModal" onclick="getAlarmLevels()">
+                                <img class="custom-icon" src="img/sliders-h.svg">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+		
+        <!-- The Modal -->
+        <div class="modal" id="settingsModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
+                    <div class="border border-dark rounded" style="background-color: black">
+                        <!-- Modal Header -->
+                        <div class="modal-header " style="border-bottom: 0px; padding: 0px; align-content: center">
+                            <nav class="navbar navbar-expand navbar-custom" style="width: 100%; padding-bottom: 0px; padding-top: 0px">
+                                <ul class="navbar-nav nav" style="width: 100%" id="nav-tab">
+                                    <li class="nav-item active" style="width: 50%; text-align: right" id="navAlarmSettingTab">
+                                        <a class="nav-link" style="font-size: 3vmin" href="#nav-alarmSetting" data-toggle="tab" onclick="changeSettingTabTo(1)">Alarm Settings</a>
+                                    </li>
+                                    <li class="nav-item" style="width: 50%; text-align: left" id="navSoundSettingTab">
+                                        <a class="nav-link" style="font-size: 3vmin" href="#nav-soundSetting" data-toggle="tab" onclick="changeSettingTabTo(2)">Sound Settings</a>
+                                    </li>
+                                </ul>
+
+                            </nav>
+                        </div>
+
+
+                        <div class="modal-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="nav-alarmSetting">
+                                    <div class="row" style="padding: 2.5px">
+                                        <div class="col-md-6 border border-dark rounded">
+                                            <div class="range-slider">
+                                                <p class="hrColor" style="text-align: center"> HR [bpm]<br>
+                                                    <input type="text" id="hrSlider" class="js-range-slider" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 border border-dark rounded">
+                                            <div class="range-slider">
+                                                <p class="spo2Color" style="text-align: center"> SpO2 [%]<br>
+                                                    <input type="text" id="spo2Slider" class="js-range-slider" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 2.5px">
+                                        <div class="col-md-6 border border-dark rounded">
+                                            <div class="range-slider">
+                                                <p class="etco2" style="text-align: center"> etCO2 [mmHg] <br>
+                                                    <input type="text" id="etcoSlider" class="js-range-slider" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 border border-dark rounded">
+                                            <div class="range-slider">
+                                                <p class="resp-rate" style="text-align: center"> Resp<br>
+                                                    <input type="text" id="rrSlider" class="js-range-slider" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 2.5px">
+                                        <div class="col-md-6 border border-dark rounded">
+                                            <div class="range-slider">
+                                                <p class="nibpColor" style="text-align: center"> Sys [mmHg] <br>
+                                                    <input type="text" id="sysSlider" class="js-range-slider" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 border border-dark rounded">
+                                            <div class="range-slider">
+                                                <p class="nibpColor" style="text-align: center"> Dia [mmHg] <br>
+                                                    <input type="text" id="diaSlider" class="js-range-slider" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="nav-soundSetting">
+                                    <div class="row" style="padding: 2.5px">
+                                        <div class="col-6 col-md-6">
+                                            <div class="border border-dark rounded">
+                                                <div class="row" style="padding: 1vmin; margin: 0px">
+                                                    <div class="col-12 col-md-12">
+                                                        <p class="sign-caption" style="text-align: center; margin: 0px; color: white; white-space: nowrap">ECG II/SpO2</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="padding: 1vmin; margin: 0px">
+                                                    <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                                                        <button type="button" class="btn btn-light" style="padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeDown()">
+                                                            <img class="custom-icon" src="img/volume-down.svg">
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                                                        <p id="peakSoundVolumeLabel" class="up-down-label">80<br>%</p>
+                                                    </div>
+                                                    <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                                                        <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height:9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeUp()">
+                                                            <img class="custom-icon" src="img/volume-up.svg">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer" style="border-top: 0px; padding-top: 0px; padding-left: 1vmin; padding-right: 1vmin; padding-bottom: 1vmin">
+                            <button type="button" class="btn btn-light" style="height: inherit;" data-dismiss="modal"><img class="custom-icon" src="img/times.svg"></button>
+                            <button type="button" class="btn btn-light" style="height: inherit" onclick="setAlarmLevels()" data-dismiss="modal"><img class="custom-icon" src="img/check.svg"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" id="startupModal" data-keyboard="false" data-backdrop="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div>
+                    <div class="col-12 noPad" style="width: 100%; text-align: center">
+                        <h5 id="bootingLabel" style="color:#ffffff">Booting...</h5>
+                    </div>
+                    <div class="progress-bar col-12 noPad">
+                        <span class="progress-bar-inner-on"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="shutdownModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
+                    <div class="border border-dark rounded" style="background-color: black">
+                        <div class="modal-header" style="border-bottom: 0px; padding: 0px; text-align: center">
+                            <h5 class="modal-title" style="color: white; width: 100%">Shutdown the device?</h5>
+                        </div>
+                        <div class="modal-footer" style="border-top: 0px; padding-top: 0px; padding-left: 1vmin; padding-right: 1vmin; padding-bottom: 1vmin">
+                            <button type="button"  id="shutdownModalNo" class="btn btn-light" style="height: inherit;"><img class="custom-icon" src="img/times.svg" ></button>
+                            <button type="button"  id="shutdownModalYes" class="btn btn-light" style="height: inherit"><img class="custom-icon" src="img/check.svg"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="defiChargeModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
+                    <div class="border border-dark rounded" style="background-color: black">
+                        <div class="modal-header" style="border-bottom: 0px; padding: 0px; text-align: center">
+                            <h4 class="modal-title" style="color: white; width: 100%" id="defiChargeModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="progress-bar">
+                                <span class="progress-bar-inner"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal" id="nibpHistoryModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
+                    <div class="border border-dark rounded" style="background-color: black">
+                        <div class="modal-header" style="border-bottom: 0px; padding: 0px; text-align: center">
+                            <h4 class="modal-title" style ="color:white; width: 100%">NIPB History</h4>
+                        </div>
+                        
+                        <div class="modal-body" style="overflow-y: auto">
+                                <div class="border border-dark rounded">
+                                    <div id="nibp-frame" class="form-group" style="margin-bottom: 0px; width: 100%; padding-left: 2vmin">
+                                        <div id="nibpHistoryDiv" class="nibp-container" style="padding: 0px; height: 20vmin; width: inherit">
+                                            <p id="defaultHistoryLabel" style="color: white">Empty NIBP History</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--/.container-->
+	
+    
+	<div style='display:none' id='screenshotCanvas'></div>
+
+
+
+    <!-- respiratory-plot 
+         <div id="frontend-signal2">
+             <h3>Respiration</h3>
+            <div id="respiration1">
+            </div>
+        </div>-->
+    <!--load twitter bootstrap-->
+    <script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="js/ecg-calculation.js"></script>
+    <script language="javascript" type="text/javascript" src="js/spo2-calculation.js"></script>
+    <script language="javascript" type="text/javascript" src="js/etco2-calculation.js"></script>
+    <script language="javascript" type="text/javascript" src="js/vital-sign-graph.js"></script>
+    <script language="javascript" type="text/javascript" src="js/measurements.js"></script>
+    <script language="javascript" type="text/javascript" src="js/alarm-management.js"></script>
+    <script language="javascript" type="text/javascript" src="js/sound-management.js"></script>
+    <script language="javascript" type="text/javascript" src="js/pacer-management.js"></script>
+    <script language="javascript" type="text/javascript" src="js/defi-management.js"></script>
+    <script language="javascript" type="text/javascript" src="js/cpr-management.js"></script>
+    <script language="javascript" type="text/javascript" src="application.js"></script>
+    <script language="javascript" type="text/javascript" src="js/traineeview.js"></script>
+	<script language="javascript" type="text/javascript" src="js/html2canvas.min.js"></script>
+</body>
+
+</html>

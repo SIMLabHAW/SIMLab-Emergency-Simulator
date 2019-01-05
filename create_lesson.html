@@ -1,0 +1,99 @@
+<!doctype html>
+<!--  Copyright (C) 2018 HAW-Hamburg,
+Project lead: Prof. Dr. Boris Tolg, Prof. Dr. Stefan Oppermann,
+Development: Christian Bauer, Serena Glass, Christine Geßner, Chahinez Chaouchi.
+
+This file is part of SIMLab-Emergency-Simulator.
+
+SIMLab-Emergency-Simulator
+is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMLab-Emergency-Simulator
+is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SIMLab Emergency Simulator</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SIMLab Emergency Simulator">
+    <meta name="author" content="HAW-Hamburg">
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid" style="padding-top:100px">
+
+
+        <div class="row d-flex justify-content-center">
+            <div class="jumbotron">
+                <center><img alt="ECIcon" src="img/ESIcon.svg" height="60px"></center>
+                <h3>SIMLab Emergency Simulator</h3>
+                <form id="lesson-form" role="lesson-form" action="create_lesson.php" method="post">
+                    <div class="form-group">
+                        <label for="create-lesson">Select Trainee</label>
+                        <select id="trainee-select" name="trainee-select" class="custom-select" form="lesson-form" required>
+                        </select>
+                        <div class="invalid-feedback">Select another Trainee</div>
+                    </div>
+					<div style = "float:left">
+						<button type="submit" style="height: 40px; font-size: 1rem" class="btn btn-primary">Start</button>
+                    </div>
+                </form>
+                <div style = "float: right">
+                    <button style="height: 40px; font-size: 1rem" class="btn btn-primary" onclick = "openPrintPopUp()">Print Previous Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+<script language="javascript" type="text/javascript" src="application.js"></script>
+
+<script>
+
+    function getTrainees() {
+        $.post("applicationcontroller.php",
+            {
+                // send parameter 'callMethod' with value 'getTraineesJson'
+                callMethod: 'getTraineesJson' 
+            }, function (data) {
+                if (data) {
+                    var trainees = JSON.parse(data);
+                    var select = document.getElementById('trainee-select');
+
+                    for (var trainee of trainees) {
+                        var opt = document.createElement('option');
+                        opt.value = trainee.id;
+                        opt.innerHTML = trainee.name;
+                        select.appendChild(opt);
+                    }
+                }else{
+                    console.log("Could not retrieve trainees from database.");
+                }
+            });
+
+    }
+    $(document).ready(function () {
+        //...load all current values from database-->stored in initControls
+        getTrainees();
+    });
+
+</script>
+
+</html>

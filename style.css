@@ -1,0 +1,463 @@
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.progress-bar-inner-on {
+    display: block;
+    height: 45px;
+    width: 0%;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    position: relative;
+    animation: auto-progress 5s linear;
+    animation-fill-mode: forwards;
+}
+
+.progress-bar-inner {
+    display: block;
+    height: 45px;
+    width: 0%;
+    background-color: #FF4500;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    position: relative;
+    animation: auto-progress 2.3s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes auto-progress {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.progress-bar {
+    background-color: #1a1a1a;
+    height: 45px;
+    width: 450px;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+}
+
+body {
+    background: black;
+
+}
+
+.jumbotron {
+    padding: 2rem 1rem
+}
+
+.navbar-trainee {
+    height: 8vmin;
+}
+
+.navbar-trainer {
+    height: 8vmin;
+}
+
+.navbar-brand {
+    font-size: 3.5vmin;
+}
+
+.btn.btn-login {
+    color: #000000;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa
+}
+
+.btn.btn-login:not(:disabled):not(.disabled):active,
+.btn.btn-login:not(:disabled):not(.disabled).active,
+.show > .btn-login.dropdown-toggle {
+    color: #ffffff;
+    background-color: #28a745;
+    border-color: #28a745;
+    outline: 0;
+    box-shadow: none!important;
+}
+
+.up-down-label {
+    color: white; 
+    padding: 0px; 
+    text-align: center; 
+    height: 9vh; 
+    line-height: 4vmin; 
+    margin-bottom: 0px; 
+    white-space: normal; 
+    font-size: 3vmin; 
+    font-weight: bold
+}
+
+.my-2 {
+    height: 6.5vmin;
+    font-size: 2.5vmin;
+}
+
+.btn-outline-success {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.bottom-feature-row {
+    height: 12vh;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.sign-values {
+    font-size: 8vmin;
+    font-weight: bold;
+}
+
+.sign-values-nibp {
+    font-size: 6vmin;
+    line-height: 5vmin;
+    font-weight: bold;
+}
+
+#sidebar {
+
+    padding: 0px;
+    /*padding-left: 10px;*/
+}
+
+.col-sm-3 {
+    min-width: 145px;
+    /* depends how much minimum width you require */
+}
+
+.col-6 {
+    padding-right: 10px;
+}
+
+.sign-caption {
+    /**/
+    height: 2vmin;
+    font-size: 2.5vmin;
+    text-align: left;
+    line-height: 3.2vmin;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none;
+}
+
+.bottom-bar {
+    padding-left: 0.25vmin;
+    padding-right: 0.25vmin;
+}
+
+/*.half-rule { 
+    background-color: white;
+    height: 0.1vmin;
+    margin-left: 1vmin;
+    margin-right: 1vmin;
+ }*/
+
+.alarm-border {
+    outline-width: 0.4vmin;
+    outline-style: solid;
+    outline-color: #dc3545;
+}
+
+.sign-detail {
+    height: 20vh;
+    font-size: 2.5vmin;
+    text-align: right;
+    padding-right: 1vmin;
+    padding-left: 1vmin;
+    margin-right: 0.3vmin;
+}
+
+.etco2-value {
+    height: 15vh;
+}
+
+.rr-value {
+    height: 5vmin;
+}
+
+.custom-select {
+    height: 6.5vmin;
+    font-size: 2.8vmin;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    /*color: black;*/
+}
+
+.custom-button {
+    height: 6.5vmin;
+    font-size: 2.8vmin;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.custom-input {
+    height: 6.5vmin;
+    font-size: 2.8vmin;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.custom-icon {
+    align-content: center;
+    height: 4vmin;
+    line-height: 5vmin;
+    width: 4vmin;
+    margin: 1vmin;
+    /*    pointer-events:none;*/
+}
+
+.custom-inner-icon {
+    align-content: center;
+    width: inherit;
+    height: inherit;
+    padding: 1vmin;
+    margin: 0px;
+}
+
+.sign-chart-container {
+    height: 20vh;
+}
+
+.trainer-sign-chart-container {
+    height: 13vh;
+}
+
+.bloodpressure {
+    height: 19vh;
+    color: rgb(228, 5, 5);
+    text-align: right;
+}
+
+.noPad {
+    padding: 0px
+}
+
+.noLPad {
+    padding-left: 0px;
+}
+
+.noRPad {
+    padding-right: 0px;
+}
+
+.nibpColor {
+    color: rgb(228, 5, 5);
+}
+
+.hrColor {
+    color: rgb(41, 235, 41);
+}
+
+.spo2Color {
+    color: rgb(230, 216, 97);
+}
+
+.etco2,
+.etco2-value {
+    color: rgb(27, 213, 238);
+}
+
+.resp-rate {
+    color: rgb(44, 74, 241);
+}
+
+#pauseGraphs {
+    color: rgb(228, 5, 5);
+}
+
+.font-vital-signs {
+    color: rgb(255, 255, 255);
+    font-size: 2.5vmin;
+    margin-bottom: 0px;
+    line-height: 3.5vmin
+}
+
+.size {
+    font-size: 3vmin;
+}
+
+
+/*************Navbar in settings*****************/
+.navbar-custom {
+    background-color: #000000;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255, 255, 255, .8);
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, .5);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+
+/*************switch button*****************/
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 0px;
+}
+
+.dropdown-menu {
+    background-color: #343a40; 
+    padding: 0px
+}
+
+.dropdown-item {
+    padding-left: 0.5rem;
+    padding-right: 0px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.dropdown-item:active, .dropdown-item:hover {
+    background-color: #000000; /* #f8f9fa; */
+    color: #ffffff;
+}
+
+
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.main-container {
+    padding-top: 1vmin;
+}
+
+/*messages*/
+.messages-container {
+    /*padding-top: 20px;
+    width: 500px;
+    height: 200px;*/
+    overflow: auto;
+    float: left;
+
+}
+
+.container {
+    padding: 60px 15px 0;
+}
+
+.footer>.container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+    /* Set the fixed height of the footer here */
+    height: 85px;
+    padding: 5px;
+    line-height: 20px;
+    /* Vertically center the text there */
+    /*background-color: #f5f5f5;*/
+    color: white;
+}
+
+.body-trainee {
+    /*There is no footer here*/
+    margin-bottom: 0px;
+}
+
+#messages p {
+    color: white;
+    font-size: 11;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
