@@ -65,7 +65,7 @@ $ bower install
 
 Developers:
 - <a href="https://github.com/GitHelge" target="_blank">**Christian Bauer**</a>
-- Serena Glass
+- <a href="https://github.com/HappyLychee" target="_blank">**Serena Glass**</a>)
 - Christine Geßner
 - Chahinez Chaouchi
 
