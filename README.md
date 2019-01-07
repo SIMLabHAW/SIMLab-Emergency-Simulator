@@ -16,10 +16,9 @@
 
 - To use the Emergency Simulator, a device functioning as server and local area connection between devices is required. One possibility to build up such an environment is e.g. to use <a href="https://www.apachefriends.org/de/index.html" target="_blank">XAMPP</a> in combination with a wlan hotspot.
   - A modern internet browser is required. (Tests where performed with *Chrome* and *Firefox*.)
-- When using XAMPP, the sourcecode needs to be placed in a subfolder preferably called **esim** 
-  in *htdocs*. 
-  - If another name like *my_name* is chosen for the folder, the web app can be accessed using ```localhost/my_name/```.
-
+- When the codebase is downloaded, the initial name of the archive is *SIMLab-Emergency-Simulator-master.zip*. It is recommended to rename the unzipped folder to **esim**.
+- When using XAMPP, the previously downloaded folder (now preferably named **esim**) needs to be placed in *htdocs*.  
+  - If another name like *my_name* is chosen instead of *esim*, the web app can be accessed using ```localhost/my_name/```.
 
 <!-- 
 - All the `code` required to get started
