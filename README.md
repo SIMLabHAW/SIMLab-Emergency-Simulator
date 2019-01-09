@@ -105,7 +105,21 @@ Following projects were used in this work:
 - Font Awesome Free v5.4.1 <a href="https://fontawesome.com" target="_blank">`fontawesome.com`</a>
 - Natural Docs v2.0 <a href="https://www.naturaldocs.org" target="_blank">`naturaldocs.org`</a>
 - ...further sources are named in each file.
+
 ---
+
+## Contributions
+
+This section is work in progress and will be updated throughout the course of January and Febuary 2019.
+
+### Potential Changes and Features for Future Versions
+
+- 12 Channel ECG
+- Code Quality Improvements (e.g. ESLint)
+- Detailed Taining-Documentation
+- Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
+- Use Node.js as Backend-Solution instead of PHP
+
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
