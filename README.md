@@ -16,10 +16,9 @@
 
 - To use the Emergency Simulator, a device functioning as server and local area connection between devices is required. One possibility to build up such an environment is e.g. to use <a href="https://www.apachefriends.org/de/index.html" target="_blank">XAMPP</a> in combination with a wlan hotspot.
   - A modern internet browser is required. (Tests where performed with *Chrome* and *Firefox*.)
-- When using XAMPP, the sourcecode needs to be placed in a subfolder preferably called **esim** 
-  in *htdocs*. 
-  - If another name like *my_name* is chosen for the folder, the web app can be accessed using ```localhost/my_name/```.
-
+- When the codebase is downloaded, the initial name of the archive is ```SIMLab-Emergency-Simulator-master.zip```. It is recommended to rename the unzipped folder to **esim**.
+- When using XAMPP, the previously downloaded folder (now preferably named **esim**) needs to be placed in *htdocs*.  
+  - If another name like *my_name* is chosen instead of *esim*, the web app can be accessed using ```localhost/my_name/```.
 
 <!-- 
 - All the `code` required to get started
@@ -65,7 +64,7 @@ $ bower install
 
 Developers:
 - <a href="https://github.com/GitHelge" target="_blank">**Christian Bauer**</a>
-- Serena Glass
+- <a href="https://github.com/HappyLychee" target="_blank">**Serena Glass**</a>
 - Christine Geßner
 - Chahinez Chaouchi
 
@@ -106,7 +105,21 @@ Following projects were used in this work:
 - Font Awesome Free v5.4.1 <a href="https://fontawesome.com" target="_blank">`fontawesome.com`</a>
 - Natural Docs v2.0 <a href="https://www.naturaldocs.org" target="_blank">`naturaldocs.org`</a>
 - ...further sources are named in each file.
+
 ---
+
+## Contributions
+
+This section is work in progress and will be updated throughout the course of January and Febuary 2019.
+
+### Potential Changes and Features for Future Versions
+
+- 12 Channel ECG
+- Code Quality Improvements (e.g. ESLint)
+- Detailed Taining-Documentation
+- Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
+- Use Node.js as Backend-Solution instead of PHP
+
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
