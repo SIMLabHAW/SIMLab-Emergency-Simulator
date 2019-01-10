@@ -22,7 +22,7 @@
 
 
 // All code comes from here http://www.fpdf.org/
-require('fpdf181/fpdf.php');
+require('../fpdf181/fpdf.php');
 
 class PDF extends FPDF {
     // Load data

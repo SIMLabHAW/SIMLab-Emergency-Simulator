@@ -28,7 +28,7 @@ const ViewType = {
 
 function getLesson(callback) {
     //load data from database in json format (see file applicationcontroller.php)
-    $.post("applicationcontroller.php", //post: request to server on applicationcontroller.php
+    $.post("php/applicationcontroller.php", //post: request to server on applicationcontroller.php
         {
             callMethod: 'getLessonJson' //send parameter 'callMethod' with value 'getLessonJson'->
         },
@@ -53,7 +53,7 @@ function getLesson(callback) {
 }
 
 function saveLesson(simConfig) {
-    $.post("applicationcontroller.php", //post: request to server on applicationcontroller.php
+    $.post("./php/applicationcontroller.php", //post: request to server on applicationcontroller.php
         {
             callMethod: 'saveLessonFromJson',
             parameters: simConfig //send parameter 'callMethod' with value 'getLessonJson'->
@@ -62,7 +62,7 @@ function saveLesson(simConfig) {
 }
 
 function saveComment(comment) {
-    $.post("applicationcontroller.php", //post: request to server on applicationcontroller.php
+    $.post("./php/applicationcontroller.php", //post: request to server on applicationcontroller.php
         {
             callMethod: 'saveComment',
             parameters: comment //send parameter 'callMethod' with value 'getLessonJson'->
@@ -71,7 +71,7 @@ function saveComment(comment) {
 }
 
 function saveTime(newTime){
-             $.post("applicationcontroller.php", //post: request to server on applicationcontroller.php
+             $.post("./php/applicationcontroller.php", //post: request to server on applicationcontroller.php
         {
             callMethod: 'saveTime',
             parameters: newTime //send parameter 'callMethod' with value 'getLessonJson'->
@@ -81,7 +81,7 @@ function saveTime(newTime){
 
 
 function getVitalSignParameters(callback) {
-    $.post("applicationcontroller.php", //post: request to server on applicationcontroller.php
+    $.post("./php/applicationcontroller.php", //post: request to server on applicationcontroller.php
         {
             callMethod: 'getVitalSignParametersJson',
         },
@@ -101,7 +101,7 @@ function logout() {
     $.ajax({
         type: 'POST',
         async: false, // important to assure that first the php script is executed
-        url: 'applicationcontroller.php',
+        url: './php/applicationcontroller.php',
         data: ({
             // parameter a determines which functions should be executed in controller
             a: 'logout'
@@ -152,7 +152,7 @@ var popup;
 
 function openPrintPopUp() {
     popup = createPopup();
-    popup.location = 'print_pdf.php';
+    popup.location = './php/print_pdf.php';
 }
 
 function createPopup() {

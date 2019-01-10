@@ -407,7 +407,7 @@ function takeScreenshot() {
 		var canvas = document.getElementById('screenshotCanvas').getElementsByTagName('canvas')[0];
         var canvasData = canvas.toDataURL("image/png");
         var ajax = new XMLHttpRequest();
-        ajax.open("POST",'saveScreenshot.php', true);
+        ajax.open("POST",'./php/saveScreenshot.php', true);
         ajax.setRequestHeader('Content-Type', 'application/upload');
         ajax.send(canvasData);
 	 });

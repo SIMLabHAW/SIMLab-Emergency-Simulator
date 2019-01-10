@@ -52,7 +52,7 @@
 		$unencodedData=base64_decode($filteredData);
 
 		//The name of the directory that we need to create.
-		$directoryName = 'screenshots/'.$trainerName[0][0].'';
+		$directoryName = '../screenshots/'.$trainerName[0][0].'';
 		
 		//Check if the directory already exists.
 		if(!is_dir($directoryName)){
@@ -60,13 +60,13 @@
 			mkdir($directoryName, 0755, true);
 		}
 		
-		$directoryName2 = 'screenshots/'.$trainerName[0][0].'/'.$traineeName[0][0].'';
+		$directoryName2 = '../screenshots/'.$trainerName[0][0].'/'.$traineeName[0][0].'';
 		if(!is_dir($directoryName2)){
 			mkdir($directoryName2, 0755, true);
 		}
 		
 		// Save file
-		$fp = fopen('screenshots/'.$trainerName[0][0].'/'.$traineeName[0][0].'/'.$date.'.png', 'wb' );
+		$fp = fopen('../screenshots/'.$trainerName[0][0].'/'.$traineeName[0][0].'/'.$date.'.png', 'wb' );
 		echo $fp ;
 		fwrite( $fp, $unencodedData);
 		fclose( $fp );

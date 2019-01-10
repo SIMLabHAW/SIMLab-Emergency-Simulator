@@ -33,8 +33,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
     <meta name="description" content="SimLab-Emergency-Simulator">
     <meta name="author" content="HAW Hamburg">
 
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -68,7 +68,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
             <div class="jumbotron">
                 <center><img alt="ECIcon" src="img/ESIcon.svg" height="60px"></center>
                 <h3>SIMLab Emergency Simulator</h3>
-                <form role="form" action="login.php" method="post">
+                <form role="form" action="php/login.php" method="post">
 					<label for="inputName">Enter Name:</label>
                     <div class="form-group row">
                         <div class="col-sm-10">
@@ -80,25 +80,23 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                         </div>
                     </div>
 					
-                    <fieldset class="form-group">
-                            <label for="inputName">Role:</label>
-                        <div class="row">
+                    <label for="inputName">Role:</label>
+                    <div class="row">
 
-                            <div class="col-8">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label id ="trainerID" class="btn btn-login ">
-                                    <input class="form-check-input" type="radio" name="role" id="trainerRoleOption" value="trainer" autocomplete="off" > Trainer
-                                    </label>
-                                    <label id ="traineeID" class="btn btn-login active">
-                                    <input class="form-check-input" type="radio" name="role" id="traineeRoleOption" value="trainee" autocomplete="off" checked > Trainee
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" onclick="getRole()" class="btn btn-primary float-right">Sign in</button>
+                        <div class="col-8">
+                            <div class="btn-group btn-group-toggle">
+                                <label id ="trainerID" class="btn btn-login ">
+                                <input class="form-check-input" type="radio" name="role" id="trainerRoleOption" value="trainer" autocomplete="off" > Trainer
+                                </label>
+                                <label id ="traineeID" class="btn btn-login active">
+                                <input class="form-check-input" type="radio" name="role" id="traineeRoleOption" value="trainee" autocomplete="off" checked> Trainee
+                                </label>
                             </div>
                         </div>
-                    </fieldset>
+                        <div class="col-4">
+                            <button type="submit" onclick="getRole()" class="btn btn-primary float-right">Sign in</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -146,7 +144,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 var users;
 
 function getAllUsers() {
-    $.post("applicationcontroller.php",
+    $.post("php/applicationcontroller.php",
         {
             // send parameter 'callMethod' with value 'getAllUsersJson'
             callMethod: 'getAllUsersJson' 
@@ -170,6 +168,8 @@ function getAllUsers() {
 	
 function getRole() {
     var selectedUser = $("#inputName").val();
+    if (selectedUser== "") return;
+
     var userIsTrainer = false;
 
     if (users == undefined) return;
@@ -180,14 +180,14 @@ function getRole() {
         }
     }
     if(userIsTrainer){
-        $("#trainerRoleOption").attr("checked", true);
-        $("#traineeRoleOption").attr("checked", false);
+        $("#trainerRoleOption").prop("checked", true);
+        $("#traineeRoleOption").prop("checked", false);
         $("#trainerID").addClass('active');
         $("#traineeID").removeClass('active');
     }
     else{
-        $("#traineeRoleOption").attr("checked", true);
-        $("#trainerRoleOption").attr("checked", false);
+        $("#traineeRoleOption").prop("checked", true);
+        $("#trainerRoleOption").prop("checked", false);
         $("#traineeID").addClass('active');
         $("#trainerID").removeClass('active');
     }
@@ -195,24 +195,39 @@ function getRole() {
 
 const RoleType = {Trainer: 0, Trainee: 1};
 
-var changeRoleType;
+var roleType = RoleType.Trainee;
 var wasConfirmed;
 var modalConfirm = function(callback){
 
+
     wasConfirmed = false;
     $("#confirmModalTitle").text("Are you sure you want to change your role to " + 
-    (($("#trainerRoleOption").attr("checked") == "checked") ? "Trainee" : "Trainer")  + "?");
+    (($("#trainerRoleOption").prop("checked")) ? "Trainee" : "Trainer")  + "?");
 
     $("#trainerID").on("click", function(){
-        if($("#trainerRoleOption").attr("checked") == "checked") return; 
-        $("#mi-modal").modal('show');
-        changeRoleType = RoleType.Trainer;
+        if($("#trainerRoleOption").prop("checked")) return; 
+        var user = $("#inputName").val();
+        if (user != "") {
+            $("#mi-modal").modal('show');
+            roleType = RoleType.Trainer;
+        } else {
+            roleType = RoleType.Trainer;
+            callback(true);
+            wasConfirmed = true;
+        }
     });
     
     $("#traineeID").on("click", function(){
-        if($("#traineeRoleOption").attr("checked") == "checked") return; 
-        $("#mi-modal").modal('show');
-        changeRoleType = RoleType.Trainee;
+        if($("#traineeRoleOption").prop("checked")) return; 
+        var user = $("#inputName").val();
+        if (user != "") {
+            $("#mi-modal").modal('show');
+            roleType = RoleType.Trainee;
+        } else {
+            roleType = RoleType.Trainee;
+            callback(true);
+            wasConfirmed = true;
+        }
     });
   
     $("#modal-btn-si").on("click", function(){
@@ -234,27 +249,27 @@ var modalConfirm = function(callback){
 };
 
 modalConfirm(function(confirm) {
-    if(changeRoleType == RoleType.Trainer) {
+    if(roleType == RoleType.Trainer) {
         if(confirm){ 
-            $("#trainerRoleOption").attr("checked", true);
-            $("#traineeRoleOption").attr("checked", false);
+            $("#trainerRoleOption").prop("checked", true);
+            $("#traineeRoleOption").prop("checked", false);
             $("#trainerID").addClass('active');
             $("#traineeID").removeClass('active');
         } else {
-            $("#trainerRoleOption").attr("checked", false);
-            $("#traineeRoleOption").attr("checked", true);
+            $("#trainerRoleOption").prop("checked", false);
+            $("#traineeRoleOption").prop("checked", true);
             $("#trainerID").removeClass('active');
             $("#traineeID").addClass('active');
         }
     } else {
         if(confirm) {
-            $("#traineeRoleOption").attr("checked", true);
-            $("#trainerRoleOption").attr("checked", false);
+            $("#traineeRoleOption").prop("checked", true);
+            $("#trainerRoleOption").prop("checked", false);
             $("#traineeID").addClass('active');
             $("#trainerID").removeClass('active');
         } else {
-            $("#trainerRoleOption").attr("checked", true);
-            $("#traineeRoleOption").attr("checked", false);
+            $("#trainerRoleOption").prop("checked", true);
+            $("#traineeRoleOption").prop("checked", false);
             $("#trainerID").addClass('active');
             $("#traineeID").removeClass('active');
         }

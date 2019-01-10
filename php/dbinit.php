@@ -51,21 +51,21 @@
         exit(); 
     }
 
-    $sqlCreateLessons = file_get_contents('db/lessons.sql');
+    $sqlCreateLessons = file_get_contents('../db/lessons.sql');
     if (!mysqli_query($link, $sqlCreateLessons)) {
         $error = 'Unable to create table "lessons".'; 
         error_log($error);
         exit(); 
     }
 
-    $sqlCreateUsers = file_get_contents('db/users.sql');
+    $sqlCreateUsers = file_get_contents('../db/users.sql');
     if (!mysqli_query($link, $sqlCreateUsers)) {
         $error = 'Unable to create table "users".'; 
         error_log($error);
         exit(); 
     }
 
-    $sqlCreateMessages = file_get_contents('db/messages.sql');
+    $sqlCreateMessages = file_get_contents('../db/messages.sql');
     if (!mysqli_query($link, $sqlCreateMessages)) {
         $error = 'Unable to create table "messages".'; 
         error_log($error);

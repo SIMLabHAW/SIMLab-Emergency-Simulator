@@ -26,6 +26,12 @@
     include 'domain.php';
 	
 	if(empty($_POST["username"]) or empty($_POST["role"])){
+        if (empty($_POST["username"])) {
+            error_log("username empty");
+        }
+        if (empty($_POST["role"])) {
+            error_log("role empty");
+        }
 		exit("You need to enter a username and role");
 	}
 	
@@ -53,12 +59,12 @@
     switch ($role){
         case 'trainee':
             $_SESSION["traineeID"]= $currentUser->getId();
-            header('Location: join_lesson.html');
+            header('Location: ../join_lesson.html');
             exit();
             break;
         case 'trainer':
             $_SESSION["trainerID"]= $currentUser->getId();
-            header('Location: create_lesson.html');
+            header('Location: ../create_lesson.html');
             exit();
             break;
     }

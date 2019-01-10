@@ -61,8 +61,8 @@
     <title>Emergency Simulator - Session Printer</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -75,9 +75,6 @@
                 <form id="lesson-form" role="lesson-form" action="create_pdf.php" method="post">
                     <div class="form-group">
                         <label for="trainerID">Trainer:</label>
-                        <!--select id="trainerID" name="trainerID" class="custom-select" form="lesson-form" required>
-                            <option></option>
-                        </select-->
 						<?php
 							echo '<input type="text" name = "trainerID" id="trainerID" value="'.$trainer_id_session.'" style= "display:none"></input>';
 							echo '<span id = "trainer_name">'.$name[0][0].'</span>';
@@ -104,14 +101,12 @@
     </div>
 </body>
 
-<script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+<script language="javascript" type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="../js/popper.min.js"></script>
+<script language="javascript" type="text/javascript" src="../js/bootstrap.min.js"></script>
 
 <script>
-			//post: request to server on applicationcontroller.php
-
-
+    // TODO: Cleanup!
 </script>
 
 </html>

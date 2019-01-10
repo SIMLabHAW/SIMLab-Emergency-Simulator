@@ -36,6 +36,6 @@
 
     /* Destroys the session and redirects to index.html. */
     session_destroy();
-    header('Location: index.html');
+    header('Location: ../index.html');
     exit();
 ?> 

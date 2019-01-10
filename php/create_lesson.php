@@ -34,7 +34,7 @@
         if ($lesson){
             $_SESSION['traineeID'] = $traineeID;
             // error_log("Starting application for lesson with id: " . $lesson->getId());
-            header('Location: trainerview.html');
+            header('Location: ../trainerview.html');
         }else{
             error_log("Could not start application");
         }

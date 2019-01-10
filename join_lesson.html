@@ -30,8 +30,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
     <meta name="description" content="SIMLab Emergency Simulator">
     <meta name="author" content="HAW-Hamburg">
 
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,7 +52,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 <script>
 
     function joinActiveLesson() {
-        $.post("join_lesson.php",//post: request to server on applicationcontroller.php
+        $.post("php/join_lesson.php",//post: request to server on applicationcontroller.php
             {
                 callMethod: 'joinActiveLesson',
             }, function (data) {

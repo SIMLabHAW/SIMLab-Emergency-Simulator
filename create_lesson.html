@@ -29,8 +29,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
     <meta name="description" content="SIMLab Emergency Simulator">
     <meta name="author" content="HAW-Hamburg">
 
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,7 +41,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
             <div class="jumbotron">
                 <center><img alt="ECIcon" src="img/ESIcon.svg" height="60px"></center>
                 <h3>SIMLab Emergency Simulator</h3>
-                <form id="lesson-form" role="lesson-form" action="create_lesson.php" method="post">
+                <form id="lesson-form" role="lesson-form" action="php/create_lesson.php" method="post">
                     <div class="form-group">
                         <label for="create-lesson">Select Trainee</label>
                         <select id="trainee-select" name="trainee-select" class="custom-select" form="lesson-form" required>
@@ -63,12 +63,12 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 <script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/popper.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
-<script language="javascript" type="text/javascript" src="application.js"></script>
+<script language="javascript" type="text/javascript" src="js/application.js"></script>
 
 <script>
 
     function getTrainees() {
-        $.post("applicationcontroller.php",
+        $.post("php/applicationcontroller.php",
             {
                 // send parameter 'callMethod' with value 'getTraineesJson'
                 callMethod: 'getTraineesJson' 
