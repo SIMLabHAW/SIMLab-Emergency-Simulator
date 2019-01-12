@@ -1,3 +1,6 @@
+This copyright notice is included, to credit the author for the use of several algorithms in real-time-generation of the ECG.
+For more information, look in >ecgcalculation.js<.
+
 Copyright (c) 2006, karthik raviprakash
 All rights reserved.
 
