@@ -257,7 +257,7 @@ function screenOnOff() {
             $("#pacerEnergyLabel").css('visibility','hidden');
             $("#pacerFrequencyLabel").css('visibility','hidden'); */
 
-            $("#powerOffImage").attr("src", "img/power-off.svg");
+            $("#powerOffImage").attr("src", "assets/img/power-off.svg");
             
             screenVisible = false;
         });
@@ -275,7 +275,7 @@ function screenOnOff() {
         $("#pacerEnergyLabel").css('visibility','hidden');
         $("#pacerFrequencyLabel").css('visibility','hidden'); */
 
-        $("#powerOffImage").attr("src", "img/power-off.svg");
+        $("#powerOffImage").attr("src", "assets/img/power-off.svg");
         
         screenVisible = false;
         screenVisibilityInitialized = true;
@@ -299,7 +299,7 @@ function screenOnOff() {
             $("#pacerEnergyLabel").css('visibility','visible');
             $("#pacerFrequencyLabel").css('visibility','visible'); */
 
-            $("#powerOffImage").attr("src", "img/power-off-green.svg");
+            $("#powerOffImage").attr("src", "assets/img/power-off-green.svg");
 
             screenVisible = true;
         }, 5000);
@@ -381,11 +381,11 @@ function togglePauseGraphs() {
     if(graphsPaused) {
         $("#toggleGraphPauseButton").removeClass("btn-light");
         $("#toggleGraphPauseButton").addClass("btn-success");
-        $("#snowflakeIcon").attr("src", "img/snowflake-white.svg");
+        $("#snowflakeIcon").attr("src", "assets/img/snowflake-white.svg");
     } else {
         $("#toggleGraphPauseButton").removeClass("btn-success");
         $("#toggleGraphPauseButton").addClass("btn-light");
-        $("#snowflakeIcon").attr("src", "img/snowflake.svg");
+        $("#snowflakeIcon").attr("src", "assets/img/snowflake.svg");
     }
 
     ecgGraph.togglePauseGraph();
@@ -447,7 +447,7 @@ function getNIBP(interval = -1) {
                 nibpCountdownInterval = interval;
                 nibpIntervalDuration = interval * 60;
                 nibpOneSecondTimer = setInterval(nibpRepetitionTimer, 1000);
-                $("#toggleRepeatNIBP").attr("src", "img/pause.svg");
+                $("#toggleRepeatNIBP").attr("src", "assets/img/pause.svg");
                 $("#dropdownToggle").removeClass("btn-light");
                 $("#dropdownToggle").addClass("btn-success");
                 $("#dropdownToggle").attr("data-toggle", "");
@@ -498,9 +498,9 @@ function nibpRepetitionTimer() {
     resets the corresponding UI-Elements. 
 */
 function stopNIBPInterval() {
-    if ($("#toggleRepeatNIBP").attr("src") === "img/pause.svg") {
+    if ($("#toggleRepeatNIBP").attr("src") === "assets/img/pause.svg") {
         clearInterval(nibpOneSecondTimer);
-        $("#toggleRepeatNIBP").attr("src", "img/retweet.svg");
+        $("#toggleRepeatNIBP").attr("src", "assets/img/retweet.svg");
         $("#dropdownToggle").removeClass("btn-success");
         $("#dropdownToggle").addClass("btn-light");
         $("#dropDownModalID").show();
@@ -672,8 +672,8 @@ function alarmMuteTimer() {
 }
 
 function toggleAlarmSoundIcon(changeToOn = false) {
-    if ($("#toggleAlarmSoundIcon").attr("src") === "img/bell.svg") {
-        $("#toggleAlarmSoundIcon").attr("src", "img/bell-slash.svg");
+    if ($("#toggleAlarmSoundIcon").attr("src") === "assets/img/bell.svg") {
+        $("#toggleAlarmSoundIcon").attr("src", "assets/img/bell-slash.svg");
         $("#alarmMuteButton").removeClass("btn-success");
         $("#alarmMuteButton").addClass("btn-light");
         
@@ -681,7 +681,7 @@ function toggleAlarmSoundIcon(changeToOn = false) {
         clearInterval(alarmMuteInterval);
         alarmMuteDuration = 120;
     } else if (!changeToOn) {
-        $("#toggleAlarmSoundIcon").attr("src", "img/bell.svg");
+        $("#toggleAlarmSoundIcon").attr("src", "assets/img/bell.svg");
         $("#alarmMuteButton").removeClass("btn-light");
         $("#alarmMuteButton").addClass("btn-success");
         $("#alarmMuteTimer").html("2:00");

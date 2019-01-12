@@ -58,11 +58,11 @@ function SoundManagement(soundCallback) {
         Indicates, if the alarm sound is initialized. */
     var isAlarmSoundInitialized = false;
 
-    var nibpAudio = new Audio("audio/NIBPSound.mp3");
-    var nibpAudioShort = new Audio("audio/NIBPSoundShort.mp3");
-	var defiLoadAudio = new Audio("audio/defi_load.mp3");
-	var defiFullyLoadAudio = new Audio("audio/defi_fully_loaded.mp3");
-    var defiShockAudio = new Audio("audio/defi_shock.mp3");
+    var nibpAudio = new Audio("assets/img/NIBPSound.mp3");
+    var nibpAudioShort = new Audio("assets/img/NIBPSoundShort.mp3");
+	var defiLoadAudio = new Audio("assets/img/defi_load.mp3");
+	var defiFullyLoadAudio = new Audio("assets/img/defi_fully_loaded.mp3");
+    var defiShockAudio = new Audio("assets/img/defi_shock.mp3");
     
     /* Variable: alarmAudio
         Is played repeatedly, when an alarm occurs.
@@ -70,7 +70,7 @@ function SoundManagement(soundCallback) {
         See also: 
         "<ding.wav: https://freesound.org/people/tim.kahn/sounds/91926/>" by <tim.kahn: https://freesound.org/people/tim.kahn/> is licensed under <CC BY 3.0: https://creativecommons.org/licenses/by/3.0/> 
     */
-    var alarmAudio = new Audio("audio/ding_sound.wav");
+    var alarmAudio = new Audio("assets/img/ding_sound.wav");
 
     /* Variable: context
         Contains the context to be used to play sounds. */
