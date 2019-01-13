@@ -275,10 +275,24 @@ modalConfirm(function(confirm) {
         }
     }
 });
-	 	
+         
+var supportsES6 = function() {
+  try {
+    new Function("(a = 0) => a");
+    return true;
+  }
+  catch (err) {
+    return false;
+  }
+}();
+
+
 $(document).ready(function () {
     //...load all current values from database-->stored in initControls
     getAllUsers();
+    if (!supportsES6){
+        alert("Please update your Webbrowser to correctly run the Emergency Simulator App.");
+    }
 });
 
 </script>
