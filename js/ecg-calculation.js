@@ -303,9 +303,12 @@ var ECGCalculation = function() {
         Used to randomize the provided heart-rate. */
     function randomize(hr, simTime) {
         var randHR = (!self.hasAVBlock) ? self.currentRandHR : hr;
-        if (simTime===0 && hr > 10 && !isOffsetCalculation) {
-            randHR = Math.round((Math.random()-0.5) * hr*0.15 + hr);
-        } else if (hr <= 10) {
+        if (simTime===0 && hr >= 40 && !isOffsetCalculation) {
+            var maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
+            randHR = Math.round((Math.random()-0.5) * hr*maxRandFactor + hr);
+        } else if (randHR != hr && randHR <= 10 && !isOffsetCalculation) {
+            randHR = hr;
+        } else if (hr < 40) {
             
             // So that no problems occur.
             randHR = hr;
@@ -404,7 +407,7 @@ var ECGCalculation = function() {
         var k = 6/halfValueDif;
         return param - (param*0.6)/(1+(Math.exp(-k*((hr-normalHF)-halfValueDif))));
     }
-
+    var tempLast = 0.7;
     /* Function: calculateECGValue
         In this function, the different compartments of the ECG signal are calculated.
         Every signal-part is afterwards summed up to build one point of the ECG. The ECG is 
@@ -422,6 +425,11 @@ var ECGCalculation = function() {
         self.currentHR = calculateCurrentHFValue(vitalSigns, hrChangeDuration);
         randHR = randomize(self.currentHR, simTime);
 
+        var hrTemp = randHR;
+        if (hrTemp < 35 && vitalSigns.name == "Sinus Rhythm") {
+            hrTemp = 60;
+        }
+
         // Variables for the P-Wave:
         var pWaveAmplitude = 0.25, 
             pWaveDuration = getTimeForParameter(randHR, 0.09), 
@@ -430,19 +438,21 @@ var ECGCalculation = function() {
         // calculate first value of the chosen frequency to eliminate offset
         var pWaveValue = calculatePWave(
             simTime + vitalSigns.xValOffset, pWaveAmplitude, pWaveDuration, pWaveStartTime, 
-            randHR, vitalSigns.pWaveFactor);
+            hrTemp, vitalSigns.pWaveFactor);
 
 
         if (self.hasAVBlock) {
             if (hasPacerPeak) {
                 if (!(pacerManagement.isEnabled && pacerManagement.isThresholdReached() && pacerManagement.getFrequency() > 40)) {
                     randHR = randomize(40, self.avBlockCounter);
+                    hrTemp = randHR;
                     if (!isOffsetCalculation) self.avBlockCounter += timestep;
                     if (self.avBlockCounter > 30 / randHR * 2) self.avBlockCounter = 0;
                     if (!isOffsetCalculation) simTime = self.avBlockCounter;
                 }
             } else {
                 randHR = randomize(40, self.avBlockCounter);
+                hrTemp = randHR;
                 if (!isOffsetCalculation) self.avBlockCounter += timestep;
                 if (self.avBlockCounter > 60 / randHR) self.avBlockCounter = 0;
                 if (!isOffsetCalculation) simTime = self.avBlockCounter;
@@ -473,25 +483,34 @@ var ECGCalculation = function() {
             uWaveDuration = getTimeForParameter(randHR, 0.0476), 
             uWaveStartTime = getTimeForParameter(randHR, 0.433);
 
+
+
         var qWaveValue = calculateQWave(
             simTime, qWaveAmplitude, qWaveDuration, qWaveStartTime, 
-            randHR, vitalSigns.qWaveFactor);
+            hrTemp, vitalSigns.qWaveFactor);
             
         var qrsComplexValue = calculateQRSWave(
-            simTime, qrsComplexAmplitude, qrsComplexDuration, randHR, 
+            simTime, qrsComplexAmplitude, qrsComplexDuration, hrTemp, 
             vitalSigns.qrsComplexFactor, vitalSigns.qrsAmplitudeOffset);
         
         var sWaveValue = calculateSWave(
             simTime, sWaveAmplitude, sWaveDuration, sWaveStartTime, 
-            randHR, vitalSigns.sWaveFactor);
+            hrTemp, vitalSigns.sWaveFactor);
         
         var tWaveValue = calculateTWave(
             simTime + vitalSigns.xValOffset, tWaveAmplitude, tWaveDuration, tWaveStartTime, 
-            tsWaveSeparationDuration, randHR, vitalSigns.tWaveFactor);
+            tsWaveSeparationDuration, hrTemp, vitalSigns.tWaveFactor);
         
         var uWaveValue = calculateUWave(
             simTime, uWaveAmplitude, uWaveDuration, uWaveStartTime, 
-            randHR, vitalSigns.uWaveFactor);
+            hrTemp, vitalSigns.uWaveFactor);
+
+        if (((!isOffsetCalculation && simTime < 0.5) || simTime > 1.45) && randHR < 35 && vitalSigns.name == "Sinus Rhythm") 
+            return tempLast;
+
+        if (!isOffsetCalculation) tempLast = calculateWaveSum(
+            pWaveValue, qWaveValue, qrsComplexValue, sWaveValue, 
+            tWaveValue, uWaveValue, vitalSigns.pWavePreFactor, vitalSigns.Noise);
 
         return calculateWaveSum(
             pWaveValue, qWaveValue, qrsComplexValue, sWaveValue, 
@@ -521,8 +540,6 @@ var ECGCalculation = function() {
 
         isOffsetCalculation = false;
         var ecgValue = calculateECGValue(vitalSigns, self.simTime, hrChangeDuration, hasPacerPeak);
-
-        
 
         ecgValue -= ecgOffset;
         
