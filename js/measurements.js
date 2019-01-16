@@ -514,11 +514,12 @@ function ETCO2Measurement(dataCallback) {
                 var newVal = self.dataArray[i+1];
                 var oldVal = self.dataArray[i];
                 var gradient = self.getGradient(newVal, oldVal);
+                const threshold = 4;
 
-                if (gradient > 5 && !expectsNegativeGradient) {
+                if (gradient > 5 && newVal > threshold && !expectsNegativeGradient) {
                     freqCount++;
                     expectsNegativeGradient = true;
-                } else if (gradient < -5) {
+                } else if (gradient < -5 && newVal < threshold) {
                     expectsNegativeGradient = false;
                 }
             }

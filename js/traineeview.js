@@ -121,8 +121,8 @@ var pacerManagement = new PacerManagement();
 var defiManagement = new DefiManagement();
 
 var ecgCPR = new CPRManagement(1.4, 110, CPRType.ECG);
-var spo2CPR = new CPRManagement(10, 110, CPRType.SPO2);
-var etco2CPR = new CPRManagement(10, 110, CPRType.ETCO2);
+var spo2CPR = new CPRManagement(1, 110, CPRType.SPO2);
+var etco2CPR = new CPRManagement(0.8, 110, CPRType.ETCO2);
 
 const viewType = ViewType.Trainee;
 

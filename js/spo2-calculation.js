@@ -257,10 +257,6 @@ var SPO2Calculation = function() {
         
         return y;
     }
-
-
-    // TODO: The Pleth Wave is not dependent on the SPO2 value, but on the Bloodpressure!
-    // TODO: Implement Systolic and Diastolic change effects.
     
     /* Function: calc
         This function is used to calculate the current f(t)
@@ -284,11 +280,18 @@ var SPO2Calculation = function() {
         }
         
         if (tempHR === 0) {
-            if (simConfig.simState.hasCPR) return spo2CPR.calcCPR();
+            if (simConfig.simState.hasCPR) return 50 + spo2CPR.calcCPR();
             return 50;
         }
         
-        var period = 30 / tempHR * 2;
+        var period = 60 / tempHR;
+
+        /* This is used to draw the curve of low-bpm wave in the same timeframe as a 60bpm wave. 
+        After the waveform, it is zero, until the next wave starts. */
+        if (tempHR < 60) {
+            tempHR = 60;
+        }
+
         var t0 = 5 / tempHR;
         var sigma = 15 / tempHR;      
         
