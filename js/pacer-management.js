@@ -79,6 +79,13 @@ var PacerManagement = function() {
         saveLesson(tempConfig);
         initControls(tempConfig);
     }
+    this.updatePacerEnabledStateDB = function(config) {
+        tempConfig = JSON.parse(JSON.stringify(config));
+        tempConfig.simState.pacer.isEnabled = self.isEnabled;
+        saveLesson(tempConfig);
+        initControls(tempConfig);
+    }
+
 
     /* Function: togglePacing
         Toggles the pacing and adapts the UI correspondently. */

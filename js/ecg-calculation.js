@@ -309,6 +309,7 @@ var ECGCalculation = function() {
         Used to randomize the provided heart-rate. */
     function randomize(hr, simTime) {
         var randHR = (!self.hasAVBlock) ? self.currentRandHR : hr;
+        const pacer = simConfig.simState.pacer;
         if (simTime===0 && hr >= 10 && !isOffsetCalculation) {
             var maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
             randHR = Math.round((Math.random()-0.5) * hr*maxRandFactor + hr);
@@ -316,8 +317,7 @@ var ECGCalculation = function() {
             randHR = hr;
         } else if (hr < 10) {
             randHR = hr;
-        } else if (pacerManagement.isEnabled && pacerManagement.getFrequency() >= hr && 
-            pacerManagement.isThresholdReached()) {
+        } else if (pacer.isEnabled && pacer.frequency >= hr && pacer.energy >= pacer.energyThreshold) {
             // So no randomization happens, when pacing is performed.
             randHR = hr;
         }
@@ -458,7 +458,9 @@ var ECGCalculation = function() {
 
         if (self.hasAVBlock) {
             if (hasPacerPeak) {
-                if (!(pacerManagement.isEnabled && pacerManagement.isThresholdReached() && pacerManagement.getFrequency() > 40)) {
+                const pacer = simConfig.simState.pacer;
+                if (!(pacer.isEnabled && pacer.energy >= pacer.energyThreshold 
+                    && pacer.frequency > 40)) {
                     randHR = randomize(40, self.avBlockCounter);
                     tempHR = randHR;
                     if (!isOffsetCalculation) self.avBlockCounter += timestep;

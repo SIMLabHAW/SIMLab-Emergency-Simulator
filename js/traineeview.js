@@ -146,6 +146,7 @@ var initControls = function (newConfig) {
 
     if (oldConfig === undefined) {
         oldConfig = newConfig.vitalSigns;
+        pacerManagement.updatePacerEnabledStateDB(newConfig);
 
         /* This is activating the AV Block or the ST Elevation. */
         ecgCalculation.hasAVBlock = (newPathology === "AV Block 3");
@@ -880,7 +881,7 @@ var etco2Graph = new ETCO2Graph("etco2Canvas", "rgb(27, 213, 238)", 0, 50, funct
 
 //when everything is loaded....
 $(document).ready(function () {
-	screenOnOff();
+    screenOnOff();
     //...load every 1000ms all current values from database-->stored in config
     setInterval(function () {
         getLesson(initControls);
