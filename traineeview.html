@@ -70,7 +70,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     <!-- ECG Label & Canvas -->
 
                     <div class="col-11 noLPad hrColor sign-chart-container" id="frontend-signal">
-                        <canvas onclick="ecgGraph.changeTimeScale()" id="ecgCanvas"></canvas>
+                        <canvas  id="ecgCanvas"></canvas>
                     </div>
 
                     <!-- SPO2 Label & Canvas -->
@@ -80,7 +80,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     </div>
 
                     <div class="col-11 noLPad spo2Color sign-chart-container">
-                        <canvas onclick="spo2Graph.changeTimeScale()" id="spo2Canvas"></canvas>
+                        <canvas id="spo2Canvas"></canvas>
                     </div>
 
                     <!-- ETCO2 Label & Canvas -->
@@ -89,7 +89,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                         <p class="etco2">etCO2 </p>
                     </div>
                     <div class="col-11 noLPad sign-chart-container">
-                        <canvas onclick="etco2Graph.changeTimeScale()" id="etco2Canvas"></canvas>
+                        <canvas id="etco2Canvas"></canvas>
                     </div>
 
                     <!-- NIBP Labels -->
@@ -98,12 +98,12 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                         <div class="row">
                             <div id="nibpBorderDiv" class="col-md-4 offset-md-8">
                                 <p class="sign-caption" style="text-align: left"> NIBP mmHg</p>
-                                <label id="sysLabel" class="sign-values-nibp" for="systolisch">-</label>
+                                <label id="sysLabel" class="sign-values-nibp" for="systolisch">--</label>
                                 <span class="sign-values-nibp">/</span>
-                                <label id="diaLabel" class="sign-values-nibp" for="diastolisch">-</label><br>
+                                <label id="diaLabel" class="sign-values-nibp" for="diastolisch">--</label><br>
                                 <div class="row">
                                     <label id="nibpCountdownLabel" class="col-6 sign-values-nibp" style="font-size: 2vmin; text-align: left"></label>
-                                    <label id="madLabel" class="col-6 sign-values-nibp" style="font-size: 4vmin" for="mad">(-)</label>
+                                    <label id="madLabel" class="col-6 sign-values-nibp" style="font-size: 4vmin" for="mad">(--)</label>
                                 </div>
                             </div>
                         </div>
@@ -116,19 +116,19 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 <div id="ecgBorderDiv" class="sign-detail hrColor">
                     <p class="sign-caption" id="hrCaptionLabel">HR
                         <br> bpm</p>
-                    <label id="hrLabel" class="sign-values">-</label>
+                    <label id="hrLabel" class="sign-values">--</label>
                 </div>
 
                 <div id="spo2BorderDiv" class="sign-detail spo2Color">
                     <p class="sign-caption"> SpO2
                         <br> %</p>
-                    <label id="spo2Label" class="sign-values">-</label>
+                    <label id="spo2Label" class="sign-values">--</label>
                 </div>
                 <div id="etco2BorderDiv" class="sign-detail etco2-value">
                     <div id="etco2">
                         <p class="sign-caption"> etCO2
                             <br> mmHg</p>
-                        <label id="etco2Label" class="sign-values" for="etco2">-</label>
+                        <label id="etco2Label" class="sign-values" for="etco2">--</label>
                     </div>
                 </div>
                 <div id="rrBorderDiv" class="sign-detail rr-value resp-rate">
@@ -137,7 +137,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                             <p class="sign-caption">Resp </p>
                         </div>
                         <div class="col-2 col-md-9">
-                            <label id="rrLabel" style="text-align: right; line-height: 5vmin; font-size: 5vmin; font-weight: bold" for="RR">-</label>
+                            <label id="rrLabel" style="text-align: right; line-height: 5vmin; font-size: 5vmin; font-weight: bold" for="RR">--</label>
                         </div>
                     </div>
                 </div>
@@ -289,15 +289,15 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 
                     <div class="row" style="padding: 0vmin; margin: 1vmin">
                         <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
-                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.alarmVolumeDown()">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeDown()">
                                 <img class="custom-icon" src="assets/img/volume-down.svg">
                             </button>
                         </div>
                         <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
-                            <p id="alarmVolumeLabel" class="up-down-label">80<br>%</p>
+                            <p id="peakSoundVolumeLabel" class="up-down-label">0<br>%</p>
                         </div>
                         <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
-                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.alarmVolumeUp()">
+                            <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeUp()">
                                 <img class="custom-icon" src="assets/img/volume-up.svg">
                             </button>
                         </div>
@@ -387,95 +387,53 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 <div class="modal-content" style="background-color: #343a40; padding: 0.5vmin">
                     <div class="border border-dark rounded" style="background-color: black">
                         <!-- Modal Header -->
-                        <div class="modal-header " style="border-bottom: 0px; padding: 0px; align-content: center">
-                            <nav class="navbar navbar-expand navbar-custom" style="width: 100%; padding-bottom: 0px; padding-top: 0px">
-                                <ul class="navbar-nav nav" style="width: 100%" id="nav-tab">
-                                    <li class="nav-item active" style="width: 50%; text-align: right" id="navAlarmSettingTab">
-                                        <a class="nav-link" style="font-size: 3vmin" href="#nav-alarmSetting" data-toggle="tab" onclick="changeSettingTabTo(1)">Alarm Settings</a>
-                                    </li>
-                                    <li class="nav-item" style="width: 50%; text-align: left" id="navSoundSettingTab">
-                                        <a class="nav-link" style="font-size: 3vmin" href="#nav-soundSetting" data-toggle="tab" onclick="changeSettingTabTo(2)">Sound Settings</a>
-                                    </li>
-                                </ul>
-
-                            </nav>
-                        </div>
+                        <div class="modal-header " style="border-bottom: 0px; padding: 0px; text-align: center">
+                            <h5 class="modal-title" style="color: white; width: 100%">Alarm Settings</h5>
+                        </div> 
 
 
                         <div class="modal-body">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="nav-alarmSetting">
-                                    <div class="row" style="padding: 2.5px">
-                                        <div class="col-md-6 border border-dark rounded">
-                                            <div class="range-slider">
-                                                <p class="hrColor" style="text-align: center"> HR [bpm]<br>
-                                                    <input type="text" id="hrSlider" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 border border-dark rounded">
-                                            <div class="range-slider">
-                                                <p class="spo2Color" style="text-align: center"> SpO2 [%]<br>
-                                                    <input type="text" id="spo2Slider" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="padding: 2.5px">
-                                        <div class="col-md-6 border border-dark rounded">
-                                            <div class="range-slider">
-                                                <p class="etco2" style="text-align: center"> etCO2 [mmHg] <br>
-                                                    <input type="text" id="etcoSlider" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 border border-dark rounded">
-                                            <div class="range-slider">
-                                                <p class="resp-rate" style="text-align: center"> Resp<br>
-                                                    <input type="text" id="rrSlider" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="padding: 2.5px">
-                                        <div class="col-md-6 border border-dark rounded">
-                                            <div class="range-slider">
-                                                <p class="nibpColor" style="text-align: center"> Sys [mmHg] <br>
-                                                    <input type="text" id="sysSlider" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 border border-dark rounded">
-                                            <div class="range-slider">
-                                                <p class="nibpColor" style="text-align: center"> Dia [mmHg] <br>
-                                                    <input type="text" id="diaSlider" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
+                            <div class="row" style="padding: 2.5px">
+                                <div class="col-md-6 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <p class="hrColor" style="text-align: center"> HR [bpm]<br>
+                                            <input type="text" id="hrSlider" class="js-range-slider" value="" />
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="nav-soundSetting">
-                                    <div class="row" style="padding: 2.5px">
-                                        <div class="col-6 col-md-6">
-                                            <div class="border border-dark rounded">
-                                                <div class="row" style="padding: 1vmin; margin: 0px">
-                                                    <div class="col-12 col-md-12">
-                                                        <p class="sign-caption" style="text-align: center; margin: 0px; color: white; white-space: nowrap">ECG II/SpO2</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding: 1vmin; margin: 0px">
-                                                    <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
-                                                        <button type="button" class="btn btn-light" style="padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeDown()">
-                                                            <img class="custom-icon" src="assets/img/volume-down.svg">
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
-                                                        <p id="peakSoundVolumeLabel" class="up-down-label">80<br>%</p>
-                                                    </div>
-                                                    <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
-                                                        <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height:9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeUp()">
-                                                            <img class="custom-icon" src="assets/img/volume-up.svg">
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="col-md-6 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <p class="spo2Color" style="text-align: center"> SpO2 [%]<br>
+                                            <input type="text" id="spo2Slider" class="js-range-slider" value="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding: 2.5px">
+                                <div class="col-md-6 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <p class="etco2" style="text-align: center"> etCO2 [mmHg] <br>
+                                            <input type="text" id="etcoSlider" class="js-range-slider" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <p class="resp-rate" style="text-align: center"> Resp<br>
+                                            <input type="text" id="rrSlider" class="js-range-slider" value="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding: 2.5px">
+                                <div class="col-md-6 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <p class="nibpColor" style="text-align: center"> Sys [mmHg] <br>
+                                            <input type="text" id="sysSlider" class="js-range-slider" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 border border-dark rounded">
+                                    <div class="range-slider">
+                                        <p class="nibpColor" style="text-align: center"> Dia [mmHg] <br>
+                                            <input type="text" id="diaSlider" class="js-range-slider" value="" />
                                     </div>
                                 </div>
                             </div>

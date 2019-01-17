@@ -246,7 +246,7 @@ var SPO2Calculation = function() {
         */
     function calcFullSpo2(firstY, currentNIBP, t0, sigma, M, t) {
         
-        var val = (currentNIBP.sys-currentNIBP.dia)/1.6;
+        var val = (currentNIBP.normSys-currentNIBP.normDia)/1.6;
         var alpha = 1;
         var t0 = t0 + 5.5 * t0;
         var sigma = sigma/1.5;
@@ -319,19 +319,20 @@ var SPO2Calculation = function() {
         self.currentNIBP.sys = getCurrentSysValue(newNIBP.sys, period, nibpChangeDuration);
         self.currentNIBP.dia = getCurrentDiaValue(newNIBP.dia, period, nibpChangeDuration);
 
-        const sys = 50 + (self.currentNIBP.sys-50)/(1+Math.exp(-(5/60)*(self.currentNIBP.sys-60)));
-        const dia = 50 + (self.currentNIBP.dia-50)/(1+Math.exp(-(5/60)*(self.currentNIBP.dia-60)));
+        const lowerBounds = 70;
+        const upperBounds = 120;
         
-        
-        var y = dia + (sys - dia) / M * Math.exp(-Math.pow(t - t0, 2) /
+        const normSys = lowerBounds + (upperBounds - lowerBounds)/(1+Math.exp(-(5/15) *
+            (self.currentNIBP.sys-85)));
+
+        const normDia = lowerBounds + (upperBounds - lowerBounds)/(1+Math.exp(-(5/15) *
+        (self.currentNIBP.dia-85)));
+
+        var y = normDia + (normSys - normDia) / M * Math.exp(-Math.pow(t - t0, 2) /
                 (2 * Math.pow(sigma, 2))) * (1 + errorFunction(alpha * (t - t0) /
                 (Math.sqrt(2) * sigma)));
         
-        y = calcFullSpo2(y, {sys, dia}, t0, sigma, M, t);
-        
-        /*if (self.currentNIBP < 40) {
-            y = 0;
-        }*/
+        y = calcFullSpo2(y, {normSys, normDia}, t0, sigma, M, t);
 
         currentTime += timestep;
         
@@ -375,7 +376,7 @@ var SPO2Calculation = function() {
             y += spo2CPR.calcCPR();
         }
 
-
+        // TODO: Add Noise
         return y;
     }
 

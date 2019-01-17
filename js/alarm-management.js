@@ -52,9 +52,10 @@ function AlarmManagement(alarmCallback, lowerLimit, upperLimit, borderID) {
         invokes the callback with the current <AlarmState>. 
     
         Parameters:
-        value - This parameter is the currently tested value.
+            value - This parameter is the currently tested value.
     */
     this.testMeasurementValueForAlarm = function(value) {
+
         if (value > this.upperLimit) {
             if (this.currentAlarmState !== AlarmState.AboveLimit) {
                 this.currentAlarmState = AlarmState.AboveLimit;
@@ -71,6 +72,13 @@ function AlarmManagement(alarmCallback, lowerLimit, upperLimit, borderID) {
                 performUIAdaption(AlarmState.None);
             }
         }
+    }
+
+    /* Function: deactivateMeasurement
+        If the Value was deactivated from the Trainerside, the Alarm is switched off. */
+    this.deactivateMeasurement = function() {
+        this.currentAlarmState = AlarmState.None;
+        performUIAdaption(AlarmState.None);
     }
 
     /* Function: performUIAdaption

@@ -119,11 +119,11 @@ var ETCO2Calculation = function() {
         Used to calculate dynamic changing values for the etco2 max value.
         Parameters: 
             newETCO2 - Contains the etco2-max value to which a change is performed.
-            etco2ChangeDuration - Contains the time, how long a change is taking.
+            changeDuration - Contains the time, how long a change is taking.
         Returns:
             returns the currently calculated etco2-value.
         */
-    function calculateCurrentETCO2(newETCO2, etco2ChangeDuration) {
+    function calculateCurrentETCO2(newETCO2, changeDuration) {
         if (timeSinceETCO2Change === 0 && currentETCO2 !== undefined) {
             // Aha, change was performed:
             latestReachedETCO2 = currentETCO2;
@@ -159,7 +159,7 @@ var ETCO2Calculation = function() {
         
         /* t0 of the logistic function defines the duration to reach the mid point, with the 
         steepest slope. */
-        var t0 = etco2ChangeDuration.isAuto ? (Math.abs(L)/2) : (etco2ChangeDuration.value / 2);
+        var t0 = changeDuration.isAuto ? (Math.abs(L)/2) : (changeDuration.value / 2);
         
         /* k is the steepness of the curve. The adaptibility through the dependency on t0 is 
         chosen to make k more adaptable to different speeds and heights of changes.*/
@@ -190,12 +190,12 @@ var ETCO2Calculation = function() {
 
         Parameters: 
             newRR - Contains the new respiratory-rate.
-            etco2ChangeDuration - Contains the rr specific changeDuration object.
+            changeDuration - Contains a reference to the <changeDuration> object.
 
         Returns: 
             The current calculated respiratory-rate value.
          */
-    function calculateCurrentRR(newRR, rrChangeDuration) {
+    function calculateCurrentRR(newRR, changeDuration) {
         
         if (timeSinceRRChange === 0 && currentRR !== undefined) {
             // Aha, change was performed:
@@ -234,7 +234,7 @@ var ETCO2Calculation = function() {
         
         /* t0 of the logistic function defines the duration to reach the mid point, with the 
         steepest slope. */
-        var t0 = rrChangeDuration.isAuto ? (Math.abs(L)/2) : (rrChangeDuration.value / 2);
+        var t0 = changeDuration.isAuto ? (Math.abs(L)/2) : (changeDuration.value / 2);
         
         /* k is the steepness of the curve. The adaptibility through the dependency on t0 is 
         chosen to make k more adaptable to different speeds and heights of changes.*/
@@ -477,7 +477,7 @@ var ETCO2Calculation = function() {
         Parameters:
             rr - Contains the current resp-rate.
             etco2MaxValue - Contains the maximum etco2 value.
-            changeDuration - Contains an object indicating the durations of the changes.
+            changeDuration - Contains a reference to the <changeDuration> object.
         Returns:
              Returns the current value in the etco2-curve.
         */
@@ -499,8 +499,8 @@ var ETCO2Calculation = function() {
             timeSinceETCO2Change = 0;
         }
 
-        currentRR = calculateCurrentRR(rr, changeDuration.rr);
-        currentETCO2 = calculateCurrentETCO2(etco2MaxValue, changeDuration.etco2);
+        currentRR = calculateCurrentRR(rr, changeDuration);
+        currentETCO2 = calculateCurrentETCO2(etco2MaxValue, changeDuration);
         
         var randRR = randomizeRR(currentRR, simTime);
         // Saves the new randomized resp-rate.

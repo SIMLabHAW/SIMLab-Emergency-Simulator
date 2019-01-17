@@ -290,7 +290,7 @@ function Graph(canvasId, lineColor, yMin, yMax, dataCallback, sampleIncrement = 
         }
     };
 
-    this.changeTimeScale = function() {
+    /* this.changeTimeScale = function() {
         if (sampleIncrement === 3) {
             sampleIncrement = 1;
         } else if(sampleIncrement == 2) {
@@ -299,12 +299,12 @@ function Graph(canvasId, lineColor, yMin, yMax, dataCallback, sampleIncrement = 
             sampleIncrement = 2;
         }
         needsReset = true;
-    }
+    } */
 
 }
 
 function ETCO2Graph(canvasId, lineColor, yMin, yMax, dataCallback) {
-    Graph.call(this, canvasId, lineColor, yMin, yMax, dataCallback, 3);
+    Graph.call(this, canvasId, lineColor, yMin, yMax, dataCallback, 1);
 }
 
 

@@ -100,13 +100,13 @@ function Measurement(avgArraySize, dataArraySize, maxIdleTime = 3) {
     this.saveMinMax = function(min, max) {
 
         // Checks average Array size and shifts it.
-        if (this.dataMaxArray.length === this.avgArraySize) this.dataMaxArray.shift();
+        if (this.dataMaxArray.length >= this.avgArraySize) this.dataMaxArray.shift();
 
         // The current min value is saved.
         this.dataMaxArray.push(max);
 
         // Checks average Array size and shifts it.
-        if (this.dataMinArray.length === this.avgArraySize) this.dataMinArray.shift();
+        if (this.dataMinArray.length >= this.avgArraySize) this.dataMinArray.shift();
 
         // The current min value is saved.
         this.dataMinArray.push(min);
@@ -215,7 +215,7 @@ function ECGMeasurement(dataCallback, realTimePeakCallback) {
         checkForECGPeak();
         
         // After 0.02 * dataArraySize seconds...
-        if (self.dataArray.length === self.dataArraySize) {
+        if (self.dataArray.length >= self.dataArraySize) {
 
             // Return a measured Asystolie if the currentIdleTime is to high.
             if(self.currentIdleTime >= self.maxIdleTime) {
@@ -256,7 +256,7 @@ function ECGMeasurement(dataCallback, realTimePeakCallback) {
                 }
             }
             
-            if (peakArray.length === self.avgArraySize) {
+            if (peakArray.length >= self.avgArraySize) {
                 // After a defined amount of time, the first value gets pushed out.
                 peakArray.shift();
             }
@@ -326,7 +326,7 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
 
             // The peaks must be at least 0.2s apart from each other. (max 300 bpm)
 
-            if (gradient > 100 && !expectsNegativeGrad
+            if (gradient > 50 && !expectsNegativeGrad
                 && (lastPeakIndex === 0 || currentSize - 1 > lastPeakIndex + 10)) {
                 lastPeakIndex = currentSize - 1;
                 self.currentIdleTime = 0;
@@ -362,7 +362,7 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
         
         checkForSpo2Peak();
         
-        if (self.dataArray.length === self.dataArraySize) {
+        if (self.dataArray.length >= self.dataArraySize) {
             
             if(self.currentIdleTime >= self.maxIdleTime) {
                 // Return a measured asystolie
@@ -373,6 +373,8 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
                 
                 // Clear data Array
                 self.dataArray = [];
+
+                self.saveMinMax(0, 0);
                 
                 return;
             }
@@ -394,8 +396,8 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
                 var newVal = self.dataArray[i];
                 var gradient = self.getGradient(newVal, oldVal);
 
-                if (gradient > 100 && !expectsNegativeGrad && 
-                    (lastMaxIndex===0 || i > lastMaxIndex + 0.1/0.02)) {
+                if (gradient > 50 && !expectsNegativeGrad && 
+                    (lastMaxIndex===0 || i > lastMaxIndex + 10)) {
                     peakCount++;
                     lastMaxIndex = i;
                     expectsNegativeGrad = true;
@@ -404,7 +406,7 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
                 }
             }
             
-            if (peakArray.length === self.avgArraySize) {
+            if (peakArray.length >= self.avgArraySize) {
                 // After a defined amount of time, the first value gets pushed out.
                 peakArray.shift();
             }
@@ -413,7 +415,13 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
             // Clear data Array
             self.dataArray = [];
 
-            dataCallback(Math.round(self.getAvgMax()));
+            var spo2Avg = self.getAvgMax();
+            // If the average is below 40, we assume that no measurement is possible atm.
+            if (spo2Avg <= 40) {
+                spo2Avg = 0;
+            }
+
+            dataCallback(Math.round(spo2Avg));
         }
     };
 
@@ -425,6 +433,9 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
         for (var i = 0; i < peakArray.length; i++) {
             sum += peakArray[i];
         }
+
+        if (peakArray.length === 0 || self.dataArraySize === 0) return 0;
+
         var avgFrequency = sum / peakArray.length * 60 / (self.dataArraySize * 0.02);
         return Math.round(avgFrequency);
     };
@@ -486,7 +497,7 @@ function ETCO2Measurement(dataCallback) {
         
         checkForIdle();
         
-        if (self.dataArray.length === self.dataArraySize) {
+        if (self.dataArray.length >= self.dataArraySize) {
         
             // If no breathing is captured:
             if(self.currentIdleTime >= self.maxIdleTime) {
@@ -524,7 +535,7 @@ function ETCO2Measurement(dataCallback) {
                 }
             }
             
-            if (rrArray.length === self.avgArraySize) {
+            if (rrArray.length >= self.avgArraySize) {
                 // After 40sec, the first value gets pushed out.
                 rrArray.shift();
             }

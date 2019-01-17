@@ -312,7 +312,7 @@
         return $users;*/
     }
 
-    class DurationData {
+    class ChangeDuration {
         public $isAuto;
         public $value;
 
@@ -333,30 +333,6 @@
             $haeh = $string == "true"? true : false;
             //error_log("heah: " . $haeh);
             return $haeh;
-        }
-    }
-
-    class ChangeDuration {
-        private $hr;
-        private $spo2;
-        private $etco2;
-        private $rr;
-       
-        public function __construct($hr, $spo2, $etco2, $rr) {
-            $this->hr = $hr;
-            $this->spo2 = $spo2;
-            $this->etco2 = $etco2;
-            $this->rr = $rr;
-		}
-
-        public function __toString() {
-            $array = [
-                "hr" => $this->hr,
-                "spo2" => $this->spo2,
-                "etco2" => $this->etco2,
-                "rr" => $this->rr,
-             ];
-            return json_encode($array);
         }
     }
 	
@@ -664,9 +640,7 @@
                 /* hasCPR, hasCOPD, pacer, respRatio */
                 false, false, new PacerState(false, 60, 10, 5), 0);
 
-            $durationData = new DurationData(true,30);
-			$changeDuration = new ChangeDuration(
-                $durationData, $durationData, $durationData, $durationData);
+			$changeDuration = new ChangeDuration(true,30);
 
             error_log("There is no active lesson for users " . $trainerID . " and " .  $traineeID);
             $insert_lesson_query = "INSERT INTO lessons (trainerID, traineeID, vitalSigns,simState,changeDuration,active) VALUES ('$trainerID', '$traineeID', '$sinus_rhythm','$simState', '$changeDuration',0)";
@@ -729,16 +703,6 @@
      /*instead of 1 call for every parameter: all together*/
     function saveLesson($lesson_values){ 
         include 'dbconnect.php';
-        
-        // Change Duration Array
-        $cdArr = $lesson_values["changeDuration"];
-        
-        $changeDuration = new ChangeDuration(
-            new DurationData($cdArr["hr"]["isAuto"], $cdArr["hr"]["value"]),
-            new DurationData($cdArr["spo2"]["isAuto"], $cdArr["spo2"]["value"]),
-            new DurationData($cdArr["etco2"]["isAuto"], $cdArr["etco2"]["value"]),
-            new DurationData($cdArr["rr"]["isAuto"], $cdArr["rr"]["value"])
-        );
 
         $simStateArray = $lesson_values["simState"];
 
@@ -747,7 +711,6 @@
             $simStateArray["pacer"]["frequency"],
             $simStateArray["pacer"]["energy"],
             $simStateArray["pacer"]["energyThreshold"]);
-
 
         $simState = new SimulationState(
             $simStateArray["enableECG"],
@@ -797,6 +760,9 @@
             $vitalSignArray["spo2"],
             $vitalSignArray["rr"],
             $vitalSignArray["etco2"]);
+
+        $cd = $lesson_values["changeDuration"];
+        $changeDuration = new ChangeDuration($cd["isAuto"], $cd["value"]);
 
         $id = $lesson_values["id"];
         $trainerID = $lesson_values["trainerID"];

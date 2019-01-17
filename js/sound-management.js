@@ -78,11 +78,7 @@ function SoundManagement(soundCallback) {
 
     /* Variable: peakSoundVolume
         Stores the current peak sound volume. */
-    var peakSoundVolume = 0.8;
-
-    /* Variable: alarmSoundVolume
-        Stores the current alarm sound volume */
-    var alarmSoundVolume = 0.8;
+    var peakSoundVolume = 0.0;
 
     /* Variable: isAlarmMuted
         Indicates, if the alarm is muted. */
@@ -168,35 +164,12 @@ function SoundManagement(soundCallback) {
         }
     }
 
-
-
-
-    /* Function: alarmVolumeUp
-        Increases alarm volume and updates UI. */
-    this.alarmVolumeUp = function() {
-        if (alarmSoundVolume + 0.1 <= alarmVolumeBounds.max) {
-            alarmSoundVolume += 0.1
-            alarmAudio.volume = alarmSoundVolume;
-            $("#alarmVolumeLabel").html(Math.round(alarmSoundVolume * 100) + "<br>%");
-        }
-    }
-
-    /* Function: alarmVolumeDown
-        Decreases alarm volume and updates UI. */
-    this.alarmVolumeDown = function() {
-        if (alarmSoundVolume - 0.1 >= alarmVolumeBounds.min) {
-            alarmSoundVolume -= 0.1;
-            alarmAudio.volume = alarmSoundVolume;
-            $("#alarmVolumeLabel").html(Math.round(alarmSoundVolume * 100) + "<br>%");
-        }
-    }
-
     /* Function: peakSoundVolumeUp
         Increases the peak sound volume and changes the UI. */
     this.peakSoundVolumeUp = function() {
         if (peakSoundVolume + 0.1 <= peakSoundVolumeBounds.max) {
             peakSoundVolume += 0.1;
-            $("#peakSoundVolumeLabel").html(Math.round(peakSoundVolume * 100) + " %");
+            $("#peakSoundVolumeLabel").html(Math.round(peakSoundVolume * 100) + "<br>%");
         }
     }
     /* Function: peakSoundVolumeDown
@@ -204,7 +177,7 @@ function SoundManagement(soundCallback) {
     this.peakSoundVolumeDown = function() {
         if (peakSoundVolume - 0.1 >= peakSoundVolumeBounds.min) {
             peakSoundVolume -= 0.1;
-            $("#peakSoundVolumeLabel").html(Math.round(peakSoundVolume * 100) + " %");
+            $("#peakSoundVolumeLabel").html(Math.round(peakSoundVolume * 100) + "<br>%");
         }
     }
 
@@ -213,7 +186,7 @@ function SoundManagement(soundCallback) {
     this.playRPeakNoise = function () {
         var oscillator = context.createOscillator();
         var volume = context.createGain();
-        volume.gain.value = peakSoundVolume * 0.02;
+        volume.gain.value = peakSoundVolume * 0.05;
         var now = context.currentTime;
         oscillator.type = 'sine';
         oscillator.frequency.value = 450;
@@ -228,7 +201,7 @@ function SoundManagement(soundCallback) {
     this.playSpO2PeakNoise = function (spo2Value) {
         var oscillator = context.createOscillator();
         var volume = context.createGain();
-        volume.gain.value = peakSoundVolume * 0.02;
+        volume.gain.value = peakSoundVolume * 0.05;
         var now = context.currentTime;
         oscillator.type = 'sine';
         var freq = 400;

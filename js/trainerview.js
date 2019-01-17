@@ -61,8 +61,6 @@ var spo2Graph;
     Stores a reference to the ETCO2Graph. */
 var etco2Graph;
 
-var changeDurationType;
-
 var defaultPathologyList;
 var updateTextForms = false;
 
@@ -98,6 +96,8 @@ var initControls = function (config) {
     if (oldConfig === undefined) {
         // This is called on first simulation start.
         oldConfig = config.vitalSigns;
+
+        changeDuration = config.changeDuration;
 
         /* This is activating the AV Block or the ST Elevation. */
         ecgCalculation.hasAVBlock = (newPathology === "AV Block 3");
@@ -193,7 +193,6 @@ var initControls = function (config) {
     if (updateTextForms) {
         updateUI();
     }
-
 };
 
 $("#dynamicChangeSlider").ionRangeSlider({
@@ -203,98 +202,24 @@ $("#dynamicChangeSlider").ionRangeSlider({
     postfix: "s"
 });
 
-var changeDuration = {
-    hr: {
-        isAuto: true,
-        value: 30
-    },
-    spo2: {
-        isAuto: true,
-        value: 30
-    },
-    etco2: {
-        isAuto: true,
-        value: 30
-    },
-    rr: {
-        isAuto: true,
-        value: 30
-    }
-};
-
+var changeDuration = {isAuto: true, value: 30};
 
 function getDynamicChange() {
     $("#dynamicChangeModalTitle").html("Dynamic Change Config");
     $("#dynamicChangeModalTitle").css("color", "#ffffff");
 
-    var isAuto;
-    var durationValue;
-    //changeDurationType = value;
-
-    /* switch (value) {
-        case "HR":
-            $("#dynamicChangeModalTitle").addClass("modal-title hrColor");
-            isAuto = changeDuration.hr.isAuto;
-            durationValue = changeDuration.hr.value;
-            break;
-        case "SpO2":
-            $("#dynamicChangeModalTitle").addClass("modal-title spo2");
-            isAuto = changeDuration.spo2.isAuto;
-            durationValue = changeDuration.spo2.value;
-            break;
-        case "EtCO2":
-            $("#dynamicChangeModalTitle").addClass("modal-title etco2");
-            isAuto = changeDuration.etco2.isAuto;
-            durationValue = changeDuration.etco2.value;
-            break;
-        case "RR":
-            $("#dynamicChangeModalTitle").addClass("modal-title resp-rate");
-            isAuto = changeDuration.rr.isAuto;
-            durationValue = changeDuration.rr.value;
-            break;
-    } */
-
-    isAuto = changeDuration.hr.isAuto;
-    durationValue = changeDuration.hr.value;
-
-    $("#dynamicChangeCheckbox").prop("checked", isAuto);
-    setAutoChange(isAuto);
+    $("#dynamicChangeCheckbox").prop("checked", changeDuration.isAuto);
+    setAutoChange(changeDuration.isAuto);
     $("#dynamicChangeSlider").data("ionRangeSlider").update({
-        from: durationValue
+        from: changeDuration.value
     });
 }
 
 function saveDynamicChange() {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
 
-    // TODO: Decide whether to get rid of all unnecessary changeDuration-Elements.
-    changeDuration.hr.value = $("#dynamicChangeSlider").data().from;
-    changeDuration.hr.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-    changeDuration.spo2.value = $("#dynamicChangeSlider").data().from;
-    changeDuration.spo2.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-    changeDuration.etco2.value = $("#dynamicChangeSlider").data().from;
-    changeDuration.etco2.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-    changeDuration.rr.value = $("#dynamicChangeSlider").data().from;
-    changeDuration.rr.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-
-    /* switch (changeDurationType) {
-        case "HR":
-            changeDuration.hr.value = $("#dynamicChangeSlider").data().from;
-            changeDuration.hr.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-            break;
-        case "SpO2":
-            changeDuration.spo2.value = $("#dynamicChangeSlider").data().from;
-            changeDuration.spo2.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-            break;
-        case "EtCO2":
-            changeDuration.etco2.value = $("#dynamicChangeSlider").data().from;
-            changeDuration.etco2.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-            break;
-        case "RR":
-            changeDuration.rr.value = $("#dynamicChangeSlider").data().from;
-            changeDuration.rr.isAuto = $("#dynamicChangeCheckbox").prop('checked');
-            break;
-    } */
+    changeDuration.value = $("#dynamicChangeSlider").data().from;
+    changeDuration.isAuto = $("#dynamicChangeCheckbox").prop('checked');
 
     tempConfig.changeDuration = changeDuration;
 
@@ -796,32 +721,32 @@ function addPacerThresholdEnergyLevels() {
     Checks if conditions for pacing are met and returns a specific ecg. */
 function performFixedPacing() {
     var tempConfig = JSON.parse(JSON.stringify(simConfig));
-    var hrChangeDuration = JSON.parse(JSON.stringify(changeDuration.hr));
-    hrChangeDuration.value = 0;
-    hrChangeDuration.isAuto = false;
+    var changeDuration = JSON.parse(JSON.stringify(changeDuration));
+    changeDuration.value = 0;
+    changeDuration.isAuto = false;
     var frequency = simConfig.simState.pacer.frequency;
     if (simConfig.vitalSigns.hr < frequency) {
         tempConfig.vitalSigns.hr = frequency;
     }
 
     // true indicates, that pacing is performed.
-    return ecgCalculation.calc(tempConfig.vitalSigns, hrChangeDuration, true);
+    return ecgCalculation.calc(tempConfig.vitalSigns, changeDuration, true);
 }
 
 /* Function: getAccordingSPO2
     Checks if conditions for pacing are met and returns a specific spo2. */
 function getAccordingSPO2() {
     var tempConfig = JSON.parse(JSON.stringify(simConfig));
-    var spo2ChangeDuration = JSON.parse(JSON.stringify(changeDuration.spo2));
-    spo2ChangeDuration.value = 0;
-    spo2ChangeDuration.isAuto = false;
+    var changeDuration = JSON.parse(JSON.stringify(changeDuration));
+    changeDuration.value = 0;
+    changeDuration.isAuto = false;
     var frequency = simConfig.simState.pacer.frequency;
     if (simConfig.vitalSigns.hr < frequency) {
         tempConfig.vitalSigns.hr = frequency;
     }
 
     return spo2Calculation.calc(tempConfig.vitalSigns.hr,
-        {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, spo2ChangeDuration, true);
+        {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, changeDuration, true);
 }
 
 function addDefiThresholdEnergyLevels() {
@@ -929,10 +854,10 @@ $(document).ready(function () {
             if (isThresholdReached && simConfig.vitalSigns.hr < pacer.frequency) {
                 ecgValue = performFixedPacing();
             } else {
-                ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration.hr);
+                ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration);
             }
         } else {
-            ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration.hr);
+            ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration);
         }
 
         return ecgValue;
@@ -943,11 +868,11 @@ $(document).ready(function () {
         // If HR is deactivated, HR changes should still be possible.
         if (!simConfig.simState.showHR) {
             // Just calculate for dynamic HR change.
-            ecgCalculation.calc(simConfig.vitalSigns, changeDuration.hr);
+            ecgCalculation.calc(simConfig.vitalSigns, changeDuration);
         }
 
         return spo2Calculation.calc(simConfig.vitalSigns.hr, 
-            {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic}, changeDuration.spo2);
+            {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic}, changeDuration);
     });
     etco2Graph = new ETCO2Graph("etco2Canvas", "rgb(27, 213, 238)", 0, 50, function () {
         return etco2Calculation.calc(simConfig.vitalSigns.rr, 

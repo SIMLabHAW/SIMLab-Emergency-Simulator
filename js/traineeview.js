@@ -164,6 +164,7 @@ var initControls = function (newConfig) {
         if (oldConfig.name !== newPathology) {
             // If the Name of the pathology was changed, the HR is changed instantly.
             ecgCalculation.currentHR = newConfig.vitalSigns.hr;
+            ecgCalculation.hasNewMode = true;
             spo2Calculation.currentNIBP = {sys: newConfig.vitalSigns.systolic, dia: newConfig.vitalSigns.diastolic};
             etco2Calculation.setCurrentValues(newConfig.vitalSigns.rr, newConfig.vitalSigns.etco2);
 
@@ -183,6 +184,8 @@ var initControls = function (newConfig) {
             }
         });
     }
+
+    //TODO: Combine enable and show!?
 
     if (simConfig.simState.enableECG) {
         if (!ecgGraph.isGraphPaused() && !ecgGraph.isGraphRunning()) {
@@ -210,29 +213,36 @@ var initControls = function (newConfig) {
 
     if (!simConfig.simState.showHR) {
         if (!simConfig.simState.showSPO2) {
-            $('#hrLabel').html(simConfig.vitalSigns.hr.display = "-");
+            $('#hrLabel').html(simConfig.vitalSigns.hr.display = "--");
+            ecgAlarm.deactivateMeasurement();
         }
     }
 
     if (!simConfig.simState.showSPO2) {
-        $('#spo2Label').html(simConfig.vitalSigns.spo2.display = "-");
+        $('#spo2Label').html(simConfig.vitalSigns.spo2.display = "--");
+        spo2Alarm.deactivateMeasurement();
         if (!simConfig.simState.showHR) {
-            $('#hrLabel').html(simConfig.vitalSigns.hr.display = "-");
+            $('#hrLabel').html(simConfig.vitalSigns.hr.display = "--");
+            ecgAlarm.deactivateMeasurement();
         }
     }
 
     if (!simConfig.simState.displayETCO2) {
-        $('#etco2Label').html(simConfig.vitalSigns.etco2.display = "-");
+        $('#etco2Label').html(simConfig.vitalSigns.etco2.display = "--");
+        etco2Alarm.deactivateMeasurement();
     }
 
     if (!simConfig.simState.displayRR) {
-        $('#rrLabel').html(simConfig.vitalSigns.rr.display = "-");
+        $('#rrLabel').html(simConfig.vitalSigns.rr.display = "--");
+        rrAlarm.deactivateMeasurement();
     }
 
     if (!simConfig.simState.displayNIBP) {
-        $('#diaLabel').html(simConfig.vitalSigns.diastolic.display = "-");
-        $('#sysLabel').html(simConfig.vitalSigns.systolic.display = "-");
-        $("#madLabel").html("(-)");
+        $('#diaLabel').html(simConfig.vitalSigns.diastolic.display = "--");
+        $('#sysLabel').html(simConfig.vitalSigns.systolic.display = "--");
+        $("#madLabel").html("(--)");
+        diaAlarm.deactivateMeasurement();
+        sysAlarm.deactivateMeasurement();
     }
 
     $("#timerDiv").html(simConfig.timer);
@@ -252,11 +262,6 @@ function screenOnOff() {
             $("#shutdownModal").modal('hide');
 
              $(".powerButton").css('visibility','hidden');
-            /*$("#timerDiv").css('visibility','hidden');
-            $("#alarmVolumeLabel").css('visibility','hidden');
-            $("#defiChargeLabel").css('visibility','hidden');
-            $("#pacerEnergyLabel").css('visibility','hidden');
-            $("#pacerFrequencyLabel").css('visibility','hidden'); */
 
             $("#powerOffImage").attr("src", "assets/img/power-off.svg");
             
@@ -269,12 +274,6 @@ function screenOnOff() {
         
     } else if (screenVisible && !screenVisibilityInitialized) { 
         $(".powerButton").css('visibility','hidden');
-        
-        /*$("#timerDiv").css('visibility','hidden');
-        $("#alarmVolumeLabel").css('visibility','hidden');
-        $("#defiChargeLabel").css('visibility','hidden');
-        $("#pacerEnergyLabel").css('visibility','hidden');
-        $("#pacerFrequencyLabel").css('visibility','hidden'); */
 
         $("#powerOffImage").attr("src", "assets/img/power-off.svg");
         
@@ -294,11 +293,6 @@ function screenOnOff() {
             $("#startupModal").modal('hide');
 
             $(".powerButton").css('visibility','visible');
-            /* $("#timerDiv").css('visibility','visible');
-            $("#alarmVolumeLabel").css('visibility','visible');
-            $("#defiChargeLabel").css('visibility','visible');
-            $("#pacerEnergyLabel").css('visibility','visible');
-            $("#pacerFrequencyLabel").css('visibility','visible'); */
 
             $("#powerOffImage").attr("src", "assets/img/power-off-green.svg");
 
@@ -362,7 +356,7 @@ function initIonRangeSlider() {
         tabNr -  This number specifies the clicked Tab to i.e. react to 
         multiple clicks on the same Tab. 
 */
-function changeSettingTabTo(tabNr) {
+/* function changeSettingTabTo(tabNr) {
     if (tabNr === 2 && $("#navAlarmSettingTab").hasClass("active")) {
         $("#navAlarmSettingTab").removeClass("active");
         $("#navSoundSettingTab").addClass("active");
@@ -370,7 +364,7 @@ function changeSettingTabTo(tabNr) {
         $("#navSoundSettingTab").removeClass("active");
         $("#navAlarmSettingTab").addClass("active");
     }
-}
+} */
 
 /* Function: togglePauseGraphs
     This function is used to toggle the Pause-Mode for the three 
@@ -768,13 +762,13 @@ var soundManagement = new SoundManagement(function (soundState) {
     }
 });
 
-var ecgMeasurement = new ECGMeasurement(function (frequency) {
+var ecgMeasurement = new ECGMeasurement(function (hrValue) {
     if (!simConfig.simState.showHR) return;
 
     $("#hrCaptionLabel").html("HR<br> bpm");
 
-    $('#hrLabel').html(frequency);
-    ecgAlarm.testMeasurementValueForAlarm(frequency);
+    $('#hrLabel').html((hrValue===0) ? "--" : hrValue);
+    ecgAlarm.testMeasurementValueForAlarm(hrValue);
 
     if (ecgMeasurement.isOverMaxIdleTime()) {
         defiManagement.deactivateDefiSync();
@@ -800,11 +794,12 @@ var spo2Measurement = new SpO2Measurement(function (spo2Value) {
 
     if (!simConfig.simState.showHR) {
         $("#hrCaptionLabel").html("HR<br> bpm (Pleth)");
-        $("#hrLabel").html(spo2Measurement.getAvgHRFromSPO2());
-        ecgAlarm.testMeasurementValueForAlarm(spo2Measurement.getAvgHRFromSPO2());
+        const avgHR = spo2Measurement.getAvgHRFromSPO2();
+        $("#hrLabel").html((avgHR === 0) ? "--" : avgHR);
+        ecgAlarm.testMeasurementValueForAlarm(avgHR);
     }
 
-    $('#spo2Label').html(spo2Value);
+    $('#spo2Label').html((spo2Value===0) ? "--" : spo2Value);
     spo2Alarm.testMeasurementValueForAlarm(spo2Value);
 }, function () {
     // Real Time SpO2 Peak callback
@@ -815,12 +810,12 @@ var spo2Measurement = new SpO2Measurement(function (spo2Value) {
 
 var etco2Measurement = new ETCO2Measurement(function (etco2Value, rfValue) {
     if (simConfig.simState.displayETCO2) {
-        $('#etco2Label').html(etco2Value);
+        $('#etco2Label').html((etco2Value===0) ? "--" : etco2Value);
         etco2Alarm.testMeasurementValueForAlarm(etco2Value);
     }
 
     if (simConfig.simState.displayRR) {
-        $('#rrLabel').html(rfValue);
+        $('#rrLabel').html((rfValue===0) ? "--" : rfValue);
         rrAlarm.testMeasurementValueForAlarm(rfValue);
     }
 });
@@ -841,10 +836,10 @@ var ecgGraph = new ECGGraph(function () {
         && simConfig.vitalSigns.hr < pacerManagement.getFrequency()) {
             ecgValue = pacerManagement.performFixedPacing();
         } else {
-            ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration.hr);
+            ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration);
         }
     } else {
-        ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration.hr);
+        ecgValue = ecgCalculation.calc(simConfig.vitalSigns, changeDuration);
     }
 
     ecgMeasurement.addECGValue(ecgValue);
@@ -855,7 +850,7 @@ var spo2Graph = new Graph("spo2Canvas", "yellow", 50, 150, function () {
     // If HR is deactivated, HR changes should still be possible.
     if (!simConfig.simState.showHR) {
         // Just calculate for dynamic HR change.
-        ecgCalculation.calc(simConfig.vitalSigns, changeDuration.hr);
+        ecgCalculation.calc(simConfig.vitalSigns, changeDuration);
     }
     var spo2Value;
     
@@ -864,7 +859,7 @@ var spo2Graph = new Graph("spo2Canvas", "yellow", 50, 150, function () {
         spo2Value = pacerManagement.getAccordingSPO2();
     } else {
         spo2Value = spo2Calculation.calc(simConfig.vitalSigns.hr,
-            {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic}, changeDuration.spo2);
+            {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic}, changeDuration);
     }
 
     spo2Measurement.addSpO2Value(spo2Value);

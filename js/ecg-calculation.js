@@ -93,6 +93,16 @@ var ECGCalculation = function() {
         dependent on the bpm of the ecg. The value is therefore not constant. */
     var baselineValue = 0.65;
 
+    /* Variable: isNewMode
+        This value is used locally as a flag to see if a new mode was started. It is used to 
+        calculate the correct "offset-ecg" for the first value after a mode-change.  */
+    var isNewMode = false;
+
+    /* Variable: hasNewMode
+        This value is stored as an open property to be accessed and primarily set from outside.
+        Is workes in combination with <isNewMode>. Because it is possible to set this value, while a calculation is still ongoing, a double semaphore is used.  */
+    this.hasNewMode = false;
+
     /* Function: calculatePWave
         Used to calculate the pWaveValue for the current ECG value. 
         
@@ -307,11 +317,19 @@ var ECGCalculation = function() {
 
     /* Function: randomize
         Used to randomize the provided heart-rate. */
-    function randomize(hr, simTime) {
+    function randomize(hr, simTime, vitalSigns = undefined) {
         var randHR = (!self.hasAVBlock) ? self.currentRandHR : hr;
+
         const pacer = simConfig.simState.pacer;
-        if (simTime===0 && hr >= 10 && !isOffsetCalculation) {
-            var maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
+
+        if (simTime===0 && hr >= 10 && (!isOffsetCalculation || isNewMode)) {
+            var maxRandFactor
+            
+            if (vitalSigns != undefined && vitalSigns.name == "Atrial Fibrillation") {
+                maxRandFactor = 0.7;
+            } else {
+                maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
+            }
             randHR = Math.round((Math.random()-0.5) * hr*maxRandFactor + hr);
         } else if (randHR != hr && randHR <= 10 && !isOffsetCalculation) {
             randHR = hr;
@@ -321,6 +339,8 @@ var ECGCalculation = function() {
             // So no randomization happens, when pacing is performed.
             randHR = hr;
         }
+
+
         // Fallback to restart again from 0 on.
         if (randHR == 0 || randHR == undefined) {
             randHR = hr;
@@ -340,7 +360,7 @@ var ECGCalculation = function() {
         Returns:
             Current calculated heart-rate.
     */
-    function calculateCurrentHFValue(vitalSigns, hrChangeDuration) {
+    function calculateCurrentHFValue(vitalSigns, changeDuration) {
         
         if (self.timeSinceConfigChange === 0 && self.currentHR !== undefined) {
             // Change was performed:
@@ -368,7 +388,7 @@ var ECGCalculation = function() {
         /* x0 of the logistic function defines the duration to reach 
             the mid point, with the steepest slope. */
         
-        var x0 = hrChangeDuration.isAuto ? (Math.abs(L)/2) : (hrChangeDuration.value / 2);
+        var x0 = changeDuration.isAuto ? (Math.abs(L)/2) : (changeDuration.value / 2);
         /* k is the steepness of the curve. The adaptibility through the 
             dependency on x0 is chosen to make k more adaptable to different 
             speeds and heights of changes.*/
@@ -427,10 +447,10 @@ var ECGCalculation = function() {
         Returns:
             One part of the calculated ECG value.
     */
-    function calculateECGValue(vitalSigns, simTime, hrChangeDuration, hasPacerPeak) {
+    function calculateECGValue(vitalSigns, simTime, changeDuration, hasPacerPeak) {
         
-        self.currentHR = calculateCurrentHFValue(vitalSigns, hrChangeDuration);
-        randHR = randomize(self.currentHR, simTime);
+        self.currentHR = calculateCurrentHFValue(vitalSigns, changeDuration);
+        randHR = randomize(self.currentHR, simTime, vitalSigns);
 
         var tempHR = randHR;
 
@@ -542,28 +562,28 @@ var ECGCalculation = function() {
 
         Parameters:
             vitalSigns - Contains a reference to the vital parameters from the <simConfig>.
-            hrChangeDuration - Contains a reference to the hr specific part of the 
-            <changeDuration> object.
+            changeDuration - Contains a reference to the <changeDuration> object.
             hasPacerPeak - Contains a flag, whether a pacer is currently used.
 
         Returns: 
             Full calculated ECG value.
      */
-    this.calc = function(vitalSigns, hrChangeDuration, hasPacerPeak = false) {
+    this.calc = function(vitalSigns, changeDuration, hasPacerPeak = false) {
 
         isOffsetCalculation = true;
+        isNewMode = self.hasNewMode;
 
         /* An ecgOffset is necessary, because the baseline (ecg after u wave and before p) is 
             dependent on the bpm. A lower bpm has a lower offset. (can reach negative values).
             In order to understand this property, use the MATLAB script from Karthik Raviprakash. 
             (See Documentation) */
-        var ecgOffset = calculateECGValue(vitalSigns, 0, hrChangeDuration, hasPacerPeak); 
+        var ecgOffset = calculateECGValue(vitalSigns, 0, changeDuration, hasPacerPeak); 
 
         // check if first value has to be added or substracted
         if (ecgOffset < 0) ecgOffset = ecgOffset * (-1);
 
         isOffsetCalculation = false;
-        var ecgValue = calculateECGValue(vitalSigns, self.simTime, hrChangeDuration, hasPacerPeak);
+        var ecgValue = calculateECGValue(vitalSigns, self.simTime, changeDuration, hasPacerPeak);
 
         ecgValue -= ecgOffset;
         
@@ -589,6 +609,11 @@ var ECGCalculation = function() {
             expectsPacerPeak = false;
             ecgGraph.drawPacerPeak();
         }
+
+        if (isNewMode === self.hasNewMode) {
+            isNewMode = false;
+            self.hasNewMode = false;
+        } 
 
         return ecgValue;
     }
