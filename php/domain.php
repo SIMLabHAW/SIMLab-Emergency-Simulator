@@ -495,11 +495,11 @@
 
             $junctional_rhythm = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
-                "Junctional Rhythm", 40, 0.01, -0.276,
+                "Junctional Rhythm", 40, 0.01, 0,
                 /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
                 -0.020, 1, 0, 1,
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
-                0, 1, 0, -1, 
+                1, 1, 1, -1, 
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
                 0, 0, 70, 30, 
                 /* spo2; rr; etco2; */
@@ -507,7 +507,7 @@
 
             $ventricular_tachycardia = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
-                "Ventricular Tachycardia", 180, 0.01, -0.270, 
+                "Ventricular Tachycardia", 180, 0.01, 0.13, 
                 /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
                 -0.025, 1, 0, 1, 
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */

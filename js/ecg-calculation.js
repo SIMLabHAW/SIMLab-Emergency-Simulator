@@ -429,8 +429,13 @@ var ECGCalculation = function() {
             Adapted Parameter for the 
         */
     function getTimeForParameter(hr, param) {
+
+        var hrOffset = 0;
+        if (simConfig.vitalSigns.name === "Ventricular Tachycardia")  hrOffset = 120;
+        if (simConfig.vitalSigns.name === "Ventricular Fibrillation")  hrOffset = 250;
+
         // These parameters are superb for the whole range of hr. (Based on Tests in Excel)
-        var normalHF = 60;
+        var normalHF = 60 + hrOffset;
         var halfValueDif = 70; 
         var k = 6/halfValueDif;
         return param - (param*0.6)/(1+(Math.exp(-k*((hr-normalHF)-halfValueDif))));
@@ -465,15 +470,18 @@ var ECGCalculation = function() {
             }
         }
 
+        var junctionalRhythmOffset = 0;
+        if (vitalSigns.name === "Junctional Rhythm") junctionalRhythmOffset = -0.21;
+
         // Variables for the P-Wave:
         var pWaveAmplitude = 0.25, 
             pWaveDuration = getTimeForParameter(randHR, 0.09), 
-            pWaveStartTime = getTimeForParameter(randHR, 0.16);
+            pWaveStartTime = getTimeForParameter(randHR, 0.16 + junctionalRhythmOffset);
 
         // calculate first value of the chosen frequency to eliminate offset
         var pWaveValue = calculatePWave(
-            simTime + vitalSigns.xValOffset, pWaveAmplitude, pWaveDuration, pWaveStartTime, 
-            tempHR, vitalSigns.pWaveFactor);
+            simTime + getTimeForParameter(randHR, vitalSigns.xValOffset), pWaveAmplitude, 
+            pWaveDuration, pWaveStartTime, tempHR, vitalSigns.pWaveFactor);
 
 
         if (self.hasAVBlock) {
