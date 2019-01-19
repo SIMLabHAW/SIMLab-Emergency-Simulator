@@ -56,10 +56,6 @@ var defaultPathologyList;
     This variable stores the currently chosen charge Value. */
 var chargeValue = 150;
 
-/* Variable: alarmVolume
-    This variable stores the currently active Alarm Volume. */
-var alarmVolume = 0.8;
-
 /* Variable: peakSoundVolume
     This variable stores the currently active ECG 
     or SpO2 Peak Volume. */
@@ -388,6 +384,8 @@ function togglePauseGraphs() {
     etco2Graph.togglePauseGraph();
 }
 
+// TODO: Dont save Screenshots in the Folder, but in the database!
+
 /* Function: takeScreenshot
     This function is used to take a Screenshot from the current Traineeview. 
     The screenshot is then stored in a folder on the serverside. 
@@ -587,9 +585,8 @@ function getAlarmLevels() {
 
 /* Function: setAlarmLevels
 
-    This function is used to save the chosen Alarm-Values in the Datamodel.
-    It is called as soon as the "check" Button on the Settings-Modal is 
-    pressed. 
+    This function is used to save the chosen Alarm-Values in the Datamodel. It is called as
+    soon as the "check" Button on the Settings-Modal is pressed. 
 */
 function setAlarmLevels() {
     ecgAlarm.lowerLimit = $("#hrSlider").data().from;
@@ -634,25 +631,35 @@ var diaAlarm = new DIAAlarm(function (state) {
     createAlarmSound("diaAlarm", state);
 });
 
-var oldAlarms = [];
+/* Variable: knownAlarms
+    Saves the currently known Alarms. */
+var knownAlarms = [];
+
+/* Variable: alarmMuteDuration
+    Stores the duration of the alarm mute time. Needs to be mutatable */
 var alarmMuteDuration = 120;
+
+/* Variable: alarmMuteInterval
+    Stores the timer of the alarm mute during runtime. */
 var alarmMuteInterval;
 
+/* Function: toggleAlarmSound
+    Toggles the Alarm Sound. If alarms are active and sound is playing, the sound is muted. 
+    If sounds are muted, button is clicked and alarms are active, the sound is unmuted. */
 function toggleAlarmSound() {
     var currentAlarmCount = 0;
-    if (Object.keys(oldAlarms).length > 0) {
-        for (var aType in oldAlarms) {
-            if (oldAlarms[aType] === AlarmState.AboveLimit ||
-                oldAlarms[aType] === AlarmState.BelowLimit) {
+    if (Object.keys(knownAlarms).length > 0) {
+        for (var aType in knownAlarms) {
+            if (knownAlarms[aType] === AlarmState.AboveLimit ||
+                knownAlarms[aType] === AlarmState.BelowLimit) {
                 currentAlarmCount++;
                 break;
             }
         }
     }
 
-    if (currentAlarmCount > 0) {
-        soundManagement.toggleAlarmSound();
-    }
+    if (currentAlarmCount > 0) soundManagement.toggleAlarmSound();
+
     toggleAlarmSoundIcon();
 }
 
@@ -689,24 +696,37 @@ function createAlarmSound(alarmType, state) {
     var needsAlarmValitidyCheck = false;
     var currentAlarmCount = -1;
 
-    if (!(alarmType in oldAlarms)) {
+    /* In This Condition, the currently changing alarmType is analyzed. If the Alarm was not 
+        active already (not part of knownAlarms), it is saved together with its alarmstate
+        in knownAlarms. When the alarmType was however already saved in knownAlarms, it's state 
+        is updated. In both cases, the sound will restart to play, as a NEW or updated alarm 
+        was generated. */
+    if (!(alarmType in knownAlarms)) {
         // For Initialization:
-        oldAlarms[alarmType] = state;
+        knownAlarms[alarmType] = state;
         switch (state) {
             // Fallthrough is intended!
             case AlarmState.AboveLimit:
             case AlarmState.BelowLimit:
-                soundManagement.playAlarmSoundRepeatedly(alarmVolume);
+                if (soundManagement.isRepeatedAlarmSoundRunning()) 
+                    soundManagement.playNewAlarmSound();
+
+                soundManagement.playAlarmSoundRepeatedly();
                 toggleAlarmSoundIcon(true);
                 break;
+            case AlarmState.None:
+                break;
         }
-    } else if (oldAlarms[alarmType] !== state) {
-        oldAlarms[alarmType] = state;
+    } else if (knownAlarms[alarmType] !== state) {
+        knownAlarms[alarmType] = state;
         switch (state) {
             // Fallthrough is intended!
             case AlarmState.AboveLimit:
             case AlarmState.BelowLimit:
-                soundManagement.playAlarmSoundRepeatedly(alarmVolume);
+                if (soundManagement.isRepeatedAlarmSoundRunning()) 
+                    soundManagement.playNewAlarmSound();
+
+                soundManagement.playAlarmSoundRepeatedly();
                 toggleAlarmSoundIcon(true);
                 break;
             case AlarmState.None:
@@ -715,22 +735,22 @@ function createAlarmSound(alarmType, state) {
         }
     }
 
+    /* If an AlarmState changed to None, it must be checked, whether there are more alarms active.
+        In case none of the alarms are active anymore, the sound is stopped. */
     if (needsAlarmValitidyCheck) {
-        /* The oldAlarms List must be checked if some alarms are still valid, 
-        so the sound keeps on playing */
+        /* The knownAlarms List must be checked if some alarms are still valid, 
+            so the sound keeps on playing */
         currentAlarmCount = 0;
-        for (var aType in oldAlarms) {
-            if (oldAlarms[aType] === AlarmState.AboveLimit ||
-                oldAlarms[aType] === AlarmState.BelowLimit) {
+        for (var aType in knownAlarms) {
+            if (knownAlarms[aType] === AlarmState.AboveLimit ||
+                knownAlarms[aType] === AlarmState.BelowLimit) {
                 currentAlarmCount++;
                 break;
             }
         }
     }
 
-    if (currentAlarmCount === 0) {
-        soundManagement.stopAlarmSound();
-    }
+    if (currentAlarmCount === 0) soundManagement.stopAlarmSound();
 }
 
 // *******************  END ALARM MANAGEMENT ********************** //
@@ -862,7 +882,7 @@ var spo2Graph = new Graph("spo2Canvas", "yellow", 50, 150, function () {
             {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic}, changeDuration);
     }
 
-    spo2Measurement.addSpO2Value(spo2Value);
+    spo2Measurement.addSpO2Value(spo2Value, {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic});
     return spo2Value;
 });
 

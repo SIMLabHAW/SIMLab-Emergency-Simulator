@@ -46,12 +46,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
             <ul class="navbar-nav mr-auto">
             </ul>
 
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <button id="fullscreenButton"class="btn btn-outline-success my-2 my-sm-0" onclick="toggleFullScreen()">Full Screen</button>
-            </form> -->
-
-			<form class="form-inline my-2 my-lg-0" action="php/logout.php">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+			<form class="form-inline my-2" action="php/logout.php">
+                <button class="btn btn-outline-success my-2" type="submit">Logout</button>
             </form>
 
         </div>
@@ -60,7 +56,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
     <main role="main" class="container-fluid main-container">
         
         <div class="row">
-            <div class="col-12 col-md-8 powerButton">
+            <div class="col-8 powerButton">
 
                 <div class="row">
                     <div class="col-1 noRPad">
@@ -86,7 +82,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     <!-- ETCO2 Label & Canvas -->
 
                     <div class="col-1 noRPad">
-                        <p class="etco2">etCO2 </p>
+                        <p class="sign-caption etco2">etCO2 </p>
                     </div>
                     <div class="col-11 noLPad sign-chart-container">
                         <canvas id="etco2Canvas"></canvas>
@@ -96,7 +92,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 
                     <div class="col-12 bloodpressure" style="padding-top: 1vmin; padding-bottom: 1vmin" id="bloodpressure">
                         <div class="row">
-                            <div id="nibpBorderDiv" class="col-md-4 offset-md-8">
+                            <div id="nibpBorderDiv" class="col-4 offset-md-8">
                                 <p class="sign-caption" style="text-align: left"> NIBP mmHg</p>
                                 <label id="sysLabel" class="sign-values-nibp" for="systolisch">--</label>
                                 <span class="sign-values-nibp">/</span>
@@ -112,7 +108,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 </div>
             </div>
 
-            <div class="col-6 col-md-2 powerButton" id="sidebar">
+            <div class="col-2 powerButton" id="sidebar">
                 <div id="ecgBorderDiv" class="sign-detail hrColor">
                     <p class="sign-caption" id="hrCaptionLabel">HR
                         <br> bpm</p>
@@ -133,10 +129,10 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 </div>
                 <div id="rrBorderDiv" class="sign-detail rr-value resp-rate">
                     <div class="row">
-                        <div class="col-1 col-md-3">
+                        <div class="col-1">
                             <p class="sign-caption">Resp </p>
                         </div>
-                        <div class="col-2 col-md-9">
+                        <div class="col-9">
                             <label id="rrLabel" style="text-align: right; line-height: 5vmin; font-size: 5vmin; font-weight: bold" for="RR">--</label>
                         </div>
                     </div>
@@ -144,7 +140,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
             </div>
 
             <!-- Sidebar Elements -->
-            <div class="col-6 col-md-2 powerButton" style="background-color: #343a40" id="sidebar">
+            <div class="col-2 powerButton" style="background-color: #343a40" id="sidebar">
 
 
                 <!-- Defibrillator Elements -->
@@ -155,15 +151,15 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     <!-- Defibrillator Charge Energy Configuration -->
 
                     <div class="row" style="padding-left: 1vmin; padding-right: 1vmin; margin-top: 1vmin; margin-left: 0px; margin-right: 0px">
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="defiManagement.defiEnergyDown()">
                                 <img class="custom-icon" src="assets/img/minus.svg">
                             </button>
                         </div>
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <p id="defiChargeLabel" class="up-down-label">150<br>J</p>
                         </div>
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="defiManagement.defiEnergyUp()">
                                 <img class="custom-icon" src="assets/img/plus.svg">
                             </button>
@@ -216,17 +212,17 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     <!-- Pacer Energy Configuration -->
 
                     <div class="row" style="padding-left: 1vmin; padding-right: 1vmin; margin-top: 1vmin; margin-left: 0px; margin-right: 0px; margin-bottom: 0px">
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.energyDown()">
                                 <img class="custom-icon" src="assets/img/minus.svg">
                             </button>
                         </div>
 
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <p id="pacerEnergyLabel" class="up-down-label">10<br>mA</p>
                         </div>
 
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.energyUp()">
                                 <img class="custom-icon" src="assets/img/plus.svg">
                             </button>
@@ -243,17 +239,17 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     <!-- Pacer Frequency Configuration -->
 
                     <div class="row" style="padding-left: 1vmin; padding-right: 1vmin; margin-top: 0vmin; margin-left: 0px; margin-right: 0px">
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.frequencyDown()">
                                 <img class="custom-icon" src="assets/img/minus.svg">
                             </button>
                         </div>
 
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <p id="pacerFrequencyLabel" class="up-down-label">60<br>bpm</p>
                         </div>
 
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 8vmin; width: inherit" onclick="pacerManagement.frequencyUp()">
                                 <img class="custom-icon" src="assets/img/plus.svg">
                             </button>
@@ -265,7 +261,7 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 
         <div class="row bottom-feature-row" style="background-color: #343a40">
 
-            <div class="col-1 col-md-1 bottom-bar" style="padding-left: 0.5vmin">
+            <div class="col-1 bottom-bar" style="padding-left: 0.5vmin">
                 <div class="border border-dark rounded" style="background-color: black; margin-top: 0.5vmin; margin-bottom: 0.5vmin; height: 11vmin; width: inherit; padding: 0px 0.5vmin;">
                     <button id="powerOffButton" type="button" class="btn btn-light" style="margin-top: 1vmin; padding: 0px; height: 9vmin; width: inherit;" onclick="screenOnOff()">
                         <img id="powerOffImage" class="custom-icon" src="assets/img/power-off.svg">
@@ -273,14 +269,14 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 </div>
             </div>
 
-            <div class="col-4 col-md-2 bottom-bar powerButton" style="padding-left: 0.5vmin">
+            <div class="col-2 bottom-bar powerButton" style="padding-left: 0.5vmin">
                 <div class="border border-dark rounded" style="background-color: black; margin-top : 0.5vmin; margin-bottom : 0.5vmin; height: 11vmin">
                     <div class="font-vital-signs" style="text-align: center; height: 100%; line-height: 10vh; font-size: 6vmin; font-family: monospace" id="timerDiv"></div>
                 </div>
             </div>
 
 
-            <div class="col-4 col-md-2 bottom-bar powerButton">
+            <div class="col-2 bottom-bar powerButton">
                 <div class="border border-dark rounded" style="background-color: black; margin-top : 0.5vmin; height: 11vmin">
                     
                     <!-- <div class="col-12" style="padding-left: 1vmin; padding-right: 1vmin; margin: 0px;">
@@ -288,15 +284,15 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                     </div> -->
 
                     <div class="row" style="padding: 0vmin; margin: 1vmin">
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeDown()">
                                 <img class="custom-icon" src="assets/img/volume-down.svg">
                             </button>
                         </div>
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <p id="peakSoundVolumeLabel" class="up-down-label">0<br>%</p>
                         </div>
-                        <div class="col-4 col-md-4" style="padding: 0px; margin: 0px">
+                        <div class="col-4" style="padding: 0px; margin: 0px">
                             <button type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="soundManagement.peakSoundVolumeUp()">
                                 <img class="custom-icon" src="assets/img/volume-up.svg">
                             </button>
@@ -305,20 +301,20 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 </div>
             </div>
 
-            <div class="col-3 col-md-3 bottom-bar powerButton">
+            <div class="col-3 bottom-bar powerButton">
                 <div class="border border-dark rounded" style="background-color: black; margin-top : 0.5vmin; height: 11vmin">
                     <div class="row" style="padding: 1vmin; margin: 0px">
-                        <div class="col-3 col-md-3" style="padding: 0px; margin-right: 1vmin">
+                        <div class="col-3" style="padding: 0px; margin-right: 1vmin">
                             <button id="toggleGraphPauseButton" type="button" class="btn btn-light" style="margin: 0px; padding: 0px; height: 9vmin; width: inherit" onclick="togglePauseGraphs()">
                                 <img id="snowflakeIcon" class="custom-icon" src="assets/img/snowflake.svg">
                             </button>
                         </div>
-						 <div class="col-3 col-md-3" style="padding: 0px; margin-right: 1vmin">
+						 <div class="col-3" style="padding: 0px; margin-right: 1vmin">
                             <button type="button" class="btn btn-light" style="padding: 1vmin; height: 9vmin; width: inherit" onclick="takeScreenshot()">
                                 <img class="custom-icon" src="assets/img/camera.svg">
                             </button>
                         </div>
-						<div class="col-3 col-md-3" style="padding: 0px; margin-right: 1vmin">
+						<div class="col-3" style="padding: 0px; margin-right: 1vmin">
                              <button type="button" class="btn btn-light" style="height: 9vmin;  padding: 0.5vmin; width: inherit" data-toggle="modal" data-target="#nibpHistoryModal">
 							 <img class="custom-icon" src="assets/img/history.svg">
 							 </button>
@@ -329,10 +325,10 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                 </div>
             </div>
 
-            <div class="col-4 col-md-2 bottom-bar powerButton" style="padding-right: 0.5vmin">
+            <div class="col-2 bottom-bar powerButton" style="padding-right: 0.5vmin">
                 <div class="border border-dark rounded" style="background-color: black; margin-top: 0.5vmin; height: 11vmin; padding-right: 1.5vmin">
                     <div class="row" style="margin: 0px">
-                        <div class="col-6 col-md-6 bottom-bar">
+                        <div class="col-6  bottom-bar">
                             <button id="dropdownToggle" type="button" class="btn btn-light" data-toggle="dropdown" style="margin: 1vmin; white-space: normal; height: 9vmin; padding: 0px; width: inherit" onclick="stopNIBPInterval()">
                                 <img id="toggleRepeatNIBP" class="custom-icon" style="margin: 0px" src="assets/img/retweet.svg"><br>
                                 <b>NIBP</b>
@@ -340,13 +336,13 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                             <div id="dropDownModalID" class="dropdown-menu" style="background-color: #343a40; margin-bottom: 2vmin; padding: 0.5vmin; min-width: 35vmin; margin-right: 35vmin">
                                 <div class="border border-dark rounded" style="background-color: black">
                                     <div class="row" style="padding: 0px; margin: 0px">
-                                        <div class="col-4 col-md-4" style="padding-left: 1vmin; padding-right: 0.5vmin; padding-top: 1vmin; padding-bottom: 1vmin">
+                                        <div class="col-4" style="padding-left: 1vmin; padding-right: 0.5vmin; padding-top: 1vmin; padding-bottom: 1vmin">
                                             <button type="button" class="btn btn-light" style="height: 9vmin; padding: 0.5vmin; width: inherit" onclick="getNIBP(5)"><b>5 min</b></button>
                                         </div>
-                                        <div class="col-4 col-md-4" style="padding-left: 0.5vmin; padding-right: 0.5vmin; padding-bottom: 1vmin; padding-top: 1vmin">
+                                        <div class="col-4" style="padding-left: 0.5vmin; padding-right: 0.5vmin; padding-bottom: 1vmin; padding-top: 1vmin">
                                             <button type="button" class="btn btn-light" style="height: 9vmin;  padding: 0.5vmin; width: inherit" onclick="getNIBP(2)"><b>2 min</b></button>
                                         </div>
-                                        <div class="col-4 col-md-4" style="padding-left: 0.5vmin; padding-right: 1vmin; padding-bottom: 1vmin; padding-top: 1vmin">
+                                        <div class="col-4" style="padding-left: 0.5vmin; padding-right: 1vmin; padding-bottom: 1vmin; padding-top: 1vmin">
                                             <button type="button" class="btn btn-light" style="height: 9vmin;  padding: 0.5vmin; width: inherit" onclick="getNIBP(1)"><b>1 min</b></button>
                                         </div>
 										
@@ -354,23 +350,23 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 col-md-6 bottom-bar">
+                        <div class="col-6 bottom-bar">
                             <button id="singleNIBPButton" type="button" class="btn btn-light" style="margin: 1vmin; width: inherit; height: 9vmin; padding: 0px" onclick="getNIBP()"><b>NIBP</b></button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-4 col-md-2 bottom-bar powerButton" style="padding-right: 0.5vmin">
+            <div class="col-2 bottom-bar powerButton" style="padding-right: 0.5vmin">
                 <div class="border border-dark rounded" style="background-color: black; margin-top: 0.5vmin; height: 11vmin; padding-right: 1.5vmin">
                     <div class="row" style="margin: 0px">
-                        <div class="col-6 col-md-6 bottom-bar">
+                        <div class="col-6 bottom-bar">
                             <button id="alarmMuteButton" class="btn btn-light" style="padding: 0; margin: 1vmin; height: 9vmin; width: inherit; white-space: normal; padding: 0px" onclick="toggleAlarmSound()">
                                 <img id="toggleAlarmSoundIcon" class="custom-icon" style="margin: 0px" src="assets/img/bell-slash.svg">
                                 <div id="alarmMuteTimer"></div>
                             </button>
                         </div>
-                        <div class="col-6 col-md-6 bottom-bar">
+                        <div class="col-6 bottom-bar">
                             <button type="button" class="btn btn-light" style="margin: 1vmin; height: 9vmin; width: inherit" data-toggle="modal" data-target="#settingsModal" onclick="getAlarmLevels()">
                                 <img class="custom-icon" src="assets/img/sliders-h.svg">
                             </button>
@@ -394,13 +390,13 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 
                         <div class="modal-body">
                             <div class="row" style="padding: 2.5px">
-                                <div class="col-md-6 border border-dark rounded">
+                                <div class="col-6 border border-dark rounded">
                                     <div class="range-slider">
                                         <p class="hrColor" style="text-align: center"> HR [bpm]<br>
                                             <input type="text" id="hrSlider" class="js-range-slider" value="" />
                                     </div>
                                 </div>
-                                <div class="col-md-6 border border-dark rounded">
+                                <div class="col-6 border border-dark rounded">
                                     <div class="range-slider">
                                         <p class="spo2Color" style="text-align: center"> SpO2 [%]<br>
                                             <input type="text" id="spo2Slider" class="js-range-slider" value="" />
@@ -409,13 +405,13 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                             </div>
 
                             <div class="row" style="padding: 2.5px">
-                                <div class="col-md-6 border border-dark rounded">
+                                <div class="col-6 border border-dark rounded">
                                     <div class="range-slider">
                                         <p class="etco2" style="text-align: center"> etCO2 [mmHg] <br>
                                             <input type="text" id="etcoSlider" class="js-range-slider" value="" />
                                     </div>
                                 </div>
-                                <div class="col-md-6 border border-dark rounded">
+                                <div class="col-6 border border-dark rounded">
                                     <div class="range-slider">
                                         <p class="resp-rate" style="text-align: center"> Resp<br>
                                             <input type="text" id="rrSlider" class="js-range-slider" value="" />
@@ -424,13 +420,13 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
                             </div>
 
                             <div class="row" style="padding: 2.5px">
-                                <div class="col-md-6 border border-dark rounded">
+                                <div class="col-6 border border-dark rounded">
                                     <div class="range-slider">
                                         <p class="nibpColor" style="text-align: center"> Sys [mmHg] <br>
                                             <input type="text" id="sysSlider" class="js-range-slider" value="" />
                                     </div>
                                 </div>
-                                <div class="col-md-6 border border-dark rounded">
+                                <div class="col-6 border border-dark rounded">
                                     <div class="range-slider">
                                         <p class="nibpColor" style="text-align: center"> Dia [mmHg] <br>
                                             <input type="text" id="diaSlider" class="js-range-slider" value="" />

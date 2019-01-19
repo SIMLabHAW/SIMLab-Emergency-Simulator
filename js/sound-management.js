@@ -71,6 +71,7 @@ function SoundManagement(soundCallback) {
         "<ding.wav: https://freesound.org/people/tim.kahn/sounds/91926/>" by <tim.kahn: https://freesound.org/people/tim.kahn/> is licensed under <CC BY 3.0: https://creativecommons.org/licenses/by/3.0/> 
     */
     var alarmAudio = new Audio("assets/audio/ding_sound.wav");
+    var newAlarmAudio = new Audio("assets/audio/ding_sound.wav");
 
     /* Variable: context
         Contains the context to be used to play sounds. */
@@ -80,14 +81,17 @@ function SoundManagement(soundCallback) {
         Stores the current peak sound volume. */
     var peakSoundVolume = 0.0;
 
-    /* Variable: isAlarmMuted
-        Indicates, if the alarm is muted. */
-    var isAlarmMuted = false;
-
+    /* Variable: alarmVolume
+        This variable stores the currently active Alarm Volume. */
+    var alarmVolume = 0.8;
 
     /* Variable: isNIBPSoundRunning
         Indicates, if the nibp sound is running. */
     this.isNIBPSoundRunning = false;
+
+    /* Variable: isRepeatedAlarmSoundRunning
+        Indicates, if the repeated alarm sound is running. */
+    this.isRepeatedAlarmSoundRunning = () => isAlarmSoundInitialized && !alarmAudio.ended;
 
     /* Function: defiLoadAudio.onended
         Is called when the defi sound ended. */
@@ -154,7 +158,6 @@ function SoundManagement(soundCallback) {
         }
     }
 
-
     /* Function: playShortNIBP
         plays the short NIBP sound. */
     function playShortNIBP() {
@@ -186,7 +189,7 @@ function SoundManagement(soundCallback) {
     this.playRPeakNoise = function () {
         var oscillator = context.createOscillator();
         var volume = context.createGain();
-        volume.gain.value = peakSoundVolume * 0.05;
+        volume.gain.value = peakSoundVolume * 0.1;
         var now = context.currentTime;
         oscillator.type = 'sine';
         oscillator.frequency.value = 450;
@@ -201,7 +204,7 @@ function SoundManagement(soundCallback) {
     this.playSpO2PeakNoise = function (spo2Value) {
         var oscillator = context.createOscillator();
         var volume = context.createGain();
-        volume.gain.value = peakSoundVolume * 0.05;
+        volume.gain.value = peakSoundVolume * 0.1;
         var now = context.currentTime;
         oscillator.type = 'sine';
         var freq = 400;
@@ -217,14 +220,24 @@ function SoundManagement(soundCallback) {
 
     /* Function: playAlarmSoundRepeatedly
         Plays the alarm sound repeatedly. */
-    this.playAlarmSoundRepeatedly = function(volume) {
+    this.playAlarmSoundRepeatedly = function() {
         if (!isAlarmSoundInitialized || alarmAudio.ended) {
             alarmAudio.loop = true;
-            alarmAudio.volume = volume;
+            alarmAudio.volume = alarmVolume;
             alarmAudio.play();
             isAlarmSoundInitialized = true;
         }
     };
+
+    /* Function: playNewAlarmSound
+        Plays Alarm Audio Once, when a new alarm occurs, WHILE other alarms are active AND
+        the Sound is repeatedly playing already. */
+    this.playNewAlarmSound = function() {
+        newAlarmAudio.loop = false;
+        newAlarmAudio.volume = alarmVolume;
+        newAlarmAudio.play();
+
+    }
     
     /* Function: stopAlarmSound
         stops the alarm sound from playing. */
@@ -243,7 +256,6 @@ function SoundManagement(soundCallback) {
             } else {
                 alarmAudio.loop = false;
             }
-            isAlarmMuted = !isAlarmMuted;
         }
     };
 

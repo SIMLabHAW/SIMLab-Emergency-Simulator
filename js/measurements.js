@@ -354,7 +354,7 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
         Parameters:
             spo2Value - Contains the latest captured value added to the <SPO2Graph>.
     */
-    this.addSpO2Value = function(spo2Value) {
+    this.addSpO2Value = function(spo2Value, nibp) {
         
         self.dataArray.push(spo2Value);
         
@@ -379,10 +379,13 @@ function SpO2Measurement(dataCallback, realTimePeakCallback) {
                 return;
             }
 
-
-            // TODO: Think about a better solution -> This is not a measurement.
-            //const minmax = self.findMinMax();
-            self.saveMinMax(0, simConfig.vitalSigns.spo2);
+            /* This is no measurement data, because there is no way to simulate the measurement 
+            of nibp here. */
+            if (nibp.sys > 70 && nibp.dia <= nibp.sys) {
+                self.saveMinMax(0, simConfig.vitalSigns.spo2);
+            } else {
+                self.saveMinMax(0, 0);
+            }
 
             // Algorithm for finding the count of peaks in the latest measurement interval:
 
