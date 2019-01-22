@@ -114,11 +114,15 @@ This section is work in progress and will be updated throughout the course of Ja
 
 ### Potential Changes and Features for Future Versions
 
+#### Application Features
 - 12 Channel ECG
-- Code Quality Improvements (e.g. ESLint)
 - Detailed Taining-Documentation
+
+#### Code Adaptions
+- Code Quality Improvements (e.g. ESLint)
 - Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
 - Use Node.js as Backend-Solution instead of PHP
+- Evaluate TypeScript as alternative to JS
 
 
 ## License
