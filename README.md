@@ -114,6 +114,8 @@ This section is work in progress and will be updated throughout the course of Ja
 
 ### Potential Changes and Features for Future Versions
 
+Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Application and the Codebase: 
+
 #### Application Features
 - 12 Channel ECG
 - Detailed Taining-Documentation
