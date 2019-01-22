@@ -322,6 +322,35 @@ function updateUI() {
     }
 }
 
+var ventExtraIgnoreTimer;
+var ignoreVentExtra = false;
+
+function performVentExtra(){
+
+    if (ignoreVentExtra) return;
+
+    tempConfig = JSON.parse(JSON.stringify(simConfig));
+    tempConfig.simState.hasVentExtra = true;
+
+    saveLesson(tempConfig);
+
+    ventExtraIgnoreTimer = setTimeout(function() {
+        if (!ignoreVentExtra && !tempConfig.simState.hasVentExtra) return;
+        ignoreVentExtra = false;
+        tempConfig.simState.hasVentExtra = false;
+        saveLesson(tempConfig);
+        initControls(tempConfig);
+    }, 2000);
+}
+
+function deactivateVentExtra() {
+    ignoreVentExtra = false;
+    tempConfig = JSON.parse(JSON.stringify(simConfig));
+    tempConfig.simState.hasVentExtra = false;
+    saveLesson(tempConfig);
+    initControls(tempConfig);
+}
+
 function saveAll(){
 
         if (postChangePathology != undefined) {

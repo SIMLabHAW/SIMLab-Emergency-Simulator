@@ -184,6 +184,22 @@
             ];
             return json_encode($array);
         }
+
+        public static function ventExtra() {
+            // This Parameter is not meant to be added as a standalone Pathology
+            return new VitalSignParameters(
+                /* name; hr; Noise; xValOffset; */
+                "VentExtra", 60, 0.01, 0.13, 
+                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                -0.020, 1, 0, 1,
+                /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
+                1, 1, 1, -1, 
+                /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
+                0, 0, 70, 30, 
+                /* spo2; rr; etco2; */
+                97, 18, 30);
+        }
+
     }
 
     class Lesson implements Serializable {
@@ -396,10 +412,12 @@
         private $hasCOPD;
         private $pacer;
         private $respRatio;
+        private $ventExtra;
+        private $hasVentExtra;
 		
         public function __construct(
             $enableECG, $enableSPO2, $enableETCO2, $defiPathology,$hrDefi,$spo2Defi, $etco2Defi, $rrDefi, $sysDefi, $diaDefi, $showHR, $showSPO2, $displayETCO2, $displayRR,$displayNIBP, $timer, $defiCharge, $defiEnergyThreshold, 
-            $hasCPR, $hasCOPD, $pacer, $respRatio) {
+            $hasCPR, $hasCOPD, $pacer, $respRatio, $ventExtra, $hasVentExtra) {
 
             $this->enableECG = $this->toBoolean($enableECG);
             $this->enableSPO2 = $this->toBoolean($enableSPO2);
@@ -423,6 +441,8 @@
             $this->hasCOPD = $this->toBoolean($hasCOPD);
             $this->pacer = $pacer;
             $this->respRatio = (int) $respRatio;
+            $this->ventExtra = $ventExtra;
+            $this->hasVentExtra = $this->toBoolean($hasVentExtra);
 			
         }
 
@@ -455,7 +475,9 @@
                 "hasCPR" => $this->hasCPR,
                 "hasCOPD" => $this->hasCOPD,
 				"pacer" => $this->pacer,
-				"respRatio" => $this->respRatio
+                "respRatio" => $this->respRatio,
+                "ventExtra" => $this->ventExtra,
+                "hasVentExtra" => $this->hasVentExtra
 			
             ];
             return json_encode($array);
@@ -628,6 +650,9 @@
         }else{
             $sinus_rhythm = getVitalSignParameters()["sinus_rhythm"];
 
+            // This Parameter is not meant to be added as a standalone Pathology
+            $ventExtra = json_decode(VitalSignParameters::ventExtra());
+
             $simState = new SimulationState(
                 /* enableECG, enableSPO2, enableETCO2, defiPathology */
                 false, false, false, 'Sinus Rhythm',
@@ -638,7 +663,9 @@
                 /* displayNIBP, timer, defiCharge, defiEnergyThreshold, */
                 false, false, '0:00', 150,
                 /* hasCPR, hasCOPD, pacer, respRatio */
-                false, false, new PacerState(false, 60, 10, 5), 0);
+                false, false, new PacerState(false, 60, 10, 5), 0,
+                /* ventExtra, hasVentExtra */
+                $ventExtra, false);
 
 			$changeDuration = new ChangeDuration(true,30);
 
@@ -712,6 +739,9 @@
             $simStateArray["pacer"]["energy"],
             $simStateArray["pacer"]["energyThreshold"]);
 
+        // This Parameter is Static
+        $ventExtra = json_decode(VitalSignParameters::ventExtra());
+
         $simState = new SimulationState(
             $simStateArray["enableECG"],
             $simStateArray["enableSPO2"],
@@ -734,7 +764,11 @@
             $simStateArray["hasCPR"],
             $simStateArray["hasCOPD"],
             $pacer,
-            $simStateArray["respRatio"]);	
+            $simStateArray["respRatio"],
+            $ventExtra,
+            $simStateArray["hasVentExtra"]);	
+            error_log($simState);	
+            error_log($ventExtra);
             
         //error_log($simStateArray["pacer"]);
         //error_log(PacerState::copyFrom($simStateArray["pacer"]));

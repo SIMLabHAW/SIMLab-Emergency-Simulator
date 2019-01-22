@@ -103,6 +103,9 @@ var ECGCalculation = function() {
         Is workes in combination with <isNewMode>. Because it is possible to set this value, while a calculation is still ongoing, a double semaphore is used.  */
     this.hasNewMode = false;
 
+    var hasVentExtra = false;
+    var ventExtraTime = 0;
+
     /* Function: calculatePWave
         Used to calculate the pWaveValue for the current ECG value. 
         
@@ -454,8 +457,14 @@ var ECGCalculation = function() {
     */
     function calculateECGValue(vitalSigns, simTime, changeDuration, hasPacerPeak) {
         
-        self.currentHR = calculateCurrentHFValue(vitalSigns, changeDuration);
-        randHR = randomize(self.currentHR, simTime, vitalSigns);
+        const isVentExtra = vitalSigns.name === "VentExtra";
+
+        if (!isVentExtra) {
+            self.currentHR = calculateCurrentHFValue(vitalSigns, changeDuration);
+            randHR = randomize(self.currentHR, simTime, vitalSigns);
+        } else {
+            randHR = vitalSigns.hr;
+        }
 
         var tempHR = randHR;
 
@@ -484,7 +493,7 @@ var ECGCalculation = function() {
             pWaveDuration, pWaveStartTime, tempHR, vitalSigns.pWaveFactor);
 
 
-        if (self.hasAVBlock) {
+        if (self.hasAVBlock && !isVentExtra) {
             if (hasPacerPeak) {
                 const pacer = simConfig.simState.pacer;
                 if (!(pacer.isEnabled && pacer.energy >= pacer.energyThreshold 
@@ -503,7 +512,7 @@ var ECGCalculation = function() {
                 if (!isOffsetCalculation) simTime = self.avBlockCounter;
             }
         }
-        self.currentRandHR = randHR;
+        if (!isVentExtra) self.currentRandHR = randHR;
 
         // Variables for the Q-Wave:
         var qWaveAmplitude = 0.07, 
@@ -556,7 +565,7 @@ var ECGCalculation = function() {
             && vitalSigns.name == "Sinus Rhythm")
             return baselineValue;
 
-        if (!isOffsetCalculation) baselineValue = calculateWaveSum(
+        if (!isOffsetCalculation && !isVentExtra) baselineValue = calculateWaveSum(
             pWaveValue, qWaveValue, qrsComplexValue, sWaveValue, 
             tWaveValue, uWaveValue, vitalSigns.pWavePreFactor, vitalSigns.Noise);
 
@@ -611,6 +620,20 @@ var ECGCalculation = function() {
         
         // Used to adapt the position of the pacer peak in the paced ECG.
         const pacerPeakPositionFactor = 0.9;
+
+        var ventExtra = JSON.parse(JSON.stringify(simConfig.simState.ventExtra));
+        ventExtra.off
+
+        if (simConfig.simState.hasVentExtra) hasVentExtra = true;
+
+        if (hasVentExtra && ventExtraTime < 60/ventExtra.hr) {
+            ecgValue += calculateECGValue(ventExtra, ventExtraTime, changeDuration, false);
+            ventExtraTime += timestep;
+        } else {
+            if (hasVentExtra && viewType == ViewType.Trainer) deactivateVentExtra();
+            ventExtraTime = 0;
+            hasVentExtra = false;
+        }
 
         if (hasPacerPeak && expectsPacerPeak && 
             self.simTime >= 60/self.currentHR * pacerPeakPositionFactor) {
