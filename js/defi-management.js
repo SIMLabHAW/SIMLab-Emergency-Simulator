@@ -143,10 +143,13 @@ var DefiManagement = function() {
     function performShock() {
         /* If The defiPathology was changed after the charge began, it is important to pull the 
         current config to make it possible to use the most recent defiPathology after the shock. */
-       if (chargeValue >= simConfig.simState.defiEnergyThreshold) {
+
+       ignoreDefi: if (chargeValue >= simConfig.simState.defiEnergyThreshold) {
            tempConfig.simState.defiPathology = simConfig.simState.defiPathology;
            var pathologyName = tempConfig.simState.defiPathology;
-           if (pathologyName === 'ignore Defi') return;
+
+           // break is used, so that the shocksound is played and the GUI is resetted.
+           if (pathologyName === 'ignore Defi') break ignoreDefi;
 
            var selectedPathology = defaultPathologyList.find(function (pathology) {
                return pathology.name === pathologyName;
@@ -160,14 +163,13 @@ var DefiManagement = function() {
 			tempConfig.vitalSigns.diastolic = parseInt(simConfig.simState.diaDefi);
             saveLesson(tempConfig);
             initControls(tempConfig);
-            soundManagement.playDefiShockSound();
-            document.getElementById("defiShockButton").disabled = true;
             saveComment("Defibrillation applied");
        } else {
-           soundManagement.playDefiShockSound();
-           document.getElementById("defiShockButton").disabled = true;
            saveComment("Defibrillation Energy to Low!");
        }
+
+       soundManagement.playDefiShockSound();
+       document.getElementById("defiShockButton").disabled = true;
     }
 
     /* Function: performSyncShock

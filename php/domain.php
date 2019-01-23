@@ -143,13 +143,13 @@
             $this->Noise = (float) $Noise;
             $this->xValOffset = (float) $xValOffset;
             $this->xt = (float) $xt;
-            $this->pWaveFactor = (int)$pWaveFactor;
-            $this->qWaveFactor = (int)$qWaveFactor;
-            $this->qrsComplexFactor = (int)$qrsComplexFactor;
-            $this->sWaveFactor = (int)$sWaveFactor;
-            $this->tWaveFactor = (int)$tWaveFactor;
-            $this->uWaveFactor = (int)$uWaveFactor;
-            $this->pWavePreFactor = (int)$pWavePreFactor;
+            $this->pWaveFactor = (float)$pWaveFactor;
+            $this->qWaveFactor = (float)$qWaveFactor;
+            $this->qrsComplexFactor = (float)$qrsComplexFactor;
+            $this->sWaveFactor = (float)$sWaveFactor;
+            $this->tWaveFactor = (float)$tWaveFactor;
+            $this->uWaveFactor = (float)$uWaveFactor;
+            $this->pWavePreFactor = (float)$pWavePreFactor;
             $this->qrsAmplitudeOffset = (float) $qrsAmplitudeOffset;
             $this->qrsDurationOffset = (float) $qrsDurationOffset;
             $this->systolic = (int) $systolic;
@@ -519,13 +519,13 @@
 
             $ventricular_fibrillation = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
-                "Ventricular Fibrillation", 250, 0.05, 0, 
+                "Ventricular Fibrillation", 250, 0.01, 0.10, 
                 /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 1, 1, 0, 
+                0, 1, 0, 0.3, 
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
-                1, 1, 1, 1, 
+                0, 2, 0, 2, 
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
-                -6.150, 0, 0, 0, 
+                0, 0, 0, 0, 
                 /* spo2; rr; etco2; */
                 0, 0, 0);
 

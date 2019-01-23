@@ -310,7 +310,10 @@ var ECGCalculation = function() {
         Uses all provided parameters to calculate the current sum. */
     function calculateWaveSum(p, q, qrs, s, t, u, pWavePreFactor, noise) {
         
-        const E = pWavePreFactor * p + q + qrs + s + t + u;
+        var ventFibOffset = (!isOffsetCalculation && 
+            simConfig.vitalSigns.name === PName.VentFib)? 1.0: 0;
+
+        const E = pWavePreFactor * p + q + qrs + s + t + u - ventFibOffset;
 
         return E * (Math.random() * noise + 1);
     }
@@ -325,11 +328,22 @@ var ECGCalculation = function() {
         if (simTime===0 && hr >= 10 && (!isOffsetCalculation || isNewMode)) {
             var maxRandFactor
             
-            if (vitalSigns != undefined && vitalSigns.name == "Atrial Fibrillation") {
-                maxRandFactor = 0.7;
+            if (vitalSigns != undefined) {
+                switch (vitalSigns.name) {
+                    case PName.AtrialFib:
+                        maxRandFactor = 0.7;
+                        break;
+                    case PName.VentFib:
+                        maxRandFactor = 0.1;
+                        break;
+                    default:
+                        maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
+                        break;
+                }
             } else {
                 maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
             }
+
             randHR = Math.round((Math.random()-0.5) * hr*maxRandFactor + hr);
         } else if (randHR != hr && randHR <= 10 && !isOffsetCalculation) {
             randHR = hr;
@@ -431,8 +445,8 @@ var ECGCalculation = function() {
     function getTimeForParameter(hr, param) {
 
         var hrOffset = 0;
-        if (simConfig.vitalSigns.name === "Ventricular Tachycardia")  hrOffset = 120;
-        if (simConfig.vitalSigns.name === "Ventricular Fibrillation")  hrOffset = 250;
+        if (simConfig.vitalSigns.name === PName.VentTach)  hrOffset = 120;
+        if (simConfig.vitalSigns.name === PName.VentFib)  hrOffset = 250;
 
         // These parameters are superb for the whole range of hr. (Based on Tests in Excel)
         var normalHF = 60 + hrOffset;
@@ -461,7 +475,7 @@ var ECGCalculation = function() {
 
         /* This is used to draw the curve of low-bpm ecg in the same timeframe as a 60bpm 
             ecg. After the waveform, is is zero, until the next wave starts. */
-        if (tempHR < 35 && vitalSigns.name == "Sinus Rhythm") {
+        if (tempHR < 35 && vitalSigns.name === PName.SinusRhythm) {
             /* below 35bpm, the curve is stiched together by a 60bpm "baseline" and a 
             "pqrstu"-complex. */
             tempHR = 60;
@@ -471,7 +485,7 @@ var ECGCalculation = function() {
         }
 
         var junctionalRhythmOffset = 0;
-        if (vitalSigns.name === "Junctional Rhythm") junctionalRhythmOffset = -0.21;
+        if (vitalSigns.name === PName.JuncRhythm) junctionalRhythmOffset = -0.21;
 
         // Variables for the P-Wave:
         var pWaveAmplitude = 0.25, 
@@ -553,7 +567,7 @@ var ECGCalculation = function() {
             ecg. After the waveform, the baseline value will be drawn, until the next wave 
             starts. */
         if (!isOffsetCalculation && simTime < 60/randHR - 0.4 && simTime > 0.5 && randHR < 35 
-            && vitalSigns.name == "Sinus Rhythm")
+            && vitalSigns.name == PName.SinusRhythm)
             return baselineValue;
 
         if (!isOffsetCalculation) baselineValue = calculateWaveSum(

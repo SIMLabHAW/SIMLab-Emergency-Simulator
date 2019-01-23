@@ -99,9 +99,9 @@ var initControls = function (config) {
 
         changeDuration = config.changeDuration;
 
-        /* This is activating the AV Block or the ST Elevation. */
-        ecgCalculation.hasAVBlock = (newPathology === "AV Block 3");
-        ecgCalculation.hasSTElevation = (newPathology === "ST Elevation");
+        /* This is activating the AVBlock3 or the STElevation. */
+        ecgCalculation.hasAVBlock = (newPathology === PName.AVBlock3);
+        ecgCalculation.hasSTElevation = (newPathology === PName.STElevation);
     }
 
     if ((simConfig && JSON.stringify(simConfig.vitalSigns) 
@@ -119,8 +119,8 @@ var initControls = function (config) {
             etco2Calculation.setCurrentValues(config.vitalSigns.rr, config.vitalSigns.etco2);
 
             /* This is activating the AV Block or the ST Elevation. */
-            ecgCalculation.hasAVBlock = (newPathology === "AV Block 3");
-            ecgCalculation.hasSTElevation = (newPathology === "ST Elevation");
+            ecgCalculation.hasAVBlock = (newPathology === PName.AVBlock3);
+            ecgCalculation.hasSTElevation = (newPathology === PName.STElevation);
 
         }
 
@@ -672,16 +672,19 @@ function handleSelectPathologyDefi() {
         tempConfig.simState.defiPathology = pathologyName;
         needsPostShockValueUpdate = true;
 
-        var selectedPathology = defaultPathologyList.find(function (pathology) {
-            return pathology.name === pathologyName;
-        });
+        if (pathologyName != "ignore Defi") {
 
-        tempConfig.simState.hrDefi = parseInt(selectedPathology.hr);
-		tempConfig.simState.spo2Defi = parseInt(selectedPathology.spo2);
-		tempConfig.simState.etco2Defi = parseInt(selectedPathology.etco2);
-		tempConfig.simState.rrDefi = parseInt(selectedPathology.rr);
-		tempConfig.simState.sysDefi = parseInt(selectedPathology.systolic); 
-		tempConfig.simState.diaDefi = parseInt(selectedPathology.diastolic);
+            var selectedPathology = defaultPathologyList.find(function (pathology) {
+                return pathology.name === pathologyName;
+            });
+
+            tempConfig.simState.hrDefi = parseInt(selectedPathology.hr);
+            tempConfig.simState.spo2Defi = parseInt(selectedPathology.spo2);
+            tempConfig.simState.etco2Defi = parseInt(selectedPathology.etco2);
+            tempConfig.simState.rrDefi = parseInt(selectedPathology.rr);
+            tempConfig.simState.sysDefi = parseInt(selectedPathology.systolic); 
+            tempConfig.simState.diaDefi = parseInt(selectedPathology.diastolic);
+        }
 
         initControls(tempConfig);
         saveLesson(tempConfig);
@@ -721,32 +724,32 @@ function addPacerThresholdEnergyLevels() {
     Checks if conditions for pacing are met and returns a specific ecg. */
 function performFixedPacing() {
     var tempConfig = JSON.parse(JSON.stringify(simConfig));
-    var changeDuration = JSON.parse(JSON.stringify(changeDuration));
-    changeDuration.value = 0;
-    changeDuration.isAuto = false;
+    var cd = JSON.parse(JSON.stringify(changeDuration));
+    cd.value = 0;
+    cd.isAuto = false;
     var frequency = simConfig.simState.pacer.frequency;
     if (simConfig.vitalSigns.hr < frequency) {
         tempConfig.vitalSigns.hr = frequency;
     }
 
     // true indicates, that pacing is performed.
-    return ecgCalculation.calc(tempConfig.vitalSigns, changeDuration, true);
+    return ecgCalculation.calc(tempConfig.vitalSigns, cd, true);
 }
 
 /* Function: getAccordingSPO2
     Checks if conditions for pacing are met and returns a specific spo2. */
 function getAccordingSPO2() {
     var tempConfig = JSON.parse(JSON.stringify(simConfig));
-    var changeDuration = JSON.parse(JSON.stringify(changeDuration));
-    changeDuration.value = 0;
-    changeDuration.isAuto = false;
+    var cd = JSON.parse(JSON.stringify(changeDuration));
+    cd.value = 0;
+    cd.isAuto = false;
     var frequency = simConfig.simState.pacer.frequency;
     if (simConfig.vitalSigns.hr < frequency) {
         tempConfig.vitalSigns.hr = frequency;
     }
 
     return spo2Calculation.calc(tempConfig.vitalSigns.hr,
-        {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, changeDuration, true);
+        {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, cd, true);
 }
 
 function addDefiThresholdEnergyLevels() {

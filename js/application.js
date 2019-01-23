@@ -26,6 +26,20 @@ const ViewType = {
     Trainer: 2
 };
 
+/* Constant: PName
+    In this constant, the Pathologynames are stored so that no strings need to be typed
+    throughout the code. */
+const PName = {
+    SinusRhythm: "Sinus Rhythm",
+    Asystole: "Asystole",
+    JuncRhythm: "Junctional Rhythm",
+    VentTach: "Ventricular Tachycardia",
+    VentFib: "Ventricular Fibrillation",
+    AtrialFib: "Atrial Fibrillation",
+    AVBlock3: "AV Block 3",
+    STElevation: "ST Elevation"
+};
+
 function getLesson(callback) {
     //load data from database in json format (see file applicationcontroller.php)
     $.post("php/applicationcontroller.php", //post: request to server on applicationcontroller.php

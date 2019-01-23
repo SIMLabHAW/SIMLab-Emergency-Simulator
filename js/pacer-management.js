@@ -155,29 +155,29 @@ var PacerManagement = function() {
         Checks if conditions for pacing are met and returns a specific ecg. */
     this.performFixedPacing = function() {
         var tempConfig = JSON.parse(JSON.stringify(simConfig));
-        var changeDuration = JSON.parse(JSON.stringify(changeDuration));
-        changeDuration.value = 0;
-        changeDuration.isAuto = false;
+        var cd = JSON.parse(JSON.stringify(changeDuration));
+        cd.value = 0;
+        cd.isAuto = false;
         if (simConfig.vitalSigns.hr < frequency) {
             tempConfig.vitalSigns.hr = frequency;
         }
 
         // true indicates, that pacing is performed.
-        return ecgCalculation.calc(tempConfig.vitalSigns, changeDuration, true);
+        return ecgCalculation.calc(tempConfig.vitalSigns, cd, true);
     }
 
     /* Function: getAccordingSPO2
         Checks if conditions for pacing are met and returns a specific spo2. */
     this.getAccordingSPO2 = function() {
         var tempConfig = JSON.parse(JSON.stringify(simConfig));
-        var changeDuration = JSON.parse(JSON.stringify(changeDuration));
-        changeDuration.value = 0;
-        changeDuration.isAuto = false;
+        var cd = JSON.parse(JSON.stringify(changeDuration));
+        cd.value = 0;
+        cd.isAuto = false;
         if (simConfig.vitalSigns.hr < frequency) {
             tempConfig.vitalSigns.hr = frequency;
         }
 
         return spo2Calculation.calc(tempConfig.vitalSigns.hr,
-            {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, changeDuration, true);
+            {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, cd, true);
     }
 }

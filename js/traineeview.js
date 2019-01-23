@@ -145,8 +145,8 @@ var initControls = function (newConfig) {
         pacerManagement.updatePacerEnabledStateDB(newConfig);
 
         /* This is activating the AV Block or the ST Elevation. */
-        ecgCalculation.hasAVBlock = (newPathology === "AV Block 3");
-        ecgCalculation.hasSTElevation = (newPathology === "ST Elevation");
+        ecgCalculation.hasAVBlock = (newPathology === PName.AVBlock3);
+        ecgCalculation.hasSTElevation = (newPathology === PName.STElevation);
     }
 
     if (simConfig !== undefined && JSON.stringify(simConfig.vitalSigns) 
@@ -165,8 +165,8 @@ var initControls = function (newConfig) {
             etco2Calculation.setCurrentValues(newConfig.vitalSigns.rr, newConfig.vitalSigns.etco2);
 
             /* This is activating the AV Block or the ST Elevation. */
-            ecgCalculation.hasAVBlock = (newPathology === "AV Block 3");
-            ecgCalculation.hasSTElevation = (newPathology === "ST Elevation");
+            ecgCalculation.hasAVBlock = (newPathology === PName.AVBlock3);
+            ecgCalculation.hasSTElevation = (newPathology === PName.STElevation);
         }
     }
 
