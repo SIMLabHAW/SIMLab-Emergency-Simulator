@@ -1,4 +1,3 @@
 This file contains readable notes to introduce the changes which were performed in the latest commit/release.
 
-Jan 18, 2019 
-...
+This file is a placeholder for future releases
