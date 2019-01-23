@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("isr",["Variable"],[["isRangeSliderInitilized",,[[,,,,0,"File:js/traineeview.js:isRangeSliderInitilized"]]]]);
+NDSearch.OnPrefixDataLoaded("isr",["Variable"],[["isRangeSliderInitilized",,[[,,,,0,"File:js/traineeview.js:isRangeSliderInitilized"]]],["isRepeatedAlarmSoundRunning",,[[,,,,0,"File:js/sound-management.js:isRepeatedAlarmSoundRunning"]]]]);

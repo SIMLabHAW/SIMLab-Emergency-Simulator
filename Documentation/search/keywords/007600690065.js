@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("vie",["Constant"],[["ViewType",,[[,,,,0,"File:js/application.js:ViewType"]]]]);

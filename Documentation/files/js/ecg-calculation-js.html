@@ -94,6 +94,24 @@
  <div class="CBody"><p>Stores, if the Offset calculation is currently in progress. Used for calculating the P-Wave in the AV-Block.</p></div>
 </div>
 
+<a name="baselineValue"></a><a name="Topic181"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">baselineValue</div>
+ <div id="NDPrototype181" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> baselineValue</div>
+ <div class="CBody"><p>Used to store the intermediate baseline value to draw low bpm pqrstu-complexes and a corresponding baseline on the correct height. This is necessary, because the baseline is dependent on the bpm of the ecg. The value is therefore not constant.</p></div>
+</div>
+
+<a name="isNewMode"></a><a name="Topic182"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">isNewMode</div>
+ <div id="NDPrototype182" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isNewMode</div>
+ <div class="CBody"><p>This value is used locally as a flag to see if a new mode was started. It is used to calculate the correct &quot;offset-ecg&quot; for the first value after a mode-change.</p></div>
+</div>
+
+<a name="hasNewMode"></a><a name="Topic238"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">hasNewMode</div>
+ <div id="NDPrototype238" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.hasNewMode</div>
+ <div class="CBody"><p>This value is stored as an open property to be accessed and primarily set from outside.&nbsp; Is workes in combination with <a href="../../index.html#File:js/ecg-calculation.js:isNewMode" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,182);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >isNewMode</a>. Because it is possible to set this value, while a calculation is still ongoing, a double semaphore is used.</p></div>
+</div>
+
 <a name="Functions(2)"></a><a name="Topic186"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
@@ -140,15 +158,15 @@
  <div class="CBody"><p>Uses all provided parameters to calculate the current sum.</p></div>
 </div>
 
-<a name="randomize"></a><a name="Topic201"></a><div class="CTopic TFunction LJavaScript">
+<a name="randomize"></a><a name="Topic239"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">randomize</div>
- <div id="NDPrototype201" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomize(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">simTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype239" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomize(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">hr,</td><td></td><td class="last"></td></tr><tr><td class="PName first">simTime,</td><td></td><td class="last"></td></tr><tr><td class="PName first">vitalSigns&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">undefined</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to randomize the provided heart-rate.</p></div>
 </div>
 
-<a name="calculateCurrentHFValue"></a><a name="Topic176"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateCurrentHFValue"></a><a name="Topic252"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateCurrentHFValue</div>
- <div id="NDPrototype176" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentHFValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">hrChangeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype252" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentHFValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>In this function, the currently simulated heart-rate value is calculated.&nbsp; This function contains most of the steps necessary to simulate the dynamic change of the ECG. The calculation of the change is done with the <a href="https://en.wikipedia.org/wiki/Logistic_function" target="_top">Logistic Function</a></p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr></table><div class="CHeading">Returns</div><p>Current calculated heart-rate.</p></div>
 </div>
 
@@ -158,16 +176,16 @@
  <div class="CBody"><p>Used to calculate the starting point and duration for the different ecg parts.&nbsp; This function is used to calculated improved ECG-curves by incorperating the current heart-rate. The algorithm uses a logistic function (with offset) to calculate the values.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">hr</td><td class="CDLDefinition"><p>Contains the current heart-rate.</p></td></tr><tr><td class="CDLEntry">param</td><td class="CDLDefinition"><p>Contains the parameter to be adapted depending on the hr.</p></td></tr></table><div class="CHeading">Returns</div><p>Adapted Parameter for the</p></div>
 </div>
 
-<a name="calculateECGValue"></a><a name="Topic271"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateECGValue"></a><a name="Topic266"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateECGValue</div>
- <div id="NDPrototype271" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateECGValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">hrChangeDuration,</td></tr><tr><td class="PName first last">hasPacerPeak</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype266" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateECGValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">changeDuration,</td></tr><tr><td class="PName first last">hasPacerPeak</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>In this function, the different compartments of the ECG signal are calculated.&nbsp; Every signal-part is afterwards summed up to build one point of the ECG. The ECG is calculated every <a href="../../index.html#File:js/ecg-calculation.js:timestep" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,165);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >timestep</a> seconds.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains 0 or the current simulation time for calculating the ECG value.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.&nbsp; Returns: One part of the calculated ECG value.</p></td></tr></table></div>
 </div>
 
-<a name="calc"></a><a name="Topic179"></a><div class="CTopic TFunction LJavaScript last">
+<a name="calc"></a><a name="Topic267"></a><div class="CTopic TFunction LJavaScript last">
  <div class="CTitle">calc</div>
- <div id="NDPrototype179" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">vitalSigns,</td><td></td><td class="last"></td></tr><tr><td class="PName first">hrChangeDuration,</td><td></td><td class="last"></td></tr><tr><td class="PName first">hasPacerPeak&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">false</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>In this function, the current ECG-value is initiated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">hrChangeDuration</td><td class="CDLDefinition"><p>Contains a reference to the hr specific part of the <a href="../../index.html#File:js/traineeview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,41);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.</p></td></tr></table><div class="CHeading">Returns</div><p>Full calculated ECG value.</p></div>
+ <div id="NDPrototype267" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">vitalSigns,</td><td></td><td class="last"></td></tr><tr><td class="PName first">changeDuration,</td><td></td><td class="last"></td></tr><tr><td class="PName first">hasPacerPeak&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">false</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the current ECG-value is initiated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/traineeview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,41);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.</p></td></tr></table><div class="CHeading">Returns</div><p>Full calculated ECG value.</p></div>
 </div>
 
 </body></html>

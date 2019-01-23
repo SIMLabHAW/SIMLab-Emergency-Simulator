@@ -1,0 +1,1 @@
+NDSummary.OnToolTipsLoaded("File:js/application.js",{124:"<div class=\"NDToolTip TConstant LJavaScript\"><div class=\"TTSummary\">Used to indicate, whether a specific part of the code should run.</div></div>"});

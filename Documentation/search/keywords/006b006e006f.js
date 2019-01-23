@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("kno",["Variable"],[["knownAlarms",,[[,,,,0,"File:js/traineeview.js:knownAlarms"]]]]);

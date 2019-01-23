@@ -1,1 +1,0 @@
-NDSummary.OnToolTipsLoaded("File:applicationcontroller.php",{171:"<div class=\"NDToolTip TFunction LPHP\"><div id=\"NDPrototype171\" class=\"NDPrototype NoParameterForm\"><span class=\"SHKeyword\">function</span> getActiveLessonJson()</div><div class=\"TTSummary\">Description of the function.</div></div>"});

@@ -1,0 +1,1 @@
+NDFramePage.OnPageTitleLoaded("File:js/application.js","application.js");NDSummary.OnSummaryLoaded("File:js/application.js",[["JavaScript","JavaScript"]],[["Constants","Constant"],["Groups","Group"]],[[106,0,1,"Constants","Constants"],[124,0,0,"ViewType","ViewType"]]);

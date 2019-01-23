@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("scr",["Function","Variable"],[["screenOnOff",,[[,,,,0,"File:js/traineeview.js:screenOnOff"]]],["screenVisible",,[[,,,,1,"File:js/traineeview.js:screenVisible"]]]]);

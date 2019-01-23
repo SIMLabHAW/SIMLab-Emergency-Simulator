@@ -81,22 +81,22 @@
  <div class="CBody"><p>Stores the current peak sound volume.</p></div>
 </div>
 
-<a name="alarmSoundVolume"></a><a name="Topic238"></a><div class="CTopic TVariable LJavaScript">
- <div class="CTitle">alarmSoundVolume</div>
- <div id="NDPrototype238" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> alarmSoundVolume</div>
- <div class="CBody"><p>Stores the current alarm sound volume</p></div>
-</div>
-
-<a name="isAlarmMuted"></a><a name="Topic239"></a><div class="CTopic TVariable LJavaScript">
- <div class="CTitle">isAlarmMuted</div>
- <div id="NDPrototype239" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isAlarmMuted</div>
- <div class="CBody"><p>Indicates, if the alarm is muted.</p></div>
+<a name="alarmVolume"></a><a name="Topic12"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">alarmVolume</div>
+ <div id="NDPrototype12" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> alarmVolume</div>
+ <div class="CBody"><p>This variable stores the currently active Alarm Volume.</p></div>
 </div>
 
 <a name="isNIBPSoundRunning"></a><a name="Topic240"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">isNIBPSoundRunning</div>
  <div id="NDPrototype240" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.isNIBPSoundRunning</div>
  <div class="CBody"><p>Indicates, if the nibp sound is running.</p></div>
+</div>
+
+<a name="isRepeatedAlarmSoundRunning"></a><a name="Topic14"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">isRepeatedAlarmSoundRunning</div>
+ <div id="NDPrototype14" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.isRepeatedAlarmSoundRunning</div>
+ <div class="CBody"><p>Indicates, if the repeated alarm sound is running.</p></div>
 </div>
 
 <a name="Functions(2)"></a><a name="Topic62"></a><div class="CTopic TGroup LJavaScript">
@@ -157,18 +157,6 @@
  <div class="CBody"><p>plays the short NIBP sound.</p></div>
 </div>
 
-<a name="alarmVolumeUp"></a><a name="Topic63"></a><div class="CTopic TFunction LJavaScript">
- <div class="CTitle">alarmVolumeUp</div>
- <div id="NDPrototype63" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.alarmVolumeUp = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>Increases alarm volume and updates UI.</p></div>
-</div>
-
-<a name="alarmVolumeDown"></a><a name="Topic64"></a><div class="CTopic TFunction LJavaScript">
- <div class="CTitle">alarmVolumeDown</div>
- <div id="NDPrototype64" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.alarmVolumeDown = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>Decreases alarm volume and updates UI.</p></div>
-</div>
-
 <a name="peakSoundVolumeUp"></a><a name="Topic65"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">peakSoundVolumeUp</div>
  <div id="NDPrototype65" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.peakSoundVolumeUp = <span class="SHKeyword">function</span>()</div>
@@ -193,10 +181,16 @@
  <div class="CBody"><p>Creates the beeping sound for the SpO2-peak.</p></div>
 </div>
 
-<a name="playAlarmSoundRepeatedly"></a><a name="Topic252"></a><div class="CTopic TFunction LJavaScript">
+<a name="playAlarmSoundRepeatedly"></a><a name="Topic15"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">playAlarmSoundRepeatedly</div>
- <div id="NDPrototype252" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.playAlarmSoundRepeatedly = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">volume</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype15" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.playAlarmSoundRepeatedly = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>Plays the alarm sound repeatedly.</p></div>
+</div>
+
+<a name="playNewAlarmSound"></a><a name="Topic16"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">playNewAlarmSound</div>
+ <div id="NDPrototype16" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.playNewAlarmSound = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>Plays Alarm Audio Once, when a new alarm occurs, WHILE other alarms are active AND the Sound is repeatedly playing already.</p></div>
 </div>
 
 <a name="stopAlarmSound"></a><a name="Topic253"></a><div class="CTopic TFunction LJavaScript">

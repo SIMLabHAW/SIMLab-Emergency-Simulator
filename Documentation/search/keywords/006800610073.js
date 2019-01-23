@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("has",["Variable"],[["hasCOPD",,[[,,,,0,"File:js/etco2-calculation.js:hasCOPD"]]],["hasNewMode",,[[,,,,0,"File:js/ecg-calculation.js:hasNewMode"]]]]);

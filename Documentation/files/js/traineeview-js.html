@@ -42,12 +42,6 @@
  <div class="CBody"><p>This variable stores the currently chosen charge Value.</p></div>
 </div>
 
-<a name="alarmVolume"></a><a name="Topic34"></a><div class="CTopic TVariable LJavaScript">
- <div class="CTitle">alarmVolume</div>
- <div id="NDPrototype34" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> alarmVolume</div>
- <div class="CBody"><p>This variable stores the currently active Alarm Volume.</p></div>
-</div>
-
 <a name="peakSoundVolume"></a><a name="Topic35"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">peakSoundVolume</div>
  <div id="NDPrototype35" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> peakSoundVolume</div>
@@ -58,6 +52,12 @@
  <div class="CTitle">shouldUseScaling</div>
  <div id="NDPrototype36" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> shouldUseScaling</div>
  <div class="CBody"><p>This variable defines, if the Vital-Signs-Graphs should s cale automatically. IS CURRENTLY NOT IN USE!</p></div>
+</div>
+
+<a name="screenVisible"></a><a name="Topic279"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">screenVisible</div>
+ <div id="NDPrototype279" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> screenVisible</div>
+ <div class="CBody"><p>This variable defines if the simulated monitor is on or off.</p></div>
 </div>
 
 <a name="isRangeSliderInitilized"></a><a name="Topic37"></a><div class="CTopic TVariable LJavaScript">
@@ -124,15 +124,20 @@
  <div class="CBody"><p>Called every second and when the values in the UI-Elements change. Responsible for initializing the UI and for setting the current config.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newConfig</td><td class="CDLDefinition"><p>Contains the current or new config. It is set to <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr></table></div>
 </div>
 
+<a name="screenOnOff"></a><a name="Topic280"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">screenOnOff</div>
+ <div id="NDPrototype280" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> screenOnOff()</div>
+ <div class="CBody"><p>This function turns the simulated display screen on and off.</p></div>
+</div>
+
 <a name="initIonRangeSlider"></a><a name="Topic47"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">initIonRangeSlider</div>
  <div id="NDPrototype47" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> initIonRangeSlider()</div>
  <div class="CBody"><p>This function initializes the Range Slider that are shown in the Settings-Modal.&nbsp; It is called by <a href="../../index.html#File:js/traineeview.js:getAlarmLevels" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,56);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >getAlarmLevels</a> and only executed once.</p></div>
 </div>
 
-<a name="changeSettingTabTo"></a><a name="Topic48"></a><div class="CTopic TFunction LJavaScript">
+<a name="changeSettingTabTo"></a><a name="Topic281"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">changeSettingTabTo</div>
- <div id="NDPrototype48" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> changeSettingTabTo(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">tabNr</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>This function is used to visually modify the Setting Tab Title Bar in the Settin-Modal to identify the active Tab.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">tabNr</td><td class="CDLDefinition"><p>This number specifies the clicked Tab to i.e. react to multiple clicks on the same Tab.</p></td></tr></table></div>
 </div>
 
@@ -184,10 +189,42 @@
  <div class="CBody"><p>When called, the RangeSliders are initialized (in <a href="../../index.html#File:js/traineeview.js:initIonRangeSlider" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,47);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >initIonRangeSlider</a>) and the AlarmLevels are updated for each slider.&nbsp; This function is called as soons as the Icon for opening the Settings-Modal is clicked.</p></div>
 </div>
 
-<a name="setAlarmLevels"></a><a name="Topic57"></a><div class="CTopic TFunction LJavaScript last">
+<a name="setAlarmLevels"></a><a name="Topic282"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">setAlarmLevels</div>
- <div id="NDPrototype57" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> setAlarmLevels()</div>
- <div class="CBody"><p>This function is used to save the chosen Alarm-Values in the Datamodel.&nbsp; It is called as soon as the &quot;check&quot; Button on the Settings-Modal is pressed.</p></div>
+ <div id="NDPrototype282" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> setAlarmLevels()</div>
+ <div class="CBody"><p>This function is used to save the chosen Alarm-Values in the Datamodel. It is called as soon as the &quot;check&quot; Button on the Settings-Modal is pressed.</p></div>
+</div>
+
+<a name="Variables(2)"></a><a name="Topic283"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Variables</div>
+</div>
+
+<a name="knownAlarms"></a><a name="Topic284"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">knownAlarms</div>
+ <div id="NDPrototype284" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> knownAlarms</div>
+ <div class="CBody"><p>Saves the currently known Alarms.</p></div>
+</div>
+
+<a name="alarmMuteDuration"></a><a name="Topic285"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">alarmMuteDuration</div>
+ <div id="NDPrototype285" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> alarmMuteDuration</div>
+ <div class="CBody"><p>Stores the duration of the alarm mute time. Needs to be mutatable</p></div>
+</div>
+
+<a name="alarmMuteInterval"></a><a name="Topic286"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">alarmMuteInterval</div>
+ <div id="NDPrototype286" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> alarmMuteInterval</div>
+ <div class="CBody"><p>Stores the timer of the alarm mute during runtime.</p></div>
+</div>
+
+<a name="Functions(2)"></a><a name="Topic287"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Functions</div>
+</div>
+
+<a name="toggleAlarmSound"></a><a name="Topic288"></a><div class="CTopic TFunction LJavaScript last">
+ <div class="CTitle">toggleAlarmSound</div>
+ <div id="NDPrototype288" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> toggleAlarmSound()</div>
+ <div class="CBody"><p>Toggles the Alarm Sound. If alarms are active and sound is playing, the sound is muted.&nbsp; If sounds are muted, button is clicked and alarms are active, the sound is unmuted.</p></div>
 </div>
 
 </body></html>

@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("cpr",["Function","Constant"],[["CPRManagement",,[[,,,,0,"File:js/cpr-management.js:CPRManagement"]]],["CPRType",,[[,,,,1,"File:js/cpr-management.js:CPRType"]]]]);

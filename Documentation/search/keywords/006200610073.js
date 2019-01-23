@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("bas",["Variable"],[["baselineValue",,[[,,,,0,"File:js/ecg-calculation.js:baselineValue"]]]]);

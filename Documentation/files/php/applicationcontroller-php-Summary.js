@@ -1,0 +1,1 @@
+NDFramePage.OnPageTitleLoaded("File:php/applicationcontroller.php","applicationcontroller.php");NDSummary.OnSummaryLoaded("File:php/applicationcontroller.php",[["PHP","PHP"]],[["Functions","Function"],["Groups","Group"]],[[170,0,1,"Functions","Functions"],[171,0,0,"getActiveLessonJson","getActiveLessonJson"]]);

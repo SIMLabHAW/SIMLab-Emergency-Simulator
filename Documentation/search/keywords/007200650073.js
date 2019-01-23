@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("res",["Variable"],[["respRatio",,[[,,,,0,"File:js/etco2-calculation.js:respRatio"]]]]);

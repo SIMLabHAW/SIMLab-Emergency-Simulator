@@ -12,10 +12,10 @@
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="Measurement"></a><a name="Topic67"></a><div class="CTopic TFunction LJavaScript">
+<a name="Measurement"></a><a name="Topic25"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">Measurement</div>
- <div id="NDPrototype67" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> Measurement(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">avgArraySize,</td><td></td><td class="last"></td></tr><tr><td class="PName first">dataArraySize,</td><td></td><td class="last"></td></tr><tr><td class="PName first">maxIdleTime&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHNumber">3</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This function is used as a parent class. It is not meant to be initialized directly but through its inherited functions. This function is used to store and calculate the measurement data for hr, spo2, etco2 and rr.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">dataCallback</td><td class="CDLDefinition"><p>This callback function returns the expected data as soon as it is calculated (asynchronic).</p></td></tr><tr><td class="CDLEntry">expectedMax</td><td class="CDLDefinition"><p>Required as an expected first maximum value for the measurement.</p></td></tr><tr><td class="CDLEntry">expectedMin</td><td class="CDLDefinition"><p>Required as an expected first minimum value for the measurement.</p></td></tr><tr><td class="CDLEntry">avgArraySize</td><td class="CDLDefinition"><p>Defines the size of the array that stores the average values.</p></td></tr><tr><td class="CDLEntry">dataArraySize</td><td class="CDLDefinition"><p>Storesthe size of the data array for each measurement circle.</p></td></tr><tr><td class="CDLEntry">maxIdleTime</td><td class="CDLDefinition"><p>defines the maximum time in seconds that is allowed before an asystolie is diagnosed and the corresponding measurement value is updated.</p></td></tr></table></div>
+ <div id="NDPrototype25" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> Measurement(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">avgArraySize,</td><td></td><td class="last"></td></tr><tr><td class="PName first">dataArraySize,</td><td></td><td class="last"></td></tr><tr><td class="PName first">maxIdleTime&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHNumber">3</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This function is used as a parent class. It is not meant to be initialized directly but through its inherited functions. This function is used to store and calculate the measurement data for hr, spo2, etco2 and rr.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">dataCallback</td><td class="CDLDefinition"><p>This callback function returns the expected data as soon as it is calculated (asynchronic).</p></td></tr><tr><td class="CDLEntry">avgArraySize</td><td class="CDLDefinition"><p>Defines the size of the array that stores the average values.</p></td></tr><tr><td class="CDLEntry">dataArraySize</td><td class="CDLDefinition"><p>Storesthe size of the data array for each measurement circle.</p></td></tr><tr><td class="CDLEntry">maxIdleTime</td><td class="CDLDefinition"><p>defines the maximum time in seconds that is allowed before an asystolie is diagnosed and the corresponding measurement value is updated.</p></td></tr></table></div>
 </div>
 
 <a name="Variables"></a><a name="Topic107"></a><div class="CTopic TGroup LJavaScript">
@@ -56,10 +56,16 @@
  <div class="CBody"><p>This function checks if the <a href="../../index.html#File:js/measurements.js:currentIdleTime" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,110);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentIdleTime</a> is higher then <a href="../../index.html#File:js/measurements.js:maxIdleTime" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,109);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >maxIdleTime</a>.</p><div class="CHeading">Returns</div><p>Indicator, whether <a href="../../index.html#File:js/measurements.js:currentIdleTime" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,110);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentIdleTime</a> is higher then <a href="../../index.html#File:js/measurements.js:maxIdleTime" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,109);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >maxIdleTime</a>.</p></div>
 </div>
 
-<a name="findMinMax"></a><a name="Topic114"></a><div class="CTopic TFunction LJavaScript">
+<a name="findMinMax"></a><a name="Topic26"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">findMinMax</div>
- <div id="NDPrototype114" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.findMinMax = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">divider</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Used to to find the min and max values of the latest measurement cycle.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">divider</td><td class="CDLDefinition"><p>Used to adapt the flexibility of the algorithm. A higher divider means that less values are found to be malformed and discarded for measurments.</p></td></tr></table><div class="CHeading">Returns</div><p>Minimum and maximum dataArray element.</p></div>
+ <div id="NDPrototype26" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.findMinMax = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>Used to to find the min and max values of the latest measurement cycle.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">divider</td><td class="CDLDefinition"><p>Used to adapt the flexibility of the algorithm. A higher divider means that less values are found to be malformed and discarded for measurments.</p></td></tr></table><div class="CHeading">Returns</div><p>Returns an object, containing the minimum and maximum values.</p></div>
+</div>
+
+<a name="saveMinMax"></a><a name="Topic27"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveMinMax</div>
+ <div id="NDPrototype27" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.saveMinMax = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">min,</td></tr><tr><td class="PName first last">max</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Stores the min and max values in the corresponding arrays.</p></div>
 </div>
 
 <a name="getGradient"></a><a name="Topic115"></a><div class="CTopic TFunction LJavaScript">
@@ -112,9 +118,9 @@
  <div class="CBody"><p>Adds a single value to the <a href="../../index.html#File:js/measurements.js:dataArray" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,108);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >dataArray</a> and performs all necessary calculations to acquire the measurement values.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">ecgValue</td><td class="CDLDefinition"><p>Contains the latest captured value added to the ecg.</p></td></tr></table></div>
 </div>
 
-<a name="getAvgHR"></a><a name="Topic178"></a><div class="CTopic TFunction LJavaScript">
+<a name="getAvgHR"></a><a name="Topic63"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">getAvgHR</div>
- <div class="CBody"><p>Calculates and returns the current average Heart-Rate.</p><div class="CHeading">Returns</div><p>Average HR.</p></div>
+ <div class="CBody"><p>Calculates and returns the current average Heart-Rate.&nbsp; Median did not work properly.</p><div class="CHeading">Returns</div><p>Average HR.</p></div>
 </div>
 
 <a name="SpO2Measurement"></a><a name="Topic125"></a><div class="CTopic TFunction LJavaScript">
@@ -129,9 +135,9 @@
  <div class="CBody"><p>Used for the Real Time Peak Search of the SPO2.</p></div>
 </div>
 
-<a name="addSpO2Value"></a><a name="Topic127"></a><div class="CTopic TFunction LJavaScript">
+<a name="addSpO2Value"></a><a name="Topic64"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">addSpO2Value</div>
- <div id="NDPrototype127" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.addSpO2Value = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">spo2Value</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype64" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.addSpO2Value = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">spo2Value,</td></tr><tr><td class="PName first last">nibp</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Adds a single value to the <a href="../../index.html#File:js/measurements.js:dataArray" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,108);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >dataArray</a> and performs all necessary calculations to acquire the measurement values.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">spo2Value</td><td class="CDLDefinition"><p>Contains the latest captured value added to the <a href="../../index.html#File:js/trainerview.js:spo2Graph" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,6);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >SPO2Graph</a>.</p></td></tr></table></div>
 </div>
 
