@@ -77,7 +77,7 @@
         }
     }
 	/* Function: getAllUsersJson
-    Calls <getAllUsers>, found in domain.php, and prints as Json Array.*/
+    Calls getAllUsers, found in domain.php, and prints as Json Array.*/
 	function getAllUsersJson(){
         include 'domain.php';
         $users = getAllUsers();
@@ -85,7 +85,7 @@
         echo $AllUsersJson;
     }
 	/* Function: getTraineesJson
-    Calls <getTrainees>, found in domain.php, and prints as Json Array.*/
+    Calls getTrainees, found in domain.php, and prints as Json Array.*/
     function getTraineesJson(){
         include 'domain.php';
         $trainees = getTrainees();
@@ -94,7 +94,7 @@
         echo $traineesJson;
     }
 	/* Function: getTrainersJson
-    Calls <getTrainers>, found in domain.php, and prints as Json Array.*/
+    Calls getTrainers, found in domain.php, and prints as Json Array.*/
 	function getTrainersJson(){
         include 'domain.php';
         $trainers = getTrainers();
@@ -103,7 +103,7 @@
         echo $trainersJson;
     }
 	/* Function: getLessonJson
-    Calls <getLessonByParticipants>, found in domain.php, and prints as Json Object.*/
+    Calls getLessonByParticipants, found in domain.php, and prints as Json Object.*/
     function getLessonJson(){
         include 'domain.php';
         $trainerID = getCurrentTrainerId();
@@ -118,7 +118,7 @@
         }
     }
 	/* Function: saveLessonFromJson
-    Calls <saveLesson>, found in domain.php, to store current lesson data to database.
+    Calls saveLesson, found in domain.php, to store current lesson data to database.
 	
 	Parameters:
     lessonJson - Json encoded lesson from $_POST['parameters'].*/
@@ -132,7 +132,7 @@
         saveLesson($lessonJson);
     }
 	/* Function: saveComment
-    Calls <saveCommentDB>, found in domain.php, to store a comment to the database.
+    Calls saveCommentDB, found in domain.php, to store a comment to the database.
 	
 	Parameters:
     comment - Comment from $_POST['parameters'].*/
@@ -145,7 +145,7 @@
         saveCommentDB($comment,$trainerID,$traineeID);
     }
 	/* Function: saveTime
-    Calls <saveTimeDB>, found in domain.php, to store the current clock time to the database.
+    Calls saveTimeDB, found in domain.php, to store the current clock time to the database.
 	
 	Parameters:
     newTime - From $_POST['parameters'].*/
@@ -167,7 +167,7 @@
         }
 
 		/* Function: getVitalSignParametersJson
-		Calls <getVitalSignParameters>, found in domain.php, and prints as Json Object.*/
+		Calls getVitalSignParameters, found in domain.php, and prints as Json Object.*/
         function getVitalSignParametersJson(){
             $vitalSignParameters = getVitalSignParameters();
             $vitalSignParametersJson = '[' . implode(",", $vitalSignParameters) . ']';
