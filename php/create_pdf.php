@@ -23,9 +23,11 @@
 
 // All code comes from here http://www.fpdf.org/
 require('../fpdf181/fpdf.php');
-
+/* Class: PDF
+ Extends the FPDF class of the library PDF. See http://www.fpdf.org/*/
 class PDF extends FPDF {
-    // Load data
+    /* Function: LoadData
+	Queries the database for all messages from the past lesson of a trainer and trainee.*/
     function LoadData() {
         // Read file lines
         $sql = '
@@ -45,7 +47,11 @@ class PDF extends FPDF {
         return $data;
     }
 
-    // Better table
+    /*Function: ImprovedTable
+	Create a formatted table from parameters header and data.
+	Parameters:
+    header - values for table header 
+	data - values for table body*/
     function ImprovedTable($header, $data) {
         // Column widths
         $w = array(50, 140);

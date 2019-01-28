@@ -20,9 +20,21 @@
     You should have received a copy of the GNU General Public License
     along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. */
 
-    class User implements Serializable {
+	/* Class: User
+    Holds user specific data > id, name, role (trainer or trainee), which can be retrieved through functions getId(), getName() and getRole() respectively.
+	*/   
+   class User implements Serializable {
+		
+		// Property: id
+		// Value of the user id.
         private $id;
+		
+		/* Property: name
+		Holds the user name.*/
         private $name;
+		
+		// Property: role
+		// Holds the user role.
 		private $role;
         
         public function __construct($id, $name, $role) {
@@ -39,7 +51,8 @@
             ];
             return serialize($array);
         }
-
+		// Function: __toString
+		// Returns the object as json encoded string.
         public function __toString() {
             $array = [
                 "id" => $this->id,
@@ -52,26 +65,40 @@
         public function unserialize($serialized) {
             error_log("User#unserialize intentionally left blank");
         }
-
+		// Function: getId
+		// Returns the user id.
         public function getId() {
             return $this->id;
         }
-		
+		// Function: getRole
+		// Returns the user role.
 		public function getRole() {
             return $this->role;
         }
-
+		// Function: getName
+		// Returns the user name.
         public function getName() {
             return $this->name;
         }
     }
-
+	// Class: Message
+    // Holds message specific data.
     class Message implements Serializable {
+		// Property: trainerID
+		// Value of the trainer id
         private $trainerID;
+		// Property: traineeID
+		// Value of the trainee id
         private $traineeID;
+		// Property: date
+		// Holds the message date
         private $date;
+		// Property: message
+		// Holds the message body
         private $message;
-
+		
+		// Constructor: __construct
+		// Initializes the object.
         public function __construct($trainerID, $traineeID,$date,$message) {
             $this->trainerID = $trainerID;
             $this->traineeID = $traineeID;
@@ -92,46 +119,90 @@
         public function unserialize($serialized) {
             error_log("User#unserialize intentionally left blank");
         }
-
+		// Function: getTrainerId
+		// Returns the trainer id.
         public function getTrainerId() {
             return $this->trainerID;
         }
-
+		// Function: getTraineeId
+		// Returns the trainee id.
         public function getTraineeId() {
             return $this->traineeID;
         }
-
+		// Function: getDate
+		// Returns the date.
         public function getDate() {
             return $this->date;
         }
-
+		// Function: getId
+		// Returns the message.
         public function getMessage() {
             return $this->message;
         }
     }
+	//TODO: delete xt 
 
+	//Class: VitalSignParameters
+    //Holds all the parameters that characterize the state of a patient. Multiple instances are used to describe default parameter sets like sinus rythm or asystolic in patients. This is done by function getVitalSignParameters().
     class VitalSignParameters {
+		// Property: name
+		// Name of the default pathology.		
         private $name;
+		// Property: hr
+		// Value of the default heart rate for the pathology.
         private $hr;
+		// Property: Noise
+		// Amplitude of the noise, e.g. 0.01 is 1% of baseline.
         private $Noise;
+		// Property: xValOffset
+		// Value of the time offset.
         private $xValOffset;
+		// Property: xt
         private $xt;
+		// Property: pWaveFactor
+		// Factor to be multiplied with p-Wave values.
         private $pWaveFactor;
+		// Property: qWaveFactor
+		// Factor to be multiplied with q-Wave values.
         private $qWaveFactor;
+		// Property: qrsComplexFactor
+		// Factor to be multiplied with qrs-Complex values.	
         private $qrsComplexFactor;
+		// Property: sWaveFactor
+		// Factor to be multiplied with s-Wave values.
         private $sWaveFactor;
+		// Property: tWaveFactor
+		// Factor to be multiplied with t-Wave values.
         private $tWaveFactor;
+		// Property: uWaveFactor
+		// Factor to be multiplied with u-Wave values.
         private $uWaveFactor;
+		// Property: pWavePreFactor
+		// Factor to be multiplied with p-Wave values.
         private $pWavePreFactor;
+		// Property: qrsAmplitudeOffset
+		// Value of the qrs amplitude offset.
         private $qrsAmplitudeOffset;
+		// Property: qrsDurationOffset
+		// Value of the qrs duration offset.
         private $qrsDurationOffset;
+		// Property: systolic
+		// Value of the default systolic blood pressure for the pathology.		
         private $systolic;
+		// Property: diastolic
+		// Value of the default diastolic blood pressure for the pathology.
         private $diastolic;
+		// Property: spo2
+		// Value of the default oxygen saturation for the pathology.
         private $spo2;
+		// Property: rr
+		// Value of the default respiration rate for the pathology.
         private $rr;
+		// Property: etco2
+		// Value of the default end tidal CO2 for the pathology.
         private $etco2;
-
-
+		// Constructor: __construct
+		// Initializes the object.
         public function __construct(
             $name, $hr, $Noise, $xValOffset,
             $xt, $pWaveFactor, $qWaveFactor, $qrsComplexFactor,
@@ -158,7 +229,8 @@
             $this->rr = (int) $rr;
             $this->etco2 = (int) $etco2;
         }
-
+		// Function: __toString
+		// Returns the object as json encoded string.
         public function __toString() {
 
             $array = [
@@ -185,17 +257,43 @@
             return json_encode($array);
         }
     }
-
+	// Class: Lesson
+    // Holds all the parameters that characterize the current lesson.
     class Lesson implements Serializable {
+		// Property: id
+		// value of the lesson id.
         private $id;
+		
+		// Property: trainerID
+		// value of the trainer id.
         private $trainerID;
+		
+		// Property: traineeID
+		// value of the trainer id.		
         private $traineeID;
+		
+		// Property: vitalSignParameters
+		// object with vitalsign parameters, compare with class VitalSignParameters.
         private $vitalSignParameters;
+		
+		// Property: timer
+		// value of the GUI clock.
         private $timer;
+		
+		// Property: simState
+		// object with simulation parameters, compare with class SimulationState.		
         private $simState;
+		
+		// Property: changeDuration
+		// object with parameters that define the time it takes changes to vital signs to take effect, compare with class ChangeDuration.
 		private $changeDuration;
+		
+		// Property: active
+		// boolean that indicates whether the lesson is still active.
         private $active;
 
+		// Constructor: __construct
+		// Initializes the object.		
         public function __construct($id,$trainerID,$traineeID,$vitalSignParameters, $timer, $simState, $changeDuration, $active) {
             //error_log("Lesson#constructor " . $id . " vitalSigns " . $vitalSignParameters);
             $this->id = (int) $id;
@@ -221,7 +319,8 @@
         public function unserialize($serialized) {
             error_log("User#unserialize intentionally left blank");
         }
-
+		// Function: __toString
+		// Returns the object as json encoded string.
         public function __toString() {
 
             $array = [
@@ -236,24 +335,29 @@
             ];
             return json_encode($array);
         }
-
+		// Function: getId
+		// Returns the lesson id.
         public function getId() {
             return $this->id;
         }
-
+		// Function: getTrainerId
+		// Returns the trainer id.
         public function getTrainerId() {
             return $this->trainerID;
         }
-
+		// Function: getTraineeId
+		// Returns the trainee id.
         public function getTraineeId() {
             return $this->traineeID;
         }
-
+		// Function: isActive
+		// Returns whether the lesson is still active.
         public function isActive() {
             return $this->active;
         }
     }
-
+	// Function: getTrainees
+    // Returns an array of all users with role trainee, containing their id, name and role.
     function getTrainees(){
         include 'dbconnect.php';
         $trainees_query = "SELECT id, username, role FROM users WHERE role = 'trainee'";
@@ -269,7 +373,8 @@
         }
         return $trainees;
     }
-
+	// Function: getTrainers
+    // Returns an array of all users with role trainer, containing their id, name and role.
 	function getTrainers(){
         include 'dbconnect.php';
         $trainers_query = "SELECT id, username, role FROM users WHERE role = 'trainer'";
@@ -285,42 +390,33 @@
         }
         return $trainers;
     }
-	
+	// Function: getAllUsers
+    // Returns an array of all users with role trainer or trainee, containing their id, name and role.	
 	function getAllUsers(){
 		return array_merge(getTrainees(),getTrainers());
-        
-		/*include 'dbconnect.php';
-        $users_query = "select tmp.username, 
-				(case when tmp.id = l2.traineeid then 'trainee' else 'trainer' end) as role
-				FROM
-				(SELECT u.id, u.username, max(l.id) as 'maxlesson'
-				FROM users u 
-				join lessons l on u.id = l.trainerID or u.id = l.traineeID 
-				group by u.id, u.username) tmp
-				join lessons l2 on tmp.maxlesson = l2.id";
-
-
-        $result = mysqli_query($link,$users_query);
-        $users = array();
-        while($row = $result->fetch_assoc()) {
-            $role = $row["role"];
-            $username = $row["username"];
-            if ($role != null && $username != null){
-                array_push($users, new User($username, $role));
-            }
-        }
-        return $users;*/
     }
-
+	
+	// Class: ChangeDuration
+    // Holds parameters that determine the time it takes for changes to the vital signs to take effect.
     class ChangeDuration {
+		
+		// Property: isAuto
+		// sets the duration to a default value.
         public $isAuto;
-        public $value;
-
+		
+		// Property: value
+		// sets the duration to a specific value.
+        public $value;	
+		
+		// Constructor: __construct
+		// Initializes the object.	
         public function __construct($isAuto, $value) {
             $this->isAuto = $this->toBoolean($isAuto);
             $this->value = (int) $value;
         }
-        
+		
+        // Function: __toString
+		// Returns the object as json encoded string.
         public function __toString() {
             $array = [
                 "isAuto" => $this->isAuto,
@@ -328,7 +424,10 @@
              ];
             return json_encode($array);
         }
-
+		
+		// Function: toBoolean
+		// Returns boolean true if parameter string equals "true".
+		// Parameter: string
         private function toBoolean($string){
             $haeh = $string == "true"? true : false;
             //error_log("heah: " . $haeh);
@@ -336,24 +435,36 @@
         }
     }
 	
+	// Class: PacerState
+    // Holds parameters defining the state of the pacer.	
 	class PacerState {
+		// Property: isEnabled
+		// flag, if the pacer is currently active.
         public $isEnabled;
+				
+		// Property: frequency
+		// current frequency level.
         public $frequency;
+		
+		// Property: energy
+		// current energy level.		
         public $energy;
+	
+		// Property: energyThreshold
+		// threshold at which the pacer starts to overtake the internal heartrate.	
         public $energyThreshold;
 
+		// Constructor: __construct
+		// Initializes the object.		
         public function __construct($isEnabled, $frequency, $energy, $energyThreshold) {
             $this->isEnabled = $this->toBoolean($isEnabled);
             $this->frequency = (int) $frequency;
             $this->energy = (int) $energy;
             $this->energyThreshold = (int) $energyThreshold;
         }
-
-        /* public static function copyFrom($pacer) {
-            return new self($pacer->isEnabled, $pacer->frequency, 
-            $pacer->energy, $pacer->energyThreshold);
-        } */
-        
+		
+		// Function: __toString
+		// Returns the object as json encoded string.
         public function __toString() {
             $array = [
                 "isEnabled" => $this->isEnabled,
@@ -364,6 +475,9 @@
             return json_encode($array);
         }
 
+		// Function: toBoolean
+		// Returns boolean true if parameter string equals "true".
+		// Parameter: string		
         private function toBoolean($string){
             $haeh = $string == "true"? true : false;
             //error_log("heah: " . $haeh);
@@ -372,31 +486,101 @@
     }
     
     /* TODO: Export into different Classes like PacerState. */
+	
+	// Class: SimulationState
+    // Holds parameters defining the state of the GUI.	
     class SimulationState {
 
-        private $enableECG;
-        private $enableSPO2;
-        private $enableETCO2;
-		private $defiPathology;
-		private $hrDefi;
-		private $spo2Defi;
-		private $etco2Defi;
-		private $rrDefi;
-		private $sysDefi;
-		private $diaDefi;
-		private $showHR;
-		private $showSPO2;
-		private $displayETCO2;
-		private $displayRR;
-		private $displayNIBP;
-		private $timer;
-        private $defiCharge;
-        private $defiEnergyThreshold;
-        private $hasCPR;
-        private $hasCOPD;
-        private $pacer;
-        private $respRatio;
+        // Property: enableECG
+		// Boolean stating whether ECG chart is switched on or off.
+		private $enableECG;
+        
+		// Property: enableSPO2
+		// Boolean stating whether SPO2 chart is switched on or off.
+		private $enableSPO2;
+        
+		// Property: enableETCO2
+		// Boolean stating whether ETCO2 chart is switched on or off.
+		private $enableETCO2;
 		
+		// Property: defiPathology
+		// Holds the currently selected pathology.
+		private $defiPathology;
+		
+		// Property: hrDefi
+		// Holds the currently selected post-defibrillator heart rate.
+		private $hrDefi;
+		
+		// Property: spo2Defi
+		// Holds the currently selected post-defibrillator SPO2.
+		private $spo2Defi;
+		
+		// Property: etco2Defi
+		// Holds the currently selected post-defibrillator ETCO2.
+		private $etco2Defi;
+		
+		// Property: rrDefi
+		// Holds the currently selected post-defibrillator RR.
+		private $rrDefi;
+		
+		// Property: sysDefi
+		// Holds the currently selected post-defibrillator systolic blood pressure.
+		private $sysDefi;
+		
+		// Property: diaDefi
+		// Holds the currently selected post-defibrillator diastolic blood pressure.
+		private $diaDefi;
+		
+		// Property: showHR
+		// Boolean stating whether the figure for HR is displayed.
+		private $showHR;
+		
+		// Property: showSPO2
+		// Boolean stating whether the figure for SPO2 is displayed.
+		private $showSPO2;
+		
+		// Property: displayETCO2
+		// Boolean stating whether the figure for ETCO2 is displayed.
+		private $displayETCO2;
+		
+		// Property: displayRR
+		// Boolean stating whether the figure for RR is displayed.
+		private $displayRR;
+		
+		// Property: displayNIBP
+		// Boolean stating whether the figure for NIBP is displayed.
+		private $displayNIBP;
+		
+		// Property: timer
+		// Holds the value of the GUI clock.
+		private $timer;
+        
+		// Property: defiCharge
+		// Holds the value of the defibrillator charge.
+		private $defiCharge;
+        
+		// Property: defiEnergyThreshold
+		// Holds the value of the defibrillator energy threshold.
+		private $defiEnergyThreshold;
+        
+		// Property: hasCPR
+		// Boolean stating whether CPR artifacts are present.
+		private $hasCPR;
+        
+		// Property: hasCOPD
+		// Boolean stating whether the patient has COPD.
+		private $hasCOPD;
+        
+		// Property: pacer
+		// Holds an instance of class PacerState.
+		private $pacer;
+        
+		// Property: respRatio
+		// Holds the value for the respiration ratio.
+		private $respRatio;
+		
+		// Constructor: __construct
+		// Initializes the object.		
         public function __construct(
             $enableECG, $enableSPO2, $enableETCO2, $defiPathology,$hrDefi,$spo2Defi, $etco2Defi, $rrDefi, $sysDefi, $diaDefi, $showHR, $showSPO2, $displayETCO2, $displayRR,$displayNIBP, $timer, $defiCharge, $defiEnergyThreshold, 
             $hasCPR, $hasCOPD, $pacer, $respRatio) {
@@ -425,13 +609,18 @@
             $this->respRatio = (int) $respRatio;
 			
         }
-
+		
+		// Function: toBoolean
+		// Returns boolean true if parameter string equals "true".
+		// Parameter: string
         private function toBoolean($string){
             $haeh = $string == "true"? true : false;
             //error_log("heah: " . $haeh);
             return $haeh;
         }
 
+		// Function: __toString
+		// Returns the object as json encoded string.		
         public function __toString() {
             $array = [
                 "enableECG" => $this->enableECG,
@@ -464,6 +653,8 @@
 
     }
 
+	// Function: getVitalSignParameters
+	// Creates an object of class VitalSignParameters for each default pathology. All objects are returned in an array.
     function getVitalSignParameters(){
         $vitalSignParameters;
         if (!isset($vitalSignParameters)){
@@ -577,7 +768,11 @@
         }
         return $vitalSignParameters;
     }
-
+	
+	// Function: getUserByName
+	// Queries the database for a user with a specific username and returns an object of class User.
+	// Parameters:
+    //    username - name of the user.
     function getUserByName($username) {
         include 'dbconnect.php';
         $user_query = "SELECT id, username, password, role FROM users WHERE username LIKE '$username' LIMIT 1";
@@ -595,6 +790,12 @@
         return null;
     }
 
+	// Function: createUser
+	// Creates a new user in the database.
+	//
+	// Parameters:
+    //    username - name of the new user.
+	//    role - role of the new user.	
     function createUser($username, $role) {
         include 'dbconnect.php';
         $insert_user_query = "INSERT INTO users (username, password, role) VALUES ('$username', 'none', '$role')";
@@ -607,6 +808,12 @@
         return null;
     }
 	
+	// Function: updateUser
+	// Updates the role of an existing user in the database.
+	//
+	// Parameters:
+    //    username - name of the user.
+	//    role - new role of the user.	
 	function updateUser($username, $role) {
         include 'dbconnect.php';
         $update_user_query = "UPDATE users SET role = '$role' WHERE username = '$username'";
@@ -619,6 +826,12 @@
         return null;
     }
 
+	// Function: createLessonIfNotExist
+	// Checks whether a lesson for the given trainer / trainee pair exists. Creates a new lesson if not. Default lesson values are defined here. If a lesson exists, returns that lesson instead of creating a new lesson.
+	//
+	// Parameters:
+    //    trainerID - id of the trainer.
+	//    traineeID - id of the trainee.	
     function createLessonIfNotExist($trainerID, $traineeID) {
         include 'dbconnect.php';
         $lesson = getLessonByParticipants($trainerID, $traineeID);
@@ -653,7 +866,13 @@
             return null;
         }
     }
-
+	
+	// Function: getLessonByParticipants
+	// Queries the database for an existing lesson of the given trainer / trainee pair. If yes, returns an object of class Lesson.
+	//
+	// Parameters:
+    //    trainerID - id of the trainer.
+	//    traineeID - id of the trainee.
     function getLessonByParticipants($trainerID, $traineeID){
         
         //error_log("Get parameters for user " . $trainerID);
@@ -700,7 +919,11 @@
 
     }
 
-     /*instead of 1 call for every parameter: all together*/
+    // Function: saveLesson
+	// Updates current lesson data to the database.
+	//
+	// Parameters:
+    //    lesson_values - object of class Lesson.
     function saveLesson($lesson_values){ 
         include 'dbconnect.php';
 
@@ -775,7 +998,14 @@
         $success_save_lesson_query = mysqli_query($link, $update_lesson_query);
         return $success_save_lesson_query;
     }
-
+	
+	// Function: saveCommentDB
+	// Saves a comment / message to the database.
+	//
+	// Parameters:
+    //    comment - the message body.
+	//    trainerID - id of the trainer.
+	//    traineeID - id of the trainee.
 	 function saveCommentDB($comment,$trainerID,$traineeID){ 
         // connect to database
         include 'dbconnect.php';
@@ -786,7 +1016,14 @@
         $success_save_comment_query = mysqli_query($link, $update_comment_query);
         return $success_save_comment_query;
     } 
-	
+
+	// Function: saveTimeDB
+	// Updates the current clock value to the database.
+	//
+	// Parameters:
+    //    newTime - the new clock value.
+	//    trainerID - id of the trainer.
+	//    traineeID - id of the trainee.	
 	 function saveTimeDB($newTime,$trainerID,$traineeID){ 
         // connect to database
         include 'dbconnect.php';
