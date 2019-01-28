@@ -142,7 +142,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 <script>
 
 var users;
-
+	// Function: getAllUsers
+	// Retrieves list of all users and adds them to user-select.
 function getAllUsers() {
     $.post("php/applicationcontroller.php",
         {
@@ -165,7 +166,9 @@ function getAllUsers() {
             }
         });
 }
-	
+
+	// Function: getRole
+	// Gets the previous role of the user. If the user wants to change roles, the user is notified.	
 function getRole() {
     var selectedUser = $("#inputName").val();
     if (selectedUser== "") return;

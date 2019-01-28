@@ -50,7 +50,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 <script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <script>
-
+	// Function: joinActiveLesson
+	// Checks every three seconds if a trainer has logged in and once a trainer has logged in, logs the trainee in.
     function joinActiveLesson() {
         $.post("php/join_lesson.php",//post: request to server on applicationcontroller.php
             {
