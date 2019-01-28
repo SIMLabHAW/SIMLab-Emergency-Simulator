@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("isa",["Variable"],[["isAlarmSoundInitialized",,[[,,,,0,"File:js/sound-management.js:isAlarmSoundInitialized"]]]]);
+NDSearch.OnPrefixDataLoaded("isa",["Function","Variable","Property"],[["isActive",,[["Lesson",,,,0,"File:php/domain.php:Lesson.isActive","PHPClass:Lesson:isActive"]]],["isAlarmSoundInitialized",,[[,,,,1,"File:js/sound-management.js:isAlarmSoundInitialized"]]],["isAuto",,[["ChangeDuration",,,,2,"File:php/domain.php:ChangeDuration.isAuto","PHPClass:ChangeDuration:isAuto"]]]]);

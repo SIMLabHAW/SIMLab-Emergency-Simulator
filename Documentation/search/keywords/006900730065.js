@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("ise",["Property"],[["isEnabled",,[["PacerState",,,,0,"File:php/domain.php:PacerState.isEnabled","PHPClass:PacerState:isEnabled"]]]]);

@@ -49,6 +49,8 @@ var ECGCalculation = function() {
         Contains the current calculated heart-rate. */
     this.currentHR = 0;
 
+    /* Variable: currentRandHR
+        Contains the randomized HR of the current period. */
     this.currentRandHR;
 
     /* Variable hasAVBlock: 
@@ -319,12 +321,17 @@ var ECGCalculation = function() {
     }
 
     /* Function: randomize
-        Used to randomize the provided heart-rate. */
+        Used to randomize the provided heart-rate. In order to do so correcly, a lot of conditions 
+        are checked. */
     function randomize(hr, simTime, vitalSigns = undefined) {
         var randHR = (!self.hasAVBlock) ? self.currentRandHR : hr;
 
+        // Get a reference to the pacer object for convenience.
         const pacer = simConfig.simState.pacer;
 
+        /* If a new cicle starts and the heartrate is above a threshold and the current call 
+        did not come from the offset calculation or it is a new mode, that a new randHR is 
+        calculated. This calculation is dependent on the current pathology. */
         if (simTime===0 && hr >= 10 && (!isOffsetCalculation || isNewMode)) {
             var maxRandFactor
             
@@ -353,7 +360,6 @@ var ECGCalculation = function() {
             // So no randomization happens, when pacing is performed.
             randHR = hr;
         }
-
 
         // Fallback to restart again from 0 on.
         if (randHR == 0 || randHR == undefined) {
@@ -454,6 +460,7 @@ var ECGCalculation = function() {
         var k = 6/halfValueDif;
         return param - (param*0.6)/(1+(Math.exp(-k*((hr-normalHF)-halfValueDif))));
     }
+
     /* Function: calculateECGValue
         In this function, the different compartments of the ECG signal are calculated.
         Every signal-part is afterwards summed up to build one point of the ECG. The ECG is 

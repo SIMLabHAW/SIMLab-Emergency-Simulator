@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("id",["Property"],[["id",,[["Lesson",,,,0,"File:php/domain.php:Lesson.id","PHPClass:Lesson:id"],["User",,,,0,"File:php/domain.php:User.id","PHPClass:User:id"]]]]);

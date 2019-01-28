@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("xva",["Variable"],[["xValue",,[[,,,,0,"File:js/vital-sign-graph.js:xValue"]]]]);
+NDSearch.OnPrefixDataLoaded("xva",["Property","Variable"],[["xValOffset",,[["VitalSignParameters",,,,0,"File:php/domain.php:VitalSignParameters.xValOffset","PHPClass:VitalSignParameters:xValOffset"]]],["xValue",,[[,,,,1,"File:js/vital-sign-graph.js:xValue"]]]]);

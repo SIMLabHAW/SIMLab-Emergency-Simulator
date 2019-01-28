@@ -8,114 +8,114 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Functions"></a><a name="Topic23"></a><div class="CTopic TGroup LJavaScript first">
+<a name="Functions"></a><a name="Topic137"></a><div class="CTopic TGroup LJavaScript first">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="SPO2Calculation"></a><a name="Topic34"></a><div class="CTopic TFunction LJavaScript">
+<a name="SPO2Calculation"></a><a name="Topic138"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">SPO2Calculation</div>
- <div id="NDPrototype34" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> SPO2Calculation = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype138" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> SPO2Calculation = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>Performs all necessary calculations for the SPO2. Get some background-information about the waveforms from here <a href="https://derangedphysiology.com/main/cicm-primary-exam/required-reading/cardiovascular-system/Chapter%207.6.0/normal-arterial-line-waveforms" target="_top">Normal arterial line waveforms</a></p></div>
 </div>
 
-<a name="Variables"></a><a name="Topic11"></a><div class="CTopic TGroup LJavaScript">
+<a name="Variables"></a><a name="Topic139"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="self"></a><a name="Topic48"></a><div class="CTopic TVariable LJavaScript">
+<a name="self"></a><a name="Topic140"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">self</div>
- <div id="NDPrototype48" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> self</div>
- <div class="CBody"><p>Used to be able to adress the <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,57);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> property from within other functions in <a href="../../index.html#File:js/spo2-calculation.js:SPO2Calculation" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,34);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >SPO2Calculation</a>.</p></div>
+ <div id="NDPrototype140" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> self</div>
+ <div class="CBody"><p>Used to be able to adress the <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,141);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> property from within other functions in <a href="../../index.html#File:js/spo2-calculation.js:SPO2Calculation" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,138);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >SPO2Calculation</a>.</p></div>
 </div>
 
-<a name="currentNIBP"></a><a name="Topic57"></a><div class="CTopic TVariable LJavaScript">
+<a name="currentNIBP"></a><a name="Topic141"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">currentNIBP</div>
- <div id="NDPrototype57" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.currentNIBP</div>
+ <div id="NDPrototype141" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.currentNIBP</div>
  <div class="CBody"><p>Contains the current systolic and diastolic-values.</p></div>
 </div>
 
-<a name="currentTime"></a><a name="Topic289"></a><div class="CTopic TVariable LJavaScript">
+<a name="currentTime"></a><a name="Topic142"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">currentTime</div>
- <div id="NDPrototype289" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> currentTime</div>
+ <div id="NDPrototype142" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> currentTime</div>
  <div class="CBody"><p>Contains the currentTime of the nibp-simulation.</p></div>
 </div>
 
-<a name="timeSinceNIBPChange"></a><a name="Topic290"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceNIBPChange"></a><a name="Topic143"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceNIBPChange</div>
- <div id="NDPrototype290" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceNIBPChange</div>
- <div class="CBody"><p>Contains the time since last <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,57);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> change to calculate the value dynamically.</p></div>
+ <div id="NDPrototype143" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceNIBPChange</div>
+ <div class="CBody"><p>Contains the time since last <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,141);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> change to calculate the value dynamically.</p></div>
 </div>
 
-<a name="oldNIBP"></a><a name="Topic291"></a><div class="CTopic TVariable LJavaScript">
+<a name="oldNIBP"></a><a name="Topic144"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">oldNIBP</div>
- <div id="NDPrototype291" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> oldNIBP</div>
+ <div id="NDPrototype144" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> oldNIBP</div>
  <div class="CBody"><p>Contains the old systolic and diastolic nibp, which is used in the dynamic changing process.</p></div>
 </div>
 
-<a name="timeSinceIntermediateNIBPChange"></a><a name="Topic292"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceIntermediateNIBPChange"></a><a name="Topic145"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceIntermediateNIBPChange</div>
- <div id="NDPrototype292" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateNIBPChange</div>
- <div class="CBody"><p>Contains the time since the last intermediate nibp change. Is used to perform changes to the <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,57);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> only at the end of the current period.</p></div>
+ <div id="NDPrototype145" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateNIBPChange</div>
+ <div class="CBody"><p>Contains the time since the last intermediate nibp change. Is used to perform changes to the <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,141);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> only at the end of the current period.</p></div>
 </div>
 
-<a name="latestReachedNIBP"></a><a name="Topic293"></a><div class="CTopic TVariable LJavaScript">
+<a name="latestReachedNIBP"></a><a name="Topic146"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">latestReachedNIBP</div>
- <div id="NDPrototype293" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedNIBP</div>
- <div class="CBody"><p>Contains the old &quot;currentNIBP&quot; after a config change. It is used to react to changes to the <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,57);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> while an old change is still in process.</p></div>
+ <div id="NDPrototype146" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedNIBP</div>
+ <div class="CBody"><p>Contains the old &quot;currentNIBP&quot; after a config change. It is used to react to changes to the <a href="../../index.html#File:js/spo2-calculation.js:currentNIBP" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,141);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentNIBP</a> while an old change is still in process.</p></div>
 </div>
 
-<a name="lastDeltaX"></a><a name="Topic19"></a><div class="CTopic TVariable LJavaScript">
+<a name="lastDeltaX"></a><a name="Topic147"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">lastDeltaX</div>
- <div id="NDPrototype19" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> lastDeltaX</div>
+ <div id="NDPrototype147" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> lastDeltaX</div>
  <div class="CBody"><p>When the ecgCalculation gets deactivated, the ecgCalculation.simTime is not counted up anymore. Therefore, the old simTime Value gets saved in each step to adress this problem.</p></div>
 </div>
 
-<a name="hfIdleCount"></a><a name="Topic20"></a><div class="CTopic TVariable LJavaScript">
+<a name="hfIdleCount"></a><a name="Topic148"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">hfIdleCount</div>
- <div id="NDPrototype20" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> hfIdleCount</div>
- <div class="CBody"><p>Is used to count up the time without ecg. If the time is higher then <a href="../../index.html#File:js/spo2-calculation.js:maxHFIdleCount" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,22);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >maxHFIdleCount</a>, The spo2 curve is simulated on its own.</p></div>
+ <div id="NDPrototype148" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> hfIdleCount</div>
+ <div class="CBody"><p>Is used to count up the time without ecg. If the time is higher then <a href="../../index.html#File:js/spo2-calculation.js:maxHFIdleCount" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,150);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >maxHFIdleCount</a>, The spo2 curve is simulated on its own.</p></div>
 </div>
 
-<a name="Constants"></a><a name="Topic21"></a><div class="CTopic TGroup LJavaScript">
+<a name="Constants"></a><a name="Topic149"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Constants</div>
 </div>
 
-<a name="maxHFIdleCount"></a><a name="Topic22"></a><div class="CTopic TConstant LJavaScript">
+<a name="maxHFIdleCount"></a><a name="Topic150"></a><div class="CTopic TConstant LJavaScript">
  <div class="CTitle">maxHFIdleCount</div>
  <div class="CBody"><p>Contains the max amount of steps that are tolerable for an ecg signal to be missing.&nbsp; 4 steps equal to 4*0.02 seconds</p></div>
 </div>
 
-<a name="Functions(2)"></a><a name="Topic183"></a><div class="CTopic TGroup LJavaScript">
+<a name="Functions(2)"></a><a name="Topic151"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="errorFunction"></a><a name="Topic24"></a><div class="CTopic TFunction LJavaScript">
+<a name="errorFunction"></a><a name="Topic152"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">errorFunction</div>
- <div id="NDPrototype24" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> errorFunction(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">x</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype152" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> errorFunction(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">x</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>This function is used to build up the shape of the spo2-curve. It is used twice in the process for the first and the second peak. Even if the function is called errorFunction, it is solemnly used to <b>simulate the correct shape</b> of the spo2-curve.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">x</td><td class="CDLDefinition"><p>Used to calcuate the &quot;error&quot; for.</p></td></tr></table><p>See also: This implementation is based on an article: <a href="https://www.johndcook.com/blog/2009/01/19/stand-alone-error-function-erf/" target="_top">Stand-alone error function errorFunction(x)</a> using the <a href="https://www.desmos.com/calculator/t1v4bdpske" target="_top">Mathematical Simulation</a> of the error-Function. Theory: <a href="https://en.wikipedia.org/wiki/Error_function#Approximation_with_elementary_functions" target="_top">Wikipedia</a></p></div>
 </div>
 
-<a name="getCurrentSysValue"></a><a name="Topic294"></a><div class="CTopic TFunction LJavaScript">
+<a name="getCurrentSysValue"></a><a name="Topic153"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">getCurrentSysValue</div>
- <div id="NDPrototype294" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getCurrentSysValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newSys,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">nibpChangeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype153" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getCurrentSysValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newSys,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">nibpChangeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>This function is used to calculated the current nibp sys-value. It was needed to have and dynamic change for the maximal nibp sys-value after a change.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newSys</td><td class="CDLDefinition"><p>Contains the new sys-maximum value.</p></td></tr><tr><td class="CDLEntry">period</td><td class="CDLDefinition"><p>Contains the period of the sys-curve. This value is based on the hr.</p></td></tr><tr><td class="CDLEntry">nibpChangeDuration</td><td class="CDLDefinition"><p>Contains an object which contains an boolean, indicating if the duration for an adaption is automatically chosen and an value, if a manual duration is chosen.</p></td></tr></table><div class="CHeading">Returns</div><p>The calculated current sys-max.</p><p>See also: This function uses an implementation of the <a href="https://en.wikipedia.org/wiki/Logistic_function" target="_top">Logistic Function</a> to perform the dynamic changes.</p></div>
 </div>
 
-<a name="getCurrentDiaValue"></a><a name="Topic295"></a><div class="CTopic TFunction LJavaScript">
+<a name="getCurrentDiaValue"></a><a name="Topic154"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">getCurrentDiaValue</div>
- <div id="NDPrototype295" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getCurrentDiaValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newDia,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">nibpChangeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype154" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getCurrentDiaValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newDia,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">nibpChangeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>This function is used to calculated the current nibp dia-value. It was needed to have and dynamic change for the maximal nibp dia-value after a change.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newDia</td><td class="CDLDefinition"><p>Contains the new dia-maximum value.</p></td></tr><tr><td class="CDLEntry">period</td><td class="CDLDefinition"><p>Contains the period of the dia-curve. This value is based on the hr.</p></td></tr><tr><td class="CDLEntry">nibpChangeDuration</td><td class="CDLDefinition"><p>Contains an object which contains an boolean, indicating if the duration for an adaption is automatically chosen and an value, if a manual duration is chosen.</p></td></tr></table><div class="CHeading">Returns</div><p>The calculated current dia-max.</p></div>
 </div>
 
-<a name="calcFullSpo2"></a><a name="Topic296"></a><div class="CTopic TFunction LJavaScript">
+<a name="calcFullSpo2"></a><a name="Topic155"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calcFullSpo2</div>
- <div id="NDPrototype296" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calcFullSpo2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">firstY,</td></tr><tr><td class="PName first last">currentNIBP,</td></tr><tr><td class="PName first last">t0,</td></tr><tr><td class="PName first last">sigma,</td></tr><tr><td class="PName first last">M,</td></tr><tr><td class="PName first last">t</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype155" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calcFullSpo2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">firstY,</td></tr><tr><td class="PName first last">currentNIBP,</td></tr><tr><td class="PName first last">t0,</td></tr><tr><td class="PName first last">sigma,</td></tr><tr><td class="PName first last">M,</td></tr><tr><td class="PName first last">t</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>This function calculates the full spo2-curve-value for the given point in time.&nbsp; &quot;full&quot; in this case means, that it calculates the second &quot;spo2-curve-peak&quot; and adds it to the first.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">firstY</td><td class="CDLDefinition"><p>Contains the first calculated spo2-curve value.</p></td></tr><tr><td class="CDLEntry">currentNIBP</td><td class="CDLDefinition"><p>Contains the current spo2-max.</p></td></tr><tr><td class="CDLEntry">t0</td><td class="CDLDefinition"><p>Contains the t0-parameter from the first spo2-curve-peak.</p></td></tr><tr><td class="CDLEntry">sigma</td><td class="CDLDefinition"><p>Contains the sigma-parameter from the first spo2-curve-peak.</p></td></tr><tr><td class="CDLEntry">M</td><td class="CDLDefinition"><p>Contains the M-constant for normalization</p></td></tr><tr><td class="CDLEntry">t</td><td class="CDLDefinition"><p>Contains the value for which the spo2-curve is calculated.</p></td></tr></table><div class="CHeading">Returns</div><p>The calculated f(t).</p></div>
 </div>
 
-<a name="calc"></a><a name="Topic297"></a><div class="CTopic TFunction LJavaScript last">
+<a name="calc"></a><a name="Topic156"></a><div class="CTopic TFunction LJavaScript last">
  <div class="CTitle">calc</div>
- <div id="NDPrototype297" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">hr,</td><td></td><td class="last"></td></tr><tr><td class="PName first">newNIBP,</td><td></td><td class="last"></td></tr><tr><td class="PName first">nibpChangeDuration,</td><td></td><td class="last"></td></tr><tr><td class="PName first">isPacerUsed&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">false</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype156" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">hr,</td><td></td><td class="last"></td></tr><tr><td class="PName first">newNIBP,</td><td></td><td class="last"></td></tr><tr><td class="PName first">nibpChangeDuration,</td><td></td><td class="last"></td></tr><tr><td class="PName first">isPacerUsed&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">false</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>This function is used to calculate the current f(t)</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">hr</td><td class="CDLDefinition"><p>Contains the current heart-rate.</p></td></tr><tr><td class="CDLEntry">newNIBP</td><td class="CDLDefinition"><p>Contains the systolic and diastolic bloodpressure max-values.</p></td></tr><tr><td class="CDLEntry">nibpChangeDuration</td><td class="CDLDefinition"><p>Contains an object which contains an boolean, indicating if the duration for an adaption is automatically chosen and an value, if a manual duration is chosen.</p></td></tr></table></div>
 </div>
 

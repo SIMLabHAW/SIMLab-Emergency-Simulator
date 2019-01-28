@@ -47,6 +47,8 @@ var oldConfig;
 */
 var tempConfig;
 
+/* Variable: postChangePathology 
+    Contains the Pathology that is activated on the next change. */
 var postChangePathology;
 
 /* Variable: ecgGraph
@@ -61,7 +63,12 @@ var spo2Graph;
     Stores a reference to the ETCO2Graph. */
 var etco2Graph;
 
+/* Variable: defaultPathologyList
+    Contains the list of the default pathologies. */
 var defaultPathologyList;
+
+/* Variable: updateTextForms
+    Indicates, whether all text forms needs to be updated. (e.g. after a config change?!) */
 var updateTextForms = false;
 
 /* Variable: etco2Calculation
@@ -76,11 +83,37 @@ var ecgCalculation = new ECGCalculation();
     Used to perform all calculations to simulate the spo2-curve. */
 var spo2Calculation = new SPO2Calculation();
 
+/* Variable: ecgCPR
+    Contains a reference to the initialized <CPRManagement> for ecg. */
 var ecgCPR = new CPRManagement(1.4, 110, CPRType.ECG);
+
+/* Variable: spo2CPR
+    Contains a reference to the initialized <CPRManagement> for ecg. */
 var spo2CPR = new CPRManagement(1, 110, CPRType.SPO2);
+
+/* Variable: etco2CPR
+    Contains a reference to the initialized <CPRManagement> for ecg. */
 var etco2CPR = new CPRManagement(0.8, 110, CPRType.ETCO2);
 
+/* Variable: changeDuration
+    This variable contains the DataModel for the changeDuration. */
+var changeDuration = {isAuto: true, value: 30};
+
+
+/* Variable: needsPostShockValueUpdate
+    Indicates, whether a value update for the post shock pathology is necessary. */
+var needsPostShockValueUpdate = true;
+
+/* Constant: viewType
+    Contains the <ViewType> of the File. */
 const viewType = ViewType.Trainer;
+
+$("#dynamicChangeSlider").ionRangeSlider({
+    type: "single",
+    min: 0,
+    max: 120,
+    postfix: "s"
+});
 
 /* Function: initControls
     Called every second and when the values in the UI-Elements change. Responsible for 
@@ -195,15 +228,9 @@ var initControls = function (config) {
     }
 };
 
-$("#dynamicChangeSlider").ionRangeSlider({
-    type: "single",
-    min: 0,
-    max: 120,
-    postfix: "s"
-});
-
-var changeDuration = {isAuto: true, value: 30};
-
+/* Function: getDynamicChange
+    Updates the GUI Elements for the dynamic change.
+*/
 function getDynamicChange() {
     $("#dynamicChangeModalTitle").html("Dynamic Change Config");
     $("#dynamicChangeModalTitle").css("color", "#ffffff");
@@ -215,6 +242,8 @@ function getDynamicChange() {
     });
 }
 
+/* Function: saveDynamicChange
+    Saves the <changeDuration> in the database. */
 function saveDynamicChange() {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
 
@@ -226,10 +255,14 @@ function saveDynamicChange() {
 	saveLesson(tempConfig);
 }
 
+/* Function: toggleAutoChangeDuration
+    Toggles the checkbox to reflect the enabled autochangeduration. */
 function toggleAutoChangeDuration(checkbox) {
     setAutoChange(checkbox.checked);
 }
 
+/* Function: setAutoChange
+    Performs GUI adaptions depending on the parameter isActive. */
 function setAutoChange(isActive) {
     $("#dynamicChangeLabel").css("color", isActive ? "grey" : "white");
     $("#dynamicChangeSlider").data("ionRangeSlider").update({
@@ -237,6 +270,8 @@ function setAutoChange(isActive) {
     });
 }
 
+/* Function: updateUI
+    Updates most of the UI. It is called e.g. at the beginning of a new session. */
 function updateUI() {
 
     $("#pathology-select").find('option').removeAttr("selected");
@@ -322,6 +357,9 @@ function updateUI() {
     }
 }
 
+/* Function: saveAll
+    Used to save all values from the Inputs and selects in the database. Also performs 
+    some input sanatization. */
 function saveAll(){
 
         if (postChangePathology != undefined) {
@@ -406,16 +444,14 @@ function saveAll(){
 		initControls(tempConfig);
 }
 
-//var postShockValues = {hr: 0, spo2: 0, etco2: 0, rr: 0, sys: 0, dia: 0};
-
-var needsPostShockValueUpdate = true;
+/* Function: showPostShockModal
+    Shows a modal to config the post shock pathology. So when the Trainee performs a shock, the 
+    chosen parameters are used in the following pathology. */
 function showPostShockModal() {
-
     var pathologyName = document.getElementById("defiPathologySelect").value;
     var selectedPathology = defaultPathologyList.find(function (pathology) {
         return pathology.name === pathologyName;
     });
-
 
     if (needsPostShockValueUpdate) {
         $('#hrInputDefi').val(selectedPathology.hr);
@@ -436,6 +472,9 @@ function showPostShockModal() {
     }
 }
 
+/* Function: saveAllPostShock
+    Used to save all values from the post shock inputs and selects from the modal in the database. 
+    Also performs some input sanatization. */
 function saveAllPostShock(){
 	
         tempConfigPostShock = JSON.parse(JSON.stringify(simConfig));
@@ -514,6 +553,8 @@ function saveAllPostShock(){
 		saveLesson(tempConfigPostShock);
 }
 
+/* Function: handleChangeCPR
+    Updates the hasCPR variable in the database. */
 function handleChangeCPR(checkbox) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.hasCPR = checkbox.checked;
@@ -522,6 +563,8 @@ function handleChangeCPR(checkbox) {
     initControls(tempConfig);
 }
 
+/* Function: handleChangeCOPD
+    Updates the hasCOPD variable in the database. */
 function handleChangeCOPD(checkbox) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.hasCOPD = checkbox.checked;
@@ -530,7 +573,8 @@ function handleChangeCOPD(checkbox) {
     initControls(tempConfig);
 }
 
-//onOff switches
+/* Function: handleChangeECG
+    Enables or disables the ecg charts and measurements and performs GUI adaptions. */
 function handleChangeECG(checkbox) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.enableECG = checkbox.checked;
@@ -557,6 +601,9 @@ function handleChangeECG(checkbox) {
     initControls(tempConfig);
 }
 
+
+/* Function: handleChangeSpO2
+    Enables or disables the spo2 charts and measurements and performs GUI adaptions. */
 function handleChangeSpO2(checkbox) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.enableSPO2 = checkbox.checked;
@@ -581,6 +628,9 @@ function handleChangeSpO2(checkbox) {
 
 }
 
+
+/* Function: handleChangeEtCO2
+    Enables or disables the etco2 charts and measurements and performs GUI adaptions. */
 function handleChangeEtCO2(checkbox) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.enableETCO2 = checkbox.checked;
@@ -609,6 +659,10 @@ function handleChangeEtCO2(checkbox) {
 
 }
 
+// TODO: if disabled, dont play soundfile in TraineeView.
+
+/* Function: handleChangeNipb
+    Enables or disables the nibp measurements and performs GUI adaptions. */
 function handleChangeNipb(checkbox) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.displayNIBP = checkbox.checked;
@@ -631,6 +685,9 @@ function handleChangeNipb(checkbox) {
     initControls(tempConfig);
 }
 
+
+/* Function: handleChangeRespRatio
+    Saves the chosen respRatio in the database. */
 function handleChangeRespRatio(respRatio) {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     tempConfig.simState.respRatio = respRatio;
@@ -639,6 +696,8 @@ function handleChangeRespRatio(respRatio) {
     initControls(tempConfig);
 }
 
+/* Function: handleSelectPathology
+    Saves the chosen pathology and vital sign parameters into the <postChangePathology>. */
 function handleSelectPathology() {
     postChangePathology = JSON.parse(JSON.stringify(simConfig));
     var pathologyName = document.getElementById("pathology-select").value;
@@ -647,15 +706,14 @@ function handleSelectPathology() {
     });
     if (selectedPathology) {
         postChangePathology.vitalSigns = selectedPathology;
-        //initControls(tempConfig);
-        //saveLesson(tempConfig);
         updateUIWith(postChangePathology);
         postValueChange("Pathology", selectedPathology.name);
     }
 }
 
+/* Function: updateUIWith
+    Updates the UI based on the pathology parameter. */
 function updateUIWith(pathology) {
-
     $('#hrInput').val(pathology.vitalSigns.hr);
     $('#spo2Input').val(pathology.vitalSigns.spo2);
     $('#etco2Input').val(pathology.vitalSigns.etco2);
@@ -664,6 +722,8 @@ function updateUIWith(pathology) {
     $('#diaInput').val(pathology.vitalSigns.diastolic);
 }
 
+/* Function: handleSelectPathologyDefi 
+    Within this function, the chosen defiPathology is saved. */
 function handleSelectPathologyDefi() {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     var pathologyName = document.getElementById("defiPathologySelect").value;
@@ -692,6 +752,8 @@ function handleSelectPathologyDefi() {
     }
 }
 
+/* Function: defiThresholdChanged 
+    In this function, the current defiEnergyThreshold is saved in the database. */
 function defiThresholdChanged() {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     newValue = $('#defiThresholdEnergySelect').val();
@@ -701,6 +763,8 @@ function defiThresholdChanged() {
     postValueChange("Defi Energy Threshold: ", newValue);
 }
 
+/* Function: pacerThresholdChanged 
+    In this function, the current pacer energyThreshold is saved in the database. */
 function pacerThresholdChanged() {
     tempConfig = JSON.parse(JSON.stringify(simConfig));
     newValue = $('#pacerThresholdEnergySelect').val();
@@ -710,6 +774,9 @@ function pacerThresholdChanged() {
     postValueChange("Pacer Energy Threshold: ", newValue);
 }
 
+
+/* Function: addPacerThresholdEnergyLevels 
+    In this function, the pacerThresholdEnergySelect-Dropdownlist is filled. */
 function addPacerThresholdEnergyLevels() {
     var select = document.getElementById("pacerThresholdEnergySelect");
     for (var i = 10; i <= 150; i+=10) {
@@ -752,6 +819,8 @@ function getAccordingSPO2() {
         {sys: tempConfig.vitalSigns.systolic, dia: tempConfig.vitalSigns.diastolic}, cd, true);
 }
 
+/* Function: addDefiThresholdEnergyLevels 
+    In this function, the defiThresholdEnergySelect-Dropdownlist is filled. */
 function addDefiThresholdEnergyLevels() {
     var select = document.getElementById("defiThresholdEnergySelect");
 
@@ -769,6 +838,9 @@ function addDefiThresholdEnergyLevels() {
     }
 }
 
+/* Function: addPathology
+    In this function, the pathology-select-Dropdownlist and the defiPathologySelect is filled.
+    And the previously chosen pathology is automatically selected. */
 function addPathology(pathology, name, selected) {
     var select = document.getElementById('pathology-select');
     var opt = document.createElement('option');
@@ -788,10 +860,21 @@ function addPathology(pathology, name, selected) {
     }*/
 }
 
+/* Variable: totalSeconds
+    Stores the current amount of seconds since the beginning of the session. (After the 
+    reset/start of the timer) */
 var totalSeconds = 0;
+
+/* Variable: timerVar
+    Stores a reference to the interval of the sessiontimer. */
 var timerVar;
+
+/* Variable: isTimerRunning
+    Indicates, whether the timer is running. */
 var isTimerRunning = false;
 
+/* Function: countTimer
+    Counts up the <totalSeconds> and displays it. Also updates the DB. */
 function countTimer() {
     totalSeconds++;
     var newTime = formatTime(totalSeconds);
@@ -799,6 +882,8 @@ function countTimer() {
     saveTime(newTime);
 }
 
+/* Function: toggleTimer
+    Starts/Stops the <timerVar> and updates the GUI. */
 function toggleTimer() {
     isTimerRunning = !isTimerRunning;
     if (isTimerRunning) {
@@ -813,6 +898,8 @@ function toggleTimer() {
 
 }
 
+/* Function: resetTimer
+    Resets the <totalSeconds> to 0 and updates the GUI. Also updates the DB. */
 function resetTimer() {
     totalSeconds = 0;
     $("#timerDiv").html(formatTime(totalSeconds));
@@ -820,6 +907,12 @@ function resetTimer() {
     postValueChange("Timer", "Reset");
 }
 
+/* Function: formatTime
+    This function turns a number into a correcly formatted h:mm:ss format.
+
+    Parameters: 
+        seconds - contains the value of the time that should be formatted (in seconds).
+*/
 function formatTime(seconds) {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
@@ -833,8 +926,11 @@ function formatTime(seconds) {
 
 $(document).on('click', '#testDropdown .dropdown-menu', function (e) {
     e.stopPropagation();
-  });
+});
 
+
+/* Variable: pacedDeltaX
+    Stores a counting value to draw the pacer peaks at the specified pacerfrequency. */
 var pacedDeltaX = 0;
 
 //when everything is loaded....
@@ -877,25 +973,14 @@ $(document).ready(function () {
         return spo2Calculation.calc(simConfig.vitalSigns.hr, 
             {sys: simConfig.vitalSigns.systolic, dia: simConfig.vitalSigns.diastolic}, changeDuration);
     });
+
     etco2Graph = new ETCO2Graph("etco2Canvas", "rgb(27, 213, 238)", 0, 50, function () {
         return etco2Calculation.calc(simConfig.vitalSigns.rr, 
             simConfig.vitalSigns.etco2, changeDuration);
-
     });
 	
     //...load every 1000ms all current values from databasestored in config
     setInterval(function () {
         getLesson(initControls);
     }, 1000);
-	
-/* 	setTimeout(function() {
-		$('#hrInputDefi').val(simConfig.simState.hrDefi);
-		$('#spo2InputDefi').val(simConfig.simState.spo2Defi);
-		$('#etco2InputDefi').val(simConfig.simState.etco2Defi);
-		$('#rrInputDefi').val(simConfig.simState.rrDefi);
-		$('#sysInputDefi').val(simConfig.simState.sysDefi);
-		$('#diaInputDefi').val(simConfig.simState.diaDefi);
-	}, 2000); */
-	
-
 });

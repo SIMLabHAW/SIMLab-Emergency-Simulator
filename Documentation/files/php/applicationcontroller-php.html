@@ -8,14 +8,84 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Functions"></a><a name="Topic170"></a><div class="CTopic TGroup LPHP first">
+<a name="Functions"></a><a name="Topic341"></a><div class="CTopic TGroup LPHP first">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="getActiveLessonJson"></a><a name="Topic171"></a><div class="CTopic TFunction LPHP last">
- <div class="CTitle">getActiveLessonJson</div>
- <div id="NDPrototype171" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getActiveLessonJson()</div>
- <div class="CBody"><p>Description of the function.</p></div>
+<a name="getApplicationController"></a><a name="Topic342"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getApplicationController</div>
+ <div id="NDPrototype342" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getApplicationController()</div>
+ <div class="CBody"><p>Returns the existing applicationController or creates a new one.</p></div>
+</div>
+
+<a name="getCurrentTraineeId"></a><a name="Topic343"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getCurrentTraineeId</div>
+ <div id="NDPrototype343" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getCurrentTraineeId()</div>
+ <div class="CBody"><p>Returns the ID of the current session's trainee.</p></div>
+</div>
+
+<a name="getCurrentTrainerId"></a><a name="Topic344"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getCurrentTrainerId</div>
+ <div id="NDPrototype344" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getCurrentTrainerId()</div>
+ <div class="CBody"><p>Returns the ID of the current session's trainer.</p></div>
+</div>
+
+<a name="getAllUsersJson"></a><a name="Topic476"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getAllUsersJson</div>
+ <div id="NDPrototype476" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getAllUsersJson()</div>
+ <div class="CBody"><p>Calls getAllUsers, found in domain.php, and prints as Json Array.</p></div>
+</div>
+
+<a name="getTraineesJson"></a><a name="Topic477"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getTraineesJson</div>
+ <div id="NDPrototype477" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getTraineesJson()</div>
+ <div class="CBody"><p>Calls getTrainees, found in domain.php, and prints as Json Array.</p></div>
+</div>
+
+<a name="getTrainersJson"></a><a name="Topic478"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getTrainersJson</div>
+ <div id="NDPrototype478" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getTrainersJson()</div>
+ <div class="CBody"><p>Calls getTrainers, found in domain.php, and prints as Json Array.</p></div>
+</div>
+
+<a name="getLessonJson"></a><a name="Topic479"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">getLessonJson</div>
+ <div id="NDPrototype479" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getLessonJson()</div>
+ <div class="CBody"><p>Calls getLessonByParticipants, found in domain.php, and prints as Json Object.</p></div>
+</div>
+
+<a name="saveLessonFromJson"></a><a name="Topic480"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">saveLessonFromJson</div>
+ <div id="NDPrototype480" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> saveLessonFromJson(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PNamePrefix first">$</td><td class="PName last">lessonJson</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Calls saveLesson, found in domain.php, to store current lesson data to database.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">lessonJson</td><td class="CDLDefinition"><p>Json encoded lesson from $_POST['parameters'].</p></td></tr></table></div>
+</div>
+
+<a name="saveComment"></a><a name="Topic481"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">saveComment</div>
+ <div id="NDPrototype481" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> saveComment(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PNamePrefix first">$</td><td class="PName last">comment</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Calls saveCommentDB, found in domain.php, to store a comment to the database.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">comment</td><td class="CDLDefinition"><p>Comment from $_POST['parameters'].</p></td></tr></table></div>
+</div>
+
+<a name="saveTime"></a><a name="Topic482"></a><div class="CTopic TFunction LPHP">
+ <div class="CTitle">saveTime</div>
+ <div id="NDPrototype482" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> saveTime(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PNamePrefix first">$</td><td class="PName last">newTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Calls saveTimeDB, found in domain.php, to store the current clock time to the database.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newTime</td><td class="CDLDefinition"><p>From $_POST['parameters'].</p></td></tr></table></div>
+</div>
+
+<a name="ApplicationController"></a><a name="Topic352"></a><div class="CTopic TClass LPHP">
+ <div class="CTitle">ApplicationController</div>
+ <div class="NDClassPrototype" id="NDClassPrototype352"><div class="CPEntry TClass Current"><div class="CPName">ApplicationController</div></div></div>
+ <div class="CBody"><p>Instantiates all the classes from domain.php, i.e. User, Message, VitalSignParameters, Lesson, ChangeDuration, PacerState, SimulationState.</p></div>
+</div>
+
+<a name="ApplicationController.Functions"></a><a name="Topic353"></a><div class="CTopic TGroup LPHP">
+ <div class="CTitle">Functions</div>
+</div>
+
+<a name="ApplicationController.getVitalSignParametersJson"></a><a name="Topic483"></a><div class="CTopic TFunction LPHP last">
+ <div class="CTitle">getVitalSignParametersJson</div>
+ <div id="NDPrototype483" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getVitalSignParametersJson()</div>
+ <div class="CBody"><p>Calls getVitalSignParameters, found in domain.php, and prints as Json Object.</p></div>
 </div>
 
 </body></html>

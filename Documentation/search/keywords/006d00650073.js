@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("mes",["Class","Property"],[["Message",,[[,,,,0,"File:php/domain.php:Message","PHPClass:Message"],["Message","message",,,1,"File:php/domain.php:Message.message","PHPClass:Message:message"]]]]);

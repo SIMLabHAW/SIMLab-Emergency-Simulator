@@ -8,184 +8,190 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Information"></a><a name="Topic162"></a><div class="CTopic TGroup LJavaScript first">
+<a name="Information"></a><a name="Topic272"></a><div class="CTopic TGroup LJavaScript first">
  <div class="CTitle">Information</div>
 </div>
 
-<a name="ECG_Algorithm"></a><a name="Topic163"></a><div class="CTopic TInformation LJavaScript">
+<a name="ECG_Algorithm"></a><a name="Topic273"></a><div class="CTopic TInformation LJavaScript">
  <div class="CTitle">ECG Algorithm</div>
  <div class="CBody"><p>This file uses a <a href="https://de.mathworks.com/matlabcentral/fileexchange/10858-ecg-simulation-using-matlab" target="_top">MATLAB Implementation</a> of a real time ECG-Calculation, by <a href="https://de.mathworks.com/matlabcentral/profile/authors/452217-karthik-raviprakash" target="_top">Karthik Raviprakash</a>.&nbsp; Some of the calculations performed in this document are based on the Principle of Fourier Series as descriped in the documentation of his work (can be found in the decompressed download file). The licence file for his code can be found in the ./thirdpartylicences directory. All functions, which use parts of his code are marked as such in the documentation of the function.</p></div>
 </div>
 
-<a name="Constants"></a><a name="Topic164"></a><div class="CTopic TGroup LJavaScript">
+<a name="Constants"></a><a name="Topic274"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Constants</div>
 </div>
 
-<a name="timestep"></a><a name="Topic165"></a><div class="CTopic TConstant LJavaScript">
+<a name="timestep"></a><a name="Topic275"></a><div class="CTopic TConstant LJavaScript">
  <div class="CTitle">timestep</div>
  <div class="CBody"><p>Stepsize for one simulation.</p></div>
 </div>
 
-<a name="Functions"></a><a name="Topic184"></a><div class="CTopic TGroup LJavaScript">
+<a name="Functions"></a><a name="Topic276"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="ECGCalculation"></a><a name="Topic139"></a><div class="CTopic TFunction LJavaScript">
+<a name="ECGCalculation"></a><a name="Topic277"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">ECGCalculation</div>
- <div id="NDPrototype139" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ECGCalculation = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype277" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ECGCalculation = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>Performs all necessary calculations for the ECG.</p></div>
 </div>
 
-<a name="Variables"></a><a name="Topic185"></a><div class="CTopic TGroup LJavaScript">
+<a name="Variables"></a><a name="Topic278"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="simTime"></a><a name="Topic167"></a><div class="CTopic TVariable LJavaScript">
+<a name="simTime"></a><a name="Topic279"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">simTime</div>
- <div id="NDPrototype167" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.simTime</div>
+ <div id="NDPrototype279" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.simTime</div>
  <div class="CBody"><p>Contains the current simulation time (ranging from 0 to 60/currentHR).</p></div>
 </div>
 
-<a name="timeSinceConfigChange"></a><a name="Topic140"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceConfigChange"></a><a name="Topic280"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceConfigChange</div>
- <div id="NDPrototype140" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.timeSinceConfigChange</div>
+ <div id="NDPrototype280" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.timeSinceConfigChange</div>
  <div class="CBody"><p>Stores the time since last config change.</p></div>
 </div>
 
-<a name="currentHR"></a><a name="Topic142"></a><div class="CTopic TVariable LJavaScript">
+<a name="currentHR"></a><a name="Topic281"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">currentHR</div>
- <div id="NDPrototype142" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.currentHR</div>
+ <div id="NDPrototype281" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.currentHR</div>
  <div class="CBody"><p>Contains the current calculated heart-rate.</p></div>
 </div>
 
-<a name="self"></a><a name="Topic143"></a><div class="CTopic TVariable LJavaScript">
+<a name="currentRandHR"></a><a name="Topic282"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">currentRandHR</div>
+ <div id="NDPrototype282" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.currentRandHR</div>
+ <div class="CBody"><p>Contains the randomized HR of the current period.</p></div>
+</div>
+
+<a name="self"></a><a name="Topic283"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">self</div>
- <div id="NDPrototype143" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> self</div>
+ <div id="NDPrototype283" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> self</div>
  <div class="CBody"><p>Necessary to talk to the correct &quot;this&quot;. Inner Functions provide their own &quot;this&quot;.</p></div>
 </div>
 
-<a name="timeSinceIntermediateHFChange"></a><a name="Topic168"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceIntermediateHFChange"></a><a name="Topic284"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceIntermediateHFChange</div>
- <div id="NDPrototype168" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateHFChange</div>
+ <div id="NDPrototype284" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateHFChange</div>
  <div class="CBody"><p>This duration is saved to keep track when to change the currentHR to another value.&nbsp; This is important to make changes always synchronized at the same time.</p></div>
 </div>
 
-<a name="latestReachedHR"></a><a name="Topic211"></a><div class="CTopic TVariable LJavaScript">
+<a name="latestReachedHR"></a><a name="Topic285"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">latestReachedHR</div>
- <div id="NDPrototype211" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedHR</div>
+ <div id="NDPrototype285" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedHR</div>
  <div class="CBody"><p>Stores the latest reached heart-rate to be used for a dynamic change beginning at a time, where the new value is not yet reached.</p></div>
 </div>
 
-<a name="expectsPacerPeak"></a><a name="Topic212"></a><div class="CTopic TVariable LJavaScript">
+<a name="expectsPacerPeak"></a><a name="Topic286"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">expectsPacerPeak</div>
- <div id="NDPrototype212" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> expectsPacerPeak</div>
+ <div id="NDPrototype286" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> expectsPacerPeak</div>
  <div class="CBody"><p>Indicates, if a pacer peak is expected. This flag is resetted once per period.</p></div>
 </div>
 
-<a name="avBlockCounter"></a><a name="Topic191"></a><div class="CTopic TVariable LJavaScript">
+<a name="avBlockCounter"></a><a name="Topic287"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">avBlockCounter</div>
- <div id="NDPrototype191" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.avBlockCounter</div>
+ <div id="NDPrototype287" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.avBlockCounter</div>
  <div class="CBody"><p>This is used for an alternative counter value used for the AV Block.</p></div>
 </div>
 
-<a name="isOffsetCalculation"></a><a name="Topic68"></a><div class="CTopic TVariable LJavaScript">
+<a name="isOffsetCalculation"></a><a name="Topic288"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">isOffsetCalculation</div>
- <div id="NDPrototype68" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isOffsetCalculation</div>
+ <div id="NDPrototype288" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isOffsetCalculation</div>
  <div class="CBody"><p>Stores, if the Offset calculation is currently in progress. Used for calculating the P-Wave in the AV-Block.</p></div>
 </div>
 
-<a name="baselineValue"></a><a name="Topic181"></a><div class="CTopic TVariable LJavaScript">
+<a name="baselineValue"></a><a name="Topic289"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">baselineValue</div>
- <div id="NDPrototype181" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> baselineValue</div>
+ <div id="NDPrototype289" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> baselineValue</div>
  <div class="CBody"><p>Used to store the intermediate baseline value to draw low bpm pqrstu-complexes and a corresponding baseline on the correct height. This is necessary, because the baseline is dependent on the bpm of the ecg. The value is therefore not constant.</p></div>
 </div>
 
-<a name="isNewMode"></a><a name="Topic182"></a><div class="CTopic TVariable LJavaScript">
+<a name="isNewMode"></a><a name="Topic290"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">isNewMode</div>
- <div id="NDPrototype182" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isNewMode</div>
+ <div id="NDPrototype290" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isNewMode</div>
  <div class="CBody"><p>This value is used locally as a flag to see if a new mode was started. It is used to calculate the correct &quot;offset-ecg&quot; for the first value after a mode-change.</p></div>
 </div>
 
-<a name="hasNewMode"></a><a name="Topic238"></a><div class="CTopic TVariable LJavaScript">
+<a name="hasNewMode"></a><a name="Topic291"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">hasNewMode</div>
- <div id="NDPrototype238" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.hasNewMode</div>
- <div class="CBody"><p>This value is stored as an open property to be accessed and primarily set from outside.&nbsp; Is workes in combination with <a href="../../index.html#File:js/ecg-calculation.js:isNewMode" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,182);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >isNewMode</a>. Because it is possible to set this value, while a calculation is still ongoing, a double semaphore is used.</p></div>
+ <div id="NDPrototype291" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.hasNewMode</div>
+ <div class="CBody"><p>This value is stored as an open property to be accessed and primarily set from outside.&nbsp; Is workes in combination with <a href="../../index.html#File:js/ecg-calculation.js:isNewMode" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,290);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >isNewMode</a>. Because it is possible to set this value, while a calculation is still ongoing, a double semaphore is used.</p></div>
 </div>
 
-<a name="Functions(2)"></a><a name="Topic186"></a><div class="CTopic TGroup LJavaScript">
+<a name="Functions(2)"></a><a name="Topic292"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="calculatePWave"></a><a name="Topic255"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculatePWave"></a><a name="Topic293"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculatePWave</div>
- <div id="NDPrototype255" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculatePWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">pWaveAmplitude,</td></tr><tr><td class="PName first last">pWaveDuration,</td></tr><tr><td class="PName first last">pWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">pWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype293" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculatePWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">pWaveAmplitude,</td></tr><tr><td class="PName first last">pWaveDuration,</td></tr><tr><td class="PName first last">pWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">pWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the pWaveValue for the current ECG value.</p><ul><li><p>Copyright (c) 2006, karthik raviprakash All rights reserved.</p></li><li><p>Modified by Christian Bauer, Serena Glass.</p></li></ul><div class="CHeading">Returns</div><p>Current pWaveValue.</p></div>
 </div>
 
-<a name="calculateQWave"></a><a name="Topic256"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateQWave"></a><a name="Topic294"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateQWave</div>
- <div id="NDPrototype256" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateQWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">qWaveAmplitude,</td></tr><tr><td class="PName first last">qWaveDuration,</td></tr><tr><td class="PName first last">qWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">qWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype294" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateQWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">qWaveAmplitude,</td></tr><tr><td class="PName first last">qWaveDuration,</td></tr><tr><td class="PName first last">qWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">qWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the qWaveValue for the current ECG value.</p><ul><li><p>Copyright (c) 2006, karthik raviprakash All rights reserved.</p></li><li><p>Modified by Christian Bauer, Serena Glass.</p></li></ul><div class="CHeading">Returns</div><p>Current qWaveValue.</p></div>
 </div>
 
-<a name="calculateQRSWave"></a><a name="Topic257"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateQRSWave"></a><a name="Topic295"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateQRSWave</div>
- <div id="NDPrototype257" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateQRSWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">qrsComplexAmplitude,</td></tr><tr><td class="PName first last">qrsComplexDuration,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">qrsComplexFactor,</td></tr><tr><td class="PName first last">qrsAmplitudeOffset</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype295" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateQRSWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">qrsComplexAmplitude,</td></tr><tr><td class="PName first last">qrsComplexDuration,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">qrsComplexFactor,</td></tr><tr><td class="PName first last">qrsAmplitudeOffset</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the qrsComplexValue for the current ECG value.</p><ul><li><p>Copyright (c) 2006, karthik raviprakash All rights reserved.</p></li><li><p>Modified by Christian Bauer, Serena Glass.</p></li></ul><div class="CHeading">Returns</div><p>Current qrsComplexValue.</p></div>
 </div>
 
-<a name="calculateSWave"></a><a name="Topic258"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateSWave"></a><a name="Topic296"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateSWave</div>
- <div id="NDPrototype258" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateSWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">sWaveAmplitude,</td></tr><tr><td class="PName first last">sWaveDuration,</td></tr><tr><td class="PName first last">sWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">sWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype296" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateSWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">sWaveAmplitude,</td></tr><tr><td class="PName first last">sWaveDuration,</td></tr><tr><td class="PName first last">sWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">sWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the sWaveValue for the current ECG value.</p><ul><li><p>Copyright (c) 2006, karthik raviprakash All rights reserved.</p></li><li><p>Modified by Christian Bauer, Serena Glass.</p></li></ul><div class="CHeading">Returns</div><p>Current sWaveValue.</p></div>
 </div>
 
-<a name="calculateTWave"></a><a name="Topic259"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateTWave"></a><a name="Topic297"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateTWave</div>
- <div id="NDPrototype259" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateTWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">tWaveAmplitude,</td></tr><tr><td class="PName first last">tWaveDuration,</td></tr><tr><td class="PName first last">tWaveStartTime,</td></tr><tr><td class="PName first last">tsWaveSeparationDuration,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">tWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype297" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateTWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">tWaveAmplitude,</td></tr><tr><td class="PName first last">tWaveDuration,</td></tr><tr><td class="PName first last">tWaveStartTime,</td></tr><tr><td class="PName first last">tsWaveSeparationDuration,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">tWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the tWaveValue for the current ECG value.</p><ul><li><p>Copyright (c) 2006, karthik raviprakash All rights reserved.</p></li><li><p>Modified by Christian Bauer, Serena Glass.</p></li></ul><div class="CHeading">Returns</div><p>Current tWaveValue.</p></div>
 </div>
 
-<a name="calculateUWave"></a><a name="Topic260"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateUWave"></a><a name="Topic298"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateUWave</div>
- <div id="NDPrototype260" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateUWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">uWaveAmplitude,</td></tr><tr><td class="PName first last">uWaveDuration,</td></tr><tr><td class="PName first last">uWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">uWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype298" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateUWave(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">uWaveAmplitude,</td></tr><tr><td class="PName first last">uWaveDuration,</td></tr><tr><td class="PName first last">uWaveStartTime,</td></tr><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">uWaveFactor</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the uWaveValue for the current ECG value.</p><ul><li><p>Copyright (c) 2006, karthik raviprakash All rights reserved.</p></li><li><p>Modified by Christian Bauer, Serena Glass.</p></li></ul><div class="CHeading">Returns</div><p>Current uWaveValue.</p></div>
 </div>
 
-<a name="calculateWaveSum"></a><a name="Topic198"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateWaveSum"></a><a name="Topic299"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateWaveSum</div>
- <div id="NDPrototype198" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateWaveSum(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">p,</td></tr><tr><td class="PName first last">q,</td></tr><tr><td class="PName first last">qrs,</td></tr><tr><td class="PName first last">s,</td></tr><tr><td class="PName first last">t,</td></tr><tr><td class="PName first last">u,</td></tr><tr><td class="PName first last">pWavePreFactor,</td></tr><tr><td class="PName first last">noise</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype299" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateWaveSum(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">p,</td></tr><tr><td class="PName first last">q,</td></tr><tr><td class="PName first last">qrs,</td></tr><tr><td class="PName first last">s,</td></tr><tr><td class="PName first last">t,</td></tr><tr><td class="PName first last">u,</td></tr><tr><td class="PName first last">pWavePreFactor,</td></tr><tr><td class="PName first last">noise</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Uses all provided parameters to calculate the current sum.</p></div>
 </div>
 
-<a name="randomize"></a><a name="Topic239"></a><div class="CTopic TFunction LJavaScript">
+<a name="randomize"></a><a name="Topic300"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">randomize</div>
- <div id="NDPrototype239" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomize(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">hr,</td><td></td><td class="last"></td></tr><tr><td class="PName first">simTime,</td><td></td><td class="last"></td></tr><tr><td class="PName first">vitalSigns&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">undefined</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Used to randomize the provided heart-rate.</p></div>
+ <div id="NDPrototype300" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomize(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">hr,</td><td></td><td class="last"></td></tr><tr><td class="PName first">simTime,</td><td></td><td class="last"></td></tr><tr><td class="PName first">vitalSigns&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">undefined</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Used to randomize the provided heart-rate. In order to do so correcly, a lot of conditions are checked.</p></div>
 </div>
 
-<a name="calculateCurrentHFValue"></a><a name="Topic252"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateCurrentHFValue"></a><a name="Topic301"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateCurrentHFValue</div>
- <div id="NDPrototype252" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentHFValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype301" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentHFValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>In this function, the currently simulated heart-rate value is calculated.&nbsp; This function contains most of the steps necessary to simulate the dynamic change of the ECG. The calculation of the change is done with the <a href="https://en.wikipedia.org/wiki/Logistic_function" target="_top">Logistic Function</a></p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr></table><div class="CHeading">Returns</div><p>Current calculated heart-rate.</p></div>
 </div>
 
-<a name="getTimeForParameter"></a><a name="Topic177"></a><div class="CTopic TFunction LJavaScript">
+<a name="getTimeForParameter"></a><a name="Topic302"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">getTimeForParameter</div>
- <div id="NDPrototype177" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getTimeForParameter(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">param</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype302" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getTimeForParameter(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">hr,</td></tr><tr><td class="PName first last">param</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Used to calculate the starting point and duration for the different ecg parts.&nbsp; This function is used to calculated improved ECG-curves by incorperating the current heart-rate. The algorithm uses a logistic function (with offset) to calculate the values.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">hr</td><td class="CDLDefinition"><p>Contains the current heart-rate.</p></td></tr><tr><td class="CDLEntry">param</td><td class="CDLDefinition"><p>Contains the parameter to be adapted depending on the hr.</p></td></tr></table><div class="CHeading">Returns</div><p>Adapted Parameter for the</p></div>
 </div>
 
-<a name="calculateECGValue"></a><a name="Topic266"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateECGValue"></a><a name="Topic303"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateECGValue</div>
- <div id="NDPrototype266" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateECGValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">changeDuration,</td></tr><tr><td class="PName first last">hasPacerPeak</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>In this function, the different compartments of the ECG signal are calculated.&nbsp; Every signal-part is afterwards summed up to build one point of the ECG. The ECG is calculated every <a href="../../index.html#File:js/ecg-calculation.js:timestep" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,165);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >timestep</a> seconds.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains 0 or the current simulation time for calculating the ECG value.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.&nbsp; Returns: One part of the calculated ECG value.</p></td></tr></table></div>
+ <div id="NDPrototype303" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateECGValue(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">vitalSigns,</td></tr><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">changeDuration,</td></tr><tr><td class="PName first last">hasPacerPeak</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the different compartments of the ECG signal are calculated.&nbsp; Every signal-part is afterwards summed up to build one point of the ECG. The ECG is calculated every <a href="../../index.html#File:js/ecg-calculation.js:timestep" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,275);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >timestep</a> seconds.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains 0 or the current simulation time for calculating the ECG value.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.&nbsp; Returns: One part of the calculated ECG value.</p></td></tr></table></div>
 </div>
 
-<a name="calc"></a><a name="Topic267"></a><div class="CTopic TFunction LJavaScript last">
+<a name="calc"></a><a name="Topic304"></a><div class="CTopic TFunction LJavaScript last">
  <div class="CTitle">calc</div>
- <div id="NDPrototype267" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">vitalSigns,</td><td></td><td class="last"></td></tr><tr><td class="PName first">changeDuration,</td><td></td><td class="last"></td></tr><tr><td class="PName first">hasPacerPeak&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">false</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>In this function, the current ECG-value is initiated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/traineeview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,41);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.</p></td></tr></table><div class="CHeading">Returns</div><p>Full calculated ECG value.</p></div>
+ <div id="NDPrototype304" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">vitalSigns,</td><td></td><td class="last"></td></tr><tr><td class="PName first">changeDuration,</td><td></td><td class="last"></td></tr><tr><td class="PName first">hasPacerPeak&nbsp;</td><td class="PDefaultValueSeparator">=&nbsp;</td><td class="PDefaultValue last"><span class="SHKeyword">false</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the current ECG-value is initiated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">vitalSigns</td><td class="CDLDefinition"><p>Contains a reference to the vital parameters from the <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/trainerview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,17);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr><tr><td class="CDLEntry">hasPacerPeak</td><td class="CDLDefinition"><p>Contains a flag, whether a pacer is currently used.</p></td></tr></table><div class="CHeading">Returns</div><p>Full calculated ECG value.</p></div>
 </div>
 
 </body></html>

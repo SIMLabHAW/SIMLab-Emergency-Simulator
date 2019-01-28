@@ -8,176 +8,178 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Functions"></a><a name="Topic70"></a><div class="CTopic TGroup LJavaScript first">
+<a name="Functions"></a><a name="Topic215"></a><div class="CTopic TGroup LJavaScript first">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="ETCO2Calculation"></a><a name="Topic189"></a><div class="CTopic TFunction LJavaScript">
+<a name="ETCO2Calculation"></a><a name="Topic216"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">ETCO2Calculation</div>
- <div id="NDPrototype189" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ETCO2Calculation = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype216" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ETCO2Calculation = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>Performs all necessary calculations for the ECG.</p></div>
 </div>
 
-<a name="Variables"></a><a name="Topic190"></a><div class="CTopic TGroup LJavaScript">
+<a name="Variables"></a><a name="Topic217"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="simTime"></a><a name="Topic172"></a><div class="CTopic TVariable LJavaScript">
+<a name="simTime"></a><a name="Topic218"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">simTime</div>
- <div id="NDPrototype172" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> simTime</div>
+ <div id="NDPrototype218" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> simTime</div>
  <div class="CBody"><p>This counter contains the current point in time.</p></div>
 </div>
 
-<a name="oldRR"></a><a name="Topic192"></a><div class="CTopic TVariable LJavaScript">
+<a name="oldRR"></a><a name="Topic219"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">oldRR</div>
- <div id="NDPrototype192" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> oldRR</div>
+ <div id="NDPrototype219" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> oldRR</div>
  <div class="CBody"><p>Contains the old respiratory-rate used in the dynamic change process.</p></div>
 </div>
 
-<a name="oldETCO2"></a><a name="Topic173"></a><div class="CTopic TVariable LJavaScript">
+<a name="oldETCO2"></a><a name="Topic220"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">oldETCO2</div>
- <div id="NDPrototype173" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> oldETCO2</div>
+ <div id="NDPrototype220" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> oldETCO2</div>
  <div class="CBody"><p>Contains the old etco2-value used in the dynamic change process.</p></div>
 </div>
 
-<a name="timeSinceRRChange"></a><a name="Topic193"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceRRChange"></a><a name="Topic221"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceRRChange</div>
- <div id="NDPrototype193" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceRRChange</div>
+ <div id="NDPrototype221" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceRRChange</div>
  <div class="CBody"><p>Contains the time since last respiratory-rate config change.</p></div>
 </div>
 
-<a name="timeSinceETCO2Change"></a><a name="Topic174"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceETCO2Change"></a><a name="Topic222"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceETCO2Change</div>
- <div id="NDPrototype174" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceETCO2Change</div>
+ <div id="NDPrototype222" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceETCO2Change</div>
  <div class="CBody"><p>Contains the time since last etco2-value config change.</p></div>
 </div>
 
-<a name="timeSinceIntermediateRRChange"></a><a name="Topic194"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceIntermediateRRChange"></a><a name="Topic223"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceIntermediateRRChange</div>
- <div id="NDPrototype194" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateRRChange</div>
+ <div id="NDPrototype223" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateRRChange</div>
  <div class="CBody"><p>Contains the duration since last dynamic respiratory-rate adaption using the logistic function. Used to adapt the frequency only at specific points.</p></div>
 </div>
 
-<a name="timeSinceIntermediateETCO2Change"></a><a name="Topic175"></a><div class="CTopic TVariable LJavaScript">
+<a name="timeSinceIntermediateETCO2Change"></a><a name="Topic224"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">timeSinceIntermediateETCO2Change</div>
- <div id="NDPrototype175" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateETCO2Change</div>
+ <div id="NDPrototype224" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timeSinceIntermediateETCO2Change</div>
  <div class="CBody"><p>Contains the duration since last dynamic etco2 adaption using the logistic function. Used to adapt the frequency only at specific points.</p></div>
 </div>
 
-<a name="currentRR"></a><a name="Topic195"></a><div class="CTopic TVariable LJavaScript">
+<a name="currentRR"></a><a name="Topic225"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">currentRR</div>
- <div id="NDPrototype195" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> currentRR</div>
+ <div id="NDPrototype225" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> currentRR</div>
  <div class="CBody"><p>Contains the current respiratory-rate.</p></div>
 </div>
 
-<a name="latestReachedRR"></a><a name="Topic196"></a><div class="CTopic TVariable LJavaScript">
+<a name="latestReachedRR"></a><a name="Topic226"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">latestReachedRR</div>
- <div id="NDPrototype196" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedRR</div>
- <div class="CBody"><p>Contains the old &quot;currentRR&quot; after a config change. It is used to react to changes to the <a href="../../index.html#File:js/etco2-calculation.js:currentRR" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,195);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentRR</a> while an old change is still in process.</p></div>
+ <div id="NDPrototype226" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedRR</div>
+ <div class="CBody"><p>Contains the old &quot;currentRR&quot; after a config change. It is used to react to changes to the <a href="../../index.html#File:js/etco2-calculation.js:currentRR" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,225);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentRR</a> while an old change is still in process.</p></div>
 </div>
 
-<a name="randomizedRR"></a><a name="Topic197"></a><div class="CTopic TVariable LJavaScript">
+<a name="randomizedRR"></a><a name="Topic227"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">randomizedRR</div>
- <div id="NDPrototype197" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> randomizedRR</div>
+ <div id="NDPrototype227" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> randomizedRR</div>
  <div class="CBody"><p>Stores the randomized respiratory-rate to give more realistic values.</p></div>
 </div>
 
-<a name="currentETCO2"></a><a name="Topic261"></a><div class="CTopic TVariable LJavaScript">
+<a name="currentETCO2"></a><a name="Topic228"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">currentETCO2</div>
- <div id="NDPrototype261" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> currentETCO2</div>
+ <div id="NDPrototype228" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> currentETCO2</div>
  <div class="CBody"><p>Contains the current etco2-value.</p></div>
 </div>
 
-<a name="latestReachedETCO2"></a><a name="Topic262"></a><div class="CTopic TVariable LJavaScript">
+<a name="latestReachedETCO2"></a><a name="Topic229"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">latestReachedETCO2</div>
- <div id="NDPrototype262" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedETCO2</div>
- <div class="CBody"><p>Contains the old &quot;currentETCO2&quot; after a config change. It is used to react to changes to the <a href="../../index.html#File:js/etco2-calculation.js:currentETCO2" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,261);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentETCO2</a> while an old change is still in process.</p></div>
+ <div id="NDPrototype229" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> latestReachedETCO2</div>
+ <div class="CBody"><p>Contains the old &quot;currentETCO2&quot; after a config change. It is used to react to changes to the <a href="../../index.html#File:js/etco2-calculation.js:currentETCO2" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,228);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >currentETCO2</a> while an old change is still in process.</p></div>
 </div>
 
-<a name="randomizedETCO2"></a><a name="Topic263"></a><div class="CTopic TVariable LJavaScript">
+<a name="randomizedETCO2"></a><a name="Topic230"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">randomizedETCO2</div>
- <div id="NDPrototype263" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> randomizedETCO2</div>
+ <div id="NDPrototype230" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> randomizedETCO2</div>
  <div class="CBody"><p>Stores the randomized etco2-value to give more realistic values.</p></div>
 </div>
 
-<a name="recentETCO2"></a><a name="Topic264"></a><div class="CTopic TVariable LJavaScript">
+<a name="recentETCO2"></a><a name="Topic231"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">recentETCO2</div>
- <div id="NDPrototype264" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> recentETCO2</div>
+ <div id="NDPrototype231" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> recentETCO2</div>
  <div class="CBody"><p>Contains the two most recent y-values used to find the correct point for the dynamic change.</p></div>
 </div>
 
-<a name="hasCOPD"></a><a name="Topic127"></a><div class="CTopic TVariable LJavaScript">
+<a name="hasCOPD"></a><a name="Topic232"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">hasCOPD</div>
- <div id="NDPrototype127" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> hasCOPD</div>
+ <div id="NDPrototype232" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> hasCOPD</div>
  <div class="CBody"><p>Locally saves the current flag if the patient has copd. It is saved locally so that changes are only performed at fixed points in time.</p></div>
 </div>
 
-<a name="respRatio"></a><a name="Topic149"></a><div class="CTopic TVariable LJavaScript">
+<a name="respRatio"></a><a name="Topic233"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">respRatio</div>
- <div id="NDPrototype149" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> respRatio</div>
+ <div id="NDPrototype233" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> respRatio</div>
  <div class="CBody"><p>Locally saves the current resp ratio so that changes are only performed at fixed points in time.</p></div>
 </div>
 
-<a name="Functions(2)"></a><a name="Topic199"></a><div class="CTopic TGroup LJavaScript">
+<a name="Functions(2)"></a><a name="Topic234"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="getGradient"></a><a name="Topic200"></a><div class="CTopic TFunction LJavaScript">
+<a name="getGradient"></a><a name="Topic235"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">getGradient</div>
- <div id="NDPrototype200" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getGradient(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">yNew,</td></tr><tr><td class="PName first last">yOld</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype235" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getGradient(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">yNew,</td></tr><tr><td class="PName first last">yOld</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Calculates and returns the gradient between two values.</p></div>
 </div>
 
-<a name="setCurrentValues"></a><a name="Topic265"></a><div class="CTopic TFunction LJavaScript">
+<a name="setCurrentValues"></a><a name="Topic236"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">setCurrentValues</div>
- <div id="NDPrototype265" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.setCurrentValues = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">rr,</td></tr><tr><td class="PName first last">etco2</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype236" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.setCurrentValues = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">rr,</td></tr><tr><td class="PName first last">etco2</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Changes the current resp-rate and etco2 max to the provided values.</p></div>
 </div>
 
-<a name="calculateCurrentETCO2"></a><a name="Topic150"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateCurrentETCO2"></a><a name="Topic237"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateCurrentETCO2</div>
- <div id="NDPrototype150" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentETCO2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newETCO2,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Used to calculate dynamic changing values for the etco2 max value.&nbsp; Parameters: newETCO2 - Contains the etco2-max value to which a change is performed.&nbsp; changeDuration - Contains the time, how long a change is taking.&nbsp; Returns: returns the currently calculated etco2-value.</p></div>
+ <div id="NDPrototype237" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentETCO2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newETCO2,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Used to calculate dynamic changing values for the etco2 max value.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newETCO2</td><td class="CDLDefinition"><p>Contains the etco2-max value to which a change is performed.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains the time, how long a change is taking.</p></td></tr></table><div class="CHeading">Returns</div><p>returns the currently calculated etco2-value.</p></div>
 </div>
 
-<a name="calculateCurrentRR"></a><a name="Topic151"></a><div class="CTopic TFunction LJavaScript">
+<a name="calculateCurrentRR"></a><a name="Topic238"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calculateCurrentRR</div>
- <div id="NDPrototype151" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentRR(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newRR,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This function is used to calculated the current rr-value. It is used for the dynamic change.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newRR</td><td class="CDLDefinition"><p>Contains the new respiratory-rate.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/traineeview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,41);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr></table><div class="CHeading">Returns</div><p>The current calculated respiratory-rate value.</p></div>
+ <div id="NDPrototype238" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calculateCurrentRR(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newRR,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This function is used to calculated the current rr-value. It is used for the dynamic change.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newRR</td><td class="CDLDefinition"><p>Contains the new respiratory-rate.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/trainerview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,17);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr></table><div class="CHeading">Returns</div><p>The current calculated respiratory-rate value.</p></div>
 </div>
 
-<a name="randomizeETCO2"></a><a name="Topic268"></a><div class="CTopic TFunction LJavaScript">
+<a name="randomizeETCO2"></a><a name="Topic239"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">randomizeETCO2</div>
- <div id="NDPrototype268" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomizeETCO2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">val,</td></tr><tr><td class="PName first last">simTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Generates randomized values around a defined interval for the etco2.&nbsp; Parameters: val - Contains the value around which the randomized values are produced.&nbsp; simTime - Contains the current point in time.</p></div>
+ <div id="NDPrototype239" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomizeETCO2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">val,</td></tr><tr><td class="PName first last">simTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Generates randomized values around a defined interval for the etco2.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">val</td><td class="CDLDefinition"><p>Contains the value around which the randomized values are produced.</p></td></tr><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains the current point in time.</p></td></tr></table></div>
 </div>
 
-<a name="randomizeRR"></a><a name="Topic269"></a><div class="CTopic TFunction LJavaScript">
+<a name="randomizeRR"></a><a name="Topic240"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">randomizeRR</div>
- <div id="NDPrototype269" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomizeRR(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">val,</td></tr><tr><td class="PName first last">simTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Generates randomized values around a defined interval for the resp-rate.&nbsp; Parameters: val - Contains the value around which the randomized values are produced.&nbsp; simTime - Contains the current point in time.</p></div>
+ <div id="NDPrototype240" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> randomizeRR(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">val,</td></tr><tr><td class="PName first last">simTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Generates randomized values around a defined interval for the resp-rate.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">val</td><td class="CDLDefinition"><p>Contains the value around which the randomized values are produced.</p></td></tr><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains the current point in time.</p></td></tr></table></div>
 </div>
 
-<a name="calcNormal"></a><a name="Topic152"></a><div class="CTopic TFunction LJavaScript">
+<a name="calcNormal"></a><a name="Topic241"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">calcNormal</div>
- <div id="NDPrototype152" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calcNormal(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">randETCO2</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype241" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calcNormal(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">randETCO2</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>With this function, the normal ~(1:2) ratio breathing curve is generated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains the current simulation time.</p></td></tr><tr><td class="CDLEntry">period</td><td class="CDLDefinition"><p>Contains the current period of the breath.</p></td></tr><tr><td class="CDLEntry">randETCO2</td><td class="CDLDefinition"><p>Contains the randomized etco2-max-value.</p></td></tr></table><div class="CHeading">Returns</div><p>Returns the calculated current etco2-curve value.</p></div>
 </div>
 
-<a name="calcNormal(2)"></a><a name="Topic166"></a><div class="CTopic TFunction LJavaScript">
- <div class="CTitle">calcNormal</div>
+<a name="calcHyper"></a><a name="Topic242"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">calcHyper</div>
+ <div id="NDPrototype242" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calcHyper(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">randETCO2</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>With this function, the exerted or hyperventilation ~(1:1) ratio breathing curve is generated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains the current simulation time.</p></td></tr><tr><td class="CDLEntry">period</td><td class="CDLDefinition"><p>Contains the current period of the breath.</p></td></tr><tr><td class="CDLEntry">randETCO2</td><td class="CDLDefinition"><p>Contains the randomized etco2-max-value.</p></td></tr></table><div class="CHeading">Returns</div><p>Returns the calculated current etco2-curve value.</p></div>
 </div>
 
-<a name="calcNormal(3)"></a><a name="Topic169"></a><div class="CTopic TFunction LJavaScript">
- <div class="CTitle">calcNormal</div>
+<a name="calcHypo"></a><a name="Topic243"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">calcHypo</div>
+ <div id="NDPrototype243" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> calcHypo(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simTime,</td></tr><tr><td class="PName first last">period,</td></tr><tr><td class="PName first last">randETCO2</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>With this function, the sleep or hypoventilation ~(1:4) ratio breathing curve is generated.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">simTime</td><td class="CDLDefinition"><p>Contains the current simulation time.</p></td></tr><tr><td class="CDLEntry">period</td><td class="CDLDefinition"><p>Contains the current period of the breath.</p></td></tr><tr><td class="CDLEntry">randETCO2</td><td class="CDLDefinition"><p>Contains the randomized etco2-max-value.</p></td></tr></table><div class="CHeading">Returns</div><p>Returns the calculated current etco2-curve value.</p></div>
 </div>
 
-<a name="calc"></a><a name="Topic178"></a><div class="CTopic TFunction LJavaScript last">
+<a name="calc"></a><a name="Topic244"></a><div class="CTopic TFunction LJavaScript last">
  <div class="CTitle">calc</div>
- <div id="NDPrototype178" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">rr,</td></tr><tr><td class="PName first last">etco2MaxValue,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Calculates the etco2-curve values based on the resp-rate.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">rr</td><td class="CDLDefinition"><p>Contains the current resp-rate.</p></td></tr><tr><td class="CDLEntry">etco2MaxValue</td><td class="CDLDefinition"><p>Contains the maximum etco2 value.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/traineeview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,41);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.&nbsp; Returns: Returns the current value in the etco2-curve.</p></td></tr></table></div>
+ <div id="NDPrototype244" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.calc = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">rr,</td></tr><tr><td class="PName first last">etco2MaxValue,</td></tr><tr><td class="PName first last">changeDuration</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Calculates the etco2-curve values based on the resp-rate.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">rr</td><td class="CDLDefinition"><p>Contains the current resp-rate.</p></td></tr><tr><td class="CDLEntry">etco2MaxValue</td><td class="CDLDefinition"><p>Contains the maximum etco2 value.</p></td></tr><tr><td class="CDLEntry">changeDuration</td><td class="CDLDefinition"><p>Contains a reference to the <a href="../../index.html#File:js/trainerview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,17);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> object.</p></td></tr></table><div class="CHeading">Returns</div><p>Returns the current value in the etco2-curve.</p></div>
 </div>
 
 </body></html>

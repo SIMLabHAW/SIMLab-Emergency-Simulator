@@ -8,13 +8,96 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Constants"></a><a name="Topic106"></a><div class="CTopic TGroup LJavaScript first">
+<a name="Constants"></a><a name="Topic305"></a><div class="CTopic TGroup LJavaScript first">
  <div class="CTitle">Constants</div>
 </div>
 
-<a name="ViewType"></a><a name="Topic124"></a><div class="CTopic TConstant LJavaScript last">
+<a name="ViewType"></a><a name="Topic306"></a><div class="CTopic TConstant LJavaScript">
  <div class="CTitle">ViewType</div>
  <div class="CBody"><p>Used to indicate, whether a specific part of the code should run.</p></div>
+</div>
+
+<a name="PName"></a><a name="Topic307"></a><div class="CTopic TConstant LJavaScript">
+ <div class="CTitle">PName</div>
+ <div class="CBody"><p>In this constant, the Pathologynames are stored so that no strings need to be typed throughout the code.</p></div>
+</div>
+
+<a name="Functions"></a><a name="Topic308"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Functions</div>
+</div>
+
+<a name="getLesson"></a><a name="Topic309"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">getLesson</div>
+ <div id="NDPrototype309" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getLesson(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">callback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, a call to <a href="../../index.html#File:php/applicationcontroller.php:getLessonJson" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,479);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >getLessonJson</a> is performed. In it, the database is read and the data returned. The data is returned as a JSON and parsed to an object structure.&nbsp; Finally, the callback function is called.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">callback</td><td class="CDLDefinition"><p>The callback is calling the <a href="../../index.html#File:js/trainerview.js:initControls" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,21);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >initControls</a> function in TraineeView or TrainerView respectively.</p></td></tr></table></div>
+</div>
+
+<a name="saveLesson"></a><a name="Topic310"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveLesson</div>
+ <div id="NDPrototype310" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> saveLesson(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">simConfig</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the current <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a> is saved. For that purpose, the <a href="../../index.html#File:php/applicationcontroller.php:saveLessonFromJson" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,480);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >saveLessonFromJson</a> Method is called.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">simConfig</td><td class="CDLDefinition"><p>Most current simulation config.</p></td></tr></table></div>
+</div>
+
+<a name="saveComment"></a><a name="Topic311"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveComment</div>
+ <div id="NDPrototype311" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> saveComment(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">comment</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, a comment from the TrainerView is saved using the <a href="../../index.html#File:js/application.js:saveComment" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,311);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >saveComment</a> function in the &lt;applicationcontroller.php&gt;.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">comment</td><td class="CDLDefinition"><p>Containing the latest comment.</p></td></tr></table></div>
+</div>
+
+<a name="saveTime"></a><a name="Topic312"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveTime</div>
+ <div id="NDPrototype312" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> saveTime(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">newTime</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the current time from the TrainerView is saved using the <a href="../../index.html#File:js/application.js:saveTime" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,312);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >saveTime</a> function in the &lt;applicationcontroller.php&gt;.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">newTime</td><td class="CDLDefinition"><p>Containing the current time.</p></td></tr></table></div>
+</div>
+
+<a name="getVitalSignParameters"></a><a name="Topic313"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">getVitalSignParameters</div>
+ <div id="NDPrototype313" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> getVitalSignParameters(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">callback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the default vitalSignParameters are pulled from the database.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">callback</td><td class="CDLDefinition"><p>Will contain the vitalSignParameters.</p></td></tr></table></div>
+</div>
+
+<a name="logout"></a><a name="Topic314"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">logout</div>
+ <div id="NDPrototype314" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> logout()</div>
+ <div class="CBody"><p>This function invokes the logout operation from the &lt;applicationcontroller.php&gt;.</p></div>
+</div>
+
+<a name="postValueChange"></a><a name="Topic315"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">postValueChange</div>
+ <div id="NDPrototype315" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> postValueChange(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">label,</td></tr><tr><td class="PName first last">value</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Used to save value changes in the database.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">label</td><td class="CDLDefinition"><p>Contains the value describtion that was changed.</p></td></tr><tr><td class="CDLEntry">value</td><td class="CDLDefinition"><p>Contains the value that was changed.</p></td></tr></table></div>
+</div>
+
+<a name="addComment"></a><a name="Topic316"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">addComment</div>
+ <div id="NDPrototype316" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> addComment(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">comment</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This function is used to save comments for the session in the database.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">comment</td><td class="CDLDefinition"><p>Contains the comment to be saved.</p></td></tr></table></div>
+</div>
+
+<a name="Variables"></a><a name="Topic317"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Variables</div>
+</div>
+
+<a name="popup"></a><a name="Topic318"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">popup</div>
+ <div id="NDPrototype318" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> popup</div>
+ <div class="CBody"><p>Stores a reference to the printPDF popup.</p></div>
+</div>
+
+<a name="Functions(2)"></a><a name="Topic319"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Functions</div>
+</div>
+
+<a name="openPrintPopUp"></a><a name="Topic320"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">openPrintPopUp</div>
+ <div id="NDPrototype320" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> openPrintPopUp()</div>
+ <div class="CBody"><p>Opens the print Popup Dialog in a new window.</p></div>
+</div>
+
+<a name="createPopup"></a><a name="Topic321"></a><div class="CTopic TFunction LJavaScript last">
+ <div class="CTitle">createPopup</div>
+ <div id="NDPrototype321" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> createPopup()</div>
+ <div class="CBody"><p>Creates a new popup containing the printPDF dialog.</p><div class="CHeading">Returns</div><p>Returns the created Popup.</p></div>
 </div>
 
 </body></html>

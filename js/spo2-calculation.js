@@ -375,8 +375,7 @@ var SPO2Calculation = function() {
         if (simConfig.simState.hasCPR) {
             y += spo2CPR.calcCPR();
         }
-
-        // TODO: Add Noise
+        
         return y;
     }
 

@@ -46,11 +46,12 @@ var DefiManagement = function() {
         is pressed and the next R-wave is still to be detected. */
     var isShockPending = false;
 
+    /* Function: shockPending
+        Indicates, if a shock is pending. This Interface can be accessed from outside the file. */
     this.shockPending = function() { return isShockPending};
 
     /* Function: defiEnergyDown 
-        Used to reduce the Defibrilation Charge Energy 
-        and to update the corresponding Label.
+        Used to reduce the Defibrilation Charge Energy and to update the corresponding Label.
         
         See Also: <defiEnergyUp>
     */
@@ -115,6 +116,8 @@ var DefiManagement = function() {
         }, 30000);
     }
 
+    /* Function: isShowingECGPeaks
+        Indicates, if ECG Peaks are currently shown. */
     this.isShowingECGPeaks = function() { return showECGPeaks };
 
     /* Function: defiShock 
@@ -142,8 +145,8 @@ var DefiManagement = function() {
     */
     function performShock() {
         /* If The defiPathology was changed after the charge began, it is important to pull the 
-        current config to make it possible to use the most recent defiPathology after the shock. */
-
+        current config to make it possible to use the most recent defiPathology after the shock. 
+        "ignoreDefi" is a break jump. */
        ignoreDefi: if (chargeValue >= simConfig.simState.defiEnergyThreshold) {
            tempConfig.simState.defiPathology = simConfig.simState.defiPathology;
            var pathologyName = tempConfig.simState.defiPathology;
@@ -173,16 +176,15 @@ var DefiManagement = function() {
     }
 
     /* Function: performSyncShock
-        This function is used to perform a shock after waiting for the R-peak.
-    */
+        This function is used to perform a shock after waiting for the R-peak. */
     this.performSyncShock = function() {
         isShockPending = false;
         performShock();
     }
 
     /* Function: deactivateDefiSync
-        This function is used to deactivate the defi Syncronization, if no R-Peak can be detected.
-    */
+        This function is used to deactivate the defi Syncronization, if no R-Peak can be detected. 
+        */
     this.deactivateDefiSync = function() {
         showECGPeaks = false;
         $("#defiSyncButton").removeClass("btn-success");
@@ -190,8 +192,7 @@ var DefiManagement = function() {
     }
 
     /* Function: toggleDefiSync
-        This function is used to toggle the UI and the flag for the visible ecg-peaks.
-    */
+        This function is used to toggle the UI and the flag for the visible ecg-peaks. */
     this.toggleDefiSync = function() {
         showECGPeaks = !showECGPeaks;
 
@@ -203,5 +204,4 @@ var DefiManagement = function() {
             $("#defiSyncButton").addClass("btn-light");
         }
     }
-
 }

@@ -1,0 +1,1 @@
+NDFramePage.OnPageTitleLoaded("File:php/join_lesson.php","join_lesson.php");NDSummary.OnSummaryLoaded("File:php/join_lesson.php",[["PHP","PHP"]],[["Functions","Function"],["Groups","Group"]],[[335,0,1,"Functions","Functions"],[336,0,0,"joinActiveLesson","joinActiveLesson"]]);

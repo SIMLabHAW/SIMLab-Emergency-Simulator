@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("uwa",["Property"],[["uWaveFactor",,[["VitalSignParameters",,,,0,"File:php/domain.php:VitalSignParameters.uWaveFactor","PHPClass:VitalSignParameters:uWaveFactor"]]]]);

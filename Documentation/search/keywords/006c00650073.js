@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("les",["Class"],[["Lesson",,[[,,,,0,"File:php/domain.php:Lesson","PHPClass:Lesson"]]]]);

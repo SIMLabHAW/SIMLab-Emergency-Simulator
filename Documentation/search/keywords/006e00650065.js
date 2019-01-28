@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("nee",["Variable"],[["needsReset",,[[,,,,0,"File:js/vital-sign-graph.js:needsReset"]]]]);
+NDSearch.OnPrefixDataLoaded("nee",["Variable"],[["needsPostShockValueUpdate",,[[,,,,0,"File:js/trainerview.js:needsPostShockValueUpdate"]]],["needsReset",,[[,,,,0,"File:js/vital-sign-graph.js:needsReset"]]]]);

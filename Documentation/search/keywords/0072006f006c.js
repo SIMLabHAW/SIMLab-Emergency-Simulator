@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("rol",["Property"],[["role",,[["User",,,,0,"File:php/domain.php:User.role","PHPClass:User:role"]]]]);

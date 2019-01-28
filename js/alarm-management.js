@@ -20,9 +20,8 @@ You should have received a copy of the GNU General Public License
 along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. */
 
 
-
 /* Constant: AlarmState
-   Contains the state of the alarm, none, below or above limits.
+   Contains the state of the alarm, None, BelowLimit or above AboveLimit.
 */
 const AlarmState = {
   None: 0,
@@ -37,9 +36,10 @@ const AlarmState = {
     inhereted functions.
 
     Parameters:
-    alarmCallback - Callback function that returns the <AlarmState>.
-    lowerLimit - Contains a predefined lower alarm level.
-    upperLimit - Contains a predefined upper alarm level.
+        alarmCallback - Callback function that returns the <AlarmState>.
+        lowerLimit - Contains a predefined lower alarm level.
+        upperLimit - Contains a predefined upper alarm level.
+        borderID - Contains the ID of the DOM-Elements to show the alarm-border.
  */
 function AlarmManagement(alarmCallback, lowerLimit, upperLimit, borderID) {
     this.upperLimit = upperLimit;

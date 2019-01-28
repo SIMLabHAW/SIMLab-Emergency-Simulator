@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("iss",["Variable"],[["isShockPending",,[[,,,,0,"File:js/defi-management.js:isShockPending"]]]]);
+NDSearch.OnPrefixDataLoaded("iss",["Variable","Function"],[["isShockPending",,[[,,,,0,"File:js/defi-management.js:isShockPending"]]],["isShowingECGPeaks",,[[,,,,1,"File:js/defi-management.js:isShowingECGPeaks"]]]]);

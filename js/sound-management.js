@@ -71,6 +71,9 @@ function SoundManagement(soundCallback) {
         "<ding.wav: https://freesound.org/people/tim.kahn/sounds/91926/>" by <tim.kahn: https://freesound.org/people/tim.kahn/> is licensed under <CC BY 3.0: https://creativecommons.org/licenses/by/3.0/> 
     */
     var alarmAudio = new Audio("assets/audio/ding_sound.wav");
+
+    /* Variable: newAlarmAudio
+        Played, when an new alarm occurs. For licence, refer to <alarmAudio>. */
     var newAlarmAudio = new Audio("assets/audio/ding_sound.wav");
 
     /* Variable: context

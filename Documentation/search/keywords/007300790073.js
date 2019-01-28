@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("sys",["Function"],[["SYSAlarm",,[[,,,,0,"File:js/alarm-management.js:SYSAlarm"]]]]);
+NDSearch.OnPrefixDataLoaded("sys",["Function","Property"],[["SYSAlarm",,[[,,,,0,"File:js/alarm-management.js:SYSAlarm"]]],["sysDefi",,[["SimulationState",,,,1,"File:php/domain.php:SimulationState.sysDefi","PHPClass:SimulationState:sysDefi"]]],["systolic",,[["VitalSignParameters",,,,1,"File:php/domain.php:VitalSignParameters.systolic","PHPClass:VitalSignParameters:systolic"]]]]);

@@ -8,112 +8,124 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Functions"></a><a name="Topic138"></a><div class="CTopic TGroup LJavaScript first">
+<a name="Functions"></a><a name="Topic250"></a><div class="CTopic TGroup LJavaScript first">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="DefiManagement"></a><a name="Topic202"></a><div class="CTopic TFunction LJavaScript">
+<a name="DefiManagement"></a><a name="Topic251"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">DefiManagement</div>
- <div id="NDPrototype202" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> DefiManagement = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype251" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> DefiManagement = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>Used to perform all defibrillator related task.</p></div>
 </div>
 
-<a name="Variables"></a><a name="Topic133"></a><div class="CTopic TGroup LJavaScript">
+<a name="Variables"></a><a name="Topic252"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="chargeValue"></a><a name="Topic134"></a><div class="CTopic TVariable LJavaScript">
+<a name="chargeValue"></a><a name="Topic253"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">chargeValue</div>
- <div id="NDPrototype134" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> chargeValue</div>
+ <div id="NDPrototype253" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> chargeValue</div>
  <div class="CBody"><p>This variable stores the currently chosen charge Value.</p></div>
 </div>
 
-<a name="Constants"></a><a name="Topic203"></a><div class="CTopic TGroup LJavaScript">
+<a name="Constants"></a><a name="Topic254"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Constants</div>
 </div>
 
-<a name="defiChargeBounds"></a><a name="Topic204"></a><div class="CTopic TConstant LJavaScript">
+<a name="defiChargeBounds"></a><a name="Topic255"></a><div class="CTopic TConstant LJavaScript">
  <div class="CTitle">defiChargeBounds</div>
  <div class="CBody"><p>Stores max, intermediate and min values for the defi charge.</p></div>
 </div>
 
-<a name="Variables(2)"></a><a name="Topic205"></a><div class="CTopic TGroup LJavaScript">
+<a name="Variables(2)"></a><a name="Topic256"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Variables</div>
 </div>
 
-<a name="defiDischargeTimer"></a><a name="Topic135"></a><div class="CTopic TVariable LJavaScript">
+<a name="defiDischargeTimer"></a><a name="Topic257"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">defiDischargeTimer</div>
- <div id="NDPrototype135" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> defiDischargeTimer</div>
+ <div id="NDPrototype257" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> defiDischargeTimer</div>
  <div class="CBody"><p>This variable contains the automatic defibrilator discharge timer.</p></div>
 </div>
 
-<a name="showECGPeaks"></a><a name="Topic136"></a><div class="CTopic TVariable LJavaScript">
+<a name="showECGPeaks"></a><a name="Topic258"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">showECGPeaks</div>
- <div id="NDPrototype136" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> showECGPeaks</div>
+ <div id="NDPrototype258" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> showECGPeaks</div>
  <div class="CBody"><p>Indicates, if the ECG peaks are marked by triangles for the syncronization of the defibrillation.</p></div>
 </div>
 
-<a name="isShockPending"></a><a name="Topic137"></a><div class="CTopic TVariable LJavaScript">
+<a name="isShockPending"></a><a name="Topic259"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">isShockPending</div>
- <div id="NDPrototype137" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isShockPending</div>
+ <div id="NDPrototype259" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isShockPending</div>
  <div class="CBody"><p>Indicates, if a defibrillation shock is pending This is the case, when the shock-Button is pressed and the next R-wave is still to be detected.</p></div>
 </div>
 
-<a name="Functions(2)"></a><a name="Topic206"></a><div class="CTopic TGroup LJavaScript">
+<a name="Functions(2)"></a><a name="Topic260"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="defiEnergyDown"></a><a name="Topic207"></a><div class="CTopic TFunction LJavaScript">
+<a name="shockPending"></a><a name="Topic261"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">shockPending</div>
+ <div id="NDPrototype261" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.shockPending = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>Indicates, if a shock is pending. This Interface can be accessed from outside the file.</p></div>
+</div>
+
+<a name="defiEnergyDown"></a><a name="Topic262"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">defiEnergyDown</div>
- <div id="NDPrototype207" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiEnergyDown = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>Used to reduce the Defibrilation Charge Energy and to update the corresponding Label.</p><p>See Also: <a href="../../index.html#File:js/defi-management.js:defiEnergyUp" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,208);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >defiEnergyUp</a></p></div>
+ <div id="NDPrototype262" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiEnergyDown = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>Used to reduce the Defibrilation Charge Energy and to update the corresponding Label.</p><p>See Also: <a href="../../index.html#File:js/defi-management.js:defiEnergyUp" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,263);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >defiEnergyUp</a></p></div>
 </div>
 
-<a name="defiEnergyUp"></a><a name="Topic208"></a><div class="CTopic TFunction LJavaScript">
+<a name="defiEnergyUp"></a><a name="Topic263"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">defiEnergyUp</div>
- <div id="NDPrototype208" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiEnergyUp = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>Used to increase the Defibrilation Charge Energy and to update the corresponding Label.</p><p>See Also: <a href="../../index.html#File:js/defi-management.js:defiEnergyDown" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,207);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >defiEnergyDown</a></p></div>
+ <div id="NDPrototype263" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiEnergyUp = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>Used to increase the Defibrilation Charge Energy and to update the corresponding Label.</p><p>See Also: <a href="../../index.html#File:js/defi-management.js:defiEnergyDown" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,262);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >defiEnergyDown</a></p></div>
 </div>
 
-<a name="defiCharge"></a><a name="Topic141"></a><div class="CTopic TFunction LJavaScript">
+<a name="defiCharge"></a><a name="Topic264"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">defiCharge</div>
- <div id="NDPrototype141" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiCharge = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>This function temporary saves the current <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>, calls the function, which plays the loading sound <a href="../../index.html#File:js/sound-management.js:playDefiLoadSound" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,244);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >playDefiLoadSound</a> and opens the loading bar modal.</p></div>
+ <div id="NDPrototype264" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiCharge = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>This function temporary saves the current <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>, calls the function, which plays the loading sound <a href="../../index.html#File:js/sound-management.js:playDefiLoadSound" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,123);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >playDefiLoadSound</a> and opens the loading bar modal.</p></div>
 </div>
 
-<a name="defiFullyCharged"></a><a name="Topic209"></a><div class="CTopic TFunction LJavaScript">
+<a name="defiFullyCharged"></a><a name="Topic265"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">defiFullyCharged</div>
- <div id="NDPrototype209" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiFullyCharged = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>In this function, the automatic <a href="../../index.html#File:js/defi-management.js:defiDischargeTimer" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,135);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >defiDischargeTimer</a> is started,&nbsp; which &quot;discharges&quot; the defibrilator after 30000ms automatically if no shock is performed. This function is called, when the &quot;charge&quot;-Soundfile has finished playing.</p></div>
+ <div id="NDPrototype265" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiFullyCharged = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>In this function, the automatic <a href="../../index.html#File:js/defi-management.js:defiDischargeTimer" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,257);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >defiDischargeTimer</a> is started,&nbsp; which &quot;discharges&quot; the defibrilator after 30000ms automatically if no shock is performed. This function is called, when the &quot;charge&quot;-Soundfile has finished playing.</p></div>
 </div>
 
-<a name="defiShock"></a><a name="Topic210"></a><div class="CTopic TFunction LJavaScript">
+<a name="isShowingECGPeaks"></a><a name="Topic266"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">isShowingECGPeaks</div>
+ <div id="NDPrototype266" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.isShowingECGPeaks = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>Indicates, if ECG Peaks are currently shown.</p></div>
+</div>
+
+<a name="defiShock"></a><a name="Topic267"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">defiShock</div>
- <div id="NDPrototype210" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiShock = <span class="SHKeyword">function</span>()</div>
- <div class="CBody"><p>This function is used to syncronally or asyncronally provide a shock to the patient.&nbsp; This is depended on, if the syncronization is active (indicated by <a href="../../index.html#File:js/defi-management.js:showECGPeaks" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,136);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >showECGPeaks</a>).&nbsp; If a sync Shock is expected, the shock is put on hold, until the next peak is found in the ECG.</p></div>
+ <div id="NDPrototype267" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.defiShock = <span class="SHKeyword">function</span>()</div>
+ <div class="CBody"><p>This function is used to syncronally or asyncronally provide a shock to the patient.&nbsp; This is depended on, if the syncronization is active (indicated by <a href="../../index.html#File:js/defi-management.js:showECGPeaks" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,258);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >showECGPeaks</a>).&nbsp; If a sync Shock is expected, the shock is put on hold, until the next peak is found in the ECG.</p></div>
 </div>
 
-<a name="performShock"></a><a name="Topic144"></a><div class="CTopic TFunction LJavaScript">
+<a name="performShock"></a><a name="Topic268"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">performShock</div>
- <div id="NDPrototype144" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> performShock()</div>
- <div class="CBody"><p>This function is responsible to change the current pathology to the before chosen defiPathology from the Trainer. To apply the shock, it is first tested if the chosen defiPathology is not ignored. Then, the active pathology is changed to the defiPathology and the config is pushed to the database and <a href="../../index.html#File:js/traineeview.js:initControls" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,81);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >initControls</a> is reloaded. Also, the function to play the sound for the shock is called and some UI-resets adaptions are made.</p><p>See Also: <a href="../../index.html#File:js/sound-management.js:playDefiShockSound" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,245);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >playDefiShockSound</a>.</p></div>
+ <div id="NDPrototype268" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> performShock()</div>
+ <div class="CBody"><p>This function is responsible to change the current pathology to the before chosen defiPathology from the Trainer. To apply the shock, it is first tested if the chosen defiPathology is not ignored. Then, the active pathology is changed to the defiPathology and the config is pushed to the database and <a href="../../index.html#File:js/trainerview.js:initControls" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,21);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >initControls</a> is reloaded. Also, the function to play the sound for the shock is called and some UI-resets adaptions are made.</p><p>See Also: <a href="../../index.html#File:js/sound-management.js:playDefiShockSound" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,124);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >playDefiShockSound</a>.</p></div>
 </div>
 
-<a name="performSyncShock"></a><a name="Topic145"></a><div class="CTopic TFunction LJavaScript">
+<a name="performSyncShock"></a><a name="Topic269"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">performSyncShock</div>
- <div id="NDPrototype145" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.performSyncShock = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype269" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.performSyncShock = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>This function is used to perform a shock after waiting for the R-peak.</p></div>
 </div>
 
-<a name="deactivateDefiSync"></a><a name="Topic146"></a><div class="CTopic TFunction LJavaScript">
+<a name="deactivateDefiSync"></a><a name="Topic270"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">deactivateDefiSync</div>
- <div id="NDPrototype146" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.deactivateDefiSync = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype270" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.deactivateDefiSync = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>This function is used to deactivate the defi Syncronization, if no R-Peak can be detected.</p></div>
 </div>
 
-<a name="toggleDefiSync"></a><a name="Topic147"></a><div class="CTopic TFunction LJavaScript last">
+<a name="toggleDefiSync"></a><a name="Topic271"></a><div class="CTopic TFunction LJavaScript last">
  <div class="CTitle">toggleDefiSync</div>
- <div id="NDPrototype147" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.toggleDefiSync = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype271" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.toggleDefiSync = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>This function is used to toggle the UI and the flag for the visible ecg-peaks.</p></div>
 </div>
 

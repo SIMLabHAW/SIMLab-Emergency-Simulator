@@ -105,8 +105,4 @@
 <script language="javascript" type="text/javascript" src="../js/popper.min.js"></script>
 <script language="javascript" type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-<script>
-    // TODO: Cleanup!
-</script>
-
 </html>

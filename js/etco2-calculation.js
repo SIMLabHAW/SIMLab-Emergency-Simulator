@@ -117,9 +117,11 @@ var ETCO2Calculation = function() {
 
     /* Function: calculateCurrentETCO2
         Used to calculate dynamic changing values for the etco2 max value.
+
         Parameters: 
             newETCO2 - Contains the etco2-max value to which a change is performed.
             changeDuration - Contains the time, how long a change is taking.
+        
         Returns:
             returns the currently calculated etco2-value.
         */
@@ -262,6 +264,7 @@ var ETCO2Calculation = function() {
 
     /* Function: randomizeETCO2
         Generates randomized values around a defined interval for the etco2.
+
         Parameters:
             val - Contains the value around which the randomized values are produced.
             simTime - Contains the current point in time.  */
@@ -285,6 +288,7 @@ var ETCO2Calculation = function() {
 
     /* Function: randomizeRR
         Generates randomized values around a defined interval for the resp-rate.
+
         Parameters:
             val - Contains the value around which the randomized values are produced.
             simTime - Contains the current point in time.  */
@@ -365,7 +369,7 @@ var ETCO2Calculation = function() {
         return y;
     }
 
-    /* Function: calcNormal
+    /* Function: calcHyper
         With this function, the exerted or hyperventilation ~(1:1) ratio breathing curve 
         is generated.
 
@@ -418,7 +422,7 @@ var ETCO2Calculation = function() {
         return y;
     }
 
-    /* Function: calcNormal
+    /* Function: calcHypo
         With this function, the sleep or hypoventilation ~(1:4) ratio breathing curve 
         is generated.
 
@@ -478,6 +482,7 @@ var ETCO2Calculation = function() {
             rr - Contains the current resp-rate.
             etco2MaxValue - Contains the maximum etco2 value.
             changeDuration - Contains a reference to the <changeDuration> object.
+            
         Returns:
              Returns the current value in the etco2-curve.
         */
@@ -559,5 +564,4 @@ var ETCO2Calculation = function() {
 
         return y;
     }
-
 }

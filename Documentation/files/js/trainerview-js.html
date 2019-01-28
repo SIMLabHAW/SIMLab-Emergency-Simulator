@@ -30,62 +30,317 @@
  <div class="CBody"><p>This variable is used to store a deepcopy of the current simConfig so that temporary changes are not direcly effecting the simConfig. This is used before the shock is applied for the defibrilation. (Remember: Call by Reference is standard for Objects in JS)</p></div>
 </div>
 
-<a name="ecgGraph"></a><a name="Topic5"></a><div class="CTopic TVariable LJavaScript">
+<a name="postChangePathology"></a><a name="Topic5"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">postChangePathology</div>
+ <div id="NDPrototype5" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> postChangePathology</div>
+ <div class="CBody"><p>Contains the Pathology that is activated on the next change.</p></div>
+</div>
+
+<a name="ecgGraph"></a><a name="Topic6"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">ecgGraph</div>
- <div id="NDPrototype5" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ecgGraph</div>
+ <div id="NDPrototype6" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ecgGraph</div>
  <div class="CBody"><p>Stores a reference to the ECGGraph.</p></div>
 </div>
 
-<a name="spo2Graph"></a><a name="Topic6"></a><div class="CTopic TVariable LJavaScript">
+<a name="spo2Graph"></a><a name="Topic7"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">spo2Graph</div>
- <div id="NDPrototype6" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> spo2Graph</div>
+ <div id="NDPrototype7" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> spo2Graph</div>
  <div class="CBody"><p>Stores a reference to the SPO2Graph.</p></div>
 </div>
 
-<a name="etco2Graph"></a><a name="Topic7"></a><div class="CTopic TVariable LJavaScript">
+<a name="etco2Graph"></a><a name="Topic8"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">etco2Graph</div>
- <div id="NDPrototype7" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> etco2Graph</div>
+ <div id="NDPrototype8" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> etco2Graph</div>
  <div class="CBody"><p>Stores a reference to the ETCO2Graph.</p></div>
 </div>
 
-<a name="etco2Calculation"></a><a name="Topic8"></a><div class="CTopic TVariable LJavaScript">
+<a name="defaultPathologyList"></a><a name="Topic9"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">defaultPathologyList</div>
+ <div id="NDPrototype9" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> defaultPathologyList</div>
+ <div class="CBody"><p>Contains the list of the default pathologies.</p></div>
+</div>
+
+<a name="updateTextForms"></a><a name="Topic10"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">updateTextForms</div>
+ <div id="NDPrototype10" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> updateTextForms</div>
+ <div class="CBody"><p>Indicates, whether all text forms needs to be updated. (e.g. after a config change?!)</p></div>
+</div>
+
+<a name="etco2Calculation"></a><a name="Topic11"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">etco2Calculation</div>
- <div id="NDPrototype8" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> etco2Calculation</div>
+ <div id="NDPrototype11" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> etco2Calculation</div>
  <div class="CBody"><p>Used to perform all calculations to simulate the etco2-curve.</p></div>
 </div>
 
-<a name="ecgCalculation"></a><a name="Topic9"></a><div class="CTopic TVariable LJavaScript">
+<a name="ecgCalculation"></a><a name="Topic12"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">ecgCalculation</div>
- <div id="NDPrototype9" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ecgCalculation</div>
+ <div id="NDPrototype12" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ecgCalculation</div>
  <div class="CBody"><p>Used to perform all calculations to simulate the ecg-curve.</p></div>
 </div>
 
-<a name="spo2Calculation"></a><a name="Topic10"></a><div class="CTopic TVariable LJavaScript">
+<a name="spo2Calculation"></a><a name="Topic13"></a><div class="CTopic TVariable LJavaScript">
  <div class="CTitle">spo2Calculation</div>
- <div id="NDPrototype10" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> spo2Calculation</div>
+ <div id="NDPrototype13" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> spo2Calculation</div>
  <div class="CBody"><p>Used to perform all calculations to simulate the spo2-curve.</p></div>
 </div>
 
-<a name="Functions"></a><a name="Topic82"></a><div class="CTopic TGroup LJavaScript">
+<a name="ecgCPR"></a><a name="Topic14"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">ecgCPR</div>
+ <div id="NDPrototype14" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> ecgCPR</div>
+ <div class="CBody"><p>Contains a reference to the initialized <a href="../../index.html#File:js/cpr-management.js:CPRManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,248);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >CPRManagement</a> for ecg.</p></div>
+</div>
+
+<a name="spo2CPR"></a><a name="Topic15"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">spo2CPR</div>
+ <div id="NDPrototype15" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> spo2CPR</div>
+ <div class="CBody"><p>Contains a reference to the initialized <a href="../../index.html#File:js/cpr-management.js:CPRManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,248);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >CPRManagement</a> for ecg.</p></div>
+</div>
+
+<a name="etco2CPR"></a><a name="Topic16"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">etco2CPR</div>
+ <div id="NDPrototype16" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> etco2CPR</div>
+ <div class="CBody"><p>Contains a reference to the initialized <a href="../../index.html#File:js/cpr-management.js:CPRManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,248);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >CPRManagement</a> for ecg.</p></div>
+</div>
+
+<a name="changeDuration"></a><a name="Topic17"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">changeDuration</div>
+ <div id="NDPrototype17" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> changeDuration</div>
+ <div class="CBody"><p>This variable contains the DataModel for the changeDuration.</p></div>
+</div>
+
+<a name="needsPostShockValueUpdate"></a><a name="Topic345"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">needsPostShockValueUpdate</div>
+ <div id="NDPrototype345" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> needsPostShockValueUpdate</div>
+ <div class="CBody"><p>Indicates, whether a value update for the post shock pathology is necessary.</p></div>
+</div>
+
+<a name="Constants"></a><a name="Topic18"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Constants</div>
+</div>
+
+<a name="viewType"></a><a name="Topic19"></a><div class="CTopic TConstant LJavaScript">
+ <div class="CTitle">viewType</div>
+ <div class="CBody"><p>Contains the <a href="../../index.html#File:js/application.js:ViewType" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,306);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >ViewType</a> of the File.</p></div>
+</div>
+
+<a name="Functions"></a><a name="Topic20"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="initControls"></a><a name="Topic227"></a><div class="CTopic TFunction LJavaScript">
+<a name="initControls"></a><a name="Topic21"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">initControls</div>
- <div id="NDPrototype227" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">var</span> initControls = <span class="SHKeyword">function</span> (</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">config</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div id="NDPrototype21" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">var</span> initControls = <span class="SHKeyword">function</span> (</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">config</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
  <div class="CBody"><p>Called every second and when the values in the UI-Elements change. Responsible for initializing the UI and for setting the current config.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">config</td><td class="CDLDefinition"><p>Contains the current config. It is set to <a href="../../index.html#File:js/trainerview.js:simConfig" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,2);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >simConfig</a>.</p></td></tr></table></div>
 </div>
 
-<a name="performFixedPacing"></a><a name="Topic277"></a><div class="CTopic TFunction LJavaScript">
+<a name="getDynamicChange"></a><a name="Topic346"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">getDynamicChange</div>
+ <div id="NDPrototype346" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getDynamicChange()</div>
+ <div class="CBody"><p>Updates the GUI Elements for the dynamic change.</p></div>
+</div>
+
+<a name="saveDynamicChange"></a><a name="Topic347"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveDynamicChange</div>
+ <div id="NDPrototype347" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> saveDynamicChange()</div>
+ <div class="CBody"><p>Saves the <a href="../../index.html#File:js/trainerview.js:changeDuration" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,17);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >changeDuration</a> in the database.</p></div>
+</div>
+
+<a name="toggleAutoChangeDuration"></a><a name="Topic348"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">toggleAutoChangeDuration</div>
+ <div id="NDPrototype348" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> toggleAutoChangeDuration(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Toggles the checkbox to reflect the enabled autochangeduration.</p></div>
+</div>
+
+<a name="setAutoChange"></a><a name="Topic349"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">setAutoChange</div>
+ <div id="NDPrototype349" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> setAutoChange(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">isActive</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Performs GUI adaptions depending on the parameter isActive.</p></div>
+</div>
+
+<a name="updateUI"></a><a name="Topic350"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">updateUI</div>
+ <div id="NDPrototype350" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> updateUI()</div>
+ <div class="CBody"><p>Updates most of the UI. It is called e.g. at the beginning of a new session.</p></div>
+</div>
+
+<a name="saveAll"></a><a name="Topic351"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveAll</div>
+ <div id="NDPrototype351" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> saveAll()</div>
+ <div class="CBody"><p>Used to save all values from the Inputs and selects in the database. Also performs some input sanatization.</p></div>
+</div>
+
+<a name="showPostShockModal"></a><a name="Topic354"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">showPostShockModal</div>
+ <div id="NDPrototype354" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> showPostShockModal()</div>
+ <div class="CBody"><p>Shows a modal to config the post shock pathology. So when the Trainee performs a shock, the chosen parameters are used in the following pathology.</p></div>
+</div>
+
+<a name="saveAllPostShock"></a><a name="Topic484"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">saveAllPostShock</div>
+ <div id="NDPrototype484" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> saveAllPostShock()</div>
+ <div class="CBody"><p>Used to save all values from the post shock inputs and selects from the modal in the database.&nbsp; Also performs some input sanatization.</p></div>
+</div>
+
+<a name="handleChangeCPR"></a><a name="Topic485"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeCPR</div>
+ <div id="NDPrototype485" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeCPR(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Updates the hasCPR variable in the database.</p></div>
+</div>
+
+<a name="handleChangeCOPD"></a><a name="Topic486"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeCOPD</div>
+ <div id="NDPrototype486" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeCOPD(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Updates the hasCOPD variable in the database.</p></div>
+</div>
+
+<a name="handleChangeECG"></a><a name="Topic487"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeECG</div>
+ <div id="NDPrototype487" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeECG(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Enables or disables the ecg charts and measurements and performs GUI adaptions.</p></div>
+</div>
+
+<a name="handleChangeSpO2"></a><a name="Topic488"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeSpO2</div>
+ <div id="NDPrototype488" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeSpO2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Enables or disables the spo2 charts and measurements and performs GUI adaptions.</p></div>
+</div>
+
+<a name="handleChangeEtCO2"></a><a name="Topic489"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeEtCO2</div>
+ <div id="NDPrototype489" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeEtCO2(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Enables or disables the etco2 charts and measurements and performs GUI adaptions.</p></div>
+</div>
+
+<a name="handleChangeNipb"></a><a name="Topic490"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeNipb</div>
+ <div id="NDPrototype490" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeNipb(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">checkbox</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Enables or disables the nibp measurements and performs GUI adaptions.</p></div>
+</div>
+
+<a name="handleChangeRespRatio"></a><a name="Topic491"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleChangeRespRatio</div>
+ <div id="NDPrototype491" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> handleChangeRespRatio(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">respRatio</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Saves the chosen respRatio in the database.</p></div>
+</div>
+
+<a name="handleSelectPathology"></a><a name="Topic492"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleSelectPathology</div>
+ <div id="NDPrototype492" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> handleSelectPathology()</div>
+ <div class="CBody"><p>Saves the chosen pathology and vital sign parameters into the <a href="../../index.html#File:js/trainerview.js:postChangePathology" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,5);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >postChangePathology</a>.</p></div>
+</div>
+
+<a name="updateUIWith"></a><a name="Topic493"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">updateUIWith</div>
+ <div id="NDPrototype493" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> updateUIWith(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">pathology</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Updates the UI based on the pathology parameter.</p></div>
+</div>
+
+<a name="handleSelectPathologyDefi"></a><a name="Topic494"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">handleSelectPathologyDefi</div>
+ <div id="NDPrototype494" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> handleSelectPathologyDefi()</div>
+ <div class="CBody"><p>Within this function, the chosen defiPathology is saved.</p></div>
+</div>
+
+<a name="defiThresholdChanged"></a><a name="Topic495"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">defiThresholdChanged</div>
+ <div id="NDPrototype495" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> defiThresholdChanged()</div>
+ <div class="CBody"><p>In this function, the current defiEnergyThreshold is saved in the database.</p></div>
+</div>
+
+<a name="pacerThresholdChanged"></a><a name="Topic496"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">pacerThresholdChanged</div>
+ <div id="NDPrototype496" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> pacerThresholdChanged()</div>
+ <div class="CBody"><p>In this function, the current pacer energyThreshold is saved in the database.</p></div>
+</div>
+
+<a name="addPacerThresholdEnergyLevels"></a><a name="Topic497"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">addPacerThresholdEnergyLevels</div>
+ <div id="NDPrototype497" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> addPacerThresholdEnergyLevels()</div>
+ <div class="CBody"><p>In this function, the pacerThresholdEnergySelect-Dropdownlist is filled.</p></div>
+</div>
+
+<a name="performFixedPacing"></a><a name="Topic23"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">performFixedPacing</div>
- <div id="NDPrototype277" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> performFixedPacing()</div>
+ <div id="NDPrototype23" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> performFixedPacing()</div>
  <div class="CBody"><p>Checks if conditions for pacing are met and returns a specific ecg.</p></div>
 </div>
 
-<a name="getAccordingSPO2"></a><a name="Topic278"></a><div class="CTopic TFunction LJavaScript last">
+<a name="getAccordingSPO2"></a><a name="Topic24"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">getAccordingSPO2</div>
- <div id="NDPrototype278" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getAccordingSPO2()</div>
+ <div id="NDPrototype24" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> getAccordingSPO2()</div>
  <div class="CBody"><p>Checks if conditions for pacing are met and returns a specific spo2.</p></div>
+</div>
+
+<a name="addDefiThresholdEnergyLevels"></a><a name="Topic498"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">addDefiThresholdEnergyLevels</div>
+ <div id="NDPrototype498" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> addDefiThresholdEnergyLevels()</div>
+ <div class="CBody"><p>In this function, the defiThresholdEnergySelect-Dropdownlist is filled.</p></div>
+</div>
+
+<a name="addPathology"></a><a name="Topic499"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">addPathology</div>
+ <div id="NDPrototype499" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> addPathology(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">pathology,</td></tr><tr><td class="PName first last">name,</td></tr><tr><td class="PName first last">selected</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>In this function, the pathology-select-Dropdownlist and the defiPathologySelect is filled.&nbsp; And the previously chosen pathology is automatically selected.</p></div>
+</div>
+
+<a name="Variables(2)"></a><a name="Topic500"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Variables</div>
+</div>
+
+<a name="totalSeconds"></a><a name="Topic501"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">totalSeconds</div>
+ <div id="NDPrototype501" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> totalSeconds</div>
+ <div class="CBody"><p>Stores the current amount of seconds since the beginning of the session. (After the reset/start of the timer)</p></div>
+</div>
+
+<a name="timerVar"></a><a name="Topic502"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">timerVar</div>
+ <div id="NDPrototype502" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> timerVar</div>
+ <div class="CBody"><p>Stores a reference to the interval of the sessiontimer.</p></div>
+</div>
+
+<a name="isTimerRunning"></a><a name="Topic503"></a><div class="CTopic TVariable LJavaScript">
+ <div class="CTitle">isTimerRunning</div>
+ <div id="NDPrototype503" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> isTimerRunning</div>
+ <div class="CBody"><p>Indicates, whether the timer is running.</p></div>
+</div>
+
+<a name="Functions(2)"></a><a name="Topic504"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Functions</div>
+</div>
+
+<a name="countTimer"></a><a name="Topic505"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">countTimer</div>
+ <div id="NDPrototype505" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> countTimer()</div>
+ <div class="CBody"><p>Counts up the <a href="../../index.html#File:js/trainerview.js:totalSeconds" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,501);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >totalSeconds</a> and displays it. Also updates the DB.</p></div>
+</div>
+
+<a name="toggleTimer"></a><a name="Topic506"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">toggleTimer</div>
+ <div id="NDPrototype506" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> toggleTimer()</div>
+ <div class="CBody"><p>Starts/Stops the <a href="../../index.html#File:js/trainerview.js:timerVar" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,502);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >timerVar</a> and updates the GUI.</p></div>
+</div>
+
+<a name="resetTimer"></a><a name="Topic507"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">resetTimer</div>
+ <div id="NDPrototype507" class="NDPrototype NoParameterForm"><span class="SHKeyword">function</span> resetTimer()</div>
+ <div class="CBody"><p>Resets the <a href="../../index.html#File:js/trainerview.js:totalSeconds" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,501);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >totalSeconds</a> to 0 and updates the GUI. Also updates the DB.</p></div>
+</div>
+
+<a name="formatTime"></a><a name="Topic508"></a><div class="CTopic TFunction LJavaScript">
+ <div class="CTitle">formatTime</div>
+ <div id="NDPrototype508" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> formatTime(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">seconds</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This function turns a number into a correcly formatted h:mm:ss format.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">seconds</td><td class="CDLDefinition"><p>contains the value of the time that should be formatted (in seconds).</p></td></tr></table></div>
+</div>
+
+<a name="Variables(3)"></a><a name="Topic509"></a><div class="CTopic TGroup LJavaScript">
+ <div class="CTitle">Variables</div>
+</div>
+
+<a name="pacedDeltaX"></a><a name="Topic510"></a><div class="CTopic TVariable LJavaScript last">
+ <div class="CTitle">pacedDeltaX</div>
+ <div id="NDPrototype510" class="NDPrototype NoParameterForm"><span class="SHKeyword">var</span> pacedDeltaX</div>
+ <div class="CBody"><p>Stores a counting value to draw the pacer peaks at the specified pacerfrequency.</p></div>
 </div>
 
 </body></html>

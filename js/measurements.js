@@ -142,12 +142,18 @@ function Measurement(avgArraySize, dataArraySize, maxIdleTime = 3) {
     
 };
 
+/* Function: ECGMeasurement
+    Performs measurement regarding the ecg values.
+    
+    Parameters:
+        dataCallback - Contains the measured hr.
+        realTimePeakCallback - Indicates, that a peak was found with the latest measurement.
+    */
 function ECGMeasurement(dataCallback, realTimePeakCallback) {
     Measurement.call(this, 4, 200);
     
     var peakArray = [];
     var self = this;
-    
     
     /* Variable: lastPeakIndex
         Stores the last known Peak Index to have some robustness against quick repeating 
@@ -528,6 +534,8 @@ function ETCO2Measurement(dataCallback) {
                 var newVal = self.dataArray[i+1];
                 var oldVal = self.dataArray[i];
                 var gradient = self.getGradient(newVal, oldVal);
+
+                // Some abitrary threshold, that is required to detect a changing signal.
                 const threshold = 4;
 
                 if (gradient > 5 && newVal > threshold && !expectsNegativeGradient) {

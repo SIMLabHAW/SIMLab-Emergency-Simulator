@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("dia",["Function"],[["DIAAlarm",,[[,,,,0,"File:js/alarm-management.js:DIAAlarm"]]]]);
+NDSearch.OnPrefixDataLoaded("dia",["Function","Property"],[["DIAAlarm",,[[,,,,0,"File:js/alarm-management.js:DIAAlarm"]]],["diaDefi",,[["SimulationState",,,,1,"File:php/domain.php:SimulationState.diaDefi","PHPClass:SimulationState:diaDefi"]]],["diastolic",,[["VitalSignParameters",,,,1,"File:php/domain.php:VitalSignParameters.diastolic","PHPClass:VitalSignParameters:diastolic"]]]]);

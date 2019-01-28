@@ -1,1 +1,1 @@
-NDContentPage.OnToolTipsLoaded({});
+NDContentPage.OnToolTipsLoaded({112:"<div class=\"NDToolTip TVariable LJavaScript\"><div id=\"NDPrototype112\" class=\"NDPrototype NoParameterForm\"><span class=\"SHKeyword\">var</span> alarmAudio</div><div class=\"TTSummary\">Is played repeatedly, when an alarm occurs.</div></div>"});

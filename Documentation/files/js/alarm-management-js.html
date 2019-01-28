@@ -8,77 +8,77 @@
 
 <body onload="NDLoader.OnLoad('Content');" class="NDPage NDContentPage">
 
-<a name="Constants"></a><a name="Topic148"></a><div class="CTopic TGroup LJavaScript first">
+<a name="Constants"></a><a name="Topic322"></a><div class="CTopic TGroup LJavaScript first">
  <div class="CTitle">Constants</div>
 </div>
 
-<a name="AlarmState"></a><a name="Topic67"></a><div class="CTopic TConstant LJavaScript">
+<a name="AlarmState"></a><a name="Topic323"></a><div class="CTopic TConstant LJavaScript">
  <div class="CTitle">AlarmState</div>
- <div class="CBody"><p>Contains the state of the alarm, none, below or above limits.</p></div>
+ <div class="CBody"><p>Contains the state of the alarm, None, BelowLimit or above AboveLimit.</p></div>
 </div>
 
-<a name="Functions"></a><a name="Topic153"></a><div class="CTopic TGroup LJavaScript">
+<a name="Functions"></a><a name="Topic324"></a><div class="CTopic TGroup LJavaScript">
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="AlarmManagement"></a><a name="Topic180"></a><div class="CTopic TFunction LJavaScript">
+<a name="AlarmManagement"></a><a name="Topic325"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">AlarmManagement</div>
- <div id="NDPrototype180" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> AlarmManagement(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback,</td></tr><tr><td class="PName first last">lowerLimit,</td></tr><tr><td class="PName first last">upperLimit,</td></tr><tr><td class="PName first last">borderID</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This function is used to test the measurement values and to return the <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,67);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a> in form of a callback function.&nbsp; NOTE: Dont instanciate this function directly. Instead use the inhereted functions.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">alarmCallback</td><td class="CDLDefinition"><p>Callback function that returns the <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,67);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a>.</p></td></tr><tr><td class="CDLEntry">lowerLimit</td><td class="CDLDefinition"><p>Contains a predefined lower alarm level.</p></td></tr><tr><td class="CDLEntry">upperLimit</td><td class="CDLDefinition"><p>Contains a predefined upper alarm level.</p></td></tr></table></div>
+ <div id="NDPrototype325" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> AlarmManagement(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback,</td></tr><tr><td class="PName first last">lowerLimit,</td></tr><tr><td class="PName first last">upperLimit,</td></tr><tr><td class="PName first last">borderID</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This function is used to test the measurement values and to return the <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,323);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a> in form of a callback function.&nbsp; NOTE: Dont instanciate this function directly. Instead use the inhereted functions.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">alarmCallback</td><td class="CDLDefinition"><p>Callback function that returns the <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,323);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a>.</p></td></tr><tr><td class="CDLEntry">lowerLimit</td><td class="CDLDefinition"><p>Contains a predefined lower alarm level.</p></td></tr><tr><td class="CDLEntry">upperLimit</td><td class="CDLDefinition"><p>Contains a predefined upper alarm level.</p></td></tr><tr><td class="CDLEntry">borderID</td><td class="CDLDefinition"><p>Contains the ID of the DOM-Elements to show the alarm-border.</p></td></tr></table></div>
 </div>
 
-<a name="testMeasurementValueForAlarm"></a><a name="Topic155"></a><div class="CTopic TFunction LJavaScript">
+<a name="testMeasurementValueForAlarm"></a><a name="Topic326"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">testMeasurementValueForAlarm</div>
- <div id="NDPrototype155" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.testMeasurementValueForAlarm = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">value</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This function checks the parameter value for its limits and invokes the callback with the current <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,67);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a>.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">value</td><td class="CDLDefinition"><p>This parameter is the currently tested value.</p></td></tr></table></div>
+ <div id="NDPrototype326" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">this</span>.testMeasurementValueForAlarm = <span class="SHKeyword">function</span>(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">value</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This function checks the parameter value for its limits and invokes the callback with the current <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,323);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a>.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">value</td><td class="CDLDefinition"><p>This parameter is the currently tested value.</p></td></tr></table></div>
 </div>
 
-<a name="deactivateMeasurement"></a><a name="Topic114"></a><div class="CTopic TFunction LJavaScript">
+<a name="deactivateMeasurement"></a><a name="Topic327"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">deactivateMeasurement</div>
- <div id="NDPrototype114" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.deactivateMeasurement = <span class="SHKeyword">function</span>()</div>
+ <div id="NDPrototype327" class="NDPrototype NoParameterForm"><span class="SHKeyword">this</span>.deactivateMeasurement = <span class="SHKeyword">function</span>()</div>
  <div class="CBody"><p>If the Value was deactivated from the Trainerside, the Alarm is switched off.</p></div>
 </div>
 
-<a name="performUIAdaption"></a><a name="Topic213"></a><div class="CTopic TFunction LJavaScript">
+<a name="performUIAdaption"></a><a name="Topic328"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">performUIAdaption</div>
- <div id="NDPrototype213" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> performUIAdaption(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">state</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>Performs the UI changes to visually indicate alarms.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">state</td><td class="CDLDefinition"><p>Contains the <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,67);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a>.</p></td></tr></table></div>
+ <div id="NDPrototype328" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> performUIAdaption(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">state</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>Performs the UI changes to visually indicate alarms.</p><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">state</td><td class="CDLDefinition"><p>Contains the <a href="../../index.html#File:js/alarm-management.js:AlarmState" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,323);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmState</a>.</p></td></tr></table></div>
 </div>
 
-<a name="ECGAlarm"></a><a name="Topic156"></a><div class="CTopic TFunction LJavaScript">
+<a name="ECGAlarm"></a><a name="Topic329"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">ECGAlarm</div>
- <div id="NDPrototype156" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> ECGAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,180);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
+ <div id="NDPrototype329" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> ECGAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,325);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
 </div>
 
-<a name="SPO2Alarm"></a><a name="Topic157"></a><div class="CTopic TFunction LJavaScript">
+<a name="SPO2Alarm"></a><a name="Topic330"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">SPO2Alarm</div>
- <div id="NDPrototype157" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> SPO2Alarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,180);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
+ <div id="NDPrototype330" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> SPO2Alarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,325);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
 </div>
 
-<a name="ETCO2Alarm"></a><a name="Topic158"></a><div class="CTopic TFunction LJavaScript">
+<a name="ETCO2Alarm"></a><a name="Topic331"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">ETCO2Alarm</div>
- <div id="NDPrototype158" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> ETCO2Alarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,180);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
+ <div id="NDPrototype331" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> ETCO2Alarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,325);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
 </div>
 
-<a name="RRAlarm"></a><a name="Topic159"></a><div class="CTopic TFunction LJavaScript">
+<a name="RRAlarm"></a><a name="Topic332"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">RRAlarm</div>
- <div id="NDPrototype159" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> RRAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,180);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
+ <div id="NDPrototype332" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> RRAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,325);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
 </div>
 
-<a name="SYSAlarm"></a><a name="Topic160"></a><div class="CTopic TFunction LJavaScript">
+<a name="SYSAlarm"></a><a name="Topic333"></a><div class="CTopic TFunction LJavaScript">
  <div class="CTitle">SYSAlarm</div>
- <div id="NDPrototype160" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> SYSAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,180);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
+ <div id="NDPrototype333" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> SYSAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,325);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
 </div>
 
-<a name="DIAAlarm"></a><a name="Topic161"></a><div class="CTopic TFunction LJavaScript last">
+<a name="DIAAlarm"></a><a name="Topic334"></a><div class="CTopic TFunction LJavaScript last">
  <div class="CTitle">DIAAlarm</div>
- <div id="NDPrototype161" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> DIAAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
- <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,180);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
+ <div id="NDPrototype334" class="NDPrototype WideForm CStyle"><table><tr><td class="PBeforeParameters"><span class="SHKeyword">function</span> DIAAlarm(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first last">alarmCallback</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div>
+ <div class="CBody"><p>This inherited function provides corresponding default lower and upper bounds for the alarm.</p><p>See also: <a href="../../index.html#File:js/alarm-management.js:AlarmManagement" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,325);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >AlarmManagement</a>.</p></div>
 </div>
 
 </body></html>

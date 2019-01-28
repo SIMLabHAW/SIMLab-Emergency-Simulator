@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("noi",["Property"],[["Noise",,[["VitalSignParameters",,,,0,"File:php/domain.php:VitalSignParameters.Noise","PHPClass:VitalSignParameters:Noise"]]]]);

@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("dat",["Variable"],[["dataArray",,[[,,,,0,"File:js/measurements.js:dataArray"]]]]);
+NDSearch.OnPrefixDataLoaded("dat",["Variable","Property"],[["dataArray",,[[,,,,0,"File:js/measurements.js:dataArray"]]],["date",,[["Message",,,,1,"File:php/domain.php:Message.date","PHPClass:Message:date"]]]]);

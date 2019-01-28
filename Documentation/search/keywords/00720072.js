@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("rr",["Property"],[["rr",,[["VitalSignParameters",,,,0,"File:php/domain.php:VitalSignParameters.rr","PHPClass:VitalSignParameters:rr"]]]]);

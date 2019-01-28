@@ -297,15 +297,9 @@ function screenOnOff() {
 	}
 }
 
-function screenLoading() {
-
-}
-
 /* Function: initIonRangeSlider
     This function initializes the Range Slider that are shown in the Settings-Modal.
-    It is called by <getAlarmLevels> and only executed once. 
-
-*/
+    It is called by <getAlarmLevels> and only executed once at the beginning. */
 function initIonRangeSlider() {
     if (isRangeSliderInitilized) return;
 
@@ -343,28 +337,8 @@ function initIonRangeSlider() {
     });
 }
 
-
-/* Function: changeSettingTabTo
-    This function is used to visually modify the Setting Tab Title Bar 
-    in the Settin-Modal to identify the active Tab. 
-
-    Parameters: 
-        tabNr -  This number specifies the clicked Tab to i.e. react to 
-        multiple clicks on the same Tab. 
-*/
-/* function changeSettingTabTo(tabNr) {
-    if (tabNr === 2 && $("#navAlarmSettingTab").hasClass("active")) {
-        $("#navAlarmSettingTab").removeClass("active");
-        $("#navSoundSettingTab").addClass("active");
-    } else if (tabNr === 1 && $("#navSoundSettingTab").hasClass("active")) {
-        $("#navSoundSettingTab").removeClass("active");
-        $("#navAlarmSettingTab").addClass("active");
-    }
-} */
-
 /* Function: togglePauseGraphs
-    This function is used to toggle the Pause-Mode for the three 
-    Vital-Signs Graphs. 
+    This function is used to toggle the Pause-Mode for the three Graphs. 
 */
 function togglePauseGraphs() {
     graphsPaused = !graphsPaused;
@@ -383,8 +357,6 @@ function togglePauseGraphs() {
     spo2Graph.togglePauseGraph();
     etco2Graph.togglePauseGraph();
 }
-
-// TODO: Dont save Screenshots in the Folder, but in the database!
 
 /* Function: takeScreenshot
     This function is used to take a Screenshot from the current Traineeview. 
@@ -691,7 +663,13 @@ function toggleAlarmSoundIcon(changeToOn = false) {
     }
 }
 
-
+/* Function: createAlarmSound
+    In this function, the conditions to play an alarm sound are checked and potentially an alarm
+    sound played.
+    
+    Parameters: 
+        alarmType - Contains the type of the alarm.
+        state - Contains the current state of the alarm. */
 function createAlarmSound(alarmType, state) {
     var needsAlarmValitidyCheck = false;
     var currentAlarmCount = -1;
@@ -755,6 +733,9 @@ function createAlarmSound(alarmType, state) {
 
 // *******************  END ALARM MANAGEMENT ********************** //
 
+/* Variable: soundManagement
+    Contains a reference to the initialized <SoundManagement> function. The function returns a 
+    state in a callback function. For descriptions, see <SoundManagement> */
 var soundManagement = new SoundManagement(function (soundState) {
     switch (soundState) {
         case SoundState.NIBP:
@@ -782,6 +763,10 @@ var soundManagement = new SoundManagement(function (soundState) {
     }
 });
 
+
+/* Variable: ecgMeasurement
+    Contains a reference to the initialized <ECGMeasurement> function. The function returns two
+    callbacks. For descriptions, see <ECGMeasurement> */
 var ecgMeasurement = new ECGMeasurement(function (hrValue) {
     if (!simConfig.simState.showHR) return;
 
@@ -790,9 +775,8 @@ var ecgMeasurement = new ECGMeasurement(function (hrValue) {
     $('#hrLabel').html((hrValue===0) ? "--" : hrValue);
     ecgAlarm.testMeasurementValueForAlarm(hrValue);
 
-    if (ecgMeasurement.isOverMaxIdleTime()) {
+    if (ecgMeasurement.isOverMaxIdleTime()) 
         defiManagement.deactivateDefiSync();
-    }
 
 }, function() {
     // Peak Found -> Play Sound!
@@ -802,13 +786,14 @@ var ecgMeasurement = new ECGMeasurement(function (hrValue) {
 
     if (defiManagement.isShowingECGPeaks()) {
         ecgGraph.drawECGPeak();
-        if (defiManagement.shockPending()) {
+        if (defiManagement.shockPending()) 
             defiManagement.performSyncShock();
-        }
     }
-
 });
 
+/* Variable: spo2Measurement
+    Contains a reference to the initialized <SpO2Measurement> function. The function returns two
+    callbacks. For descriptions, see <SpO2Measurement> */
 var spo2Measurement = new SpO2Measurement(function (spo2Value) {
     if (!simConfig.simState.showSPO2) return;
 
@@ -828,6 +813,10 @@ var spo2Measurement = new SpO2Measurement(function (spo2Value) {
 
 });
 
+
+/* Variable: spo2Measurement
+    Contains a reference to the initialized <SpO2Measurement> function. The function returns a
+    callback containing the measurered values. For descriptions, see <SpO2Measurement> */
 var etco2Measurement = new ETCO2Measurement(function (etco2Value, rfValue) {
     if (simConfig.simState.displayETCO2) {
         $('#etco2Label').html((etco2Value===0) ? "--" : etco2Value);
@@ -840,6 +829,9 @@ var etco2Measurement = new ETCO2Measurement(function (etco2Value, rfValue) {
     }
 });
 
+/* Variable: ecgGraph
+    Contains a reference to the initialized <ECGGraph> function. The callback invokes the 
+    next ecg calculation step. */
 var ecgGraph = new ECGGraph(function () {
     var ecgValue;
 
@@ -866,6 +858,10 @@ var ecgGraph = new ECGGraph(function () {
     return ecgValue;
 });
 
+
+/* Variable: spo2Graph
+    Contains a reference to the initialized <Graph> function. The callback invokes the 
+    next spo2 calculation step. See <Graph> for more information. */
 var spo2Graph = new Graph("spo2Canvas", "yellow", 50, 150, function () {
     // If HR is deactivated, HR changes should still be possible.
     if (!simConfig.simState.showHR) {
@@ -887,6 +883,9 @@ var spo2Graph = new Graph("spo2Canvas", "yellow", 50, 150, function () {
 });
 
 
+/* Variable: etco2Graph
+    Contains a reference to the initialized <ETCO2Graph> function. The callback invokes the 
+    next spo2 calculation step. See <ETCO2Graph> for more information. */
 var etco2Graph = new ETCO2Graph("etco2Canvas", "rgb(27, 213, 238)", 0, 50, function () {
     var etco2Value = etco2Calculation.calc(simConfig.vitalSigns.rr, simConfig.vitalSigns.etco2, changeDuration);
 

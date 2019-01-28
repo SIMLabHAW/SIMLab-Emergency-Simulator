@@ -27,6 +27,8 @@ along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses
 */
 var PacerManagement = function() {
 
+    /* Variable: self
+        Contains a reference to "this". */
     var self = this;
 
     /* Constant: energyBounds
@@ -71,6 +73,9 @@ var PacerManagement = function() {
         Returns the current pacer-frequency. */
     this.getFrequency = function() { return frequency; };
 
+    /* Function: updatePacerDB
+        Used to updated the pacer state in the database. This is necessary to also show pacer 
+        peaks on the TrainerView. */
     function updatePacerDB() {
         tempConfig = JSON.parse(JSON.stringify(simConfig));
         tempConfig.simState.pacer.energy = energy;
@@ -79,6 +84,12 @@ var PacerManagement = function() {
         saveLesson(tempConfig);
         initControls(tempConfig);
     }
+
+    /* Function: updatePacerEnabledStateDB
+        This function is updating only the pacer enabled flag in the database. 
+            
+        Parameters: 
+            config - Contains the current config to be adapted. */
     this.updatePacerEnabledStateDB = function(config) {
         tempConfig = JSON.parse(JSON.stringify(config));
         tempConfig.simState.pacer.isEnabled = self.isEnabled;

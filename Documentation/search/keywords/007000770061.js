@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("pwa",["Property"],[["pWaveFactor",,[["VitalSignParameters",,,,0,"File:php/domain.php:VitalSignParameters.pWaveFactor","PHPClass:VitalSignParameters:pWaveFactor"]]],["pWavePreFactor",,[["VitalSignParameters",,,,0,"File:php/domain.php:VitalSignParameters.pWavePreFactor","PHPClass:VitalSignParameters:pWavePreFactor"]]]]);

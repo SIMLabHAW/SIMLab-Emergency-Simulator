@@ -303,11 +303,15 @@ function Graph(canvasId, lineColor, yMin, yMax, dataCallback, sampleIncrement = 
 
 }
 
+/* Function: ETCO2Graph
+    Used to initialize a ETCO2-specific Graph. See <Graph> for more information. */
 function ETCO2Graph(canvasId, lineColor, yMin, yMax, dataCallback) {
     Graph.call(this, canvasId, lineColor, yMin, yMax, dataCallback, 1);
 }
 
 
+/* Function: ECGGraph
+    Used to initialize a ECG-specific Graph. See <Graph> for more information. */
 function ECGGraph(dataCallback) {
     Graph.call(this, "ecgCanvas", "rgb(41, 235, 41)", -2, 0.3, dataCallback);
 

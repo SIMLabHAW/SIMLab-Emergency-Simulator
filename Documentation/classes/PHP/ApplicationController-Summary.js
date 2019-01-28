@@ -1,0 +1,1 @@
+NDFramePage.OnPageTitleLoaded("PHPClass:ApplicationController","ApplicationController");NDSummary.OnSummaryLoaded("PHPClass:ApplicationController",[["PHP","PHP"]],[["Classes","Class"],["Functions","Function"],["Groups","Group"]],[[352,0,0,"ApplicationController"],[353,0,2,"Functions","Functions"],[483,0,1,"getVitalSignParametersJson","getVitalSignParametersJson"]]);

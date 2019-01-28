@@ -1,1 +1,1 @@
-NDSearch.OnPrefixDataLoaded("set",["Function"],[["setAlarmLevels",,[[,,,,0,"File:js/traineeview.js:setAlarmLevels"]]],["setCurrentValues",,[[,,,,0,"File:js/etco2-calculation.js:setCurrentValues"]]]]);
+NDSearch.OnPrefixDataLoaded("set",["Function"],[["setAlarmLevels",,[[,,,,0,"File:js/traineeview.js:setAlarmLevels"]]],["setAutoChange",,[[,,,,0,"File:js/trainerview.js:setAutoChange"]]],["setCurrentValues",,[[,,,,0,"File:js/etco2-calculation.js:setCurrentValues"]]]]);

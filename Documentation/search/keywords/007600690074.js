@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("vit",["Class","Property"],[["VitalSignParameters",,[[,,,,0,"File:php/domain.php:VitalSignParameters","PHPClass:VitalSignParameters"],["Lesson","vitalSignParameters",,,1,"File:php/domain.php:Lesson.vitalSignParameters","PHPClass:Lesson:vitalSignParameters"]]]]);
