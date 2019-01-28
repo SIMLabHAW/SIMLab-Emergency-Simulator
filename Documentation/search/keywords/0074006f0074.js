@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tot",["Variable"],[["totalSeconds",,[[,,,,0,"File:js/trainerview.js:totalSeconds"]]]]);
