@@ -45,10 +45,10 @@
     }
 
     $applicationController;
+
 	
 	/* Function: getApplicationController
-    Returns the existing applicationController or creates a new one.
-	*/
+    Returns the existing applicationController or creates a new one.*/
     function getApplicationController(){
         global $applicationController;
         if (isset($applicationController)){
@@ -58,7 +58,8 @@
             return $applicationController;
         }
     }
-
+	/* Function: getCurrentTraineeId
+    Returns the ID of the current session's trainee.*/
     function getCurrentTraineeId(){
         if (isset($_SESSION["traineeID"])){
             return $_SESSION["traineeID"];
@@ -66,7 +67,8 @@
             return null;
         }
     }
-
+	/* Function: getCurrentTrainerId
+    Returns the ID of the current session's trainer.*/
     function getCurrentTrainerId(){
         if (isset($_SESSION["trainerID"])){
             return $_SESSION["trainerID"];
@@ -74,14 +76,16 @@
             return null;
         }
     }
-
+	/* Function: getAllUsersJson
+    Calls getAllUsers(), found in domain.php, and prints as Json Array.*/
 	function getAllUsersJson(){
         include 'domain.php';
         $users = getAllUsers();
         $AllUsersJson = '[' . implode(",", $users) . ']';
         echo $AllUsersJson;
     }
-	
+	/* Function: getTraineesJson
+    Calls getTrainees(), found in domain.php, and prints as Json Array.*/
     function getTraineesJson(){
         include 'domain.php';
         $trainees = getTrainees();
@@ -89,7 +93,8 @@
         // error_log("getTraineesJson: " .  $traineesJson);
         echo $traineesJson;
     }
-
+	/* Function: getTrainersJson
+    Calls getTrainers(), found in domain.php, and prints as Json Array.*/
 	function getTrainersJson(){
         include 'domain.php';
         $trainers = getTrainers();
@@ -97,7 +102,8 @@
         // error_log("getTrainersJson: " .  $trainersJson);
         echo $trainersJson;
     }
-
+	/* Function: getLessonJson
+    Calls getLessonByParticipants(), found in domain.php, and prints as Json Object.*/
     function getLessonJson(){
         include 'domain.php';
         $trainerID = getCurrentTrainerId();
@@ -111,7 +117,11 @@
             error_log("No lesson for trainer with id: " . $trainerID . " and trainee with id: " . $traineeID);
         }
     }
-
+	/* Function: saveLessonFromJson
+    Calls saveLesson(), found in domain.php, to store current lesson data to database
+	
+	Parameters:
+    lessonJson - json encoded lesson from $_POST['parameters']*/
     function saveLessonFromJson($lessonJson){
         include 'domain.php';
         $trainerID = getCurrentTrainerId();
@@ -121,7 +131,11 @@
 
         saveLesson($lessonJson);
     }
+	/* Function: saveComment
+    Calls saveCommentDB, found in domain.php, to store a comment to the database
 	
+	Parameters:
+    comment - comment from $_POST['parameters']*/
 	function saveComment($comment){
         include 'domain.php';
         $trainerID = getCurrentTrainerId();
@@ -130,7 +144,11 @@
 
         saveCommentDB($comment,$trainerID,$traineeID);
     }
+	/* Function: saveTime
+    Calls saveTimeDB, found in domain.php, to store the current clock time to the database
 	
+	Parameters:
+    newTime - from $_POST['parameters']*/
 	function saveTime($newTime){
         include 'domain.php';
         $trainerID = getCurrentTrainerId();
@@ -140,24 +158,16 @@
         saveTimeDB($newTime,$trainerID,$traineeID);
     }
 	
-
-    /* Function: getActiveLessonJson
-        Description of the function. */
-    function getActiveLessonJson(){
-        $username = $_SESSION["username"];
-        $user = getUserByName($username);
-        if($user){
-            echo getActiveLessonByUser($user->getId());
-        }
-    }
-    
+    /* Class: ApplicationController
+    Instantiates all the classes from domain.php, i.e. User, Message, VitalSignParameters, Lesson, ChangeDuration, PacerState, SimulationState.*/
     class ApplicationController {
         
         public function __construct(){    
             include 'domain.php';
         }
 
-
+		/* Function: getVitalSignParametersJson
+		Calls getVitalSignParameters, found in domain.php, and prints as Json Object.*/
         function getVitalSignParametersJson(){
             $vitalSignParameters = getVitalSignParameters();
             $vitalSignParametersJson = '[' . implode(",", $vitalSignParameters) . ']';
