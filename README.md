@@ -1,5 +1,3 @@
-<h1 align="center"><b>WORK IN PROGRESS!</b></h1>
-
 <h2 align="center"><a href="https://www.ls.haw-hamburg.de/~SIMLab/"><img src="assets/img/ESIcon.svg" title="ESIcon" width="250" alt="ESIcon"></a><br>Emergency Simulator</h2>
 <p align="center"><strong>WebApp for Emergency Training Situations</strong></p>
 
