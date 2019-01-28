@@ -24,7 +24,7 @@
 // All code comes from here http://www.fpdf.org/
 require('../fpdf181/fpdf.php');
 /* Class: PDF
- Extends the FPDF class of the library PDF. See http://www.fpdf.org/*/
+ Extends the FPDF class of the library PDF. See <fpdf.org: http://www.fpdf.org/>*/
 class PDF extends FPDF {
     /* Function: LoadData
 	Queries the database for all messages from the past lesson of a trainer and trainee.*/
@@ -48,10 +48,11 @@ class PDF extends FPDF {
     }
 
     /*Function: ImprovedTable
-	Create a formatted table from parameters header and data.
-	Parameters:
-    header - Values for table header. 
-	data - Values for table body.*/
+	    Create a formatted table from parameters header and data.
+    
+        Parameters:
+            header - Values for table header. 
+	        data - Values for table body. */
     function ImprovedTable($header, $data) {
         // Column widths
         $w = array(50, 140);

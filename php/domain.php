@@ -21,8 +21,8 @@
     along with SIMLab-Emergency-Simulator.  If not, see <http://www.gnu.org/licenses/>. */
 
 	/* Class: User
-    Holds user specific data > id, name, role (trainer or trainee), which can be retrieved through functions getId(), getName() and getRole() respectively.
-	*/   
+    Holds user specific data > id, name, role (trainer or trainee), which can be retrieved 
+    through functions getId(), getName() and getRole() respectively. */   
    class User implements Serializable {
 		
 		// Property: id
@@ -140,7 +140,6 @@
             return $this->message;
         }
     }
-	//TODO: delete xt 
 
 	//Class: VitalSignParameters
     //Holds all the parameters that characterize the state of a patient. Multiple instances are used to describe default parameter sets like sinus rythm or asystolic in patients. This is done by function getVitalSignParameters().
@@ -157,8 +156,6 @@
 		// Property: xValOffset
 		// Value of the time offset.
         private $xValOffset;
-		// Property: xt
-        private $xt;
 		// Property: pWaveFactor
 		// Factor to be multiplied with p-Wave values.
         private $pWaveFactor;
@@ -205,7 +202,7 @@
 		// Initializes the object.
         public function __construct(
             $name, $hr, $Noise, $xValOffset,
-            $xt, $pWaveFactor, $qWaveFactor, $qrsComplexFactor,
+            $pWaveFactor, $qWaveFactor, $qrsComplexFactor,
             $sWaveFactor, $tWaveFactor, $uWaveFactor, $pWavePreFactor,
             $qrsAmplitudeOffset, $qrsDurationOffset, $systolic, $diastolic,
             $spo2, $rr, $etco2) {
@@ -213,7 +210,6 @@
             $this->hr = (int) $hr;
             $this->Noise = (float) $Noise;
             $this->xValOffset = (float) $xValOffset;
-            $this->xt = (float) $xt;
             $this->pWaveFactor = (float)$pWaveFactor;
             $this->qWaveFactor = (float)$qWaveFactor;
             $this->qrsComplexFactor = (float)$qrsComplexFactor;
@@ -238,7 +234,6 @@
                 "hr" => $this->hr,
                 "Noise" => $this->Noise,
                 "xValOffset" => $this->xValOffset,
-                "xt" => $this->xt,
                 "pWaveFactor" => $this->pWaveFactor ,
                 "qWaveFactor" => $this->qWaveFactor,
                 "qrsComplexFactor" => $this->qrsComplexFactor,
@@ -663,8 +658,8 @@
             $sinus_rhythm = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "Sinus Rhythm", 60, 0.01, 0,
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 1, 1, 1,
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                1, 1, 1,
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 1, 1, 1, 1,
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -675,8 +670,8 @@
             $asystole = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "Asystole", 0, 0.01, 0,
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 0, 0, 0,
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                0, 0, 0,
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 0, 0, 0, 1,
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -687,8 +682,8 @@
             $junctional_rhythm = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "Junctional Rhythm", 40, 0.01, 0,
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                -0.020, 1, 0, 1,
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                1, 0, 1,
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 1, 1, 1, -1, 
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -699,8 +694,8 @@
             $ventricular_tachycardia = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "Ventricular Tachycardia", 180, 0.01, 0.13, 
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                -0.025, 1, 0, 1, 
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                1, 0, 1, 
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 0, 1, 0, 2, 
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -711,8 +706,8 @@
             $ventricular_fibrillation = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "Ventricular Fibrillation", 250, 0.01, 0.10, 
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 1, 0, 0.3, 
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                1, 0, 0.3, 
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 0, 2, 0, 2, 
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -723,8 +718,8 @@
             $atrial_fibrillation = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "Atrial Fibrillation", 110, 0.1, 0, 
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 0, 0, 1, 
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                0, 0, 1, 
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 1, 0, 0, 1, 
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -735,8 +730,8 @@
             $av_block3 = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "AV Block 3", 60, 0.01, 0, 
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 1, 1, 1,
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                1, 1, 1,
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 1, 1, 1, 1,
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -747,8 +742,8 @@
             $st_elevation = new VitalSignParameters(
                 /* name; hr; Noise; xValOffset; */
                 "ST Elevation", 60, 0.01, 0, 
-                /* xt; pWaveFactor; qWaveFactor; qrsComplexFactor; */
-                0, 1, 1, 1,
+                /* pWaveFactor; qWaveFactor; qrsComplexFactor; */
+                1, 1, 1,
                 /* sWaveFactor; tWaveFactor; uWaveFactor; pWavePreFactor; */
                 1, 1, 1, 1,
                 /* qrsAmplitudeOffset; qrsDurationOffset; systolic; diastolic; */
@@ -958,9 +953,6 @@
             $simStateArray["hasCOPD"],
             $pacer,
             $simStateArray["respRatio"]);	
-            
-        //error_log($simStateArray["pacer"]);
-        //error_log(PacerState::copyFrom($simStateArray["pacer"]));
 
         $vitalSignArray = $lesson_values["vitalSigns"];
         $vitalSignParameters = new VitalSignParameters(
@@ -968,7 +960,6 @@
             $vitalSignArray["hr"],
             $vitalSignArray["Noise"],
             $vitalSignArray["xValOffset"],
-            $vitalSignArray["xt"],
             $vitalSignArray["pWaveFactor"],
             $vitalSignArray["qWaveFactor"],
             $vitalSignArray["qrsComplexFactor"],

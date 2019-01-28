@@ -3,62 +3,33 @@
 <h2 align="center"><a href="https://www.ls.haw-hamburg.de/~SIMLab/"><img src="assets/img/ESIcon.svg" title="ESIcon" width="250" alt="ESIcon"></a><br>Emergency Simulator</h2>
 <p align="center"><strong>WebApp for Emergency Training Situations</strong></p>
 
-<!--[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()-->
-
 | TraineeView | TrainerView |
 | -| - |
-| ![TraineeView GIF](https://media.giphy.com/media/5bs6T48IVgi8u32C4W/giphy.gif) | ![TrainerView GIF](https://media.giphy.com/media/1NSM1TBq8nIjgbNjIQ/giphy.gif) |
-
+| ![TraineeView GIF](https://media.giphy.com/media/20DUOAf3YPXXVHGK0F/giphy.gif) | ![TrainerView GIF](https://media.giphy.com/media/3PzX3icdzmpBZoib0R/giphy.gif) |
 
 ---
 
 ## Installation
 
 - To use the Emergency Simulator, a device functioning as server and local area connection between devices is required. One possibility to build up such an environment is e.g. to use <a href="https://www.apachefriends.org/de/index.html" target="_blank">XAMPP</a> in combination with a wlan hotspot.
-  - A modern internet browser is required. (Tests where performed with *Chrome* and *Firefox*.)
-- When the codebase is downloaded, the initial name of the archive is ```SIMLab-Emergency-Simulator-master.zip```. It is recommended to rename the unzipped folder to **esim**.
-- When using XAMPP, the previously downloaded folder (now preferably named **esim**) needs to be placed in *htdocs*.  
-  - If another name like *my_name* is chosen instead of *esim*, the web app can be accessed using ```localhost/my_name/```.
+- When the codebase is downloaded, the initial name of the archive is ```SIMLab-Emergency-Simulator-master.zip```. It is *highly* recommended to rename the unzipped folder to **esim**.
+- When using XAMPP, the previously downloaded folder (now named **esim**) needs to be placed in *htdocs*. (*htdocs* is a subfolder in the XAMPP installation directly, e.g. ```C:/xampp```
+  - If another name e.g. *my_name* is chosen as foldername instead of *esim*, the app can be accessed using the ```server_ip_adress/my_name/```. 
+- A *modern* internet browser is required to run the application.
+  - If the browser is to old to run the app, a popup will notify the user at ```login.html```.
+
+---
+
+## Code Documentation
+The documentation of the code can (temporarily) be found [*here*](https://githelge.github.io/es_doc/). 
 
 <!-- 
-- All the `code` required to get started
-- Images of what it should look like -->
-
-<!-- ### Clone
-
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
-
-### Setup
-
-- If you want more syntax highlighting, format your code like this:
-
-> update and install this package first
-
-```shell
-$ brew update
-$ brew install fvcproductions
-```
-
-> now install npm and bower packages
-
-```shell
-$ npm install
-$ bower install
-```
-
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" target="_blank">here</a>.
-
----
-
 ## Features
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
+## Usage
+## Documentation
+## Tests
 
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
--->
----
+--- -->
 
 ## Team
 
@@ -80,16 +51,11 @@ Project Lead:
     - The Emergency Simulator was ment be able to work without a stable internet connection. 
     Therefore, with e.g. the use of a low cost wifi-hotspot, trainings with two connected devices
     can be perfomed.
-
----
-
-<!-- ## Support
-
-Reach out to me at one of the following places!
-
-- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
-- Insert more social links here. -->
+- **How to find out the IP adress of my server?**
+    - The method to find the current IP adress is depending on the operating system of the server. 
+      - If windows is used, the IP Adress can be found using the *command line* and issuing the command *ipconfig*. Then look for the entry: *IP Adress*.
+      - For macOS, use the *Terminal* and type *ifconfig | grep "inet "*. 
+      - For other operating systems, refer to external sources.
 
 ---
 
@@ -110,21 +76,26 @@ Following projects were used in this work:
 
 ## Contributions
 
-This section is work in progress and will be updated throughout the course of January and Febuary 2019.
+In this section, a lot of potential improvements are hinted at. If you want to contribute to this repository and project, feel free to fork or clone.
 
 ### Potential Changes and Features for Future Versions
 
 Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Application and the Codebase: 
 
 #### Application Features
-- 12 Channel ECG
-- Detailed Taining-Documentation
+- Implement the calculation and visualization of the 12 channel ECG.
+- Improve taining-documentation of parameter changes and trainee reactions and improve the PDF export of the data.
 
 #### Code Adaptions
-- Code Quality Improvements (e.g. ESLint)
+- Perform code quality improvements (e.g. ESLint)
+- Implement all "TODO"'s which are marked throughout the code.
+- Save screenshots in the database instead of the folder structure on the server.
+- Improve HTML parts in terms of:
+  - Extended Comments for readability;
+  - (More) CSS classes instead of styles.
 - Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
-- Use Node.js as Backend-Solution instead of PHP
-- Evaluate TypeScript as alternative to JS
+- Use Node.js as Backend-Solution instead of PHP.
+- Evaluate TypeScript as alternative to JS.
 
 
 ## License

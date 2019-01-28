@@ -260,21 +260,21 @@ a.SeEntry:visited {
 }
 
 .MTab {
-    background-color: #1e51a4;
-    border-right: 1px solid #C0C0C0;
-    border-bottom: 1px solid #C0C0C0;
+    background-color: #ffffff;
+    border-right: 0px solid #C0C0C0;
+    border-bottom: 0px solid #C0C0C0;
     display: inline-block;
-    padding: 2px 5px;
+    padding: 2px 10px;
     opacity: .55
 }
 
 .MTab:hover {
-    background-color: #EEEEEE;
+    background-color: #ffffff;
     opacity: 1
 }
 
 .MTab.Selected {
-    border-bottom: 1px solid #1e51a4;
+    border-bottom: 0px solid #ffffff;
     opacity: 1
 }
 
@@ -292,21 +292,21 @@ a.MTab:focus {
 .IE6 .MTab.Selected,
 .IE7 .MTab.Selected,
 .IE8 .MTab.Selected {
-    background-color: #1e51a4
+    background-color: #ffffff
 }
 
 .IE6 .MTab:hover,
 .IE7 .MTab:hover,
 .IE8 .MTab:hover {
-    background-color: #EEEEEE
+    background-color: #1e51a4
 }
 
 .MTabIcon {
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 0px;
+    height: 0px;
     position: relative;
-    top: 3px
+    top: 0px
 }
 
 .IE7 .MTabIcon,
@@ -328,8 +328,10 @@ a.MTab:focus {
 
 .MTabTitle {
     display: inline-block;
-    color: #606060;
-    font: italic 10pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: black;
+    font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    /* text-shadow: #000000; */
     margin: 0 4px
 }
 

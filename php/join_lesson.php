@@ -23,7 +23,8 @@
     session_start();
  
  	/*Function: joinActiveLesson
-	Checks whether a lesson for the session's trainee id exists. If yes, sets session's trainer id and returns true. Otherwise returns false.*/
+    Checks whether a lesson for the session's trainee id exists. If yes, sets session's trainer 
+    id and returns true. Otherwise returns false. */
    function joinActiveLesson(){
         include 'domain.php';
         $username = $_SESSION['username'];
