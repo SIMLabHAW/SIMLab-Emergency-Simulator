@@ -19,7 +19,7 @@
 ---
 
 ## Code Documentation
-The documentation of the code can (temporarily) be found [**here**](https://githelge.github.io/es_doc/). 
+Code Documentation can (temporarily) be found [**here**](https://githelge.github.io/es_doc/). 
 
 <!-- 
 ## Features
