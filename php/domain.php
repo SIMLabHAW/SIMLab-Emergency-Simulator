@@ -52,7 +52,7 @@
             return serialize($array);
         }
 		// Function: __toString
-		// Returns the object as json encoded string.
+		// Returns the current User parameters as json encoded string.
         public function __toString() {
             $array = [
                 "id" => $this->id,
@@ -230,7 +230,7 @@
             $this->etco2 = (int) $etco2;
         }
 		// Function: __toString
-		// Returns the object as json encoded string.
+		// Returns the current VitalSignParameters as json encoded string.
         public function __toString() {
 
             $array = [
@@ -261,35 +261,35 @@
     // Holds all the parameters that characterize the current lesson.
     class Lesson implements Serializable {
 		// Property: id
-		// value of the lesson id.
+		// Value of the lesson id.
         private $id;
 		
 		// Property: trainerID
-		// value of the trainer id.
+		// Value of the trainer id.
         private $trainerID;
 		
 		// Property: traineeID
-		// value of the trainer id.		
+		// Value of the trainer id.		
         private $traineeID;
 		
 		// Property: vitalSignParameters
-		// object with vitalsign parameters, compare with class VitalSignParameters.
+		// Object with vitalsign parameters, compare with class VitalSignParameters.
         private $vitalSignParameters;
 		
 		// Property: timer
-		// value of the GUI clock.
+		// Value of the GUI clock.
         private $timer;
 		
 		// Property: simState
-		// object with simulation parameters, compare with class SimulationState.		
+		// Object with simulation parameters, compare with class SimulationState.		
         private $simState;
 		
 		// Property: changeDuration
-		// object with parameters that define the time it takes changes to vital signs to take effect, compare with class ChangeDuration.
+		// Object with parameters that define the time it takes changes to vital signs to take effect, compare with class ChangeDuration.
 		private $changeDuration;
 		
 		// Property: active
-		// boolean that indicates whether the lesson is still active.
+		// Indicates whether the lesson is still active.
         private $active;
 
 		// Constructor: __construct
@@ -320,7 +320,7 @@
             error_log("User#unserialize intentionally left blank");
         }
 		// Function: __toString
-		// Returns the object as json encoded string.
+		// Returns the current Lesson parameters as json encoded string.
         public function __toString() {
 
             $array = [
@@ -416,7 +416,7 @@
         }
 		
         // Function: __toString
-		// Returns the object as json encoded string.
+		// Returns the current ChangeDuration parameters as json encoded string.
         public function __toString() {
             $array = [
                 "isAuto" => $this->isAuto,
@@ -426,7 +426,7 @@
         }
 		
 		// Function: toBoolean
-		// Returns boolean true if parameter string equals "true".
+		// Returns true if parameter string equals "true".
 		// Parameter: string
         private function toBoolean($string){
             $haeh = $string == "true"? true : false;
@@ -439,19 +439,19 @@
     // Holds parameters defining the state of the pacer.	
 	class PacerState {
 		// Property: isEnabled
-		// flag, if the pacer is currently active.
+		// Flag, if the pacer is currently active.
         public $isEnabled;
 				
 		// Property: frequency
-		// current frequency level.
+		// Current frequency level.
         public $frequency;
 		
 		// Property: energy
-		// current energy level.		
+		// Current energy level.		
         public $energy;
 	
 		// Property: energyThreshold
-		// threshold at which the pacer starts to overtake the internal heartrate.	
+		// Threshold at which the pacer starts to overtake the internal heartrate.	
         public $energyThreshold;
 
 		// Constructor: __construct
@@ -464,7 +464,7 @@
         }
 		
 		// Function: __toString
-		// Returns the object as json encoded string.
+		// Returns the current PacerState parameters as json encoded string.
         public function __toString() {
             $array = [
                 "isEnabled" => $this->isEnabled,
@@ -476,7 +476,7 @@
         }
 
 		// Function: toBoolean
-		// Returns boolean true if parameter string equals "true".
+		// Returns true if parameter string equals "true".
 		// Parameter: string		
         private function toBoolean($string){
             $haeh = $string == "true"? true : false;
@@ -492,15 +492,15 @@
     class SimulationState {
 
         // Property: enableECG
-		// Boolean stating whether ECG chart is switched on or off.
+		// States whether ECG chart is switched on or off.
 		private $enableECG;
         
 		// Property: enableSPO2
-		// Boolean stating whether SPO2 chart is switched on or off.
+		// States whether SPO2 chart is switched on or off.
 		private $enableSPO2;
         
 		// Property: enableETCO2
-		// Boolean stating whether ETCO2 chart is switched on or off.
+		// States whether ETCO2 chart is switched on or off.
 		private $enableETCO2;
 		
 		// Property: defiPathology
@@ -532,23 +532,23 @@
 		private $diaDefi;
 		
 		// Property: showHR
-		// Boolean stating whether the figure for HR is displayed.
+		// States whether the figure for HR is displayed.
 		private $showHR;
 		
 		// Property: showSPO2
-		// Boolean stating whether the figure for SPO2 is displayed.
+		// States whether the figure for SPO2 is displayed.
 		private $showSPO2;
 		
 		// Property: displayETCO2
-		// Boolean stating whether the figure for ETCO2 is displayed.
+		// States whether the figure for ETCO2 is displayed.
 		private $displayETCO2;
 		
 		// Property: displayRR
-		// Boolean stating whether the figure for RR is displayed.
+		// States whether the figure for RR is displayed.
 		private $displayRR;
 		
 		// Property: displayNIBP
-		// Boolean stating whether the figure for NIBP is displayed.
+		// States whether the figure for NIBP is displayed.
 		private $displayNIBP;
 		
 		// Property: timer
@@ -564,11 +564,11 @@
 		private $defiEnergyThreshold;
         
 		// Property: hasCPR
-		// Boolean stating whether CPR artifacts are present.
+		// States whether CPR artifacts are present.
 		private $hasCPR;
         
 		// Property: hasCOPD
-		// Boolean stating whether the patient has COPD.
+		// States whether the patient has COPD.
 		private $hasCOPD;
         
 		// Property: pacer
@@ -611,7 +611,7 @@
         }
 		
 		// Function: toBoolean
-		// Returns boolean true if parameter string equals "true".
+		// Returns true if parameter string equals "true".
 		// Parameter: string
         private function toBoolean($string){
             $haeh = $string == "true"? true : false;
@@ -620,7 +620,7 @@
         }
 
 		// Function: __toString
-		// Returns the object as json encoded string.		
+		// Returns the current SimulationState parameters as json encoded string.		
         public function __toString() {
             $array = [
                 "enableECG" => $this->enableECG,
@@ -772,7 +772,7 @@
 	// Function: getUserByName
 	// Queries the database for a user with a specific username and returns an object of class User.
 	// Parameters:
-    //    username - name of the user.
+    //    username - Name of the user.
     function getUserByName($username) {
         include 'dbconnect.php';
         $user_query = "SELECT id, username, password, role FROM users WHERE username LIKE '$username' LIMIT 1";
@@ -794,8 +794,8 @@
 	// Creates a new user in the database.
 	//
 	// Parameters:
-    //    username - name of the new user.
-	//    role - role of the new user.	
+    //    username - Name of the new user.
+	//    role - Role of the new user.	
     function createUser($username, $role) {
         include 'dbconnect.php';
         $insert_user_query = "INSERT INTO users (username, password, role) VALUES ('$username', 'none', '$role')";
@@ -812,8 +812,8 @@
 	// Updates the role of an existing user in the database.
 	//
 	// Parameters:
-    //    username - name of the user.
-	//    role - new role of the user.	
+    //    username - Name of the user.
+	//    role - New role of the user.	
 	function updateUser($username, $role) {
         include 'dbconnect.php';
         $update_user_query = "UPDATE users SET role = '$role' WHERE username = '$username'";
@@ -830,8 +830,8 @@
 	// Checks whether a lesson for the given trainer / trainee pair exists. Creates a new lesson if not. Default lesson values are defined here. If a lesson exists, returns that lesson instead of creating a new lesson.
 	//
 	// Parameters:
-    //    trainerID - id of the trainer.
-	//    traineeID - id of the trainee.	
+    //    trainerID - Id of the trainer.
+	//    traineeID - Id of the trainee.	
     function createLessonIfNotExist($trainerID, $traineeID) {
         include 'dbconnect.php';
         $lesson = getLessonByParticipants($trainerID, $traineeID);
@@ -871,8 +871,8 @@
 	// Queries the database for an existing lesson of the given trainer / trainee pair. If yes, returns an object of class Lesson.
 	//
 	// Parameters:
-    //    trainerID - id of the trainer.
-	//    traineeID - id of the trainee.
+    //    trainerID - Id of the trainer.
+	//    traineeID - Id of the trainee.
     function getLessonByParticipants($trainerID, $traineeID){
         
         //error_log("Get parameters for user " . $trainerID);
@@ -923,7 +923,7 @@
 	// Updates current lesson data to the database.
 	//
 	// Parameters:
-    //    lesson_values - object of class Lesson.
+    //    lesson_values - Object of class Lesson.
     function saveLesson($lesson_values){ 
         include 'dbconnect.php';
 
@@ -1003,9 +1003,9 @@
 	// Saves a comment / message to the database.
 	//
 	// Parameters:
-    //    comment - the message body.
-	//    trainerID - id of the trainer.
-	//    traineeID - id of the trainee.
+    //    comment - The message body.
+	//    trainerID - Id of the trainer.
+	//    traineeID - Id of the trainee.
 	 function saveCommentDB($comment,$trainerID,$traineeID){ 
         // connect to database
         include 'dbconnect.php';
@@ -1021,9 +1021,9 @@
 	// Updates the current clock value to the database.
 	//
 	// Parameters:
-    //    newTime - the new clock value.
-	//    trainerID - id of the trainer.
-	//    traineeID - id of the trainee.	
+    //    newTime - The new clock value.
+	//    trainerID - Id of the trainer.
+	//    traineeID - Id of the trainee.	
 	 function saveTimeDB($newTime,$trainerID,$traineeID){ 
         // connect to database
         include 'dbconnect.php';

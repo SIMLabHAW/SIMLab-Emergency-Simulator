@@ -50,8 +50,8 @@ class PDF extends FPDF {
     /*Function: ImprovedTable
 	Create a formatted table from parameters header and data.
 	Parameters:
-    header - values for table header 
-	data - values for table body*/
+    header - Values for table header. 
+	data - Values for table body.*/
     function ImprovedTable($header, $data) {
         // Column widths
         $w = array(50, 140);
