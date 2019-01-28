@@ -45,7 +45,10 @@
     }
 
     $applicationController;
-
+	
+	/* Function: getApplicationController
+    Returns the existing applicationController or creates a new one.
+	*/
     function getApplicationController(){
         global $applicationController;
         if (isset($applicationController)){
