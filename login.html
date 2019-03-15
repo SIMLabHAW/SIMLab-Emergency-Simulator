@@ -173,24 +173,31 @@ function getRole() {
     var selectedUser = $("#inputName").val();
     if (selectedUser== "") return;
 
-    var userIsTrainer = false;
+    var userIsTrainer = (roleType == RoleType.Trainer);
 
     if (users == undefined) return;
 
     for (var user of users) {
         if (user.name == selectedUser && user.role == 'trainer'){
             userIsTrainer = true;
+            roleType = RoleType.Trainer
+            break;
+        } else if (user.name == selectedUser && user.role == 'trainee') {
+            userIsTrainer = false;
+            roleType = RoleType.Trainee
+            break;
         }
     }
+    
     if(userIsTrainer){
-        $("#trainerRoleOption").prop("checked", true);
         $("#traineeRoleOption").prop("checked", false);
+        $("#trainerRoleOption").prop("checked", true);
         $("#trainerID").addClass('active');
         $("#traineeID").removeClass('active');
     }
     else{
-        $("#traineeRoleOption").prop("checked", true);
         $("#trainerRoleOption").prop("checked", false);
+        $("#traineeRoleOption").prop("checked", true);
         $("#traineeID").addClass('active');
         $("#trainerID").removeClass('active');
     }
@@ -202,13 +209,11 @@ var roleType = RoleType.Trainee;
 var wasConfirmed;
 var modalConfirm = function(callback){
 
-
     wasConfirmed = false;
-    $("#confirmModalTitle").text("Are you sure you want to change your role to " + 
-    (($("#trainerRoleOption").prop("checked")) ? "Trainee" : "Trainer")  + "?");
+    $("#confirmModalTitle").text("Are you sure you want to change your role?");
 
     $("#trainerID").on("click", function(){
-        if($("#trainerRoleOption").prop("checked")) return; 
+        if($("#trainerRoleOption").is(":checked")) return; 
         var user = $("#inputName").val();
         if (user != "") {
             $("#mi-modal").modal('show');
@@ -221,7 +226,7 @@ var modalConfirm = function(callback){
     });
     
     $("#traineeID").on("click", function(){
-        if($("#traineeRoleOption").prop("checked")) return; 
+        if($("#traineeRoleOption").is(":checked")) return; 
         var user = $("#inputName").val();
         if (user != "") {
             $("#mi-modal").modal('show');
@@ -252,12 +257,16 @@ var modalConfirm = function(callback){
 };
 
 modalConfirm(function(confirm) {
+    $("#confirmModalTitle").text("Are you sure you want to change your role?");
+
     if(roleType == RoleType.Trainer) {
         if(confirm){ 
-            $("#trainerRoleOption").prop("checked", true);
             $("#traineeRoleOption").prop("checked", false);
+            $("#trainerRoleOption").prop("checked", true);
             $("#trainerID").addClass('active');
             $("#traineeID").removeClass('active');
+            var found = users.find(element => element.name == $("#inputName").val())
+            if (found != undefined) found.role = 'trainer'
         } else {
             $("#trainerRoleOption").prop("checked", false);
             $("#traineeRoleOption").prop("checked", true);
@@ -266,13 +275,15 @@ modalConfirm(function(confirm) {
         }
     } else {
         if(confirm) {
-            $("#traineeRoleOption").prop("checked", true);
             $("#trainerRoleOption").prop("checked", false);
+            $("#traineeRoleOption").prop("checked", true);
             $("#traineeID").addClass('active');
             $("#trainerID").removeClass('active');
+            var found = users.find(element => element.name == $("#inputName").val())
+            if (found != undefined) found.role = 'trainee'
         } else {
-            $("#trainerRoleOption").prop("checked", true);
             $("#traineeRoleOption").prop("checked", false);
+            $("#trainerRoleOption").prop("checked", true);
             $("#trainerID").addClass('active');
             $("#traineeID").removeClass('active');
         }
