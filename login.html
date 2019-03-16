@@ -265,8 +265,10 @@ modalConfirm(function(confirm) {
             $("#trainerRoleOption").prop("checked", true);
             $("#trainerID").addClass('active');
             $("#traineeID").removeClass('active');
-            var found = users.find(element => element.name == $("#inputName").val())
-            if (found != undefined) found.role = 'trainer'
+            if (users != undefined) { 
+                var found = users.find(element => element.name == $("#inputName").val())
+                if (found != undefined) found.role = 'trainer'
+            }
         } else {
             $("#trainerRoleOption").prop("checked", false);
             $("#traineeRoleOption").prop("checked", true);
@@ -279,8 +281,10 @@ modalConfirm(function(confirm) {
             $("#traineeRoleOption").prop("checked", true);
             $("#traineeID").addClass('active');
             $("#trainerID").removeClass('active');
-            var found = users.find(element => element.name == $("#inputName").val())
-            if (found != undefined) found.role = 'trainee'
+            if (users != undefined) {
+                var found = users.find(element => element.name == $("#inputName").val())
+                if (found != undefined) found.role = 'trainee'
+            }
         } else {
             $("#traineeRoleOption").prop("checked", false);
             $("#trainerRoleOption").prop("checked", true);
