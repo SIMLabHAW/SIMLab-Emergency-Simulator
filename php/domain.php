@@ -545,10 +545,6 @@
 		// Property: displayNIBP
 		// States whether the figure for NIBP is displayed.
 		private $displayNIBP;
-		
-		// Property: timer
-		// Holds the value of the GUI clock.
-		private $timer;
         
 		// Property: defiCharge
 		// Holds the value of the defibrillator charge.
@@ -577,7 +573,11 @@
 		// Constructor: __construct
 		// Initializes the object.		
         public function __construct(
-            $enableECG, $enableSPO2, $enableETCO2, $defiPathology,$hrDefi,$spo2Defi, $etco2Defi, $rrDefi, $sysDefi, $diaDefi, $showHR, $showSPO2, $displayETCO2, $displayRR,$displayNIBP, $timer, $defiCharge, $defiEnergyThreshold, 
+            $enableECG, $enableSPO2, $enableETCO2, $defiPathology,
+            $hrDefi, $spo2Defi, $etco2Defi, $rrDefi, 
+            $sysDefi, $diaDefi, $showHR, $showSPO2, 
+            $displayETCO2, $displayRR, $displayNIBP,
+            $defiCharge, $defiEnergyThreshold, 
             $hasCPR, $hasCOPD, $pacer, $respRatio) {
 
             $this->enableECG = $this->toBoolean($enableECG);
@@ -595,7 +595,6 @@
 			$this->displayETCO2 = $this->toBoolean($displayETCO2);
 			$this->displayRR = $this->toBoolean($displayRR);
 			$this->displayNIBP = $this->toBoolean($displayNIBP);
-			$this->timer = $timer;
             $this->defiCharge = (int) $defiCharge;
             $this->defiEnergyThreshold =  (int) $defiEnergyThreshold;
             $this->hasCPR = $this->toBoolean($hasCPR);
@@ -633,7 +632,6 @@
 				"displayETCO2" => $this->displayETCO2,
 				"displayRR" => $this->displayRR,
 				"displayNIBP" => $this->displayNIBP,
-				"timer" => $this->timer,
                 "defiCharge" => $this->defiCharge,
                 "defiEnergyThreshold" => $this->defiEnergyThreshold,
                 "hasCPR" => $this->hasCPR,
@@ -843,8 +841,8 @@
 				60,97,36,12,120,80,
                 /* showHR, showSPO2, displayETCO2, displayRR,  */
                 false, false, false, false,
-                /* displayNIBP, timer, defiCharge, defiEnergyThreshold, */
-                false, false, '0:00', 150,
+                /* displayNIBP, defiCharge, defiEnergyThreshold, */
+                false, 150, 150,
                 /* hasCPR, hasCOPD, pacer, respRatio */
                 false, false, new PacerState(false, 60, 10, 5), 0);
 
@@ -946,7 +944,6 @@
             $simStateArray["displayETCO2"],
             $simStateArray["displayRR"],
             $simStateArray["displayNIBP"],
-            $simStateArray["timer"],
             $simStateArray["defiCharge"],
             $simStateArray["defiEnergyThreshold"],
             $simStateArray["hasCPR"],

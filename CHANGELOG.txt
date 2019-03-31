@@ -1,3 +1,5 @@
 This file contains readable notes to introduce the changes which were performed in the latest commit/release.
 
-This file is a placeholder for future releases > 1.0
+31.03.2019 - Cleanup and minor Bugfix:
+- Cleanup of unused variable "timer" in the SimState. 
+- The default defibrillator charge value is now correctly initialized in the database on first run.
