@@ -8,9 +8,9 @@
 ---
 
 ## Want to use the App?
-You are interested in learning about this product without wrapping your head around the sourcecode? - Head over to our [Wiki-Page](https://github.com/SIMLabHAW/SIMLab-Emergency-Simulator/wiki), where we tell you all about the project background, its features and how to install the Emergency Simulator in detail more detail. 
+You are interested in learning about this product without wrapping your head around the sourcecode? - Head over to our [Wiki-Page](https://github.com/SIMLabHAW/SIMLab-Emergency-Simulator/wiki), where we tell you all about the project background, its features and how to install the Emergency Simulator in all detail. 
 
-If terms like IP address, localhost and XAMPP sound familiar, continue with the installation process here.
+If terms like *IP address*, *localhost* or *XAMPP* sound familiar, continue with the installation process here.
 
 ---
 
