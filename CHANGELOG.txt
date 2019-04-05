@@ -1,5 +1,8 @@
 This file contains readable notes to introduce the changes which were performed in the latest commit/release.
 
+05.04.2019 - Quality of Live Improvement:
+- Shows the Local IP address in when starting up index.html (when using Chrome or Firefox). - This is a kind of hacky approach that might get fixed in the future. https://stackoverflow.com/questions/29959708/how-to-get-local-ip-address-in-javascript-html5?lq=1
+
 31.03.2019 - Cleanup and minor Bugfix:
 - Cleanup of unused variable "timer" in the SimState. 
 - The default defibrillator charge value is now correctly initialized in the database on first run.
