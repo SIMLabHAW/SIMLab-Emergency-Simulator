@@ -10,7 +10,9 @@
 ## Want to use the App?
 You are interested in learning about this product without wrapping your head around the sourcecode? - Head over to our [Wiki-Page](https://github.com/SIMLabHAW/SIMLab-Emergency-Simulator/wiki), where we tell you all about the project background, its features and how to install the Emergency Simulator in detail more detail. 
 
-If terms like IP address, localhost and XAMPP sound familiar, continue with the installation process here:
+If terms like IP address, localhost and XAMPP sound familiar, continue with the installation process here.
+
+---
 
 ## Quick Installation Guide
 
@@ -22,17 +24,6 @@ If terms like IP address, localhost and XAMPP sound familiar, continue with the 
   - If the browser is to old to run the app, a popup will notify the user at ```login.html```.
 
 ---
-
-## Code Documentation
-Code Documentation can be found [**here**](https://githelge.github.io/es_doc/). 
-
-<!-- 
-## Features
-## Usage
-## Documentation
-## Tests
-
---- -->
 
 ## Team
 
@@ -66,18 +57,8 @@ Project Lead:
 
 ---
 
-## Credits
-
-Following projects were used in this work:
-- Bootstrap v4.0.0 <a href="https://getbootstrap.com" target="_blank">`getbootstrap.com`</a>
-- JQuery v3.2.1 <a href="http://jquery.com" target="_blank">`jquery.com`</a>
-- Popper <a href="https://popper.js.org" target="_blank">`popper.js.org`</a>
-- html2canvas v1.0.0-alpha.12 <a href="https://html2canvas.hertzen.com" target="_blank">`html2canvas.hertzen.com`</a>
-- Ion.RangeSlider v2.2.0 <a href="https://github.com/IonDen/ion.rangeSlider" target="_blank">`github.com/IonDen/ion.rangeSlider`</a>
-- FPDF v1.81 <a href="http://www.fpdf.org" target="_blank">`fpdf.org`</a>
-- Font Awesome Free v5.4.1 <a href="https://fontawesome.com" target="_blank">`fontawesome.com`</a>
-- Natural Docs v2.0 <a href="https://www.naturaldocs.org" target="_blank">`naturaldocs.org`</a>
-- ...further sources are named in each file.
+## Code Documentation
+Code Documentation can be found [**here**](https://githelge.github.io/es_doc/). 
 
 ---
 
@@ -104,6 +85,20 @@ Many of the already implemented features are listed on a <a href="https://docs.g
 - Use Node.js as Backend-Solution instead of PHP.
 - Evaluate TypeScript as alternative to JS.
 
+---
+
+## Credits
+
+Following projects were used in this work:
+- Bootstrap v4.0.0 <a href="https://getbootstrap.com" target="_blank">`getbootstrap.com`</a>
+- JQuery v3.2.1 <a href="http://jquery.com" target="_blank">`jquery.com`</a>
+- Popper <a href="https://popper.js.org" target="_blank">`popper.js.org`</a>
+- html2canvas v1.0.0-alpha.12 <a href="https://html2canvas.hertzen.com" target="_blank">`html2canvas.hertzen.com`</a>
+- Ion.RangeSlider v2.2.0 <a href="https://github.com/IonDen/ion.rangeSlider" target="_blank">`github.com/IonDen/ion.rangeSlider`</a>
+- FPDF v1.81 <a href="http://www.fpdf.org" target="_blank">`fpdf.org`</a>
+- Font Awesome Free v5.4.1 <a href="https://fontawesome.com" target="_blank">`fontawesome.com`</a>
+- Natural Docs v2.0 <a href="https://www.naturaldocs.org" target="_blank">`naturaldocs.org`</a>
+- ...further sources are named in each file.
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
