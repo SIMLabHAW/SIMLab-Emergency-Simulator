@@ -50,6 +50,7 @@ Project Lead:
     Therefore, with e.g. the use of a low cost wifi-hotspot, trainings with two connected devices
     can be perfomed.
 - **How to find out the IP adress of my server?**
+    - When using Firefox or Google Chrome as a Browser, the local IP address is shown on *login.html*.
     - The method to find the current IP adress is depending on the operating system of the server. 
       - If windows is used, the IP Adress can be found using the *command line* and issuing the command *ipconfig*. Then look for the entry: *IP Adress*.
       - For macOS, use the *Terminal* and type *ifconfig | grep "inet "*. 
