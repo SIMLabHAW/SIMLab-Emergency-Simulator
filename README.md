@@ -70,9 +70,23 @@ In this section, a lot of potential improvements are hinted at. If you want to c
 
 Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Application and the Codebase: 
 
+#### Website
+- Create an *easy to navigate* website containing the wiki, pictures and other media.
+
+#### Installation
+- Evaluate the possibility of creating an installer for improved usability. 
+
+#### Localization
+- Create a localized (e.g. german) version.
+
 #### Application Features
-- Implement the calculation and visualization of the 12 channel ECG.
-- Improve taining-documentation of parameter changes and trainee reactions and improve the PDF export of the data.
+- Simulate baseline drift instead of flat curves.
+- Implement a *storyboard* for preconfiguring szenario paths.
+- Implement the calculation and visualization of a 12-channel ECG.
+- Improve *in-training*-documentation of parameter changes and trainee reactions.
+- Generate statistical evaluaiton of the trainee reactivity.
+- Improve the PDF export feature in general. 
+- Evaluate if multiple user-accounts are necessary.
 
 #### Code Adaptions
 - Perform code quality improvements (e.g. ESLint)
@@ -83,7 +97,7 @@ Many of the already implemented features are listed on a <a href="https://docs.g
   - (More) CSS classes instead of styles.
 - Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
 - Use Node.js as Backend-Solution instead of PHP.
-- Evaluate TypeScript as alternative to JS.
+- Go for TypeScript as alternative to JS for syntactic sugar. 
 
 ---
 
