@@ -68,20 +68,16 @@ In this section, a lot of potential improvements are hinted at. If you want to c
 
 ### Potential Changes and Features for Future Versions
 
-Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Application and the Codebase: 
+Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Usability, Application and Codebase: 
 
-#### Website
+#### Usability
 - Create an *easy to navigate* website containing the wiki, pictures and other media.
-
-#### Installation
 - Evaluate the possibility of creating an installer for improved usability. 
-
-#### Localization
 - Create a localized (e.g. german) version.
 
 #### Application Features
-- Simulate baseline drift instead of flat curves.
 - Implement a *storyboard* for preconfiguring szenario paths.
+- Simulate baseline drift instead of flat curves.
 - Implement the calculation and visualization of a 12-channel ECG.
 - Improve *in-training*-documentation of parameter changes and trainee reactions.
 - Generate statistical evaluaiton of the trainee reactivity.
