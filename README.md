@@ -78,6 +78,7 @@ Many of the already implemented features are listed on a <a href="https://docs.g
 
 #### Application Features
 - Implement a *storyboard* for preconfiguring szenario paths.
+- Gracefully change from one mode to another instead of cutting the curves.
 - Simulate baseline drift instead of flat curves.
 - Implement the calculation and visualization of a 12-channel ECG.
 - Improve *in-training*-documentation of parameter changes and trainee reactions.
