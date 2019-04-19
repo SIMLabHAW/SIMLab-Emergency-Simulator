@@ -69,8 +69,8 @@ In this section, a lot of potential improvements are hinted at. If you want to c
 
 ### Potential Changes and Features for Future Versions
 
-Many of the already implemented features are listed on a [GoogleSpreadsheet](https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing). 
-These contain code improvement requests as well as general ideas to further improve the Usability, Application and Codebase. 
+Many of the already implemented features are listed on a [**GoogleSpreadsheet**](https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing). 
+That list additionally contains code improvement requests and general ideas to further improve the Usability, Application and Codebase. To see what is still planned, head to the link above.
 
 ---
 
