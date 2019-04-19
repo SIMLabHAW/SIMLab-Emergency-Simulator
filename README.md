@@ -72,7 +72,7 @@ In this section, a lot of potential improvements are hinted at. If you want to c
 Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Usability, Application and Codebase: 
 
 #### Usability
-- Create an *easy to navigate* website containing the wiki, pictures and other media.
+- Create an *easy to navigate* website containing the wiki, pictures and an interactive preview.
 - Evaluate the possibility of creating an installer for improved usability. 
 - Create a localized (e.g. german) version.
 
