@@ -65,7 +65,7 @@ Code Documentation can be found [**here**](https://githelge.github.io/es_doc/).
 
 ## Contributions
 
-In this section, a lot of potential improvements are hinted at. If you want to contribute to this repository and project, feel free to fork or clone.
+In this section, a lot of potential improvements are hinted at. If you want to contribute to this repository and project, feel free to fork, clone and issue pull requests if you made some cool or necessary adaptions.
 
 ### Potential Changes and Features for Future Versions
 
