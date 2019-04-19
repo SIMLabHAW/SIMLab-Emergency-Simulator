@@ -69,33 +69,8 @@ In this section, a lot of potential improvements are hinted at. If you want to c
 
 ### Potential Changes and Features for Future Versions
 
-Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Usability, Application and Codebase: 
-
-#### Usability
-- Create an *easy to navigate* website containing the wiki, pictures and an interactive preview.
-- Evaluate the possibility of creating an installer for improved usability. 
-- Create a localized (e.g. german) version.
-
-#### Application Features
-- Implement a *storyboard* for preconfiguring szenario paths.
-- Gracefully change from one mode to another instead of cutting the curves.
-- Simulate baseline drift instead of flat curves.
-- Implement the calculation and visualization of a 12-channel ECG.
-- Improve *in-training*-documentation of parameter changes and trainee reactions.
-- Generate statistical evaluaiton of the trainee reactivity.
-- Improve the PDF export feature in general. 
-- Evaluate if multiple user-accounts are necessary.
-
-#### Code Adaptions
-- Perform code quality improvements (e.g. ESLint)
-- Implement all "TODO"'s which are marked throughout the code.
-- Save screenshots in the database instead of the folder structure on the server.
-- Improve HTML parts in terms of:
-  - Extended Comments for readability;
-  - (More) CSS classes instead of styles.
-- Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
-- Use Node.js as Backend-Solution instead of PHP.
-- Go for TypeScript as alternative to JS for syntactic sugar. 
+Many of the already implemented features are listed on a [GoogleSpreadsheet](https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing). 
+These contain code improvement requests as well as general ideas to further improve the Usability, Application and Codebase. 
 
 ---
 
