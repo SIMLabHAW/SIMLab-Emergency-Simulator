@@ -1,5 +1,7 @@
 This file contains readable notes to introduce the changes which were performed in the latest commit/release.
 
+20.04.2019 - Cleanup of unnecessary code, fixed a displaced button.
+
 05.04.2019 - Quality of Live Improvement:
 - Shows the Local IP address in when starting up index.html (when using Chrome or Firefox). - This is a kind of hacky approach that might get fixed in the future. https://stackoverflow.com/questions/29959708/how-to-get-local-ip-address-in-javascript-html5?lq=1
 

@@ -105,6 +105,11 @@ var ECGCalculation = function() {
         Is workes in combination with <isNewMode>. Because it is possible to set this value, while a calculation is still ongoing, a double semaphore is used.  */
     this.hasNewMode = false;
 
+
+    function checkPName(pathologyName) {
+        return simConfig.vitalSigns.name == pathologyName
+    }
+
     /* Function: calculatePWave
         Used to calculate the pWaveValue for the current ECG value. 
         
@@ -196,11 +201,6 @@ var ECGCalculation = function() {
             
         return qrsComplexValue;
     }
-
-    /* var sArray = [];
-    function getMeanOf(values) {
-        return values.reduce((a, b) => a + b, 0) / values.length;
-    }; */
 
     /* Function: calculateSWave
         Used to calculate the sWaveValue for the current ECG value. 
@@ -313,7 +313,7 @@ var ECGCalculation = function() {
     function calculateWaveSum(p, q, qrs, s, t, u, pWavePreFactor, noise) {
         
         var ventFibOffset = (!isOffsetCalculation && 
-            simConfig.vitalSigns.name === PName.VentFib)? 1.0: 0;
+            checkPName(PName.VentFib))? 1.0: 0;
 
         const E = pWavePreFactor * p + q + qrs + s + t + u - ventFibOffset;
 
@@ -323,7 +323,7 @@ var ECGCalculation = function() {
     /* Function: randomize
         Used to randomize the provided heart-rate. In order to do so correcly, a lot of conditions 
         are checked. */
-    function randomize(hr, simTime, vitalSigns = undefined) {
+    function randomize(hr, simTime, pathologyName) {
         var randHR = (!self.hasAVBlock) ? self.currentRandHR : hr;
 
         // Get a reference to the pacer object for convenience.
@@ -334,24 +334,20 @@ var ECGCalculation = function() {
         calculated. This calculation is dependent on the current pathology. */
         if (simTime===0 && hr >= 10 && (!isOffsetCalculation || isNewMode)) {
             var maxRandFactor
-            
-            if (vitalSigns != undefined) {
-                switch (vitalSigns.name) {
-                    case PName.AtrialFib:
-                        maxRandFactor = 0.7;
-                        break;
-                    case PName.VentFib:
-                        maxRandFactor = 0.1;
-                        break;
-                    default:
-                        maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
-                        break;
-                }
-            } else {
-                maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
+
+            switch (pathologyName) {
+                case PName.AtrialFib:
+                    maxRandFactor = 0.7;
+                    break;
+                case PName.VentFib:
+                    maxRandFactor = 0.1;
+                    break;
+                default:
+                    maxRandFactor = 0.15 - 0.14/(1+(Math.exp(-5/60*(hr-120))));
+                    break;
             }
 
-            randHR = Math.round((Math.random()-0.5) * hr*maxRandFactor + hr);
+            randHR = Math.round((Math.random()-0.5) * hr * maxRandFactor + hr);
         } else if (randHR != hr && randHR <= 10 && !isOffsetCalculation) {
             randHR = hr;
         } else if (hr < 10) {
@@ -451,8 +447,8 @@ var ECGCalculation = function() {
     function getTimeForParameter(hr, param) {
 
         var hrOffset = 0;
-        if (simConfig.vitalSigns.name === PName.VentTach)  hrOffset = 120;
-        if (simConfig.vitalSigns.name === PName.VentFib)  hrOffset = 250;
+        if (checkPName(PName.VentTach)) hrOffset = 120;
+        if (checkPName(PName.VentFib)) hrOffset = 250;
 
         // These parameters are superb for the whole range of hr. (Based on Tests in Excel)
         var normalHF = 60 + hrOffset;
@@ -476,13 +472,13 @@ var ECGCalculation = function() {
     function calculateECGValue(vitalSigns, simTime, changeDuration, hasPacerPeak) {
         
         self.currentHR = calculateCurrentHFValue(vitalSigns, changeDuration);
-        randHR = randomize(self.currentHR, simTime, vitalSigns);
+        randHR = randomize(self.currentHR, simTime, vitalSigns.name);
 
         var tempHR = randHR;
 
         /* This is used to draw the curve of low-bpm ecg in the same timeframe as a 60bpm 
             ecg. After the waveform, is is zero, until the next wave starts. */
-        if (tempHR < 35 && vitalSigns.name === PName.SinusRhythm) {
+        if (tempHR < 35 && checkPName(PName.SinusRhythm)) {
             /* below 35bpm, the curve is stiched together by a 60bpm "baseline" and a 
             "pqrstu"-complex. */
             tempHR = 60;
@@ -492,7 +488,7 @@ var ECGCalculation = function() {
         }
 
         var junctionalRhythmOffset = 0;
-        if (vitalSigns.name === PName.JuncRhythm) junctionalRhythmOffset = -0.21;
+        if (checkPName(PName.JuncRhythm)) junctionalRhythmOffset = -0.21;
 
         // Variables for the P-Wave:
         var pWaveAmplitude = 0.25, 
@@ -506,24 +502,17 @@ var ECGCalculation = function() {
 
 
         if (self.hasAVBlock) {
-            if (hasPacerPeak) {
-                const pacer = simConfig.simState.pacer;
-                if (!(pacer.isEnabled && pacer.energy >= pacer.energyThreshold 
-                    && pacer.frequency > 40)) {
-                    randHR = randomize(40, self.avBlockCounter);
-                    tempHR = randHR;
-                    if (!isOffsetCalculation) self.avBlockCounter += timestep;
-                    if (self.avBlockCounter > 30 / randHR * 2) self.avBlockCounter = 0;
-                    if (!isOffsetCalculation) simTime = self.avBlockCounter;
-                }
-            } else {
-                randHR = randomize(40, self.avBlockCounter);
+            if (!hasPacerPeak) {
+                randHR = randomize(40, self.avBlockCounter, PName.AVBlock3);
                 tempHR = randHR;
-                if (!isOffsetCalculation) self.avBlockCounter += timestep;
                 if (self.avBlockCounter > 60 / randHR) self.avBlockCounter = 0;
-                if (!isOffsetCalculation) simTime = self.avBlockCounter;
+                if (!isOffsetCalculation) {
+                    simTime = self.avBlockCounter;
+                    self.avBlockCounter += timestep;
+                }
             }
         }
+
         self.currentRandHR = randHR;
 
         // Variables for the Q-Wave:
@@ -574,7 +563,7 @@ var ECGCalculation = function() {
             ecg. After the waveform, the baseline value will be drawn, until the next wave 
             starts. */
         if (!isOffsetCalculation && simTime < 60/randHR - 0.4 && simTime > 0.5 && randHR < 35 
-            && vitalSigns.name == PName.SinusRhythm)
+            && checkPName(PName.SinusRhythm))
             return baselineValue;
 
         if (!isOffsetCalculation) baselineValue = calculateWaveSum(
