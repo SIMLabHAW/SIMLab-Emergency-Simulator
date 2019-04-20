@@ -50,6 +50,7 @@ Project Lead:
     Therefore, with e.g. the use of a low cost wifi-hotspot, trainings with two connected devices
     can be perfomed.
 - **How to find out the IP adress of my server?**
+    - When using Firefox or Google Chrome as a Browser, the local IP address is shown on *login.html*.
     - The method to find the current IP adress is depending on the operating system of the server. 
       - If windows is used, the IP Adress can be found using the *command line* and issuing the command *ipconfig*. Then look for the entry: *IP Adress*.
       - For macOS, use the *Terminal* and type *ifconfig | grep "inet "*. 
@@ -64,26 +65,12 @@ Code Documentation can be found [**here**](https://githelge.github.io/es_doc/).
 
 ## Contributions
 
-In this section, a lot of potential improvements are hinted at. If you want to contribute to this repository and project, feel free to fork or clone.
+In this section, a lot of potential improvements are hinted at. If you want to contribute to this repository and project, feel free to fork, clone and issue pull requests if you made some cool or necessary adaptions.
 
 ### Potential Changes and Features for Future Versions
 
-Many of the already implemented features are listed on a <a href="https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing" target="_blank"> GoogleSpreadsheet</a>. However, there are more general ideas to further improve the Application and the Codebase: 
-
-#### Application Features
-- Implement the calculation and visualization of the 12 channel ECG.
-- Improve taining-documentation of parameter changes and trainee reactions and improve the PDF export of the data.
-
-#### Code Adaptions
-- Perform code quality improvements (e.g. ESLint)
-- Implement all "TODO"'s which are marked throughout the code.
-- Save screenshots in the database instead of the folder structure on the server.
-- Improve HTML parts in terms of:
-  - Extended Comments for readability;
-  - (More) CSS classes instead of styles.
-- Move from myQSL to e.g. ReThinkDB, as most persistently saved stuff is already saved as json strings.
-- Use Node.js as Backend-Solution instead of PHP.
-- Evaluate TypeScript as alternative to JS.
+Many of the already implemented features are listed on a [**GoogleSpreadsheet**](https://docs.google.com/spreadsheets/d/1kEWTkjUGEv1Msgwj1EuNwlg2URnYAXst4ZItrPl_gXs/edit?usp=sharing). 
+That list additionally contains code improvement requests and general ideas to further improve the Usability, Application and Codebase. To see what is still planned, head to the link above.
 
 ---
 
