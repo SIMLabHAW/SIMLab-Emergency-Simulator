@@ -12,8 +12,10 @@ You are interested in learning about this product without wrapping your head aro
 
 If terms like *IP address*, *localhost* or *XAMPP* sound familiar, continue with the installation process here.
 
-### Alternative App: ReSimulate
-Based on the idea of this webapp, a free Android App was recently (08.2019) published which does not require a server connection but instead connects two devices via Wifi/Bluetooth. If you are interested, head over to [ReSimulate](https://www.resimulate.de/en) to test and use the App for free.
+### Alternative for Android: ReSimulate
+If you are not motivated to install the App on your server, ReSimulate might be an interesting alternative:
+
+Based on the idea of this webapp, a free Android App was recently published (August 2019), which does not require a server connection but instead connects two devices via Wifi/Bluetooth. If you are interested, head over to [ReSimulate](https://www.resimulate.de/en) to test and use the App for free.
 
 ---
 
